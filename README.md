@@ -1,2 +1,2 @@
-./startbootstrap-resume-master/dist/index.html
+[Link to website]./startbootstrap-resume-master/dist/index.html
 
