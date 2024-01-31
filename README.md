@@ -1,4 +1,2 @@
-[Website can be found here](./startbootstrap-modern-business-gh-pages/index.html)
+[Website can be found here](./startbootstrap-resume-master/dist/index.html)
 
-
-[here](./index2.html)
