@@ -1,6 +1,6 @@
 [here](./test.md)
 
-[here](./startbootstrap-modern-buisness-gh-pages/index.html)
+[here](./startbootstrap-modern-business-gh-pages/index.html)
 
 # [Start Bootstrap - Modern Business](https://startbootstrap.com/template/modern-business/)
 
