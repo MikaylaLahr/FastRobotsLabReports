@@ -1,2 +1,2 @@
-[Website can be found here](./startbootstrap-resume-master/dist/index.html)
+./startbootstrap-resume-master/dist/index.html
 
