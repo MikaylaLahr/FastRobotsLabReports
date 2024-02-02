@@ -268,6 +268,13 @@
                                 cmd_types.py and the statement GET_TIME_MILLIS_LOOP needed to be added to the Arduino 
                                 IDE ble_arduino.ino file in the section enum CommandTypes.
                             </p>
+                            <p>To find the data transfer rate the length of the data was computed by assembling the 
+                                individual outputs into an array in the Jupyter Notebook. The number of strings in 
+                                each element of the array is 9, and the number of elements in the array is 748. The 
+                                time difference of the final (40.428s) and starting time (35.434s) was found to be 
+                                4.994 seconds. The data transfer rate is 
+                                (748*9)bytes/4.994seconds = 1348.018 bytes/second
+                            </p>
                             <p>The image below shows the Arduino IDE code for case GET_TIME_MILLIS_LOOP.
                             </p>
                             <img width="500" height="300" src="assets/img/GetTimeMillisLoopArduino.png"></img>
@@ -288,6 +295,13 @@
                                 line SEND_TIME_DATA = 8 needed to be added to the Jupyter Notebook file cmd_types.py 
                                 and the statement SEND_TIME_DATA needed to be added to the Arduino IDE ble_arduino.ino 
                                 file in the section enum CommandTypes.
+                            </p>
+                            <p>To find the data transfer rate the length of the data was computed by assembling the 
+                                individual outputs into an array in the Jupyter Notebook. The number of strings in 
+                                each element of the array is 9, and the number of elements in the array is 2748. 
+                                The time difference of the final (49.730s) and starting time (49.685s) was found to 
+                                be 0.045 seconds. The data transfer rate is 
+                                (2748*9)bytes/0.045seconds = 549600 bytes/second
                             </p>
                             <p>The image below shows the Arduino IDE code for case SEND_TIME_DATA.
                             </p>
