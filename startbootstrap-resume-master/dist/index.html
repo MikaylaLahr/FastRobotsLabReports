@@ -211,28 +211,49 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Task 1: ECHO Command</h3>
-                            <p>
-                                
+                            <p>The first task of Part 2 was to send an ECHO command of a string value to the Artemis 
+                                board and receive an augmented string on the host computer. This task tested the 
+                                communication between the Artemis board and the computer. In order to successfully 
+                                run this command the line ECHO = 3 needed to be added to the Jupyter Notebook file 
+                                cmd_types.py and the statement ECHO needed to be added to the Arduino IDE 
+                                ble_arduino.ino file in the section enum CommandTypes. 
+                            </p>
+                            <p>The image below shows the Arduino IDE code for case ECHO.
                             </p>
                             <img width="550" height="300" src="assets/img/EchoArduino.png"></img>
+                            <p>The image below shows the Jupyter Notebook code to send the ECHO command and receive
+                                the augmented string from the Artemis board.
+                            </p>
                             <img width="650" height="150" src="assets/img/EchoPython.png"></img>
                         </div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Task 2: GET_TIME_MILLIS</h3>
-                            <p>
-                                
+                            <p>The next task adds another command to the Jupyter Notebook for the Artemis board to 
+                                reply with a string of the current time. In order to successfully run this command 
+                                the line GET_TIME_MILLIS = 6 needed to be added to the Jupyter Notebook file 
+                                cmd_types.py and the statement GET_TIME_MILLIS needed to be added to the Arduino 
+                                IDE ble_arduino.ino file in the section enum CommandTypes.
+                            </p>
+                            <p>The image below shows the Arduino IDE code for case GET_TIME_MILLIS.
                             </p>
                             <img width="500" height="200" src="assets/img/GetTimeMillisArduino.png"></img>
+                            <p>The image below shows the Jupyter Notebook code to send the GET_TIME_MILLIS
+                                command and receive the string with the current time.
+                            </p>
                             <img width="650" height="150" src="assets/img/GetTimeMillisPython.png"></img>
                         </div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Task 3: Notification Handler</h3>
-                            <p>
-                                
+                            <p>A notification handler was created in the Python Jupyter Notebook to receive a 
+                                string value from the Artemis board. The GET_TIME_MILLIS command was used to 
+                                get the time after starting the notification handler.
+                            </p>
+                            <p>The image below is the notification handler and the GET_TIME_MILLIS command in 
+                                the Jupyter Notebook.
                             </p>
                             <img width="650" height="300" src="assets/img/NotificationHandlerPython.png"></img>
                         </div>
