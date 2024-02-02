@@ -137,9 +137,35 @@
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">5000 Level Task 1: LED and Musical A</h3>
-                            <p>
-                                
+                            <h3 class="mb-0">5000 Level Task 1: LED and Musical A4</h3>
+                            <p>The 5000 level task was to program the Artemis board to turn on the LED when the musical 
+                                note A is played on a speaker. When the note A4 is not being played the LED is turned 
+                                off. Below is the Arduino sketch that was used for this example. When writing the sketch 
+                                I started with the Example01_MicrophoneOutput sketch from the previous task. I added if 
+                                statements after the loudest frequency is printed. A musical note A4 is 440Hz 
+                                <a href="https://ptolemy.berkeley.edu/eecs20/week8/scale.html#:~:text=The%20frequencies%20440Hz%20and%20880Hz,12%20notes%20in%20every%20octave.">(UC Berkeley Reference)</a>. 
+                                The first if statement determines if the frequency is between 435Hz and 445Hz to account 
+                                for any slight error in sound quality. If the frequency is within range an “A4” statement 
+                                will be displayed in the Serial Monitor and the LED on the Artemis board will turn on. 
+                                The second if statement determines if the frequency is lower than 435Hz or greater than 
+                                445Hz. If the frequency is lower than 435Hz or greater than 445Hz a “Not A4” statement 
+                                will be displayed in the Serial Monitor and the LED on the Artemis board will turn off.
+                            </p>
+                            <p>Musical Tuner</p>
+                            <p>I added to the LED and Musical A task by creating a musical tuner. The LED on the Artemis 
+                                turns on when the musical note A4 is played and is off when A4 is not played. There are 
+                                eleven total if statements that determine the note being played:
+                                <li>A4 (between 435Hz and 445Hz)</li>
+                                <li>B4 Flat (between 461Hz and 471Hz)</li>
+                                <li>B4 (between 489Hz and 499Hz)</li>
+                                <li>C5 (between 518Hz and 528Hz)</li> 
+                                <li>C5 Sharp (between 549Hz and 559Hz)</li> 
+                                <li>D5 (between 582Hz and 592Hz)</li>
+                                <li>D5 Sharp (between 617Hz and 627Hz)</li>
+                                <li>E5 (between 654Hz and 664Hz)</li>
+                                <li>F5 (between 693Hz and 703Hz)</li>
+                                <li>F5 Sharp (between 735Hz and 745Hz)</li> 
+                                <li>G5 (between 779Hz and 789Hz)</li>
                             </p>
                         </div>
                     </div>
