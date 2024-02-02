@@ -274,7 +274,7 @@
                             <p>The image below shows the Jupyter Notebook command and some of the time outputs.
                             </p>
                             <img width="650" height="550" src="assets/img/GetTimeMillisLoopPython.png"></img>
-                            <p>The video shows a scroll log of all of the time outputs.
+                            <p>The video below shows a scroll log of all of the time outputs.
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/VjEI-o299-A"></iframe>
                         </div>
@@ -282,8 +282,21 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Task 5: SEND_TIME_DATA</h3>
-                            <p>
-                                
+                            <p>A globally defined array to store time stamps was implemented. Inside of the for loop 
+                                each time stamp is put inside of the “timearray”. The data is then sent as an array 
+                                to the computer using Jupyter Notebook.In order to successfully run this command the 
+                                line SEND_TIME_DATA = 8 needed to be added to the Jupyter Notebook file cmd_types.py 
+                                and the statement SEND_TIME_DATA needed to be added to the Arduino IDE ble_arduino.ino 
+                                file in the section enum CommandTypes.
+                            </p>
+                            <p>The image below shos the Arduino IDE code for case SEND_TIME_DATA.
+                            </p>
+                            <img width="500" height="300" src="assets/img/SendTimeDataArduino.png"></img>
+                            <p>The image below shows the Jupyter Notebook command and some of the time outputs
+                                in the array.
+                            </p>
+                            <img width="550" height="400" src="assets/img/SendTimeDataPython.png"></img>
+                            <p>The video below shows a scroll log of all of the times in the array.
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/YgRYsDU_t_A"></iframe>
                         </div>
