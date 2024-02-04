@@ -418,9 +418,26 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Task 7: Discussion</h3>
-                            <p>
-                                
+                            <p>The method used in Task 4 involved sending the current time from the Artemis board to 
+                                the computer. Each time was sent as an individual piece of data. The method used in 
+                                Task 5 involved creating an array of times that was stored on the memory of the 
+                                Artemis board and then sent to the computer to display the collected data. 
                             </p>
+                            <p>The data transfer rate of the array method used in Task 5 (549600 bytes/second) is 
+                                faster than the data transfer rate when sending individual pieces of data in Task 4 
+                                (1348.018 bytes/second).
+                            </p>
+                            <p>An advantage of sending data individually as in Task 4 is that less memory on the 
+                                Artemis board is being used, but the disadvantage is a slower data transfer rate. 
+                                An advantage of sending data as an array as in Task 5 is that there is a faster data 
+                                transfer rate, but a disadvantage is that more memory is being used on the Artemis 
+                                to store the array.
+                            </p>
+                            <p>The Artemis board has a maximum storage of 384 kB of RAM. If 16 bit values at 150 Hz 
+                                were sampled every 5 seconds, 256 values would be stored before running out of memory 
+                                on the Artemis board. The calculations can be found below.
+                            </p>
+                            <img width="500" height="auto" src="assets/img/math.png"></img>
                         </div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between">
