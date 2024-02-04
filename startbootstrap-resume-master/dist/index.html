@@ -451,11 +451,30 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">5000 Level Task 2: Reliability</h3>
-                            <p>
-                                
+                            <p>The second 5000 level task was to test the reliability of sending data at a higher 
+                                rate from the robot to the computer. To determine the reliability of the data I 
+                                ran the GET_TEMP_READINGS command and compared the outputs printed in the Jupyter 
+                                Notebook and the Arduino IDE Serial Monitor. Below is a picture of GET_TEMP_READINGS 
+                                in Arduino IDE. 
                             </p>
                             <img width="650" height="auto" src="assets/img/ReliabilityArduino.png"></img>
+                            <p>Below is an image of the outputs in the Jupyter Notebook (left) and the Arduino 
+                                Serial Monitor (right).
+                            </p>
                             <img width="650" height="auto" src="assets/img/ReliabilityArduinoAndPython.png"></img>
+                            <p>After looking at the outputs the time and temperature readings on the computer are 
+                                the same as the Artemis board and no data is missed. To confirm this I copied and 
+                                pasted the data from each window into Matlab variables titled time1 and temp1 for 
+                                the Jupyter Notebook data, and time2 and temp2 for the Artemis data. I then wrote 
+                                a script to compare the data in Matlab. The following script compares the 
+                                corresponding time and temperature data and records how many data points are the 
+                                same and how many are different. If there is a data point in the Jupyter Notebook 
+                                that does not correspond to the Artemis board, or vice versa, an error message is 
+                                displayed. The output variables in the workspace show that all data points are the 
+                                same.
+                            </p>
+                            <img width="550" height="auto" src="assets/img/Lab1MatlabPart1.png"></img>
+                            <img width="550" height="auto" src="assets/img/Lab1MatlabPart2.png"></img>
                         </div>
                     </div>
 <!-- Lab 1 Part 2 Discussion --------------------------------------------------------------------------------------->
