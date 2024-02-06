@@ -80,16 +80,13 @@
                                 <a href="https://learn.sparkfun.com/tutorials/artemis-development-with-arduino?_ga=2.30055167.1151850962.1594648676-1889762036.1574524297&_gac=1.19903818.1593457111.Cj0KCQjwoub3BRC6ARIsABGhnyahkG7hU2v-0bSiAeprvZ7c9v0XEKYdVHIIi_-J-m5YLdDBMc2P_goaAtA4EALw_wcB">Arduino Installation</a>
                                 were followed to ensure proper connection between the Artemis board and the computer. 
                                 The SparkFun Apollo3 Boards package was installed using the Boards Manager in Arduino 
-                                IDE. This board package was used to run the tasks for Part 1 of Lab 1. Below is a 
-                                picture confirming that the SparkFun Apollo Board Manager was installed.
+                                IDE (shown below). 
                             </p>
                             <img width="450" height="auto" src="assets/img/BoardManagerLab1.png"></img>
                             <p>The first task involved a blinking LED on the Artemis board. A prewritten example code 
                                 was found under File->Examples->01.Basics->Blink. In the example code, a loop was 
                                 implemented and used the function digitalWrite() to turn on the LED for one second 
-                                and then turn off the LED for one second. 
-                            </p>
-                            <p>Below is a video showing the LED blinking on the Artemis board.
+                                and then turn off the LED for one second (shown below). 
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/RmXWC8GnBA8"></iframe>
                         </div>                        
@@ -97,16 +94,16 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Task 3: Example04_Serial</h3>
-                            <p>In this example serial communication between the Artemis board and the computer were tested. 
+                            <p>In this example serial communication between the Artemis board and the computer was tested. 
                                 The prewritten example code found under File->Examples->Apollo3->Example04_Serial was uploaded 
-                                to the Artemis board. Below is a video showing the code being uploaded to the board and the 
-                                example outputs entered into the serial window.
+                                to the Artemis board. 
                             </p>
                             <p>Below is an image of the Serial Monitor showing the outputs: "Hello", "This is the serial example", 
                                 "Test 1", "Test 2", and "Test 3".
                             </p>
                             <img width="650" height="auto" src="assets/img/SerialExample.png"></img>
-                            <p>Below is a video showing the example being uploaded and tested.
+                            <p>Below is a video showing the code being uploaded to the board and the example outputs entered into 
+                                the serial window.
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/SPOZG18yV_w"></iframe>
                         </div>
@@ -117,7 +114,7 @@
                             <p>The temperature sensor of the Artemis board was tested using the prewritten code found under 
                                 File->Examples->Apollo3->Example02_AnalogRead. I covered the sensor with my hand to increase 
                                 the temperature reading. At the beginning of the test the temperature is around 32.3 degrees 
-                                Celsius and reaches a temperature of around 33.4 degrees Celsius after being covered by my hand.
+                                Celsius and reaches a temperature of around 33.4 degrees Celsius (shown below).
                             </p>
                             <p>Below is a video showing the example being uploaded and the temperature reading output.
                             </p>
@@ -145,10 +142,9 @@
                         <div class="flex-grow-1">
                             <h3 class="mb-0">5000 Level Task 1: LED and Musical A4</h3>
                             <p>The 5000 level task was to program the Artemis board to turn on the LED when the musical 
-                                note A is played on a speaker. When the note A4 is not being played the LED is turned 
-                                off. Below is the Arduino sketch that was used for this example. When writing the sketch 
-                                I started with the Example01_MicrophoneOutput sketch from the previous task. I added if 
-                                statements after the loudest frequency is printed. A musical note A4 is 440Hz 
+                                note A is played on a speaker. Below is the Arduino sketch that was used for this example. 
+                                When writing the sketch I started with the Example01_MicrophoneOutput sketch from the 
+                                previous task, and I added if statements (lines 113-122 below). The note A4 is 440Hz 
                                 <a href="https://ptolemy.berkeley.edu/eecs20/week8/scale.html#:~:text=The%20frequencies%20440Hz%20and%20880Hz,12%20notes%20in%20every%20octave.">(UC Berkeley Reference)</a>. 
                                 The first if statement determines if the frequency is between 430Hz and 450Hz to account 
                                 for any slight error in sound quality. If the frequency is within range an “A4” statement 
@@ -157,22 +153,18 @@
                                 450Hz. If the frequency is lower than 430Hz or greater than 450Hz a “Not A4” statement 
                                 will be displayed in the Serial Monitor and the LED on the Artemis board will turn off.
                             </p>
-                            <p>Below is an image of the altered lines in the sketch. I added the if statements in lines 
-                                113 to 122.
-                            </p>
                             <img width="550" height="auto" src="assets/img/LEDAndMusicalA4Code.png"></img>
                             <p>Below is an image of the outputs in the serial monitor for both the "Not A4" frequencies
                                 and "A4" frequencies.
                             </p>
                             <img width="550" height="auto" src="assets/img/LEDAndMusicalA4Picture.png"></img>
-                            <p>Here is a video showing the LED turning on and off when the note A4 is played.
+                            <p>Here is a video showing the LED turning on when the note A4 is played.
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/t5JuJGBvxds"></iframe>
                            <!-- <iframe width="550" height="400" src="https://youtube.com/embed/BfnU4FwXjzY"></iframe> -->
                             <p>Musical Tuner</p>
-                            <p>I added to the LED and Musical A4 task by creating a musical tuner. The LED on the Artemis 
-                                turns on when the musical note A4 is played and is off when A4 is not played. There are 
-                                eleven total if statements that determine the note being played:
+                            <p>I added to the LED and Musical A4 task by creating a musical tuner. There are eleven total 
+                                if statements that determine the note being played (lines 113-168 below):
                                 <li>A4       : 440Hz (range between 430Hz and 450Hz)</li>
                                 <li>B4 Flat  : 466Hz (range between 456Hz and 476Hz)</li>
                                 <li>B4       : 494Hz (range between 484Hz and 504Hz)</li>
@@ -184,9 +176,6 @@
                                 <li>F5       : 698Hz (range between 688Hz and 708Hz)</li>
                                 <li>F5 Sharp : 740Hz (range between 730Hz and 750Hz)</li> 
                                 <li>G5       : 784Hz (range between 774Hz and 794Hz)</li>
-                            </p>
-                            <p>Below is an image of the additional lines of code. The additional lines of code include
-                                lines 113 to 168.
                             </p>
                             <img width="550" height="auto" src="assets/img/MusicalTunerPart1.png"></img>
                             <img width="550" height="auto" src="assets/img/MusicalTunerPart2.png"></img>
@@ -208,10 +197,9 @@
 <!-- Lab 1 Part 1 Discussion --------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Discussion: Part 1</h2>
                     <p>Part 1 of the lab involved testing the connection between the Artemis board and the computer. 
-                        Various tasks were performed including turning on and off an LED on the Artemis board, 
-                        printing outputs in the serial monitor, viewing temperature data in the serial monitor, 
-                        testing the microphone, and creating a musical tuner using the LED and microphone functions 
-                        of the Artemis board. 
+                        Various tasks were performed including turning on and off an Ardemis board LED, printing serial 
+                        monitor outputs, viewing temperature data in the serial monitor, testing the microphone, and 
+                        creating a musical tuner. 
                     </p>
 <!-- Lab 1 Part 2 -------------------------------------------------------------------------------------------------->
                     <h2 class="mb-5">Part 2</h2>
@@ -232,11 +220,11 @@
                     <p>The python packages were installed by entering "pip install numpy pyyaml colorama nest_asyncio 
                         bleak jupyterlab" into the CLI.
                     </p>
-                    <p>The below pictures show the commands entered into the CLI.
+                    <p>CLI entered commands:
                     </p>
                     <img width="auto" height="50" src="assets/img/Lab1PrelabPart1.png"></img>
                     <img width="auto" height="75" src="assets/img/Lab1PrelabPart2.png"></img>
-                    <p>In addition to the above inatallations I also needed to intall matplotlib to use for the 5000
+                    <p>In addition to the above installations I also needed to install matplotlib to use for the 5000
                         level tasks. I asked a TA for help for the installation. Below is a picture of the command 
                         entered into the CLI.
                     </p>
@@ -254,8 +242,7 @@
                     <p>The next steps of the prelab involved installing the provided codebase into the project 
                         directory and copying the provided “ble_python” directory from the lab instructions into the 
                         project directory. After successfully uploading to the directory the Jupyter Notebook was 
-                        opened by entering “jupyter lab” into the CLI. The image below shows the entered command in 
-                        the CLI.
+                        opened by entering “jupyter lab” into the CLI (shown below).
                     </p>
                     <img width="auto" height="20" src="assets/img/jupyterlab.png"></img>
                     <p>To set up bluetooth communication, the MAC address needed to be changed in the Jupyter 
@@ -274,12 +261,14 @@
                     <img width="500" height="auto" src="assets/img/UUIDsPython.png"></img>
                     <p>To connect to the Artemis the following lines are run in the Jupyter Notebook.</p>
                     <img width="650" height="auto" src="assets/img/ConnectionPython.png"></img>
-                    <p>In addition to establishing the bluetooth connection, several command types needed to be 
+                    <p>In addition to establishing Bluetooth connection, several command types needed to be 
                         defined. These command types were used to complete the tasks outlined in the next section. 
+                        Added commands include ECHO, GET_TIME_MILLIS, GET_TIME_MILLIS_LOOP, SEND_TIME_DATA, 
+                        and GET_TEMP_READINGS.
                     </p>
-                    <p>Here is an image of the command types defined in Arduino IDE.</p>
+                    <p>Command types defined in Arduino IDE.</p>
                     <img width="250" height="auto" src="assets/img/CommandTypesArduino.png"></img>
-                    <p>Here is an image of the command types defined in Jupyter Notebook.</p>
+                    <p>Command types defined in Jupyter Notebook.</p>
                     <img width="250" height="auto" src="assets/img/CmdTypesPython.png"></img>
 <!-- Lab 1 Part 2 Lab Tasks ---------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Lab Tasks</h2>
@@ -288,12 +277,9 @@
                             <h3 class="mb-0">Task 1: ECHO Command</h3>
                             <p>The first task of Part 2 was to send an ECHO command of a string value to the Artemis 
                                 board and receive an augmented string on the host computer. This task tested the 
-                                communication between the Artemis board and the computer. In order to successfully 
-                                run this command the line ECHO = 3 needed to be added to the Jupyter Notebook file 
-                                cmd_types.py and the statement ECHO needed to be added to the Arduino IDE 
-                                ble_arduino.ino file in the section enum CommandTypes. 
+                                communication between the Artemis board and the computer. 
                             </p>
-                            <p>The image below shows the Arduino IDE code for case ECHO.
+                            <p>The image below shows the Arduino IDE code.
                             </p>
                             <img width="550" height="auto" src="assets/img/EchoArduino.png"></img>
                             <p>The image below shows the Jupyter Notebook code to send the ECHO command and receive
@@ -306,12 +292,9 @@
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Task 2: GET_TIME_MILLIS</h3>
                             <p>The next task adds another command to the Jupyter Notebook for the Artemis board to 
-                                reply with a string of the current time. In order to successfully run this command 
-                                the line GET_TIME_MILLIS = 6 needed to be added to the Jupyter Notebook file 
-                                cmd_types.py and the statement GET_TIME_MILLIS needed to be added to the Arduino 
-                                IDE ble_arduino.ino file in the section enum CommandTypes.
+                                reply with a string of the current time. 
                             </p>
-                            <p>The image below shows the Arduino IDE code for case GET_TIME_MILLIS.
+                            <p>The image below shows the Arduino IDE code.
                             </p>
                             <img width="500" height="auto" src="assets/img/GetTimeMillisArduino.png"></img>
                             <p>The image below shows the Jupyter Notebook code to send the GET_TIME_MILLIS
@@ -336,12 +319,9 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Task 4: Current Time Loop</h3>
-                            <p>A loop was implemented to  get the current time in milliseconds from the artemis 
+                            <p>A loop was implemented to  get the current time in milliseconds from the Artemis 
                                 board and send the information to the computer. The time information is received 
-                                and processed by the notification handler. In order to successfully run this command 
-                                the line GET_TIME_MILLIS_LOOP = 7 needed to be added to the Jupyter Notebook file 
-                                cmd_types.py and the statement GET_TIME_MILLIS_LOOP needed to be added to the Arduino 
-                                IDE ble_arduino.ino file in the section enum CommandTypes.
+                                and processed by the notification handler. 
                             </p>
                             <p>To find the data transfer rate the length of the data was computed by assembling the 
                                 individual outputs into an array in the Jupyter Notebook. The number of strings in 
@@ -370,10 +350,7 @@
                             <h3 class="mb-0">Task 5: SEND_TIME_DATA</h3>
                             <p>A globally defined array to store time stamps was implemented. Inside of the for loop 
                                 each time stamp is put inside of the “timearray”. The data is then sent as an array 
-                                to the computer using Jupyter Notebook. In order to successfully run this command the 
-                                line SEND_TIME_DATA = 8 needed to be added to the Jupyter Notebook file cmd_types.py 
-                                and the statement SEND_TIME_DATA needed to be added to the Arduino IDE ble_arduino.ino 
-                                file in the section enum CommandTypes.
+                                to the computer using Jupyter Notebook. 
                             </p>
                             <p>To find the data transfer rate the length of the data was computed by assembling the 
                                 individual outputs into an array in the Jupyter Notebook. The number of strings in 
@@ -404,10 +381,7 @@
                             <p>In this task, a second array was added to store temperature readings from the Artemis 
                                 board. The temperature array is the same size as the time array. The time and 
                                 temperature readings were taken at the same time. The data is sent as an array to 
-                                the computer using Jupyter Notebook. In order to successfully run this command the 
-                                line GET_TEMP_READINGS = 9 needed to be added to the Jupyter Notebook file cmd_types.py 
-                                and the statement GET_TEMP_READINGS needed to be added to the Arduino IDE ble_arduino.ino 
-                                file in the section enum CommandTypes.
+                                the computer using Jupyter Notebook. 
                             </p>
                             <p>The image below shows the Arduino IDE code for case GET_TEMP_READINGS.
                             </p>
