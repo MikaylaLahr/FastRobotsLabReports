@@ -141,9 +141,9 @@
                         <div class="flex-grow-1">
                             <h3 class="mb-0">5000 Level Task 1: LED and Musical A4</h3>
                             <p>The 5000 level task was to program the Artemis board to turn on the LED when the musical 
-                                note A is played on a speaker. Below is the Arduino sketch that was used for this example. 
-                                When writing the sketch I started with the Example01_MicrophoneOutput sketch from the 
-                                previous task, and I added if statements (lines 113-122 below). The note A4 is 440Hz 
+                                note A is played on a speaker (code below). When writing the sketch I started with the 
+                                Example01_MicrophoneOutput sketch, and I added if statements (lines 113-122 below). 
+                                The note A4 is 440Hz 
                                 <a href="https://ptolemy.berkeley.edu/eecs20/week8/scale.html#:~:text=The%20frequencies%20440Hz%20and%20880Hz,12%20notes%20in%20every%20octave.">(UC Berkeley Reference)</a>. 
                                 The first if statement determines if the frequency is between 430Hz and 450Hz to account 
                                 for any slight error in sound quality. If the frequency is within range an “A4” statement 
@@ -161,7 +161,6 @@
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/t5JuJGBvxds"></iframe>
                            <!-- <iframe width="550" height="400" src="https://youtube.com/embed/BfnU4FwXjzY"></iframe> -->
-                            <p>Musical Tuner</p>
                             <p>I added to the LED and Musical A4 task by creating a musical tuner. There are eleven total 
                                 if statements that determine the note being played (lines 113-168 below):
                                 <li>A4       : 440Hz (range between 430Hz and 450Hz)</li>
@@ -182,7 +181,7 @@
                                 Serial Monitor.
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/FZQ0NdW-NL0"></iframe>
-                            <p>Links to the musical note videos:
+                            <p>Videos:
                                 <a href="https://www.youtube.com/watch?v=buimPG01gcs">A4</a>
                                 <a href="https://www.youtube.com/watch?v=QE8AMN7jsg0">B4</a>
                                 <a href="https://www.youtube.com/watch?v=QJ8LUGsukzY">C5</a>
@@ -196,7 +195,7 @@
 <!-- Lab 1 Part 1 Discussion --------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Discussion: Part 1</h2>
                     <p>Part 1 of the lab involved testing the connection between the Artemis board and the computer. 
-                        Various tasks were performed including turning on and off an Ardemis board LED, printing serial 
+                        Various tasks were performed including turning on and off an Artemis board LED, printing serial 
                         monitor outputs, viewing temperature data in the serial monitor, testing the microphone, and 
                         creating a musical tuner. 
                     </p>
@@ -223,9 +222,8 @@
                     </p>
                     <img width="auto" height="50" src="assets/img/Lab1PrelabPart1.png"></img>
                     <img width="auto" height="75" src="assets/img/Lab1PrelabPart2.png"></img>
-                    <p>In addition to the above installations I also needed to install matplotlib to use for the 5000
-                        level tasks. I asked a TA for help for the installation. Below is a picture of the command 
-                        entered into the CLI.
+                    <p>I also needed to install matplotlib to use for the 5000 level tasks. I asked a TA for help with 
+                        the installation. Below is a picture of the command entered into the CLI.
                     </p>
                     <img width="auto" height="30" src="assets/img/matplotlib.png"></img>
                     <p>To import modules into the Jupyter Notebook the following lines of code were run.
@@ -265,9 +263,9 @@
                         Added commands include ECHO, GET_TIME_MILLIS, GET_TIME_MILLIS_LOOP, SEND_TIME_DATA, 
                         and GET_TEMP_READINGS.
                     </p>
-                    <p>Command types defined in Arduino IDE.</p>
+                    <p>Command types defined in Arduino IDE:</p>
                     <img width="250" height="auto" src="assets/img/CommandTypesArduino.png"></img>
-                    <p>Command types defined in Jupyter Notebook.</p>
+                    <p>Command types defined in Jupyter Notebook:</p>
                     <img width="250" height="auto" src="assets/img/CmdTypesPython.png"></img>
 <!-- Lab 1 Part 2 Lab Tasks ---------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Lab Tasks</h2>
@@ -358,7 +356,7 @@
                                 be 0.045 seconds. The data transfer rate is 
                                 (2748*9)bytes/0.045seconds = 549600 bytes/second
                             </p>
-                            <p>The image below shows the Arduino IDE code for case SEND_TIME_DATA.
+                            <p>The image below shows the Arduino IDE code.
                             </p>
                             <img width="500" height="auto" src="assets/img/SendTimeDataArduino.png"></img>
                             <p>The image below shows the Jupyter Notebook command and some of the time outputs
@@ -382,7 +380,7 @@
                                 temperature readings were taken at the same time. The data is sent as an array to 
                                 the computer using Jupyter Notebook. 
                             </p>
-                            <p>The image below shows the Arduino IDE code for case GET_TEMP_READINGS.
+                            <p>The image below shows the Arduino IDE code. 
                             </p>
                             <img width="550" height="auto" src="assets/img/GetTempReadingsArduino.png"></img>
                             <p>The image below shows the Jupyter Notebook command and some of the time and temperature
@@ -462,12 +460,11 @@
                                 the same as the Artemis board and no data is missed. To confirm this I copied and 
                                 pasted the data from each window into Matlab variables titled time1 and temp1 for 
                                 the Jupyter Notebook data, and time2 and temp2 for the Artemis data. I then wrote 
-                                a script to compare the data in Matlab. The following script compares the 
-                                corresponding time and temperature data and records how many data points are the 
-                                same and how many are different. If there is a data point in the Jupyter Notebook 
-                                that does not correspond to the Artemis board, or vice versa, an error message is 
-                                displayed. The output variables in the workspace show that all data points are the 
-                                same. The reliability is 100%.
+                                a script to compare the corresponding time and temperature data and record how many 
+                                data points are the same and how many are different. If there is a data point in 
+                                the Jupyter Notebook that does not correspond to the Artemis board, or vice versa, 
+                                an error message is displayed. The output variables in the workspace show that all 
+                                data points are the same. The reliability is 100%.
                             </p>
                             <img width="450" height="auto" src="assets/img/Lab1MatlabPart1.png"></img>
                             <img width="450" height="auto" src="assets/img/Lab1MatlabPart2.png"></img>
