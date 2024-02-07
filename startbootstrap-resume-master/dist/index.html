@@ -63,7 +63,7 @@
 <!-- Lab 1 Part 1 Prelab ------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Prelab</h2>
                     <p>During the prelab for Part 1 of the lab Arduino IDE 2.2.1 was installed onto my computer.</p>
-                    <p>Materials necessary to complete the lab include:
+                    <p>Materials include:
                         <li><a href="https://www.arduino.cc/en/software">Arduino IDE</a></li>
                         <li><a href="https://www.sparkfun.com/products/15443">SparkFun RedBoard Artemis Nano</a></li>
                         <li>USB-C to USB-C cable</li>
@@ -153,8 +153,7 @@
                                 will be displayed in the Serial Monitor and the LED on the Artemis board will turn off.
                             </p>
                             <img width="550" height="auto" src="assets/img/LEDAndMusicalA4Code.png"></img>
-                            <p>Below is an image of the outputs in the serial monitor for both the "Not A4" frequencies
-                                and "A4" frequencies.
+                            <p>Below is an image of the outputs in the serial monitor. 
                             </p>
                             <img width="550" height="auto" src="assets/img/LEDAndMusicalA4Picture.png"></img>
                             <p>Here is a video showing the LED turning on when the note A4 is played.
@@ -163,22 +162,21 @@
                            <!-- <iframe width="550" height="400" src="https://youtube.com/embed/BfnU4FwXjzY"></iframe> -->
                             <p>I added to the LED and Musical A4 task by creating a musical tuner. There are eleven total 
                                 if statements that determine the note being played (lines 113-168 below):
-                                <li>A4       : 440Hz (range between 430Hz and 450Hz)</li>
-                                <li>B4 Flat  : 466Hz (range between 456Hz and 476Hz)</li>
-                                <li>B4       : 494Hz (range between 484Hz and 504Hz)</li>
-                                <li>C5       : 523Hz (range between 513Hz and 533Hz)</li> 
-                                <li>C5 Sharp : 554Hz (range between 544Hz and 564Hz)</li> 
-                                <li>D5       : 587Hz (range between 577Hz and 597Hz)</li>
-                                <li>D5 Sharp : 622Hz (range between 612Hz and 632Hz)</li>
-                                <li>E5       : 659Hz (range between 649Hz and 669Hz)</li>
-                                <li>F5       : 698Hz (range between 688Hz and 708Hz)</li>
-                                <li>F5 Sharp : 740Hz (range between 730Hz and 750Hz)</li> 
-                                <li>G5       : 784Hz (range between 774Hz and 794Hz)</li>
+                                <li>A4       : 440Hz (range 430Hz - 450Hz)</li>
+                                <li>B4 Flat  : 466Hz (range 456Hz - 476Hz)</li>
+                                <li>B4       : 494Hz (range 484Hz - 504Hz)</li>
+                                <li>C5       : 523Hz (range 513Hz - 533Hz)</li> 
+                                <li>C5 Sharp : 554Hz (range 544Hz - 564Hz)</li> 
+                                <li>D5       : 587Hz (range 577Hz - 597Hz)</li>
+                                <li>D5 Sharp : 622Hz (range 612Hz - 632Hz)</li>
+                                <li>E5       : 659Hz (range 649Hz - 669Hz)</li>
+                                <li>F5       : 698Hz (range 688Hz - 708Hz)</li>
+                                <li>F5 Sharp : 740Hz (range 730Hz - 750Hz)</li> 
+                                <li>G5       : 784Hz (range 774Hz - 794Hz)</li>
                             </p>
                             <img width="550" height="auto" src="assets/img/MusicalTunerPart1.png"></img>
                             <img width="550" height="auto" src="assets/img/MusicalTunerPart2.png"></img>
-                            <p>Here is a video of various notes being played and the corresponding outputs in the
-                                Serial Monitor.
+                            <p>Video of various notes being played: 
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/FZQ0NdW-NL0"></iframe>
                             <p>Videos:
@@ -194,8 +192,8 @@
                     </div>
 <!-- Lab 1 Part 1 Discussion --------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Discussion: Part 1</h2>
-                    <p>Part 1 of the lab involved testing the connection between the Artemis board and the computer. 
-                        Various tasks were performed including turning on and off an Artemis board LED, printing serial 
+                    <p>During Part 1 I tested the connection between the Artemis board and the computer. Various 
+                        tasks were performed including turning on and off an Artemis board LED, printing serial 
                         monitor outputs, viewing temperature data in the serial monitor, testing the microphone, and 
                         creating a musical tuner. 
                     </p>
@@ -236,13 +234,12 @@
                     <img width="600" height="auto" src="assets/img/Lab1PrelabPart3.png"></img>              
 <!-- Lab 1 Part 2 Prelab: Codebase --------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Prelab: Codebase</h2>
-                    <p>The next steps of the prelab involved installing the provided codebase into the project 
-                        directory and copying the provided “ble_python” directory from the lab instructions into the 
-                        project directory. After successfully uploading to the directory the Jupyter Notebook was 
-                        opened by entering “jupyter lab” into the CLI (shown below).
+                    <p>I installed the provided codebase into the project directory and copied the provided 
+                        “ble_python” directory into the project directory. Then the Jupyter Notebook was opened by 
+                        entering “jupyter lab” into the CLI (shown below).
                     </p>
                     <img width="auto" height="20" src="assets/img/jupyterlab.png"></img>
-                    <p>To set up bluetooth communication, the MAC address needed to be changed in the Jupyter 
+                    <p>To set up Bluetooth communication, the MAC address needed to be changed in the Jupyter 
                         Notebook connection.yaml file to match the advertised MAC address from the Artemis board. 
                         Then unique UUID addresses needed to be used in the connection.yaml file and Arduino IDE 
                         because some devices in the lab may have the same MAC address. Using UUIDs ensures that 
@@ -252,14 +249,13 @@
                         to generate the UUIDs.
                     </p>
                     <img width="500" height="auto" src="assets/img/UUIDsJupyter.png"></img>
-                    <p>The UUIDs were entered into the ble_arduino.ino file as seen below.</p>
+                    <p>The UUIDs were entered into the ble_arduino.ino file:</p>
                     <img width="500" height="auto" src="assets/img/UUIDsArduino.png"></img>
-                    <p>The UUIDs were entered into the connection.yaml file as seen below.</p>
+                    <p>The UUIDs were entered into the connection.yaml file:</p>
                     <img width="500" height="auto" src="assets/img/UUIDsPython.png"></img>
-                    <p>To connect to the Artemis the following lines are run in the Jupyter Notebook.</p>
+                    <p>To connect to the Artemis the following lines were run in the Jupyter Notebook.</p>
                     <img width="650" height="auto" src="assets/img/ConnectionPython.png"></img>
-                    <p>In addition to establishing Bluetooth connection, several command types needed to be 
-                        defined. These command types were used to complete the tasks outlined in the next section. 
+                    <p>Several command types needed to be defined to complete the tasks outlined in the next section. 
                         Added commands include ECHO, GET_TIME_MILLIS, GET_TIME_MILLIS_LOOP, SEND_TIME_DATA, 
                         and GET_TEMP_READINGS.
                     </p>
@@ -272,9 +268,9 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Task 1: ECHO Command</h3>
-                            <p>The first task of Part 2 was to send an ECHO command of a string value to the Artemis 
-                                board and receive an augmented string on the host computer. This task tested the 
-                                communication between the Artemis board and the computer. 
+                            <p>The first task was to send an ECHO command of a string value to the Artemis board and 
+                                receive an augmented string on the host computer. This task tested the communication 
+                                between the Artemis board and the computer. 
                             </p>
                             <p>The image below shows the Arduino IDE code.
                             </p>
@@ -337,7 +333,7 @@
                                 of the array that was used to compute the data transfer rate.
                             </p>
                             <img width="650" height="auto" src="assets/img/PrintStatements.png"></img>
-                            <p>The video below shows a scroll log of all of the time outputs.
+                            <p>The video below shows all of the time outputs.
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/PBhUSLNY_qY"></iframe>
                         </div>
@@ -367,7 +363,7 @@
                                 of the array that was used to compute the data transfer rate.
                             </p>
                             <img width="650" height="auto" src="assets/img/PrintStatements.png"></img>
-                            <p>The video below shows a scroll log of all of the times in the array.
+                            <p>The video below shows all of the times in the array.
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/93hRV7vIr8Y"></iframe>
                         </div>
@@ -387,7 +383,7 @@
                                 outputs in the array.
                             </p>
                             <img width="650" height="auto" src="assets/img/GetTempReadingsPython.png"></img>
-                            <p>The video below shows a scroll log of all of the times and temperatures in the array. 
+                            <p>The video below shows all of the times and temperatures in the array. 
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/ATMvf5GT68A"></iframe>
                         </div>
@@ -437,7 +433,7 @@
                             <img width="650" height="auto" src="assets/img/DTPart1.png"></img>
                             <img width="650" height="auto" src="assets/img/DTPart2.png"></img>
                             <img width="650" height="auto" src="assets/img/DTPart3.png"></img>
-                            <p>Here are two additional graphs.</p>
+                            <p>Additional graphs:</p>
                             <img width="550" height="auto" src="assets/img/DTGraph2.png"></img>
                             <img width="550" height="auto" src="assets/img/DTGraph3.png"></img>
                         </div>
@@ -472,14 +468,14 @@
                     </div>
 <!-- Lab 1 Part 2 Discussion --------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Discussion: Part 2</h2>
-                    <p>During Part 2 of the lab I learned how to use Bluetooth communication, and UUIDs, between the 
-                        Artemis board and computer. I did not experience any significant problems with connecting to 
-                        Bluetooth and all of my questions were answered during Open Lab Hours.
+                    <p>I learned how to use Bluetooth communication and UUIDs, between the 
+                        Artemis board and computer. I did not experience any significant problems connecting to 
+                        Bluetooth. All of my questions were answered during Open Lab Hours.
                     </p>
 <!-- Lab 1 References ---------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Lab 1 References</h2>
-                    <p>Thank you to all of the TAs that answered any questions I had. I referenced the past lab 
-                        reports of Liam Kain, Rafael Gottlieb, Larry Lu, Julian Prieto, and Ignacio Romo.
+                    <p>Thank you to all of the TAs that answered my questions. I referenced the past lab reports of 
+                        Liam Kain, Rafael Gottlieb, Larry Lu, Julian Prieto, and Ignacio Romo.
                     </p>
                 </div>
             </section>
