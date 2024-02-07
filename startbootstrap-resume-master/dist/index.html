@@ -72,15 +72,56 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                         <h3 class="mb-0">Task 1: Set Up The IMU</h3>
-                            
+                        <p>The SparkFun 9DOF IMU Breakout - ICM 20948 - Arduino Library was installed as seen below.
+                        </p>
+                        <p>The setup for this lab is shown in the image below. The IMU is connected to the Artemis 
+                            board using the QWIIC connector.
+                        </p>
+                        <p>The example code found under 
+                            SparkFun 9DOF IMU Breakout - ICM 20948 - Arduino Library->Arduino->Example1_Basics 
+                            was run to test if the IMU was working correctly. 
+                        </p>
+                        <p>Upon opening the Example1_Basics code, the AD0_VAL default was set to one. When the ADR 
+                            jumper is closed the value should be set to zero. AD0_VAL corresponds to the last bit 
+                            of the I2C address. My ADR jumer on the IMU was closed. For this reason, I needed to 
+                            change the AD0_VAL to zero to return the accelerometer, gyroscope, magnetometer, and 
+                            temperature data.
+                        </p>
+                        <p>The below video shows the code properly running. While viewing the output data in the 
+                            serial monitor, I moved the IMU to change the accelerometer and gyroscope data. I 
+                            looked at the notated axis that was printed on the IMU and moved the IMU along the X, 
+                            Y, and Z axis. I noticed that the respective X, Y, and Z serial monitor outputs changed 
+                            when I moved the IMU. The gyroscope data also changed when I rotated the IMU.
+                        </p>
+                        <p>In the Example1_Basics code, I added a slow blink at the beginning of void setup() to 
+                            turn the Artemis LED on and off three times to indicate that the code has been uploaded. 
+                        </p>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">    
                         <h3 class="mb-0">Task 2: Accelerometer</h3>
-                            
+
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">    
                         <h3 class="mb-0">Task 3: Gyroscope</h3>
-                            
+
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">    
                         <h3 class="mb-0">Task 4: Sample Data</h3>
-                            
+
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">    
                         <h3 class="mb-0">Task 5: Stunt Recording</h3>
-                            
+
+                        </div>
+                    </div>
                 </div>
             </section>
 <!__________________________________________________________________________________________________________________>
