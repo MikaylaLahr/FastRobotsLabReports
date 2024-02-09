@@ -107,15 +107,27 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">    
                         <h3 class="mb-0">Task 2: Accelerometer</h3>
-                        <p>
-                            
+                        <p>The following equations for pitch (theta) and roll (phi) were found in the FastRobots-4-IMU 
+                            Lecture Presentation. 
                         </p>
-                        <img width="400" height="auto" src="Lab2/Pitch(-90).png"></img>
-                        <img width="400" height="auto" src="Lab2/Pitch(0).png"></img>
-                        <img width="400" height="auto" src="Lab2/Pitch(90).png"></img>
-                        <img width="400" height="auto" src="Lab2/Roll(-90).png"></img>
-                        <img width="400" height="auto" src="Lab2/Roll(0).png"></img>
-                        <img width="400" height="auto" src="Lab2/Roll(90).png"></img>
+                        <p>These equations were used to compute pitch and roll for the accelerometer. I implemented the 
+                            calculations in the Example1_Basics sketch that was used in the previous task to receive 
+                            continuous data from the Artemis board and plot the results as shown below.
+                        </p>
+                        <p>The below graphs show Pitch (data 0, green) at -90, 0, and 90 degrees and the corresponding 
+                            Roll (data 1, purple) outputs. The x-axis is time (sec) and the y-axis is degrees. From the 
+                            graphs it can be seen that when pitch is at -90 degrees there is noise in the roll outputs.
+                        </p>
+                        <img width="550" height="auto" src="Lab2/Pitch(-90).png"></img>
+                        <img width="550" height="auto" src="Lab2/Pitch(0).png"></img>
+                        <img width="550" height="auto" src="Lab2/Pitch(90).png"></img>
+                        <p>The below graphs show Roll (data 1, purple) at -90, 0, and 90 degrees and the corresponding 
+                            Pitch (data 0, green) outputs. The x-axis is time (sec) and the y-axis is degrees. From the 
+                            graphs it can be seen that when roll is at 0 degrees there is some noise in the pitch outputs.
+                        </p>
+                        <img width="550" height="auto" src="Lab2/Roll(-90).png"></img>
+                        <img width="550" height="auto" src="Lab2/Roll(0).png"></img>
+                        <img width="550" height="auto" src="Lab2/Roll(90).png"></img>
                         </div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
