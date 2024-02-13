@@ -206,7 +206,8 @@
                         <img width="450" height="auto" src="Lab2/LPFRollFFT.png"></img>
                         <p>Prior to implementsing a low pass filter, there was not a significant level of noise in the IMU data 
                             due to a pre-existing internal low pass filter. The information for this can be found on page 10 of 
-                            the <a href="https://www.mouser.com/datasheet/2/813/DS_000189_ICM_20948_v1_3-2489786.pdf">datasheet</a> for the IMU.
+                            the <a href="https://www.mouser.com/datasheet/2/813/DS_000189_ICM_20948_v1_3-2489786.pdf">datasheet</a> 
+                            for the IMU.
                         </p>
                         <img width="550" height="auto" src="Lab2/IMUDatasheet.png"></img>
                         </div>
@@ -215,9 +216,16 @@
                         <div class="flex-grow-1">    
                         <h3 class="mb-0">Task 3: Gyroscope</h3> <!--------------------------------------------------->
                         <h4 class="mb-0">Gyroscope Equations</h4>
+                        <p>The following equations for pitch, roll, and yaw were found in the FastRobots-4-IMU Lecture Presentation.
+                        </p>
                         <img width="450" height="auto" src="Lab2/GyroEquation.png"></img>
+                        <p>The gyroscope measures angular velocity. To find pitch, roll, and yaw the data collected from the IMU 
+                            needs to be multiplied by a time step (dt in the below code).
+                            ************ INSERT PICTURES OF GYROSCOPE CODE ***********************************************************
+                        </p>
                         <hr>
                         <h4 class="mb-0">Gyroscope vs. Accelrometer Outputs</h4>
+                        <P>The gyroscope data drifts over time, but has less noise then the accelerometer data. </P>
                         <hr>
                         <h4 class="mb-0">Adjusting The Sampling Frequency</h4>
                         <hr>
