@@ -72,14 +72,16 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                         <h3 class="mb-0">Task 1: Set Up The IMU</h3> <!--------------------------------------------->
-                        <h4 class="mb-0">SparkFun</h4>
+                        <h4 class="mb-0">Install SparkFun</h4>
                         <p>The SparkFun 9DOF IMU Breakout - ICM 20948 - Arduino Library was installed as seen below.
                         </p>
                         <img width="500" height="auto" src="Lab2/IMULibrary.png"></img>
+                        <h4 class="mb-0">Artemis IMU Connections</h4>
                         <p>The setup for this lab is shown in the image below. The IMU is connected to the Artemis 
                             board using the QWIIC connector.
                         </p>
-                        <img width="550" height="auto" src="Lab2/Lab2Setup.jpeg"></img>
+                        <img width="450" height="auto" src="Lab2/Lab2Setup.jpeg"></img>
+                        <h4 class="mb-0">IMU Example Code and AD0_VAL</h4>
                         <p>The example code found under 
                             SparkFun 9DOF IMU Breakout - ICM 20948 - Arduino Library->Arduino->Example1_Basics 
                             was run to test if the IMU was working correctly. 
@@ -103,6 +105,7 @@
                         </p>
                         <iframe width="550" height="400" src="https://youtube.com/embed/W4k1yphP308"></iframe>
                         <img width="750" height="auto" src="Lab2/Example1ArduinoPicture.png"></img>
+                        <h4 class="mb-0">Adding A Slow Blink</h4>
                         <p>In the Example1_Basics code, I added a slow blink at the beginning of void setup() to 
                             turn the Artemis LED on and off three times to indicate that the code has been uploaded.
                             The added lines can be found below.
@@ -114,60 +117,90 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">    
                         <h3 class="mb-0">Task 2: Accelerometer</h3> <!------------------------------------------------>
+                        <h4 class="mb-0">Accelerometer Equations</h4>
                         <p>The following equations for pitch (theta) and roll (phi) were found in the FastRobots-4-IMU 
                             Lecture Presentation. 
                         </p>
-                        <img width="250" height="auto" src="Lab2/PitchRollEquations.png"></img>
-                        <p>These equations were used to compute pitch and roll for the accelerometer. I implemented the 
-                            calculations in the Example1_Basics sketch (lines 247 - 255 below) that was used in the 
-                            previous task to receive continuous data from the Artemis board and plot the results.
+                        <img width="200" height="auto" src="Lab2/PitchRollEquations.png"></img>
+                        <h4 class="mb-0">Accelerometer Pitch and Roll at -90, 0, and 90 degrees</h4>
+                        <p>These equations were used to compute pitch and roll for the accelerometer. The math.h library 
+                            was included to use atan2 and M_PI. I implemented the calculations in the Example1_Basics 
+                            sketch (lines 247 - 255 below) that was used in the previous task to receive continuous data 
+                            from the Artemis board and plot the results.
                         </p>
                         <img width="450" height="auto" src="Lab2/AddedExample1PitchRoll.png"></img>
                         <p>The below graphs show Pitch (data 0, green) and Roll (data 1, purple) at 0 degrees. The x-axis 
                             is time (sec) and the y-axis is degrees. 
                         </p>
                         <p>Pitch and Roll at 0 degrees:</p>
-                        <img width="550" height="auto" src="Lab2/PitchAndRoll(0).png"></img>
+                        <img width="650" height="auto" src="Lab2/PitchAndRoll(0).png"></img>
                         <p>The below graphs show Pitch (data 0, green) at -90 and 90 degrees and the corresponding Roll 
                             (data 1, purple) outputs. The x-axis is time (sec) and the y-axis is degrees. From the graphs 
                             it can be seen that when pitch is at -90 degrees there is noise in the roll outputs.
                         </p>
                         <p>Pitch at -90 degrees:</p>
-                        <img width="550" height="auto" src="Lab2/Pitch(-90).png"></img>
+                        <img width="650" height="auto" src="Lab2/Pitch(-90).png"></img>
                         <p>Pitch at 90 degrees:</p>
-                        <img width="550" height="auto" src="Lab2/Pitch(90).png"></img>
+                        <img width="650" height="auto" src="Lab2/Pitch(90).png"></img>
                         <p>The below graphs show Roll (data 1, purple) at -90 and 90 degrees and the corresponding Pitch 
                             (data 0, green) outputs. The x-axis is time (sec) and the y-axis is degrees. 
                         </p>
                         <p>Roll at -90 degrees:</p>
-                        <img width="550" height="auto" src="Lab2/Roll(-90).png"></img>
+                        <img width="650" height="auto" src="Lab2/Roll(-90).png"></img>
                         <p>Roll at 90 degrees:</p>
-                        <img width="550" height="auto" src="Lab2/Roll(90).png"></img>
-                            
-                        <img width="450" height="auto" src="Lab2/AccelAnalysisPRPython.png"></img>
+                        <img width="650" height="auto" src="Lab2/Roll(90).png"></img>
+                        <h4 class="mb-0">Accuracy Analysis</h4>
+                        <p>I plotted the data for pitch and roll at 0, 90, and -90 degrees in Jupyter Notebook and calculated 
+                            the mean and standard deviation. The Jupyter Notebook code to call and plot the data can be found 
+                            below.
+                        </p>
+                        <img width="650" height="auto" src="Lab2/AccelCode1.png"></img>
+                        <img width="650" height="auto" src="Lab2/AccelCode2.png"></img>
+                        <img width="650" height="auto" src="Lab2/AccelAnalysisPRPython.png"></img>
+                        <p>Below are graphs. I also included a black line at 0, 90, or -90 degrees for reference. 
+                            Note: The data for the graphs was collected by holding the IMU against the table using my hand. 
+                            This may have resulted in some error due to the surface level or any small hand movements. In the
+                            future the IMU should be calibrated when it is secured to the robot to achieve the most accurate 
+                            pitch and roll data.
+                        </p>
                         <img width="450" height="auto" src="Lab2/AccelPandR(0)Analysis.png"></img>
                         <img width="450" height="auto" src="Lab2/AccelAnalysisPitch(90).png"></img>
                         <img width="450" height="auto" src="Lab2/AccelAnalysisPitch(-90).png"></img>
                         <img width="450" height="auto" src="Lab2/AccelAnalysisRoll(90).png"></img>
                         <img width="450" height="auto" src="Lab2/AccelAnalysisRoll(-90).png"></img>
-                        <p>FFT Graphs</p>
+                        <h4 class="mb-0">Fast Fourier Transform (FFT) Graphs</h4>
+                        <p>The noise in the accelerometer was examined using a Fast Fourier Transform. Data for the FFT was 
+                            collected as I moved the IMU. The sinusoid and the FFT graphs can be found below. There is a large 
+                            spike closer to 0Hz and less noise as the frequency increases. 
+                        </p>
                         <img width="450" height="auto" src="Lab2/PitchSin.png"></img>
                         <img width="450" height="auto" src="Lab2/PitchFFT.png"></img>
                         <img width="450" height="auto" src="Lab2/RollSin.png"></img>
                         <img width="450" height="auto" src="Lab2/RollFFT.png"></img> 
-                        <p>From observing the graphs, I choose a cutoff frequency of 25Hz. Using the determined cutoff 
-                            frequency, I calculated the alpha used in the low pass filter. The equations from lecture are 
-                            below:
+                        <h4 class="mb-0">Low Pass Filter FFT Graphs</h4>
+                        <p>From observing the above graphs, I choose a cutoff frequency of 25Hz to use for a low pass filter. 
+                            Using the determined cutoff frequency, I calculated the alpha used in the low pass filter. The 
+                            equations from lecture are below:
                         </p>
                         <img width="450" height="auto" src="Lab2/LPFalpha.png"></img>
                         <p>The low pass filter alpha was calculated to be 0.3698</p>
+                        <p>The low pass filter was implemented in Arduino. The code to find pitch and roll for the accelerometer 
+                            can be found below.
+                        </p>
+                        <img width="450" height="auto" src="Lab2/AccelArduino1.png"></img>
+                        <img width="450" height="auto" src="Lab2/AccelArduino2.png"></img>
+                        <p>The below FFT graphs show the original signal (red) and the reduction in noise after implementing a 
+                            low pass filter (blue).
+                        </p>
                         <img width="450" height="auto" src="Lab2/LPFPitchSin.png"></img>
                         <img width="450" height="auto" src="Lab2/LPFPitchFFT.png"></img>
                         <img width="450" height="auto" src="Lab2/LPFRollSin.png"></img>
                         <img width="450" height="auto" src="Lab2/LPFRollFFT.png"></img>
-
-                        <img width="450" height="auto" src="Lab2/AccelArduino1.png"></img>
-                        <img width="450" height="auto" src="Lab2/AccelArduino2.png"></img>
+                        <p>Prior to implementsing a low pass filter, there was not a significant level of noise in the IMU data 
+                            due to a pre-existing internal low pass filter. The information for this can be found on page 10 of 
+                            the <a href="https://www.mouser.com/datasheet/2/813/DS_000189_ICM_20948_v1_3-2489786.pdf">datasheet</a> for the IMU.
+                        </p>
+                        <img width="450" height="auto" src="Lab2/IMUDatasheet.png"></img>
                         </div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
