@@ -305,16 +305,22 @@
                             time (1); accelerometer: x (2), y (3), z (4); gyroscope: x (5), y (6), z (7). I choose to use separate arrays because
                             in the future I can decide what data I want to send to Jupyter Notebook. The data type used to store the data is a float.
                             I choose to use a float as it is less bytes then a double, allowing for more data to be stored on the memory of the 
-                            Artemis. A float is 4 bytes, resulting in one packet of data information for the 7 arrays to be 28 bytes. 
+                            Artemis. A float is 4 bytes, resulting in one packet of data information for the 7 arrays to be 28 bytes. The Artemis has 
+                            384kB of RAM. Sampling at 0.04s will result in data being collected for 276 seconds.
+                            <img width="550" height="auto" src="Lab2/endcode1.png"></img>
+                            <img width="550" height="auto" src="Lab2/endcode2.png"></img>
                         </p>
                         <hr>
                         <h4 class="mb-0">At Least 5 Seconds of IMU Data Sent Over Bluetooth</h4>
+                        <p> Here is the sample data.</p>
                         <img width="550" height="auto" src="Lab2/SampleData.png"></img>
+                        <img width="550" height="auto" src="Lab2/SampleDataPrint.png"></img>
                         </div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">    
                         <h3 class="mb-0">Task 5: Stunt Recording</h3> <!-------------------------------------------->
+                        <p>Here is the stunt recording for the robot. Moved by the controller. </p>
                         <iframe width="550" height="400" src="https://youtube.com/embed/rJJAcrVZHNI"></iframe>
                         </div>
                     </div>
