@@ -77,8 +77,49 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                         <h3 class="mb-0">Task 1: ToF Sensor Connected To QWIIC Breakout Board</h3> <!--------------->
+                            <p>In this lab the Artemis board was powered on using a battery rather than the USB-C 
+                                cable.
+                            </p>
                         <h3 class="mb-0">Task 2: Artemis Scanning For I2C Device</h3> <!---------------------------->
+                            <p>The SparkFun VL53L1X 4m Laser Distance Sensor Library was installed on Arduino IDE.
+                                The code to scan for the I2C device was found under 
+                                File->Examples->Apollo3->Wire->Example05_Wire_I2C.ino
+                            </p>
+                            <img width="550" height="auto" src="Lab3/Lab3I2C.png"></img>
+                            <p>One ToF sensor was connected during the scan. The sensor had an I2C address of 0x29. 
+                                In the datasheet for the ToF sensor, the listed I2C address is 0x52. The 
+                                Example05_Wire_I2C.ino code returned an address of 0x29. This is a result of the 
+                                binary for address 0x52 (binary: 0b01010010) being shifted to the right, resulting in 
+                                an address of 0x29 (binary: 0b00101001). The rightmost bit identifies if data is read 
+                                or written to the address.
+                            </p>
                         <h3 class="mb-0">Task 3: Sensor Data With Chosen Mode</h3> <!------------------------------->
+                            <h4 class="mb-0">Sensor Mode Discussion</h4> <!----------------------------------------->
+                            <p>The ToF sensor has three modes:
+                                <li>.setDistanceModeShort(); //1.3m</li>
+                                <li>.setDistanceModeMedium(); //3m</li>
+                                <li>.setDistanceModeLong(); //4m</li>
+                            </p>
+                            <p>Each sensor mode has advantages and disadvatages. Information from the datasheet shows 
+                                that the short mode can only reach up to 1.3m and is the most resistant to ambient 
+                                light. The long mode can reach up to 4m but is very sensitive to ambient light, which 
+                                decreases the distance to 0.73m. The medium mode can reach up to 3m but is also 
+                                sensitive to ambient light, which decreases the distance to 0.76m. The timing budget 
+                                range for the short mode is 20ms - 1000ms. The timing range for medium mode and long 
+                                mode is 33ms - 1000ms. Short mode has greater accuracy and less sensor noise compared
+                                to the long mode and medium mode. While it would be beneficial for a robot that needs 
+                                to sense objects farther away to use the long mode, for this lab I am prioritizing 
+                                accuracy and choose to test the short mode on the ToF sensor.
+                            </p>
+                            <h4 class="mb-0">Testing .setDistanceModeShort();</h4> <!------------------------------->
+                            <p>The ToF sensor was first tested using the 
+                                File->Examples->SparkFun_VL53L1X_4m_Laser_Distance_Sensor->Example1_ReadDistance.ino
+                                example code. This code was modified to include the line 
+                                distanceSensor.setDistanceModeShort(); in the setup to choose the short mode for the 
+                                ToF sensor.
+                            <p>INSERT PICTURE OF SETUP</p>
+                            <p>INSERT PICTURE OF ACTUAL VS MEASURED GRAPH</p>
+                            <p>INSERT PICTURE OF DISTANCE VS STANDARD DEVIATION GRAPH</p>
                         <h3 class="mb-0">Task 4: 2 ToF Sensors: Working In Parallel</h3> <!------------------------->
                         <h3 class="mb-0">Task 5: ToF Sensor Speed: Speed And Limiting Factor</h3> <!---------------->
                         <h3 class="mb-0">Task 6: Time vs Distance: Data From 2 ToF Sensors Over Bluetooth</h3> <!--->
