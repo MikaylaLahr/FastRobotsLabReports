@@ -67,11 +67,31 @@
                         <li><a href="https://www.pololu.com/product/3415">Pololu TOF Distance Sensor</a> ; <a href="https://cdn.sparkfun.com/assets/e/1/8/4/e/VL53L1X_API.pdf">TOF Manual</a> ; <a href="https://cdn.sparkfun.com/assets/8/9/9/a/6/VL53L0X_DS.pdf">TOF Datasheet</a></li>
                         <li><a href="https://www.sparkfun.com/products/18012">QWIIC Breakout Board</a></li>
                         <li><a href="https://www.sparkfun.com/products/14426">QWIIC Connector</a></li>
+                        During the prelab I thought about how to connect two ToF sensors to the Artemis board as 
+                        detailed below. 
                     </p>
                     <h3 class="mb-0">Task 1: Note The I2C Sensor Address</h3> <!------------------------------------>
+                        <p>From the datasheet it was found that the I2C sensor address for the ToF sensor is 0x52. 
+                            The two ToF sensors have the same address and one of the addresses will need to be changed 
+                            in order to receive data from both sensors at the same time. 
+                        </p>
                     <h3 class="mb-0">Task 2: Approach To Using Two ToF Sensors</h3> <!------------------------------>
+                        <p>To use two ToF sensors, the I/O pin will be used to connect one of the ToF sensors to the
+                            Artemis board. The I2C sensor address will be changed for the connected ToF sensor. This 
+                            will allow for both ToF sensors to be used in parallel. The XSHUT pin will be used to turn 
+                            off the connected ToF sensor, change the address, and then turn the sensor back on.
+                        </p>
                     <h3 class="mb-0">Task 3: Placement Of Sensors On Robot</h3> <!---------------------------------->
+                        <p>The placement of the two ToF sensors on the robot will impact the field of vision. Two 
+                            long QWIIC connectors will be used to attach the ToF sensors. Longer connectors will allow 
+                            me to position the ToF sensors in more potential ways compared to shorter wires. The 
+                            potential arrangements of the sensors include (1) a sensor on the front and left side, 
+                            (2) a sensor on the front and right side, (3) two sensors positioned on either side of 
+                            the front of the robot to give a wider field of view. Depending on the task at hand any of 
+                            these sensor positions may be effective. 
+                        </p>
                     <h3 class="mb-0">Task 4: Sketch Of Wiring Diagram</h3> <!--------------------------------------->
+                        <p>Below is a diagram of the wiring for the two ToF sensos and the Artemis board.</p>
 <!-- Lab 3 Lab Tasks ----------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Lab Tasks</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
@@ -80,6 +100,7 @@
                             <p>In this lab the Artemis board was powered on using a battery rather than the USB-C 
                                 cable.
                             </p>
+                            <p>INSERT PICTURE OF TOF SENSOR SETUP</p>
                         <h3 class="mb-0">Task 2: Artemis Scanning For I2C Device</h3> <!---------------------------->
                             <p>The SparkFun VL53L1X 4m Laser Distance Sensor Library was installed on Arduino IDE.
                                 The code to scan for the I2C device was found under 
