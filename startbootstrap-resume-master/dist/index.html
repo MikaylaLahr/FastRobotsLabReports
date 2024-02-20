@@ -103,6 +103,9 @@
                                 cable.
                             </p>
                             <p>INSERT PICTURE OF TOF SENSOR SETUP</p>
+                            <p>Below is a video showing the Artemis board attached to the battery, connecting to the 
+                                Jupyter Notebook using Bluetooth.
+                            </p>
                         <h3 class="mb-0">Task 2: Artemis Scanning For I2C Device</h3> <!---------------------------->
                             <p>The SparkFun VL53L1X 4m Laser Distance Sensor Library was installed on Arduino IDE.
                                 The code to scan for the I2C device was found under 
@@ -171,10 +174,17 @@
                                 measurements, rather than the clock time. 
                             </p>
                             <img width="450" height="auto" src="Lab3/TimeDistanceSerial.png"></img>
-                            <iframe width="550" heigh="400" src="https://youtube.com/embed/8FiNLwD_AbY"></iframe>
+                            <iframe width="550" height="400" src="https://youtube.com/embed/8FiNLwD_AbY"></iframe>
                         <h3 class="mb-0">Task 6: Time vs Distance: Data From Two ToF Sensors Over Bluetooth</h3> <!->
-                            <p>INSERT PICTURE OF CODE</p>
-                            <p>INSERT PICTURE OF DISTANCE VS TIME GRAPH</p>
+                            <p>The code from Lab 2 was modified to send time stamped ToF sensor data to Jupyter 
+                                Notebook. The data for the two ToF sensors was plotted against the recorded time. The 
+                                case I created using in Arduino can be found below. When the case is run in Jupyter 
+                                Notebook, the time starts recording and if there is data ready from either of the 
+                                ToF sensors, the data will be recorded in an array. After the data is stored on the 
+                                Artemis it is sent over to Jupyter Notebook using Bluetooth and is plotted.
+                            </p>
+                            <img width="550" height="auto" src="Lab3/Lab3ToFBluetoothCode.png"></img>
+                            <img width="550" height="auto" src="Lab3/Lab3ToFTimeGraph.png"></img>
                         <h3 class="mb-0">5000 Level Task 1: Discuss Different Distance Sensors</h3> <!-------------->
                         <h3 class="mb-0">5000 Level Task 2: ToF Response To Different Colors And Textures</h3> <!--->
                         </div>
