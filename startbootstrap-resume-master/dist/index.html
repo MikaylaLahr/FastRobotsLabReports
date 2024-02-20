@@ -76,10 +76,11 @@
                             in order to receive data from both sensors at the same time. 
                         </p>
                     <h3 class="mb-0">Task 2: Approach To Using Two ToF Sensors</h3> <!------------------------------>
-                        <p>To use two ToF sensors, the I/O pin will be used to connect one of the ToF sensors to the
-                            Artemis board. The I2C sensor address will be changed for the connected ToF sensor. This 
-                            will allow for both ToF sensors to be used in parallel. The XSHUT pin will be used to turn 
-                            off the connected ToF sensor, change the address, and then turn the sensor back on.
+                        <p>To use two ToF sensors, the XSHUT pin (8) will be used to connect one of the ToF sensors 
+                            to the Artemis board. The XSHUT pin will be set to LOW and then the I2C sensor address 
+                            will be changed for the other ToF sensor. After the I2C address has been changed the XSHUT 
+                            pin will be set to HIGH, turning the other TOF sensor back on. This will allow for both 
+                            ToF sensors to be used in parallel.
                         </p>
                     <h3 class="mb-0">Task 3: Placement Of Sensors On Robot</h3> <!---------------------------------->
                         <p>The placement of the two ToF sensors on the robot will impact the field of vision. Two 
@@ -158,13 +159,20 @@
                             </p>
                             <img width="450" height="auto" src="Lab3/2TOFDistanceSerial.png"></img>
                         <h3 class="mb-0">Task 5: ToF Sensor Speed: Speed And Limiting Factor</h3> <!---------------->
-                            <p></p>
+                            <p>The code to find the ToF sensor speed can be found below. Time is continuously printed 
+                                and distance measurements are only printed when a measurement is available. 
+                            </p>
                             <img width="550" height="auto" src="Lab3/TimeDistanceCode.png"></img>
+                            <p>Below is the Serial Monitor output showing time and distance measruements. When the 
+                                sensors are not collecting data the loop takes around 2ms. When data is being collected 
+                                the loop takes around 11ms. The longer loop time when collecting ToF sensor data is 
+                                the limiting factor. The limiting factor is the time needed to record distance 
+                                measurements, rather than the clock time. 
+                            </p>
                             <img width="450" height="auto" src="Lab3/TimeDistanceSerial.png"></img>
-                            <p>INSERT PICTURE/VIDEO OF SERIAL MONITOR OUTPUT</p>
                         <h3 class="mb-0">Task 6: Time vs Distance: Data From Two ToF Sensors Over Bluetooth</h3> <!->
                             <p>INSERT PICTURE OF CODE</p>
-                            <p>INSERT PICTURE OF DISTANVE VS TIME GRAPH</p>
+                            <p>INSERT PICTURE OF DISTANCE VS TIME GRAPH</p>
                         <h3 class="mb-0">5000 Level Task 1: Discuss Different Distance Sensors</h3> <!-------------->
                         <h3 class="mb-0">5000 Level Task 2: ToF Response To Different Colors And Textures</h3> <!--->
                         </div>
