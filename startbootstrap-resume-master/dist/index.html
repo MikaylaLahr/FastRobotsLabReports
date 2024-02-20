@@ -102,10 +102,13 @@
                             <p>In this lab the Artemis board was powered on using a battery rather than the USB-C 
                                 cable.
                             </p>
-                            <p>INSERT PICTURE OF TOF SENSOR SETUP</p>
+                            <img width="550" height="auto" src="Lab3/Lab3Setup.jpeg"></img>
+                            <img width="550" height="auto" src="Lab3/Lab3ToF1.jpeg"></img>
+                            <img width="550" height="auto" src="Lab3/Lab3ToF2.jpeg"></img>
                             <p>Below is a video showing the Artemis board attached to the battery, connecting to the 
                                 Jupyter Notebook using Bluetooth.
                             </p>
+                            <iframe width="550" height="400" src="https://youtube.com/embed/DU1Uwm4gzos"></iframe>
                         <h3 class="mb-0">Task 2: Artemis Scanning For I2C Device</h3> <!---------------------------->
                             <p>The SparkFun VL53L1X 4m Laser Distance Sensor Library was installed on Arduino IDE.
                                 The code to scan for the I2C device was found under 
@@ -121,9 +124,8 @@
                             </p>
                         <h3 class="mb-0">Task 3: Sensor Data With Chosen Mode</h3> <!------------------------------->
                             <h4 class="mb-0">Sensor Mode Discussion</h4> <!----------------------------------------->
-                            <p>The ToF sensor has three modes:
+                            <p>The ToF sensor has two modes: (.setDistanceModeMedium(); //3m has been removed)
                                 <li>.setDistanceModeShort(); //1.3m</li>
-                                <li>.setDistanceModeMedium(); //3m</li>
                                 <li>.setDistanceModeLong(); //4m</li>
                             </p>
                             <p>Each sensor mode has advantages and disadvatages. Information from the datasheet shows 
@@ -147,8 +149,8 @@
                             <p>INSERT PICTURE OF ACTUAL VS MEASURED GRAPH</p>
                             <p>INSERT PICTURE OF DISTANCE VS STANDARD DEVIATION GRAPH</p>
                         <h3 class="mb-0">Task 4: Two ToF Sensors: Working In Parallel</h3> <!----------------------->
-                            <p>Two TOF Sensors were connected to the Artemis board and Arduino code needed to be 
-                                written for the two TOF sensors to work in parallel. The example code was altered to 
+                            <p>Two ToF Sensors were connected to the Artemis board and Arduino code needed to be 
+                                written for the two ToF sensors to work in parallel. The example code was altered to 
                                 add a second sensor and change the I2C address of one sensor. In the code below, the 
                                 I2C address of distanceSensor1 was changed by setting the XSHUT pin to LOW on the 
                                 Artemis board, and then changing the I2C address of the second TOF sensor. Once the 
