@@ -143,9 +143,20 @@
                             <p>INSERT PICTURE OF ACTUAL VS MEASURED GRAPH</p>
                             <p>INSERT PICTURE OF DISTANCE VS STANDARD DEVIATION GRAPH</p>
                         <h3 class="mb-0">Task 4: Two ToF Sensors: Working In Parallel</h3> <!----------------------->
+                            <p>Two TOF Sensors were connected to the Artemis board and Arduino code needed to be 
+                                written for the two TOF sensors to work in parallel. The example code was altered to 
+                                add a second sensor and change the I2C address of one sensor. In the code below, the 
+                                I2C address of distanceSensor1 was changed by setting the XSHUT pin to LOW on the 
+                                Artemis board, and then changing the I2C address of the second TOF sensor. Once the 
+                                I2C address is changed the XSHUT pin is set to HIGH and now both TOF sensors can 
+                                collect distance data.
+                            </p>
                             <img width="550" height="auto" src="Lab3/2TOFCode.png"></img>
-                            <img width="450" height="auto" src="Lab3/2TOFSerial.png"></img>
-                            <p>INSERT PICTURE OF DISTANCE OUTPUT FROM TWO SENSORS</p>
+                            <p>The Serial Monitor output prints the I2C addresses for both distance sensors to confirm 
+                                that one of the addresses was changed to 0x30. The two different distance measurements 
+                                are then continuously printed. 
+                            </p>
+                            <img width="450" height="auto" src="Lab3/2TOFDistanceSerial.png"></img>
                         <h3 class="mb-0">Task 5: ToF Sensor Speed: Speed And Limiting Factor</h3> <!---------------->
                             <p>INSERT PICTURE OF CODE FOR SENSOR SPEED</p>
                             <p>INSERT PICTURE/VIDEO OF SERIAL MONITOR OUTPUT</p>
