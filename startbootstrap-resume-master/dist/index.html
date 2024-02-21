@@ -231,17 +231,18 @@
                             <p>Two ToF Sensors were connected to the Artemis board and Arduino code needed to be 
                                 written for the two ToF sensors to work in parallel. The example code was altered to 
                                 add a second sensor and change the I2C address of one sensor. In the code below, the 
-                                I2C address of distanceSensor1 was changed by setting the XSHUT pin to LOW on the 
-                                Artemis board, and then changing the I2C address of the second TOF sensor. Once the 
-                                I2C address is changed the XSHUT pin is set to HIGH and now both TOF sensors can 
-                                collect distance data.
+                                I2C address of distanceSensor1 was changed by setting the XSHUT pin (attatched to 
+                                distanceSensor2) to LOW on the Artemis board, and then changing the I2C address of 
+                                the TOF sensor. Once the I2C address is changed the XSHUT pin is set to HIGH and now 
+                                both TOF sensors can collect distance data.
                             </p>
                             <img width="550" height="auto" src="Lab3/2TOFCode.png"></img>
                             <p>The Serial Monitor output prints the I2C addresses for both distance sensors to confirm 
-                                that one of the addresses was changed to 0x30. The two different distance measurements 
-                                are then continuously printed. 
+                                that one of the addresses was changed to 0x30 and the other remains 0x52. The two 
+                                different distance measurements are then printed. 
                             </p>
                             <img width="450" height="auto" src="Lab3/2TOFDistanceSerial.png"></img>
+                            <hr>
                             <iframe width="550" height="400" src="https://youtube.com/embed/g8wL6XBF1ZU"></iframe>
                         <h3 class="mb-0">Task 5: ToF Sensor Speed: Speed And Limiting Factor</h3> <!---------------->
                             <p>The code to find the ToF sensor speed can be found below. Time is continuously printed 
@@ -254,21 +255,23 @@
                                 the limiting factor. The limiting factor is the time needed to record distance 
                                 measurements, rather than the clock time. 
                             </p>
-                            <img width="450" height="auto" src="Lab3/TimeDistanceSerial.png"></img>
+                            <img width="400" height="auto" src="Lab3/TimeDistanceSerial.png"></img>
+                            <hr>
                             <iframe width="550" height="400" src="https://youtube.com/embed/8FiNLwD_AbY"></iframe>
                         <h3 class="mb-0">Task 6: Time vs Distance: Data From Two ToF Sensors Over Bluetooth</h3> <!->
                             <p>The code from Lab 2 was modified to send time stamped ToF sensor data to Jupyter 
                                 Notebook. The data for the two ToF sensors was plotted against the recorded time. The 
-                                case I created using in Arduino can be found below. When the case is run in Jupyter 
+                                case I created in Arduino can be found below. When the case is run in Jupyter 
                                 Notebook, the time starts recording and if there is data ready from either of the 
                                 ToF sensors, the data will be recorded in an array. After the data is stored on the 
                                 Artemis it is sent over to Jupyter Notebook using Bluetooth and is plotted.
                             </p>
                             <img width="650" height="auto" src="Lab3/Lab3ToFBluetoothCode.png"></img>
                             <p>The plotted graph showing the distance recorded vs the time for both ToF sensors is 
-                                below. Data was recorded as both sensors were moved around.
+                                below. Data was recorded as both ToF sensors were moved around.
                             </p>
                             <img width="550" height="auto" src="Lab3/Lab3ToFTimeGraph2.png"></img>
+                            <p>Data for time, ToF distance 1, and ToF distance 2 were recorded.</p>
                             <img width="550" height="auto" src="Lab3/Lab3TwoSensorsArray.png"></img>
                         <h3 class="mb-0">5000 Level Task 1: Discuss Different Distance Infrared Sensors</h3> <!----->
                             <h4 class="mb-0">Active and Passive Infrared Sensors</h4>
@@ -333,14 +336,19 @@
                             </p>
                             <p>Control:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/X29VpoKLW5k"></iframe>
+                            <hr>
                             <p>Color Pink:</p>
                             <iframe width="550" height="400" src="https://drive.google.com/file/d/1PUoaYNY344HtOt2QB5BEjrhq8XYqkNpa/preview"></iframe>
+                            <hr>
                             <p>Color Blue:</p>
                             <iframe width="550" height="400" src="https://drive.google.com/file/d/1jj8VRlJxJkV5Udfwd45NXSNasH43Xe9T/preview"></iframe>
+                            <hr>
                             <p>Color Yellow:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/TF_1-f9MVUo"></iframe>
+                            <hr>
                             <p>Color Red:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/IE-Uqex8R2I"></iframe>
+                            <hr>
                             <p>To determine if the ToF sensor is sensitive to different textures, three different 
                             textures were tested at a distance of 500mm. These textures include a hand towel, a rug, 
                             and a folder. The control surface was the dark grey wall that I used throughout the lab 
@@ -350,8 +358,10 @@
                             </p>
                             <p>Texture Hand Towel:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/FFUvzX8Frlc"></iframe>
+                            <hr>
                             <p>Texture Rug:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/rp7Hfwz03OA"></iframe>
+                            <hr>
                             <p>Texture Folder:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/s5__EZTu5o8"></iframe>
                         </div>
