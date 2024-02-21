@@ -77,9 +77,7 @@
                             8 on the Artemis board. The XSHUT pin will be set to LOW and then the I2C sensor address 
                             will be changed for the other ToF sensor that is on. After the I2C address has been changed 
                             the XSHUT pin will be set to HIGH, turning the other TOF sensor back on. This will allow for 
-                            both ToF sensors to be used in parallel. Utilizing the pin on the Artemis board involved 
-                            sautering another wire from the XSHUT pin on one of the ToF sensors to pin 8 on the Artemis 
-                            board.
+                            both ToF sensors to be used in parallel. 
                         </p>
                     <h3 class="mb-0">Task 3: Placement Of Sensors On Robot</h3> <!---------------------------------->
                         <p>The placement of the two ToF sensors on the robot will impact the field of vision. Two 
@@ -91,12 +89,9 @@
                             at hand any of these sensor positions may be effective. 
                             If there is no sensor on the back of the robot there might be an issue if the robot needs 
                             to back up or move in reverse. If there is no sensor on the side then the robot might miss 
-                            an obstacle that is located in a blind spot or another robot/person/object approaching the 
-                            robot from the side. 
+                            an obstacle that is located in a blind spot. 
                         </p>
                     <h3 class="mb-0">Task 4: Sketch Of Wiring Diagram</h3> <!--------------------------------------->
-                        <p>Diagram of the wiring for the two ToF sensors and the Artemis board. 
-                        </p>
                         <img width="550" height="auto" src="Lab3/Lab3WireDiagram.jpg"></img>
 <!-- Lab 3 Lab Tasks ----------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Lab Tasks</h2>
@@ -224,7 +219,7 @@
                                 according to the prelab procedure. 
                             </p>
                             <img width="550" height="auto" src="Lab3/2TOFCode.png"></img>
-                            <p>The Serial Monitor output prints the I2C addresses for both distance sensors to confirm 
+                            <p>The Serial Monitor prints the I2C addresses for both distance sensors to confirm 
                                 that one of the addresses was changed to 0x30 and the other remains 0x52. 
                             </p>
                             <img width="450" height="auto" src="Lab3/2TOFDistanceSerial.png"></img>
@@ -235,7 +230,7 @@
                                 and distance measurements are only printed when a measurement is available. 
                             </p>
                             <img width="550" height="auto" src="Lab3/TimeDistanceCode.png"></img>
-                            <p>Below is the Serial Monitor output showing time and distance measurements. When the 
+                            <p>When the 
                                 sensors are not collecting data the loop takes around 2ms. When data is being collected 
                                 the loop takes around 11ms. The longer loop time when collecting ToF sensor data is 
                                 the limiting factor. The limiting factor is the time needed to record distance 
@@ -250,11 +245,9 @@
                                 case I created in Arduino can be found below. 
                             </p>
                             <img width="650" height="auto" src="Lab3/Lab3ToFBluetoothCode.png"></img>
-                            <p>The plotted graph showing the distance recorded vs the time for both ToF sensors is 
-                                below. Data was recorded as both ToF sensors were moved around.
-                            </p>
+                            <hr>
                             <img width="550" height="auto" src="Lab3/Lab3ToFTimeGraph2.png"></img>
-                            <p>Data for time, ToF distance 1, and ToF distance 2 were recorded.</p>
+                            <hr>
                             <img width="550" height="auto" src="Lab3/Lab3TwoSensorsArray.png"></img>
                         <h3 class="mb-0">5000 Level Task 1: Discuss Different Distance Infrared Sensors</h3> <!----->
                             <h4 class="mb-0">Active and Passive Infrared Sensors</h4>
@@ -274,11 +267,11 @@
                                 <a href="https://itp.nyu.edu/physcomp/distance-sensors-the-basics/#:~:text=Infrared%20LED%20Proximity%20Sensors,'%20rather%20than%20'distance'.">(Source: NYU)</a>
                             </p>
                         <h3 class="mb-0">5000 Level Task 2: ToF Response To Different Colors And Textures</h3> <!--->
-                            <p>To determine if the ToF sensor is sensitive to different colors, four different colors 
-                            were tested at a distance of 500mm. These colors include pink, blue, yellow, and red. The 
-                            control surface was the dark grey wall that I used throughout the lab for distance readings.
-                            The change in color did not affect the ToF sensor's distance output that remained around 
-                            477mm for each color. 
+                            <p>Four colors and three textures were tested at a distance of 500mm. Colors include pink, 
+                                blue, yellow, and red. Textures include a hand towel, rug, and folder. The control 
+                                surface was the dark grey wall that I used throughout the lab for distance readings.
+                                The change in color or texture did not affect the ToF sensor's distance output that 
+                                remained around 478mm.
                             </p>
                             <p>Control:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/X29VpoKLW5k"></iframe>
@@ -295,12 +288,6 @@
                             <p>Color Red:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/IE-Uqex8R2I"></iframe>
                             <hr>
-                            <p>To determine if the ToF sensor is sensitive to different textures, three different 
-                            textures were tested at a distance of 500mm. These textures include a hand towel, a rug, 
-                            and a folder. The control surface was the dark grey wall that I used throughout the lab 
-                            for distance readings. The change in texture did not affect the ToF sensor's distance 
-                            output that remained around 478mm for each texture. 
-                            </p>
                             <p>Texture Hand Towel:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/FFUvzX8Frlc"></iframe>
                             <hr>
