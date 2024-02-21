@@ -87,15 +87,15 @@
                             me to position the ToF sensors in more potential ways compared to shorter wires. The 
                             potential arrangements of the sensors include (1) a sensor on the front and left side, 
                             (2) a sensor on the front and right side, (3) two sensors positioned on either side of 
-                            the front of the robot to give a wider field of view, and (4) a sensor on the front and 
-                            the back. Depending on the task at hand any of these sensor positions may be effective. 
+                            the front of the robot, and (4) a sensor on the front and the back. Depending on the task 
+                            at hand any of these sensor positions may be effective. 
                             If there is no sensor on the back of the robot there might be an issue if the robot needs 
                             to back up or move in reverse. If there is no sensor on the side then the robot might miss 
                             an obstacle that is located in a blind spot or another robot/person/object approaching the 
                             robot from the side. 
                         </p>
                     <h3 class="mb-0">Task 4: Sketch Of Wiring Diagram</h3> <!--------------------------------------->
-                        <p>Below is a diagram of the wiring for the two ToF sensos and the Artemis board. 
+                        <p>Diagram of the wiring for the two ToF sensors and the Artemis board. 
                         </p>
                         <img width="550" height="auto" src="Lab3/Lab3WireDiagram.jpg"></img>
 <!-- Lab 3 Lab Tasks ----------------------------------------------------------------------------------------------->
@@ -103,8 +103,7 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                         <h3 class="mb-0">Task 1: ToF Sensor Connected To QWIIC Breakout Board</h3> <!--------------->
-                            <p>In this lab the Artemis board was powered on using a battery rather than the USB-C 
-                                cable. 
+                            <p>The Artemis board was powered on using a battery:
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/DU1Uwm4gzos"></iframe>
                             <p>ToF sensors connected to the QWIIC breakout board:</p>
@@ -148,13 +147,12 @@
                                 distanceSensor.setDistanceModeShort(); in the setup to choose the short mode for the 
                                 ToF sensor.
                             </p>
-                            <p>The pictures below shows the setup for the ToF sensor. 
+                            <p>ToF Sensor Setup: 
                             </p>
                             <img width="500" height="auto" src="Lab3/Lab3DistanceSetup1.jpeg"></img>
                             <img width="500" height="auto" src="Lab3/Lab3DistanceSetup2.png"></img>
                             <hr>
-                            <p>The Arudino code to find the ToF distance is below. The data was collected into arrays and 
-                                sent to Jupyter Notebook to be plotted. 
+                            <p>Arudino code to find the ToF distance: 
                             </p>
                             <img width="650" height="auto" src="Lab3/Lab3DistanceArduino.png"></img>
                             <img width="550" height="auto" src="Lab3/DistanceJupyter.png"></img>
@@ -165,9 +163,8 @@
                                 measurements up to 1900mm. The graph below shows the actual distance of the ToF sensor from 
                                 the wall based on my reading of the tape measure vs the measured value that the ToF sensor 
                                 recorded. The plotted measured distance value is the mean value of the ten collected data 
-                                points. From the graph below it can be seen that after 1.3m the measured values differ more 
-                                significantly from the actual values compared to measured values less than 1.3m. This indicates 
-                                that the datasheet is correct in the recommended range of the sensor.
+                                points. From the graph below it can be seen that after 1.3m the measured values start to 
+                                differ more from the actual values compared to measured values less than 1.3m. 
                             </p>
                             <img width="550" height="auto" src="Lab3/Lab3MeasuredvsActual.png"></img>
                             <hr>
@@ -275,39 +272,9 @@
                                 conveyor belts, as well as in garage door safety mechanisms. Active and passive 
                                 infrared sensors can operate during the day or night. 
                                 <a href="https://www.arrow.com/en/research-and-events/articles/understanding-active-and-passive-infrared-sensors">(Source: Arrow Electronics)</a>
-                            </p>
-                            <h4 class="mb-0">Infrared LED Proximity Sensors</h4>
-                            <p>Infrared proximity sensors are a type of active sensor that measure the amount of infrared 
-                                light that reflects off of an object back towards the sensor. Proximity of an object to 
-                                the sensor is measured (range of 0 to 20cm) as well as aspects of the light in the area.
+                                Different types of infrared sensors include proximity sensors, ToF sensors, and triangulation sensors.
                                 <a href="https://itp.nyu.edu/physcomp/distance-sensors-the-basics/#:~:text=Infrared%20LED%20Proximity%20Sensors,'%20rather%20than%20'distance'.">(Source: NYU)</a>
                             </p>
-                            <p>Sensors that measure proximity and ambient light include:
-                                <li><a href="https://www.adafruit.com/product/4161">Adafruit VCNL4040 Proximity and Lux Sensor</a></li>
-                                <li><a href="https://www.sparkfun.com/products/15177">SparkFun Proximity Sensor Breakout</a></li>
-                            </p>
-                            <p>Sensors that measure proximity and color include:
-                                <li><a href="https://www.adafruit.com/product/3595">Adafruit APDS9960 Proximity, Light, RGB, and Gesture Sensor</a></li>
-                                <li><a href="https://www.sparkfun.com/products/12787">SparkFun RGB and Gesture Sensor</a></li>
-                            </p>
-                            <h4 class="mb-0">Infrared LED Time-of-Flight Sensors</h4>
-                                <p>These optical ToF sensors use infrared LED emitters to determine the distance to an object.
-                                    The below sensors can detect up to 12m and 10m respectively.
-                                    <a href="https://itp.nyu.edu/physcomp/distance-sensors-the-basics/#:~:text=Infrared%20LED%20Proximity%20Sensors,'%20rather%20than%20'distance'.">(Source: NYU)</a>
-                                </p>
-                                <p>Some examples include: 
-                                    <li><a href="https://www.adafruit.com/product/3978">TFmini Infrared Time of Flight Distance Sensor</a></li>
-                                    <li><a href="https://www.adafruit.com/product/4441">Garmin LIDAR-Lite Optical Distance LED Sensor</a></li>
-                                </p>
-                            <h4 class="mb-0">Infrared LED Triangulation Sensors</h4>
-                                <p>Infrared LED Triangulation Sensors calculate the distance to an object by pulsing
-                                    infrared light and determining the range from the angle of reflection. The distance 
-                                    range for analog output is 5cm to 80cm and for digital output is 1.5cm to 550cm.
-                                    <a href="https://itp.nyu.edu/physcomp/distance-sensors-the-basics/#:~:text=Infrared%20LED%20Proximity%20Sensors,'%20rather%20than%20'distance'.">(Source: NYU)</a>
-                                </p>
-                                <p>An example includes:
-                                    <li><a href="https://www.pololu.com/product/2476">Pololu Carrier with Sharp GP2Y0A60SZLF Analog Distance Sensor</a></li>
-                                </p>
                         <h3 class="mb-0">5000 Level Task 2: ToF Response To Different Colors And Textures</h3> <!--->
                             <p>To determine if the ToF sensor is sensitive to different colors, four different colors 
                             were tested at a distance of 500mm. These colors include pink, blue, yellow, and red. The 
@@ -334,7 +301,7 @@
                             textures were tested at a distance of 500mm. These textures include a hand towel, a rug, 
                             and a folder. The control surface was the dark grey wall that I used throughout the lab 
                             for distance readings. The change in texture did not affect the ToF sensor's distance 
-                            output that remained around 477mm for each texture. 
+                            output that remained around 478mm for each texture. 
                             </p>
                             <p>Texture Hand Towel:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/FFUvzX8Frlc"></iframe>
