@@ -56,8 +56,7 @@
             <section class="resume-section" id="Lab 3">
                 <div class="resume-section-content">
                     <h2 class="mb-2.5">Lab 3: TOF</h2>
-                    <p>The objective of the lab is to connect the time of flight (TOF) sensors to the Artemis board 
-                        and recieve data over Bluetooth. 
+                    <p>The objective of the lab is to connect the time of flight (TOF) sensors to the Artemis board. 
                     </p>
 <!-- Lab 3 Prelab -------------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Prelab</h2>
@@ -67,8 +66,6 @@
                         <li><a href="https://www.pololu.com/product/3415">Pololu TOF Distance Sensor</a> ; <a href="https://cdn.sparkfun.com/assets/e/1/8/4/e/VL53L1X_API.pdf">TOF Manual</a> ; <a href="https://cdn.sparkfun.com/assets/8/9/9/a/6/VL53L0X_DS.pdf">TOF Datasheet</a></li>
                         <li><a href="https://www.sparkfun.com/products/18012">QWIIC Breakout Board</a></li>
                         <li><a href="https://www.sparkfun.com/products/14426">QWIIC Connector</a></li>
-                        During the prelab I thought about how to connect two ToF sensors to the Artemis board as 
-                        detailed below. 
                     </p>
                     <h3 class="mb-0">Task 1: Note The I2C Sensor Address</h3> <!------------------------------------>
                         <p>From the datasheet it was found that the I2C sensor address for the ToF sensor is 0x52. 
@@ -80,7 +77,7 @@
                             8 on the Artemis board. The XSHUT pin will be set to LOW and then the I2C sensor address 
                             will be changed for the other ToF sensor that is on. After the I2C address has been changed 
                             the XSHUT pin will be set to HIGH, turning the other TOF sensor back on. This will allow for 
-                            both ToF sensors to be used in parallel. Utlizing the pin on the Artemis board involved 
+                            both ToF sensors to be used in parallel. Utilizing the pin on the Artemis board involved 
                             sautering another wire from the XSHUT pin on one of the ToF sensors to pin 8 on the Artemis 
                             board.
                         </p>
@@ -98,10 +95,7 @@
                             robot from the side. 
                         </p>
                     <h3 class="mb-0">Task 4: Sketch Of Wiring Diagram</h3> <!--------------------------------------->
-                        <p>Below is a diagram of the wiring for the two ToF sensos and the Artemis board. The ToF 
-                            sensor on the top of the sketch will be connected to the Artemis board using the XSHUT pin.
-                            This ToF sensor will be turned off, while the ToF sensor on the bottom of the sketch will
-                            have the I2C address changed. The ToF sensor on the top of the sketch will then be turned on.
+                        <p>Below is a diagram of the wiring for the two ToF sensos and the Artemis board. 
                         </p>
                         <img width="550" height="auto" src="Lab3/Lab3WireDiagram.jpg"></img>
 <!-- Lab 3 Lab Tasks ----------------------------------------------------------------------------------------------->
@@ -110,15 +104,14 @@
                         <div class="flex-grow-1">
                         <h3 class="mb-0">Task 1: ToF Sensor Connected To QWIIC Breakout Board</h3> <!--------------->
                             <p>In this lab the Artemis board was powered on using a battery rather than the USB-C 
-                                cable. Below is a video showing the Artemis board attached to the battery, connecting 
-                                to Jupyter Notebook using Bluetooth.
+                                cable. 
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/DU1Uwm4gzos"></iframe>
-                            <p>Below are pictures of the ToF sensors connected to the QWIIC breakout board.</p>
+                            <p>ToF sensors connected to the QWIIC breakout board:</p>
                             <img width="550" height="auto" src="Lab3/Lab3Setup.jpeg"></img>
-                            </hr>
+                            <hr>
                             <img width="500" height="auto" src="Lab3/Lab3ToF1.jpeg"></img>
-                            </hr>
+                            <hr>
                             <img width="500" height="auto" src="Lab3/Lab3Tof2.jpeg"></img>
                         <h3 class="mb-0">Task 2: Artemis Scanning For I2C Device</h3> <!---------------------------->
                             <p>The SparkFun VL53L1X 4m Laser Distance Sensor Library was installed on Arduino IDE.
@@ -131,25 +124,22 @@
                                 Example05_Wire_I2C.ino code returned an address of 0x29. This is a result of the 
                                 binary for address 0x52 (binary: 0b01010010) being shifted to the right, resulting in 
                                 an address of 0x29 (binary: 0b00101001). The rightmost bit is ignored because the bit 
-                                identifies if data is read or written to the address.
+                                identifies if data is read/write.
                             </p>
                         <h3 class="mb-0">Task 3: Sensor Data With Chosen Mode</h3> <!------------------------------->
                             <h4 class="mb-0">Sensor Mode Discussion</h4> <!----------------------------------------->
-                            <p>The ToF sensor has two modes: (.setDistanceModeMedium(); //3m has been removed, The 
-                                discussion for the medium mode is in the paragraph below for reference.)
+                            <p>The ToF sensor has two modes: (.setDistanceModeMedium(); //3m has been removed)
                                 <li>.setDistanceModeShort(); //1.3m</li>
                                 <li>.setDistanceModeLong(); //4m</li>
                             </p>
                             <p>Each sensor mode has advantages and disadvatages. Information from the datasheet shows 
                                 that the short mode can only reach up to 1.3m and is the most resistant to ambient 
                                 light. The long mode can reach up to 4m but is very sensitive to ambient light, which 
-                                decreases the distance to 0.73m. The medium mode can reach up to 3m but is also 
-                                sensitive to ambient light, which decreases the distance to 0.76m. The timing budget 
-                                range for the short mode is 20ms - 1000ms. The timing range for medium mode and long 
-                                mode is 33ms - 1000ms. Short mode has greater accuracy and less sensor noise compared
-                                to the long mode and medium mode. While it would be beneficial for a robot that needs 
-                                to sense objects farther away to use the long mode, for this lab I am prioritizing 
-                                accuracy and choose to test the short mode on the ToF sensor.
+                                decreases the distance to 0.73m. The timing budget range for the short mode is 20ms - 
+                                1000ms. The timing range for the long mode is 33ms - 1000ms. Short mode has greater 
+                                accuracy and less sensor noise compared to the long mode. While it would be beneficial 
+                                for a robot that needs to sense objects farther away to use the long mode, for this lab 
+                                I am prioritizing accuracy and choose to test the short mode. 
                             </p>
                             <h4 class="mb-0">Testing .setDistanceModeShort();</h4> <!------------------------------->
                             <p>The ToF sensor was first tested using the 
@@ -158,23 +148,19 @@
                                 distanceSensor.setDistanceModeShort(); in the setup to choose the short mode for the 
                                 ToF sensor.
                             </p>
-                            <p>The pictures below shows the setup for the ToF sensor. I taped the sensor to the back of 
-                                my computer and placed my computer on the floor facing a wall. I used a tape measure for
-                                reference. 
+                            <p>The pictures below shows the setup for the ToF sensor. 
                             </p>
                             <img width="500" height="auto" src="Lab3/Lab3DistanceSetup1.jpeg"></img>
                             <img width="500" height="auto" src="Lab3/Lab3DistanceSetup2.png"></img>
                             <hr>
                             <p>The Arudino code to find the ToF distance is below. The data was collected into arrays and 
-                                sent to Jupyter Notebook to be plotted. Ten data points for each distance were recorded 
-                                and analyzed. The Jupter Notebook code to call the case and sort through the data to find 
-                                the mean and standard deviation is shown in the image after. 
+                                sent to Jupyter Notebook to be plotted. 
                             </p>
                             <img width="650" height="auto" src="Lab3/Lab3DistanceArduino.png"></img>
                             <img width="550" height="auto" src="Lab3/DistanceJupyter.png"></img>
                             <hr>
                             <p>Sensor Range:</p>
-                            <p>In the datasheet its is stated that the short mode for the ToF sensor has a range up to 1.3m.
+                            <p>In the datasheet it is stated that the short mode for the ToF sensor has a range up to 1.3m.
                                 To test the range of the sensor I took an initial measurement at 100mm and continued to take 
                                 measurements up to 1900mm. The graph below shows the actual distance of the ToF sensor from 
                                 the wall based on my reading of the tape measure vs the measured value that the ToF sensor 
@@ -238,17 +224,12 @@
                             <hr>
                         <h3 class="mb-0">Task 4: Two ToF Sensors: Working In Parallel</h3> <!----------------------->
                             <p>Two ToF Sensors were connected to the Artemis board and Arduino code needed to be 
-                                written for the two ToF sensors to work in parallel. The example code was altered to 
-                                add a second sensor and change the I2C address of one sensor. In the code below, the 
-                                I2C address of distanceSensor1 was changed by setting the XSHUT pin (attatched to 
-                                distanceSensor2) to LOW on the Artemis board, and then changing the I2C address of 
-                                the TOF sensor. Once the I2C address is changed the XSHUT pin is set to HIGH and now 
-                                both TOF sensors can collect distance data.
+                                written for the two ToF sensors to work in parallel. The code below is written 
+                                according to the prelab procedure. 
                             </p>
                             <img width="550" height="auto" src="Lab3/2TOFCode.png"></img>
                             <p>The Serial Monitor output prints the I2C addresses for both distance sensors to confirm 
-                                that one of the addresses was changed to 0x30 and the other remains 0x52. The two 
-                                different distance measurements are then printed. 
+                                that one of the addresses was changed to 0x30 and the other remains 0x52. 
                             </p>
                             <img width="450" height="auto" src="Lab3/2TOFDistanceSerial.png"></img>
                             <hr>
@@ -262,7 +243,7 @@
                                 sensors are not collecting data the loop takes around 2ms. When data is being collected 
                                 the loop takes around 11ms. The longer loop time when collecting ToF sensor data is 
                                 the limiting factor. The limiting factor is the time needed to record distance 
-                                measurements, rather than the clock time. 
+                                measurements.
                             </p>
                             <img width="400" height="auto" src="Lab3/TimeDistanceSerial.png"></img>
                             <hr>
@@ -270,10 +251,7 @@
                         <h3 class="mb-0">Task 6: Time vs Distance: Data From Two ToF Sensors Over Bluetooth</h3> <!->
                             <p>The code from Lab 2 was modified to send time stamped ToF sensor data to Jupyter 
                                 Notebook. The data for the two ToF sensors was plotted against the recorded time. The 
-                                case I created in Arduino can be found below. When the case is run in Jupyter 
-                                Notebook, the time starts recording and if there is data ready from either of the 
-                                ToF sensors, the data will be recorded in an array. After the data is stored on the 
-                                Artemis it is sent over to Jupyter Notebook using Bluetooth and is plotted.
+                                case I created in Arduino can be found below. 
                             </p>
                             <img width="650" height="auto" src="Lab3/Lab3ToFBluetoothCode.png"></img>
                             <p>The plotted graph showing the distance recorded vs the time for both ToF sensors is 
@@ -285,22 +263,17 @@
                         <h3 class="mb-0">5000 Level Task 1: Discuss Different Distance Infrared Sensors</h3> <!----->
                             <h4 class="mb-0">Active and Passive Infrared Sensors</h4>
                             <p>The two main types of infrared sensors are active and passive infrared sensors. Passive 
-                                infrared sensors sense nearby emitted infrared light. A pair of pyroelectric sensors 
-                                are used to sense heat energy. When there is a difference in the signal between the 
-                                two sensors, the sensors will engage resulting in some output. This output might be an 
-                                alarm, notification, or turning on a light. These sensors are often used for security 
+                                infrared sensors sense nearby emitted infrared light, using a difference in signals 
+                                between two pyroelectric sensors. These sensors are often used for security 
                                 purposes to detect if there is a heat energy change in the environment, but cannot 
                                 determine the distance to an object, only if an object emitting infrared light is 
-                                present. Passive infrared sensors are affordable, easy to install, energy efficient, 
-                                and can operate during the day or night. 
+                                present. 
                                 Active infrared sensors use an emitter and receiver to determine the distance
-                                to an object. The infrared emitter emits a beam of light towards the receiver. If there 
-                                is no obstruction, the receiver senses the light. If there is an obstruction, the active 
-                                infrared sensor knows that there is an object in between the emitter and receiver. Active 
-                                infrared sensors are used in industry to determine if an object is on a conveyor belt, as
-                                well as in garage door safety mechanisms. Active infrared sensors can operate during the 
-                                day or night, but any hard object obsrtucting the emitted infrared light will result in 
-                                the sensor engaging. This may not be beneficial depending on the required task. 
+                                to an object. The infrared emitter emits a beam of light towards the receiver. 
+                                If there is an obstruction, the active infrared sensor knows that there is an object 
+                                in between the emitter and receiver. Active infrared sensors are used in industry 
+                                conveyor belts, as well as in garage door safety mechanisms. Active and passive 
+                                infrared sensors can operate during the day or night. 
                                 <a href="https://www.arrow.com/en/research-and-events/articles/understanding-active-and-passive-infrared-sensors">(Source: Arrow Electronics)</a>
                             </p>
                             <h4 class="mb-0">Infrared LED Proximity Sensors</h4>
@@ -319,7 +292,7 @@
                             </p>
                             <h4 class="mb-0">Infrared LED Time-of-Flight Sensors</h4>
                                 <p>These optical ToF sensors use infrared LED emitters to determine the distance to an object.
-                                    The blow sensors can detect up to 12m and 10m respectively.
+                                    The below sensors can detect up to 12m and 10m respectively.
                                     <a href="https://itp.nyu.edu/physcomp/distance-sensors-the-basics/#:~:text=Infrared%20LED%20Proximity%20Sensors,'%20rather%20than%20'distance'.">(Source: NYU)</a>
                                 </p>
                                 <p>Some examples include: 
@@ -340,8 +313,7 @@
                             were tested at a distance of 500mm. These colors include pink, blue, yellow, and red. The 
                             control surface was the dark grey wall that I used throughout the lab for distance readings.
                             The change in color did not affect the ToF sensor's distance output that remained around 
-                            477mm for each color. The videos showing the distance outputs for each color can be found 
-                            below:
+                            477mm for each color. 
                             </p>
                             <p>Control:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/X29VpoKLW5k"></iframe>
@@ -362,8 +334,7 @@
                             textures were tested at a distance of 500mm. These textures include a hand towel, a rug, 
                             and a folder. The control surface was the dark grey wall that I used throughout the lab 
                             for distance readings. The change in texture did not affect the ToF sensor's distance 
-                            output that remained around 477mm for each texture. The videos showing the distance outputs 
-                            for each texture can be found below:
+                            output that remained around 477mm for each texture. 
                             </p>
                             <p>Texture Hand Towel:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/FFUvzX8Frlc"></iframe>
