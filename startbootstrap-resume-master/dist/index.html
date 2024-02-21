@@ -330,13 +330,12 @@
                         <div class="flex-grow-1">
                         <h3 class="mb-0">Task 1: Set Up The IMU</h3> <!--------------------------------------------->
                         <h4 class="mb-0">Install SparkFun</h4>
-                        <p>The SparkFun 9DOF IMU Breakout - ICM 20948 - Arduino Library was installed as seen below.
+                        <p>The SparkFun 9DOF IMU Breakout - ICM 20948 - Arduino Library was installed. 
                         </p>
                         <img width="500" height="auto" src="Lab2/IMULibrary.png"></img>
                         <hr>
                         <h4 class="mb-0">Artemis IMU Connections</h4>
-                        <p>The setup for this lab is shown in the image below. The IMU is connected to the Artemis 
-                            board using the QWIIC connector.
+                        <p>The setup for this lab is shown in the image below. 
                         </p>
                         <img width="450" height="auto" src="Lab2/Lab2Setup.jpeg"></img>
                         <hr>
@@ -368,7 +367,6 @@
                         <h4 class="mb-0">Adding A Slow Blink</h4>
                         <p>In the Example1_Basics code, I added a slow blink at the beginning of void setup() to 
                             turn the Artemis LED on and off three times to indicate that the code has been uploaded.
-                            The added lines can be found below.
                         </p>
                         <img width="300" height="auto" src="Lab2/Example1AddedBlinkArduino.png"></img>
                         <hr>
@@ -563,7 +561,7 @@
                             in the future I can decide what data I want to send to Jupyter Notebook. The data type used to store the data is a float.
                             I choose to use a float as it is less bytes then a double, allowing for more data to be stored on the memory of the 
                             Artemis. A float is 4 bytes, resulting in one packet of data information for the 7 arrays to be 28 bytes. The Artemis has 
-                            384kB of RAM. Sampling at 0.04s will result in data being collected for 276 seconds.
+                            384kB of RAM. Sampling at 0.04s (25Hz) will result in data being collected for 548 seconds. 
                         </p>
                             <img width="450" height="auto" src="Lab2/endcode1.png"></img>
                             <img width="550" height="auto" src="Lab2/endcode2.png"></img>
@@ -578,7 +576,12 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">    
                         <h3 class="mb-0">Task 5: Stunt Recording</h3> <!-------------------------------------------->
-                        <p>Here is the stunt recording for the robot. Moved by the controller. </p>
+                        <p>The robot is moved using the controller. The robot can move very quickly, but it is hard to 
+                            control the speed. If the robot changes directions too quickly there is a chance that it 
+                            might flip over. It is also hard to slow down the robot to a stop. When slowing down the 
+                            robot, the reverse needs to be applied. This is easy to over compensate and the robot might 
+                            end up traveling in reverse rather than coming to a stop. 
+                        </p>
                         <iframe width="550" height="400" src="https://youtube.com/embed/rJJAcrVZHNI"></iframe>
                         </div>
                     </div>
