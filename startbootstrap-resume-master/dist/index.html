@@ -179,28 +179,54 @@
                                 measurements up to 1900mm. The graph below shows the actual distance of the ToF sensor from 
                                 the wall based on my reading of the tape measure vs the measured value that the ToF sensor 
                                 recorded. The plotted measured distance value is the mean value of the ten collected data 
-                                points. 
+                                points. From the graph below it can be seen that after 1.3m the measured values differ more 
+                                significantly from the actual values compared to measured values less than 1.3m. This indicates 
+                                that the datasheet is correct in the recommended range of the sensor.
                             </p>
                             <img width="550" height="auto" src="Lab3/Lab3MeasuredvsActual.png"></img>
                             <hr>
                             <p>Accuracy:</p>
+                            <p>The difference in the measured and actual distances was plotted against the actual distances the 
+                                ToF sensor was from the wall. When the ToF sensor is less than 1.3m from the wall, the difference 
+                                is between 18mmm and 40mm. After 1.3m the difference in the measured vs actual distance increases. 
+                            </p>
                             <img width="550" height="auto" src="Lab3/Lab3DiffvsActual.png"></img>
                             <hr>
                             <p>Repeatability:</p>
+                            <p>The standard deviation vs actual distance graph is shown below. The standard deviation is below 3mm 
+                                for measurements under 1.3m. After 1.3m the standard deviation starts to vary and the standard 
+                                deviation at 1900mm is 8.75mm.
+                            </p>
                             <img width="550" height="auto" src="Lab3/Lab3SDvsActual.png"></img>
+                            <p>Below are the time and measured distance arrays:</p>
+                            <p>100mm: 9 measurements at 75mm, 1 measurement at 74mm</p>
                             <img width="550" height="auto" src="Lab3/D100mm.png"></img>
+                            <p>300mm: 6 measurements at 268mm, 4 measurements at 267mm</p>
                             <img width="550" height="auto" src="Lab3/D300mm.png"></img>
+                            <p>500mm: 5 measurements at 478mm, 5 measurements at 479mm</p>
                             <img width="550" height="auto" src="Lab3/D500mm.png"></img>
+                            <p>700mm: 5 measurements at 679mm, 4 measurements at 681mm, 1 measurement at 677mm</p>
                             <img width="550" height="auto" src="Lab3/D700mm.png"></img>
+                            <p>900mm: 4 measurements at 882mm, 5 measurements at 879mm, 1 measurement at 883mm</p>
                             <img width="550" height="auto" src="Lab3/D900mm.png"></img>
+                            <p>1100mm: 5 measurements at 1076mm, 4 measurements at 1070mm, 1 measurement at 1071mm</p>
                             <img width="550" height="auto" src="Lab3/D1100mm.png"></img>
+                            <p>1300mm: 4 measurements at 1258mm, 4 measurements at 1263mm, 2 measurements at 1265mm</p>
                             <img width="550" height="auto" src="Lab3/D1300mm.png"></img>
+                            <p>1500mm: 3 measurements at 1448mm, 2 measurements at 1447mm, 3 measurements at 1440mm, 2 measurements at 1449mm</p>
                             <img width="550" height="auto" src="Lab3/D1500mm.png"></img>
+                            <p>1700mm: 2 measurements at 1634mm, 3 measurements at 1631mm, 3 measurements at 1632mm, 2 measurements at 1637mm</p>
                             <img width="550" height="auto" src="Lab3/D1700mm.png"></img>
+                            <p>1900mm: 3 measurements at 1782mm, 2 measurements at 1791mm, 4 measurements at 1802mm, 1 measurement at 1784mm</p>
                             <img width="550" height="auto" src="Lab3/D1900mm.png"></img>
                             <hr>
                             <p>Ranging Time:</p>
-                            <img width="450" height="auto" src="Lab3/Lab3RangingTime.png"></img>
+                            <p>The ranging time is the time between each sensor measurement. I commented out all print 
+                                statements, except the calculated value between the start and end times to allow for 
+                                code to run as fast as possible. The ranging time was found to be around 55ms. 
+                            </p>
+                            <img width="400" height="auto" src="Lab3/Lab3RangingTime.png"></img>
+                            <hr>
                         <h3 class="mb-0">Task 4: Two ToF Sensors: Working In Parallel</h3> <!----------------------->
                             <p>Two ToF Sensors were connected to the Artemis board and Arduino code needed to be 
                                 written for the two ToF sensors to work in parallel. The example code was altered to 
@@ -222,7 +248,7 @@
                                 and distance measurements are only printed when a measurement is available. 
                             </p>
                             <img width="550" height="auto" src="Lab3/TimeDistanceCode.png"></img>
-                            <p>Below is the Serial Monitor output showing time and distance measruements. When the 
+                            <p>Below is the Serial Monitor output showing time and distance measurements. When the 
                                 sensors are not collecting data the loop takes around 2ms. When data is being collected 
                                 the loop takes around 11ms. The longer loop time when collecting ToF sensor data is 
                                 the limiting factor. The limiting factor is the time needed to record distance 
