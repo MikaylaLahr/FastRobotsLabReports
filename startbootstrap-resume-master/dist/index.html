@@ -76,11 +76,13 @@
                             in order to receive data from both sensors at the same time. 
                         </p>
                     <h3 class="mb-0">Task 2: Approach To Using Two ToF Sensors</h3> <!------------------------------>
-                        <p>To use two ToF sensors, the XSHUT pin (8) will be used to connect one of the ToF sensors 
-                            to the Artemis board. The XSHUT pin will be set to LOW and then the I2C sensor address 
-                            will be changed for the other ToF sensor. After the I2C address has been changed the XSHUT 
-                            pin will be set to HIGH, turning the other TOF sensor back on. This will allow for both 
-                            ToF sensors to be used in parallel.
+                        <p>To use two ToF sensors, the XSHUT pin will be used to connect one of the ToF sensors to pin 
+                            8 on the Artemis board. The XSHUT pin will be set to LOW and then the I2C sensor address 
+                            will be changed for the other ToF sensor that is on. After the I2C address has been changed 
+                            the XSHUT pin will be set to HIGH, turning the other TOF sensor back on. This will allow for 
+                            both ToF sensors to be used in parallel. Utlizing the pin on the Artemis board involved 
+                            sautering another wire from the XSHUT pin on one of the ToF sensors to pin 8 on the Artemis 
+                            board.
                         </p>
                     <h3 class="mb-0">Task 3: Placement Of Sensors On Robot</h3> <!---------------------------------->
                         <p>The placement of the two ToF sensors on the robot will impact the field of vision. Two 
@@ -88,11 +90,19 @@
                             me to position the ToF sensors in more potential ways compared to shorter wires. The 
                             potential arrangements of the sensors include (1) a sensor on the front and left side, 
                             (2) a sensor on the front and right side, (3) two sensors positioned on either side of 
-                            the front of the robot to give a wider field of view. Depending on the task at hand any of 
-                            these sensor positions may be effective. 
+                            the front of the robot to give a wider field of view, and (4) a sensor on the front and 
+                            the back. Depending on the task at hand any of these sensor positions may be effective. 
+                            If there is no sensor on the back of the robot there might be an issue if the robot needs 
+                            to back up or move in reverse. If there is no sensor on the side then the robot might miss 
+                            an obstacle that is located in a blind spot or another robot/person/object approaching the 
+                            robot from the side. 
                         </p>
                     <h3 class="mb-0">Task 4: Sketch Of Wiring Diagram</h3> <!--------------------------------------->
-                        <p>Below is a diagram of the wiring for the two ToF sensos and the Artemis board.</p>
+                        <p>Below is a diagram of the wiring for the two ToF sensos and the Artemis board. The ToF 
+                            sensor on the top of the sketch will be connected to the Artemis board using the XSHUT pin.
+                            This ToF sensor will be turned off, while the ToF sensor on the bottom of the sketch will
+                            have the I2C address changed. The ToF sensor on the top of the sketch will then be turned on.
+                        </p>
                         <img width="550" height="auto" src="Lab3/Lab3WireDiagram.jpg"></img>
 <!-- Lab 3 Lab Tasks ----------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Lab Tasks</h2>
@@ -100,15 +110,16 @@
                         <div class="flex-grow-1">
                         <h3 class="mb-0">Task 1: ToF Sensor Connected To QWIIC Breakout Board</h3> <!--------------->
                             <p>In this lab the Artemis board was powered on using a battery rather than the USB-C 
-                                cable.
-                            </p>
-                            <img width="550" height="auto" src="Lab3/Lab3Setup.jpeg"></img>
-                            <img width="500" height="auto" src="Lab3/Lab3ToF1.jpeg"></img>
-                            <img width="500" height="auto" src="Lab3/Lab3Tof2.jpeg"></img>
-                            <p>Below is a video showing the Artemis board attached to the battery, connecting to the 
-                                Jupyter Notebook using Bluetooth.
+                                cable. Below is a video showing the Artemis board attached to the battery, connecting 
+                                to Jupyter Notebook using Bluetooth.
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/DU1Uwm4gzos"></iframe>
+                            <p>Below are pictures of the ToF sensors connected to the QWIIC breakout board.</p>
+                            <img width="550" height="auto" src="Lab3/Lab3Setup.jpeg"></img>
+                            </hr>
+                            <img width="500" height="auto" src="Lab3/Lab3ToF1.jpeg"></img>
+                            </hr>
+                            <img width="500" height="auto" src="Lab3/Lab3Tof2.jpeg"></img>
                         <h3 class="mb-0">Task 2: Artemis Scanning For I2C Device</h3> <!---------------------------->
                             <p>The SparkFun VL53L1X 4m Laser Distance Sensor Library was installed on Arduino IDE.
                                 The code to scan for the I2C device was found under 
@@ -119,12 +130,13 @@
                                 In the datasheet for the ToF sensor, the listed I2C address is 0x52. The 
                                 Example05_Wire_I2C.ino code returned an address of 0x29. This is a result of the 
                                 binary for address 0x52 (binary: 0b01010010) being shifted to the right, resulting in 
-                                an address of 0x29 (binary: 0b00101001). The rightmost bit identifies if data is read 
-                                or written to the address.
+                                an address of 0x29 (binary: 0b00101001). The rightmost bit is ignored because the bit 
+                                identifies if data is read or written to the address.
                             </p>
                         <h3 class="mb-0">Task 3: Sensor Data With Chosen Mode</h3> <!------------------------------->
                             <h4 class="mb-0">Sensor Mode Discussion</h4> <!----------------------------------------->
-                            <p>The ToF sensor has two modes: (.setDistanceModeMedium(); //3m has been removed)
+                            <p>The ToF sensor has two modes: (.setDistanceModeMedium(); //3m has been removed, The 
+                                discussion for the medium mode is in the paragraph below for reference.)
                                 <li>.setDistanceModeShort(); //1.3m</li>
                                 <li>.setDistanceModeLong(); //4m</li>
                             </p>
@@ -145,14 +157,37 @@
                                 example code. This code was modified to include the line 
                                 distanceSensor.setDistanceModeShort(); in the setup to choose the short mode for the 
                                 ToF sensor.
-                            <img width="550" height="auto" src="Lab3/Lab3DistanceSetup1.jpeg"></img>
-                            <img width="550" height="auto" src="Lab3/Lab3DistanceSetup2.png"></img>
+                            </p>
+                            <p>The pictures below shows the setup for the ToF sensor. I taped the sensor to the back of 
+                                my computer and placed my computer on the floor facing a wall. I used a tape measure for
+                                reference. 
+                            </p>
+                            <img width="500" height="auto" src="Lab3/Lab3DistanceSetup1.jpeg"></img>
+                            <img width="500" height="auto" src="Lab3/Lab3DistanceSetup2.png"></img>
+                            <hr>
+                            <p>The Arudino code to find the ToF distance is below. The data was collected into arrays and 
+                                sent to Jupyter Notebook to be plotted. Ten data points for each distance were recorded 
+                                and analyzed. The Jupter Notebook code to call the case and sort through the data to find 
+                                the mean and standard deviation is shown in the image after. 
+                            </p>
+                            <img width="650" height="auto" src="Lab3/Lab3DistanceArduino.png"></img>
                             <img width="550" height="auto" src="Lab3/DistanceJupyter.png"></img>
-                            <img width="550" height="auto" src="Lab3/Lab3DistanceArduino.png"></img>
+                            <hr>
+                            <p>Sensor Range:</p>
+                            <p>In the datasheet its is stated that the short mode for the ToF sensor has a range up to 1.3m.
+                                To test the range of the sensor I took an initial measurement at 100mm and continued to take 
+                                measurements up to 1900mm. The graph below shows the actual distance of the ToF sensor from 
+                                the wall based on my reading of the tape measure vs the measured value that the ToF sensor 
+                                recorded. The plotted measured distance value is the mean value of the ten collected data 
+                                points. 
+                            </p>
                             <img width="550" height="auto" src="Lab3/Lab3MeasuredvsActual.png"></img>
-                            <img width="550" height="auto" src="Lab3/Lab3ActualvsDiff.png"></img>
-                            <img width="550" height="auto" src="Lab3/Lab3ActualvsDiff.png"></img>
-                            <img width="550" height="auto" src="Lab3/Lab3RangingTime.png"></img>
+                            <hr>
+                            <p>Accuracy:</p>
+                            <img width="550" height="auto" src="Lab3/Lab3DiffvsActual.png"></img>
+                            <hr>
+                            <p>Repeatability:</p>
+                            <img width="550" height="auto" src="Lab3/Lab3SDvsActual.png"></img>
                             <img width="550" height="auto" src="Lab3/D100mm.png"></img>
                             <img width="550" height="auto" src="Lab3/D300mm.png"></img>
                             <img width="550" height="auto" src="Lab3/D500mm.png"></img>
@@ -163,6 +198,9 @@
                             <img width="550" height="auto" src="Lab3/D1500mm.png"></img>
                             <img width="550" height="auto" src="Lab3/D1700mm.png"></img>
                             <img width="550" height="auto" src="Lab3/D1900mm.png"></img>
+                            <hr>
+                            <p>Ranging Time:</p>
+                            <img width="450" height="auto" src="Lab3/Lab3RangingTime.png"></img>
                         <h3 class="mb-0">Task 4: Two ToF Sensors: Working In Parallel</h3> <!----------------------->
                             <p>Two ToF Sensors were connected to the Artemis board and Arduino code needed to be 
                                 written for the two ToF sensors to work in parallel. The example code was altered to 
