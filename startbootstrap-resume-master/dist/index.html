@@ -103,7 +103,7 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                         <h3 class="mb-0">Task 1: ToF Sensor Connected To QWIIC Breakout Board</h3> <!--------------->
-                            <p>The Artemis board was powered on using a battery:
+                            <p>The Artemis board was powered using a battery:
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/DU1Uwm4gzos"></iframe>
                             <p>ToF sensors connected to the QWIIC breakout board:</p>
@@ -114,8 +114,7 @@
                             <img width="500" height="auto" src="Lab3/Lab3Tof2.jpeg"></img>
                         <h3 class="mb-0">Task 2: Artemis Scanning For I2C Device</h3> <!---------------------------->
                             <p>The SparkFun VL53L1X 4m Laser Distance Sensor Library was installed on Arduino IDE.
-                                The code to scan for the I2C device was found under 
-                                File->Examples->Apollo3->Wire->Example05_Wire_I2C.ino
+                                The code to find the I2C address: File->Examples->Apollo3->Wire->Example05_Wire_I2C.ino
                             </p>
                             <img width="550" height="auto" src="Lab3/Lab3I2C.png"></img>
                             <p>One ToF sensor was connected during the scan. The sensor had an I2C address of 0x29. 
@@ -131,7 +130,7 @@
                                 <li>.setDistanceModeShort(); //1.3m</li>
                                 <li>.setDistanceModeLong(); //4m</li>
                             </p>
-                            <p>Each sensor mode has advantages and disadvatages. Information from the datasheet shows 
+                            <p>Information from the datasheet shows 
                                 that the short mode can only reach up to 1.3m and is the most resistant to ambient 
                                 light. The long mode can reach up to 4m but is very sensitive to ambient light, which 
                                 decreases the distance to 0.73m. The timing budget range for the short mode is 20ms - 
@@ -143,7 +142,7 @@
                             <h4 class="mb-0">Testing .setDistanceModeShort();</h4> <!------------------------------->
                             <p>The ToF sensor was first tested using the 
                                 File->Examples->SparkFun_VL53L1X_4m_Laser_Distance_Sensor->Example1_ReadDistance.ino
-                                example code. This code was modified to include the line 
+                                This code was modified to include the line 
                                 distanceSensor.setDistanceModeShort(); in the setup to choose the short mode for the 
                                 ToF sensor.
                             </p>
@@ -161,8 +160,8 @@
                             <p>In the datasheet it is stated that the short mode for the ToF sensor has a range up to 1.3m.
                                 To test the range of the sensor I took an initial measurement at 100mm and continued to take 
                                 measurements up to 1900mm. The graph below shows the actual distance of the ToF sensor from 
-                                the wall based on my reading of the tape measure vs the measured value that the ToF sensor 
-                                recorded. The plotted measured distance value is the mean value of the ten collected data 
+                                the wall vs the ToF sensor distance.
+                                The plotted measured distance value is the mean value of the ten collected data 
                                 points. From the graph below it can be seen that after 1.3m the measured values start to 
                                 differ more from the actual values compared to measured values less than 1.3m. 
                             </p>
@@ -266,11 +265,10 @@
                                 determine the distance to an object, only if an object emitting infrared light is 
                                 present. 
                                 Active infrared sensors use an emitter and receiver to determine the distance
-                                to an object. The infrared emitter emits a beam of light towards the receiver. 
+                                to an object.  
                                 If there is an obstruction, the active infrared sensor knows that there is an object 
                                 in between the emitter and receiver. Active infrared sensors are used in industry 
-                                conveyor belts, as well as in garage door safety mechanisms. Active and passive 
-                                infrared sensors can operate during the day or night. 
+                                conveyor belts, as well as in garage door safety mechanisms. 
                                 <a href="https://www.arrow.com/en/research-and-events/articles/understanding-active-and-passive-infrared-sensors">(Source: Arrow Electronics)</a>
                                 Different types of infrared sensors include proximity sensors, ToF sensors, and triangulation sensors.
                                 <a href="https://itp.nyu.edu/physcomp/distance-sensors-the-basics/#:~:text=Infrared%20LED%20Proximity%20Sensors,'%20rather%20than%20'distance'.">(Source: NYU)</a>
