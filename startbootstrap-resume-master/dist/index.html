@@ -89,16 +89,23 @@
                             On the dual motor driver that connects the drivers to the ground of the Artemis board, the 
                             bridge between BIN1 and AIN1 is connected to pin 11, and the bridge between BIN2 and AIN2
                             is connected to pin 12. On the other dual motor driver the bridge between BIN1 and AIN1 is
-                            connected to pin 7, and the bridge between BIN2 and AIN2 is connected to pin 9. 
+                            connected to pin 7, and the bridge between BIN2 and AIN2 is connected to pin 9. The pins 
+                            used in this lab were chosen from the remaining pins on the Artemis board. 
                         </p>
                     <img width="550" height="auto" src="Lab4/DualMotorDriverWiring.png"></img>
                     <h3 class="mb-0">Task 2: Battery Discussion</h3> <!--------------------------------------------->
+                        <p>The Artemis board and the motordrivers/motors are powered from separate batteries. The 
+                            Artemis board is powered using a 650mAh battery and the motors are powered using a 850mAh 
+                            battery. Having the Artemis board and motors powered by different power sources avoids 
+                            any potential transient effects and allows each component to  function independently. Any
+                            potential current changes in the motors will not affect the Artemis board. 
+                        </p>
 <!-- Lab 4 Lab Tasks ----------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Lab Tasks</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                        <h3 class="mb-0">Task 1: Picture Of Setup With Power Supply and Oscilloscope Hookup</h3> <!->
-                        <h3 class="mb-0">Task 2: Power Supply Setting Discussion</h3> <!----------------------------->
+                        <h3 class="mb-0">Task 1: Pictur Of Setup With Power Supply and Oscilloscope Hookup</h3> <!-->
+                        <h3 class="mb-0">Task 2: Power Supply Setting Discussion</h3> <!---------------------------->
                         <h3 class="mb-0">Task 3: Motor Driver Code Snippet Using analogWrite</h3> <!---------------->
                         <h3 class="mb-0">Task 4: Video Of Wheels Spinning</h3> <!----------------------------------->
                         <h3 class="mb-0">Task 5: Video Of All Wheels Spinning</h3> <!------------------------------->
