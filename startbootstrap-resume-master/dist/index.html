@@ -57,9 +57,15 @@
             <section class="resume-section" id="Lab 4">
                 <div class="resume-section-content">
                     <h2 class="mb-2.5">Lab 4: Motors and Open Loop Control</h2>
+                        <p>The objective of the lab is to control the car using open loop control, rather than the 
+                            manual controller. Two dual motor drivers will be connected to the cars motors and the 
+                            Artemis board. The dual motor drivers will be used to control the movement of the car.
+                        </p>
 <!-- Lab 4 Prelab -------------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Prelab</h2>
-                    <p>The prelab involved reading about the ToF sensor used in the lab. The lab materials include: 
+                    <p>The prelab involved reading about how to use an oscilloscope and determining how to connect 
+                        the dual motor drivers to the motors and Artemis board.
+                        The lab materials include: 
                         <li><a href="https://www.sparkfun.com/products/15443">SparkFun RedBoard Artemis Nano</a></li>
                         <li><a href="https://www.amazon.com/SUMPK-Charging-Braided-Compatible-Samsung/dp/B09Z6J21LY/ref=sr_1_4?keywords=usb%2Bc%2Bto%2Bc&qid=1636380583&qsid=147-6677549-1776715&refinements=p_n_feature_ten_browse-bin%3A23555327011&rnid=23555276011&s=pc&sr=1-4&sres=B08D9SB161%2CB08R68T84N%2CB01CZVEUIE%2CB01FM51812%2CB07VCZV3R4%2CB075V68NVR%2CB075GMKZWW%2CB093BVBRJT%2CB09BBBJ33F%2CB09C2D9Z7T%2CB012V56D2A%2CB092CYFQMP%2CB081L4V3DN%2CB07Y6ZJT1D%2CB07Y2XKPX5%2CB07VPYJV8V%2CB07THJGZ9Z%2CB08W2TP2TT%2CB0744BKDRD%2CB07THFJ1J5&srpt=ELECTRONIC_CABLE&th=1">UCB-C to USB-C Cable</a></li>
                         <li><a href="https://www.mouser.com/ProductDetail/SparkFun/SEN-15335?qs=uwxL4vQweFMcls1MYZT00A%3D%3D">IMU Sensor</a></li>
@@ -72,18 +78,32 @@
                         <li><a href="https://www.digikey.com/en/products/detail/pololu-corporation/2130/10450426">Dual Motor Drivers</a></li>
                     </p>
                     <h3 class="mb-0">Task 1: Sketch Of Wiring Diagram</h3> <!--------------------------------------->
+                        <p>Below is a wiring diagram for the two dual motor drivers connected to the Artemis board, 
+                            DC Motors, and 850mAh battery. The two VIN pins and the two GND pins on both dual motor 
+                            drivers are connected together and then connected to the 850mAh battery. The GND pin of 
+                            one of the dual motor drivers is connected to the GND of the Artemis board. There is a 
+                            bridge between the BOUT1 and AOUT1 pins of the dual motor driver that is then connected 
+                            to the DC motor. There is also a bridge between the BOUT2 and AOUT2 pins of the dual motor 
+                            driver that is then connected to the DC motor. There is a bridge between the BIN1 and AIN1 
+                            pins on the dual motor driver and there is also a bridge between the BIN2 and AIN2 pins. 
+                            On the dual motor driver that connects the drivers to the ground of the Artemis board, the 
+                            bridge between BIN1 and AIN1 is connected to pin 11, and the bridge between BIN2 and AIN2
+                            is connected to pin 12. On the other dual motor driver the bridge between BIN1 and AIN1 is
+                            connected to pin 7, and the bridge between BIN2 and AIN2 is connected to pin 9. 
+                        </p>
+                    <img width="550" height="auto" src="Lab4/DualMotorDriverWiring.heic"></img>
                     <h3 class="mb-0">Task 2: Battery Discussion</h3> <!--------------------------------------------->
-                    <script src="https://gist.github.com/MikaylaLahr/6ac36a159f09635420146a42db99ac7c.js"></script>
 <!-- Lab 4 Lab Tasks ----------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Lab Tasks</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                         <h3 class="mb-0">Task 1: Picture Of Setup With Power Supply and Oscilloscope Hookup</h3> <!->
-                        <h3 class="mb-0">Task 2: Power Supply Setting Discussion/h3> <!----------------------------->
+                        <h3 class="mb-0">Task 2: Power Supply Setting Discussion</h3> <!----------------------------->
                         <h3 class="mb-0">Task 3: Motor Driver Code Snippet Using analogWrite</h3> <!---------------->
                         <h3 class="mb-0">Task 4: Video Of Wheels Spinning</h3> <!----------------------------------->
                         <h3 class="mb-0">Task 5: Video Of All Wheels Spinning</h3> <!------------------------------->
                         <h3 class="mb-0">Task 6: Picture Of All Components On Car</h3> <!--------------------------->
+                            <img width="550" height="auto" src="Lab4/CompleteWiring.heic"></img>
                         <h3 class="mb-0">Task 7: Lower Limit PWM Value Discussion</h3> <!--------------------------->
                         <h3 class="mb-0">Task 8: Calibration Demonstration</h3> <!---------------------------------->
                         <h3 class="mb-0">Task 9: Open Loop Code And Video</h3> <!----------------------------------->
