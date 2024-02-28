@@ -86,19 +86,22 @@
                             to the DC motor. There is also a bridge between the BOUT2 and AOUT2 pins of the dual motor 
                             driver that is then connected to the DC motor. There is a bridge between the BIN1 and AIN1 
                             pins on the dual motor driver and there is also a bridge between the BIN2 and AIN2 pins. 
-                            On the dual motor driver that connects the drivers to the ground of the Artemis board, the 
-                            bridge between BIN1 and AIN1 is connected to pin 11, and the bridge between BIN2 and AIN2
-                            is connected to pin 12. On the other dual motor driver the bridge between BIN1 and AIN1 is
-                            connected to pin 7, and the bridge between BIN2 and AIN2 is connected to pin 9. The pins 
-                            used in this lab were chosen from the remaining pins on the Artemis board. 
+                            On the dual motor driver that connects the drivers to the ground of the Artemis board (top 
+                            dual motar driver in sketch below), the bridge between BIN1 and AIN1 is connected to pin 11, 
+                            and the bridge between BIN2 and AIN2 is connected to pin 12. On the other dual motor driver 
+                            (bottom dual motor driver in sketch below) the bridge between BIN1 and AIN1 is connected 
+                            to pin 7, and the bridge between BIN2 and AIN2 is connected to pin 9. The pins used in this 
+                            lab were chosen from the remaining pins on the Artemis board. 
                         </p>
                     <img width="550" height="auto" src="Lab4/DualMotorDriverWiring.png"></img>
                     <h3 class="mb-0">Task 2: Battery Discussion</h3> <!--------------------------------------------->
                         <p>The Artemis board and the motordrivers/motors are powered from separate batteries. The 
                             Artemis board is powered using a 650mAh battery and the motors are powered using a 850mAh 
                             battery. Having the Artemis board and motors powered by different power sources avoids 
-                            any potential transient effects and allows each component to  function independently. Any
-                            potential current changes in the motors will not affect the Artemis board. 
+                            any potential transient effects and allows each component to function independently. Any
+                            potential current changes in the motors will not affect the Artemis board. In addition, 
+                            the motors require a higher current battery, which is the reason the 850mAh battery is 
+                            used to power the motors.
                         </p>
 <!-- Lab 4 Lab Tasks ----------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Lab Tasks</h2>
@@ -106,17 +109,43 @@
                         <div class="flex-grow-1">
                         <h3 class="mb-0">Testing The Circuit With The Oscilloscope and Power Supply</h3> <!--------->
                         <h4 class="mb-0">Task 1: Picture Of Setup With Power Supply and Oscilloscope Hookup</h4> <!->
+                            <p>The below image is a picture of the power supply and osilloscope connections. The 
+                                positive power supply wire (red, towards the top of the picture) is connected to the 
+                                positive wire of the battery. The ground wire of the power supply (black) and 
+                                oscilloscope (black) is connected to the same ground wire of the battery (near the 
+                                middle of the picture). The input for the oscilloscope (near the bottom of the 
+                                picture) is connected to the wire that will be attached to one of the motors. Each of 
+                                the four wires that will be attached to the motors was tested to determine if the 
+                                circuit was assembled correctly and a PWM signal was shown on the oscilloscope.
+                            </p>
                             <img width="550" height="auto" src="Lab4/OscilloscopeAttachedWires.png"></img>
+                            <p>Picture of oscilloscope (left) and power supply (right) connected to the circuit:</p>
                             <img width="550" height="auto" src="Lab4/FullOscilloscopePicture.png"></img>
+                        <h4 class="mb-0">Task 2: Power Supply Setting Discussion</h4> <!---------------------------->
+                            <p>The voltage of the 850mAh battery is 3.7V. In place of using the battery, a power supply 
+                                was used. The output of the power supply was set to 3.7V to represent the battery 
+                                power that will be used later on during the lab. Each pin was tested independently of 
+                                each other. In the Arduino IDE code, one pin was set to have an output of 200, while 
+                                the other pins all had an output of 0. This was repeated for all four pins. The positive 
+                                output voltage to the motor was displayed on the osilloscope and indicated a constant 
+                                voltage output at each time. 
+                            </p>
+                            <p>Channel 3 of the power supply was used. 3.7V was used to test the motor driver circuit.</p>
                             <img width="550" height="auto" src="Lab4/PowerSupply.png"></img>
+                            <p>Picture of the oscilloscope output:</p>
                             <img width="550" height="auto" src="Lab4/OscilloscopeMonitor.png"></img>
+                            <p>The below four videos show the output for each pin that was tested (pins 7, 9, 11, 12):</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/lCriKyb0Neg"></iframe>
-                            <iframe width="550" height="400" src="https://youtube.com/embed/TmjGBAryqm0"></iframe>
                             <iframe width="550" height="400" src="https://youtube.com/embed/N995RlmhQh0"></iframe>
                             <iframe width="550" height="400" src="https://youtube.com/embed/0vjtACvWswE"></iframe>
-                        <h4 class="mb-0">Task 2: Power Supply Setting Discussion</h4> <!---------------------------->
+                            <iframe width="550" height="400" src="https://youtube.com/embed/TmjGBAryqm0"></iframe>
                         <h4 class="mb-0">Task 3: Motor Driver Code Snippet Using analogWrite</h4> <!---------------->
-                            <img width="400" height="auto" src="Lab4/WheelsSpinning.png"></img>
+                            <p>The below Arduino code shows how each of the wires to the motors were tested. Pins 7, 
+                                9, 11, and 12 were defined and analogWrite() was used to assign each pin number the 
+                                tested output value. In the below example pin 11 is set to have an output of 200, and
+                                all of the other pins have an output of 0.
+                            </p>
+                            <img width="300" height="auto" src="Lab4/WheelsSpinning.png"></img>
                         <h3 class="mb-0">Testing The Robot Wheels</h3> <!------------------------------------------->
                         <h4 class="mb-0">Task 4: Video Of Wheels Spinning (Each Side Of Robot)</h4> <!-------------->
                             <a href="https://drive.google.com/drive/folders/1C0Mv_Gn857_GPnvRFywwlARlJ5vl_ICM?usp=sharing">Folder Link</a>
