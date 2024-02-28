@@ -77,7 +77,7 @@
                         <li><a href="https://www.amazon.com/URGENEX-Battery-Rechargeable-Quadcopter-Charger/dp/B08T9FB56F/ref=sr_1_3?keywords=lipo+battery+3.7V+850mah&qid=1639066404&sr=8-3">Li-Ion 3.7V 850mAh battery</a></li>
                         <li><a href="https://www.digikey.com/en/products/detail/pololu-corporation/2130/10450426">Dual Motor Drivers</a></li>
                     </p>
-                    <h3 class="mb-0">Task 1: Sketch Of Wiring Diagram</h3> <!--------------------------------------->
+                    <h3 class="mb-0">Sketch Of Wiring Diagram</h3> <!----------------------------------------------->
                         <p>Below is a wiring diagram for the two dual motor drivers connected to the Artemis board, 
                             DC Motors, and 850mAh battery. The two VIN pins and the two GND pins on both dual motor 
                             drivers are connected together and then connected to the 850mAh battery. The GND pin of 
@@ -94,7 +94,7 @@
                             lab were chosen from the remaining pins on the Artemis board. 
                         </p>
                     <img width="550" height="auto" src="Lab4/DualMotorDriverWiring.png"></img>
-                    <h3 class="mb-0">Task 2: Battery Discussion</h3> <!--------------------------------------------->
+                    <h3 class="mb-0">Battery Discussion</h3> <!----------------------------------------------------->
                         <p>The Artemis board and the motordrivers/motors are powered from separate batteries. The 
                             Artemis board is powered using a 650mAh battery and the motors are powered using a 850mAh 
                             battery. Having the Artemis board and motors powered by different power sources avoids 
@@ -108,7 +108,7 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                         <h3 class="mb-0">Testing The Circuit With The Oscilloscope and Power Supply</h3> <!--------->
-                        <h4 class="mb-0">Task 1: Picture Of Setup With Power Supply and Oscilloscope Hookup</h4> <!->
+                        <h4 class="mb-0">Picture Of Setup With Power Supply and Oscilloscope Hookup</h4> <!--------->
                             <p>The below image is a picture of the power supply and osilloscope connections. The 
                                 positive power supply wire (red, towards the top of the picture) is connected to the 
                                 positive wire of the battery. The ground wire of the power supply (black) and 
@@ -121,7 +121,7 @@
                             <img width="550" height="auto" src="Lab4/OscilloscopeAttachedWires.png"></img>
                             <p>Picture of oscilloscope (left) and power supply (right) connected to the circuit:</p>
                             <img width="550" height="auto" src="Lab4/FullOscilloscopePicture.png"></img>
-                        <h4 class="mb-0">Task 2: Power Supply Setting Discussion</h4> <!---------------------------->
+                        <h4 class="mb-0">Power Supply Setting And Oscilloscope Discussion</h4> <!--------------------->
                             <p>The voltage of the 850mAh battery is 3.7V. In place of using the battery, a power supply 
                                 was used. The output of the power supply was set to 3.7V to represent the battery 
                                 power that will be used later on during the lab. Each pin was tested independently of 
@@ -139,35 +139,37 @@
                             <iframe width="550" height="400" src="https://youtube.com/embed/N995RlmhQh0"></iframe>
                             <iframe width="550" height="400" src="https://youtube.com/embed/0vjtACvWswE"></iframe>
                             <iframe width="550" height="400" src="https://youtube.com/embed/TmjGBAryqm0"></iframe>
-                        <h4 class="mb-0">Task 3: Motor Driver Code Snippet Using analogWrite</h4> <!---------------->
+                        <h4 class="mb-0">Motor Driver Code Snippet Using analogWrite</h4> <!------------------------>
                             <p>The below Arduino code shows how each of the wires to the motors were tested. Pins 7, 
                                 9, 11, and 12 were defined and analogWrite() was used to assign each pin number the 
                                 tested output value. In the below example pin 11 is set to have an output of 200, and
                                 all of the other pins have an output of 0.
                             </p>
-                            <img width="300" height="auto" src="Lab4/WheelsSpinning.png"></img>
+                            <img width="300" height="auto" src="Lab4/PowerSupplyCode.png"></img>
                         <h3 class="mb-0">Testing The Robot Wheels</h3> <!------------------------------------------->
-                        <h4 class="mb-0">Task 4: Video Of Wheels Spinning (Each Side Of Robot)</h4> <!-------------->
+                        <h4 class="mb-0">Video Of Wheels Spinning (Each Side Of Robot)</h4> <!---------------------->
                             <a href="https://drive.google.com/drive/folders/1C0Mv_Gn857_GPnvRFywwlARlJ5vl_ICM?usp=sharing">Folder Link</a>
                             <iframe width="550" height="400" src="https://youtube.com/embed/NtxG2B53yNE"></iframe>
                             <iframe width="550" height="400" src="https://youtube.com/embed/vF0gQiVKP0E"></iframe>
-                        <h4 class="mb-0">Task 5: Video Of All Wheels Spinning</h4> <!------------------------------->
+                        <h4 class="mb-0">Video Of All Wheels Spinning</h4> <!--------------------------------------->
+                            <img width="300" height="auto" src="Lab4/WheelsSpinning.png"></img>
                             <iframe width="550" height="400" src="https://youtube.com/embed/riR7c_fM4ns"></iframe>
-                        <h4 class="mb-0">Task 6: Picture Of All Components On Car</h4> <!--------------------------->
+                        <h4 class="mb-0">Picture Of All Components On Car</h4> <!----------------------------------->
                             <p>INSERT PICTURE OF ALL COMPONENTS ON CAR</p>
                             <p>INSERT VIDEO OF CAR MOVING</p>
                             <p>INSERT PICTURE OF CODE USED TO MOVE CAR</p>
                             <img width="550" height="auto" src="Lab4/CompleteWiring.png"></img>
                         <h3 class="mb-0">Lower limit PWM And Open Loop Control</h3> <!------------------------------>
                             <p>INSERT VIDEO OF CAR MOVING AT LOWER LIMIT PWM</p>
-                        <h4 class="mb-0">Task 7: Lower Limit PWM Value Discussion</h4> <!--------------------------->
-                        <h4 class="mb-0">Task 8: Calibration Demonstration</h4> <!---------------------------------->
+                        <h4 class="mb-0">Lower Limit PWM Value Discussion</h4> <!----------------------------------->
+                        <h4 class="mb-0">Calibration Demonstration</h4> <!------------------------------------------>
                             <p>INSERT VIDEO OF CAR MOVING IN A STRAIGHT LINE</p>
-                        <h4 class="mb-0">Task 9: Open Loop Code And Video</h4> <!----------------------------------->
+                        <h4 class="mb-0">Open Loop Code And Video</h4> <!------------------------------------------->
                             <p>INSERT VIDEO OF CAR MOVING IN A DESIGNED PATH</p>
                             <p>INSERT PICTURE OF CODE USED FOR CAR MOTION</p>
-                        <h3 class="mb-0">5000 Level Task 1: analogWrite Frequency Discussion</h3> <!---------------->
-                        <h3 class="mb-0">5000 Level Task 2: Lowest PWM Value Speed Discussion</h3> <!--------------->
+                        <h3 class="mb-0">5000 Level Tasks:</h3> <!-------------------------------------------------->
+                        <h4 class="mb-0">analogWrite Frequency Discussion</h4> <!----------------------------------->
+                        <h4 class="mb-0">Lowest PWM Value Speed Discussion</h4> <!---------------------------------->
                         </div>
                     </div>
 <!-- Lab 4 References ---------------------------------------------------------------------------------------------->
