@@ -149,8 +149,9 @@
                         <h3 class="mb-0">Testing The Robot Wheels</h3> <!------------------------------------------->
                         <h4 class="mb-0">Video Of Wheels Spinning (Each Side Of Robot)</h4> <!---------------------->
                             <p>The wheels on each side of the robot were tested individually at two different output 
-                                values. Pins 7, 9, 11, and 12 were tested at output values of  50 and 200. While 
-                                testing each side of the robot I obsereved the direction and speed that each wheel 
+                                values. The power supply used at the beginning of the lab (3.7V) was used to power 
+                                the motors. Pins 7, 9, 11, and 12 were tested at output values of  50 and 200. While 
+                                testing each side of the robot I observed the direction and speed that each wheel 
                                 turned. The wheels rotated faster for the higher output at 200 compared to the output 
                                 at 50. The wheels are began to reach the final set speed for the higher output value 
                                 of 200. When roating at 50 the wheels took longer start rotating.
@@ -166,9 +167,25 @@
                             <iframe width="550" height="400" src="https://youtube.com/embed/NtxG2B53yNE"></iframe>
                             <p>Pin 9 with an output of 200:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/vF0gQiVKP0E"></iframe>
+                            <p>The Arduino code to test the wheels is found below. One pin was set to have an output 
+                                value of either 50 or 200 and all other pins were set to have an output value of 0.
+                                This is the same code that was used in the previous section to test if the circuit 
+                                was working properly before sautering to the motors.
+                            </p>
+                            <img width="200" height="auto" src="Lab4/OneSideWheelsSpinning.png"></img>
                         <h4 class="mb-0">Video Of All Wheels Spinning</h4> <!--------------------------------------->
-                            <img width="300" height="auto" src="Lab4/WheelsSpinning.png"></img>
+                            <p>After testing each side of the robot, all of the wheels were tested at the same time. 
+                                The 850mAh battery was used to power the motors instead of the power supply. The below 
+                                video shows both sides rotating while the motors and Artemis board are both connected
+                                to their respective batteries.
+                            </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/riR7c_fM4ns"></iframe>
+                            <p>The Arduino code to test the wheels on both sides of the robot is found below. Pins 9 
+                                and 12 were set to have an output of 200 and pins 7 and 11 were set to have an output 
+                                value of 0. This is the same code that was used in the previous section to test both 
+                                sides of the robot individually.
+                            </p>
+                            <img width="300" height="auto" src="Lab4/WheelsSpinning.png"></img>
                         <h4 class="mb-0">Picture Of All Components On Car</h4> <!----------------------------------->
                             <p>INSERT PICTURE OF ALL COMPONENTS ON CAR</p>
                             <p>INSERT VIDEO OF CAR MOVING</p>
