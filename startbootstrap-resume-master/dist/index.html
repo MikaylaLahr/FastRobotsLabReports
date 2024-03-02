@@ -207,6 +207,9 @@
                         <h3 class="mb-0">Lower Limit PWM And Open Loop Control</h3> <!------------------------------>
                         <h4 class="mb-0">Lower Limit PWM Value Discussion</h4> <!----------------------------------->
                             <p>INSERT VIDEOS OF CAR MOVING AT LOWER LIMIT PWM</p>
+                            <img width="550" height="auto" src="Lab4/PythonCMD.png"></img>
+                            <img width="550" height="auto" src="Lab4/ArduinoSLCase1.png"></img>
+                            <img width="550" height="auto" src="Lab4/ArduinoSLCase2.png"></img>
                         <h4 class="mb-0">Calibration Demonstration</h4> <!------------------------------------------>
                             <p>The wheels of the robot do not spin at the same rate and a calibration factor needed 
                                 to be implemented. The below video shows the robot moving in a straight line, starting
@@ -231,18 +234,26 @@
                                 wanted to determine how low I could set the output values while still having the robot 
                                 move in a straight line for at least 6 feet. I set the output value of pin 11 to 40 and 
                                 calculated the output value of pin 7 to be 47. For these output values, the robot moved 
-                                in a straight line for more than 6 feet. 
+                                in a straight line for more than 6 feet. When I set the output value for pin 11 to be 
+                                lower than 40 the wheels began to stall and hesitate before rotating compared to the other 
+                                side of the robot. I also incuded a video at the end of the section showing the wheels 
+                                spinning.
+                            </p>
+                            <p>To produce the robots motion the same Arduino IDE case and Jupyter Notebook command were 
+                                used. The length of the delay was changed depending on how fast the robot moved (to prevent 
+                                the robot from running into a wall).
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/up1g-nOJNPY"></iframe>
-                            <p>Below is a graph showing all of the tested values as data points and I plotted the 
-                                trendline for all data points, as well as all of the data points except for the last two 
-                                that began to differ from the previous measurements. The slope and y-intercept were also 
-                                found for each trendline. 
+                            <p>Below is a graph showing all of the tested values as data points. In addition, I plotted the 
+                                trendline for all data points, as well as the trendline for all of the data points except 
+                                for the last two that began to differ from the previous measurements. The slope and 
+                                y-intercept were also found for each trendline. The calculated slope is the calibration 
+                                factor. 
                             </p>
-                            <img width="550" height="auto" src="Lab4/StraightLineGraph.png"></img>
-                            <img width="550" height="auto" src="Lab4/PythonCMD.png"></img>
-                            <img width="550" height="auto" src="Lab4/ArduinoSLCase1.png"></img>
-                            <img width="550" height="auto" src="Lab4/ArduinoSLCase2.png"></img>
+                            <img width="550" height="auto" src="Lab4/NewStraightLineGraph.png"></img>
+                            <p>Video showing wheels hesitating when pin 11 has an output of 35 and pin 7 has an 
+                                output of 41:
+                            </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/T0syacfa-Sk"></iframe>
                         <h4 class="mb-0">Open Loop Code And Video</h4> <!------------------------------------------->
                             <p>INSERT VIDEO OF CAR MOVING IN A DESIGNED PATH</p>
