@@ -216,11 +216,14 @@
                             <img width="550" height="auto" src="Lab4/ArduinoSLCase2.png"></img>
                             <p>The lower limit PWM value is the lowest output value that a pin can be set to that will 
                                 still result in continuous motion of the robot. The wheels on one side of the robot 
-                                were tested, while the wheels on the other side remained stationary. 
+                                were tested, while the wheels on the other side remained stationary. The lower limit 
+                                PWM for pin 11 (right side) was found to be 59. The lower limit PWM for pin 7 (left
+                                side) was found to be 50. 
                             </p>
-                            <p>Pin 11:</p>
-                            <p>Pin 7:</p>
-                            <p>INSERT VIDEOS OF CAR MOVING AT LOWER LIMIT PWM</p>
+                            <p>Pin 11 with an output of 59:</p>
+                            <iframe width="550" height="400" src="https://youtube.com/embed/j5dqoIw6FOU"></iframe>
+                            <p>Pin 7 with an output of 50:</p>
+                            <iframe width="550" height="400" src="https://youtube.com/embed/ZOekIthGxmg"></iframe>
                         <h4 class="mb-0">Calibration Demonstration</h4> <!------------------------------------------>
                             <p>The wheels of the robot do not spin at the same rate and a calibration factor needed 
                                 to be implemented. The below video shows the robot moving in a straight line, starting
@@ -228,10 +231,12 @@
                                 pin 11 was set to an output of 60 and pin 7 was set to an output of 70. In addition to 
                                 the below video, the robot was run multiple times at varying input values. My first 
                                 tested value was pin 11 at an output of 60, which is close to the found PWM value from 
-                                the previous step. When pin 7 was set to an output of 60, the robot continuously moved 
+                                the previous step. When pin 7 was set to an output of 51, the robot continuously moved 
                                 towards the left. Through trial and error I found that an output of 70 for pin 7 kept 
                                 the robot moving in a straight line. I used these found values for reference during 
-                                future tests: 70/60=1.166666666666667. I increased the output of pin 11 by 20 for each 
+                                future tests: 70/60=1.166666666666667. 
+                            </p>
+                            <p>I increased the output of pin 11 by 20 for each 
                                 test and multiplied the value for pin 7 by 1.166666666666667. This incrementation worked 
                                 for all tested pin 11 and pin 7 values until I reached an output value of 220 for pin 11. 
                                 The calculated output value for pin 7 should be 257, rounded down to 255 due to 255 being
@@ -241,7 +246,9 @@
                                 calculated output value for pin 7 should be 245. In order to keep the robot moving 
                                 straight, and not to the right I needed to reduce the output of pin 7 to 240. The trend 
                                 shows that after an output of 200 for pin 11 the calibration factor to find the 
-                                corresponding output value for pin 7 starts to differ. In addition, as a final test I 
+                                corresponding output value for pin 7 starts to differ. 
+                            </p>
+                            <p>In addition, as a final test I 
                                 wanted to determine how low I could set the output values while still having the robot 
                                 move in a straight line for at least 6 feet. I set the output value of pin 11 to 40 and 
                                 calculated the output value of pin 7 to be 47. For these output values, the robot moved 
