@@ -206,10 +206,21 @@
                             <img width="600" height="auto" src="Lab4/CompleteWiring.png"></img>
                         <h3 class="mb-0">Lower Limit PWM And Open Loop Control</h3> <!------------------------------>
                         <h4 class="mb-0">Lower Limit PWM Value Discussion</h4> <!----------------------------------->
-                            <p>INSERT VIDEOS OF CAR MOVING AT LOWER LIMIT PWM</p>
-                            <img width="550" height="auto" src="Lab4/PythonCMD.png"></img>
+                            <p>During this step of the lab, I used Bluetooth to send a command from Jupyter Notebook 
+                                to run different output values more easily compared to uploading Arduino IDE code every
+                                time I wanted to change the output value of a pin. The below images show the Jupyter
+                                Notebook Command and the Arduino IDE case that uses analogWrite() to move the robot. 
+                            </p>
+                            <img width="650" height="auto" src="Lab4/PythonCMD.png"></img>
                             <img width="550" height="auto" src="Lab4/ArduinoSLCase1.png"></img>
                             <img width="550" height="auto" src="Lab4/ArduinoSLCase2.png"></img>
+                            <p>The lower limit PWM value is the lowest output value that a pin can be set to that will 
+                                still result in continuous motion of the robot. The wheels on one side of the robot 
+                                were tested, while the wheels on the other side remained stationary. 
+                            </p>
+                            <p>Pin 11:</p>
+                            <p>Pin 7:</p>
+                            <p>INSERT VIDEOS OF CAR MOVING AT LOWER LIMIT PWM</p>
                         <h4 class="mb-0">Calibration Demonstration</h4> <!------------------------------------------>
                             <p>The wheels of the robot do not spin at the same rate and a calibration factor needed 
                                 to be implemented. The below video shows the robot moving in a straight line, starting
@@ -251,8 +262,8 @@
                                 factor. 
                             </p>
                             <img width="550" height="auto" src="Lab4/NewStraightLineGraph.png"></img>
-                            <p>Video showing wheels hesitating when pin 11 has an output of 35 and pin 7 has an 
-                                output of 41:
+                            <p>Video showing wheels hesitating when pin 11 (right) has an output of 35 and pin 7 (left)
+                                has an output of 41:
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/T0syacfa-Sk"></iframe>
                         <h4 class="mb-0">Open Loop Code And Video</h4> <!------------------------------------------->
@@ -260,7 +271,23 @@
                             <p>INSERT PICTURE OF CODE USED FOR CAR MOTION</p>
                         <h3 class="mb-0">5000 Level Tasks:</h3> <!-------------------------------------------------->
                         <h4 class="mb-0">analogWrite Frequency Discussion</h4> <!----------------------------------->
+                            <p>Below is the image of the oscilloscope when connected to the circuit. The wheel motors 
+                                are powered using the battery. During lab office hours I asked a TA why the oscilloscope 
+                                outputs were ore noisy compared to the oscilloscope outputs from earlier in the lab and 
+                                it is most likely because the circuit is now connected to the motors that result in more 
+                                noise compared to when the circuit was not connected to the motors on the robot.
+                            </p>
                             <img width="550" height="auto" src="Lab4/analogWrite5000.png"></img>
+                            <p>From the image its can be seen that one horizontal block along the x-axis is 2.50ms and 
+                                one vertical block along the y-axis is 1.0V. The period of the PWM signal is about 2.6 
+                                horizontal blocks, which is equivalent to 6.50ms (0.0065s). The frequency analogWrite() 
+                                generates is about 1/0.0065s ~= 154Hz. In lab 3 the sampling period of the ToF sensors
+                                was found to be 0.04s and the sampling frequency was 25Hz. The frequency analogWrite() 
+                                generates is fast enough for the motors on the robot when running tests as well as when 
+                                using data from the ToF sensors. Manually configuring the timers to generate a faster PWM
+                                signal will allow for more control over the movements of the robot and a more steady PWM 
+                                signal.
+                            </p>
                         <h4 class="mb-0">Lowest PWM Value Speed Discussion</h4> <!---------------------------------->
                             <p>INSERT VIDEOS OF CAR MOTION</p>
                             <p>INSERT PICTURE OF CODE USED</p>
