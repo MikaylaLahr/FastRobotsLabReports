@@ -99,7 +99,7 @@
                 <div class="resume-section-content">
                     <h2 class="mb-2.5">Lab 4: Motors and Open Loop Control</h2>
                         <p>The objective of the lab is to control the car using open loop control, rather than the 
-                            manual controller. Two dual motor drivers will be connected to the cars motors and the 
+                            manual controller. Two dual motor drivers will be connected to the car's motors and the 
                             Artemis board. The dual motor drivers will be used to control the movement of the car.
                         </p>
 <!-- Lab 4 Prelab -------------------------------------------------------------------------------------------------->
@@ -136,7 +136,7 @@
                         </p>
                     <img width="550" height="auto" src="Lab4/DualMotorDriverWiring.png"></img>
                     <h3 class="mb-0">Battery Discussion</h3> <!----------------------------------------------------->
-                        <p>The Artemis board and the motordrivers/motors are powered from separate batteries. The 
+                        <p>The Artemis board and the motor drivers/motors are powered from separate batteries. The 
                             Artemis board is powered using a 650mAh battery and the motors are powered using a 850mAh 
                             battery. Having the Artemis board and motors powered by different power sources avoids 
                             any potential transient effects and allows each component to function independently. Any
@@ -150,7 +150,7 @@
                         <div class="flex-grow-1">
                         <h3 class="mb-0">Testing The Circuit With The Oscilloscope and Power Supply</h3> <!--------->
                         <h4 class="mb-0">Picture Of Setup With Power Supply and Oscilloscope Hookup</h4> <!--------->
-                            <p>The below image is a picture of the power supply and osilloscope connections. The 
+                            <p>The below image is a picture of the power supply and oscilloscope connections. The 
                                 positive power supply wire (red, towards the top of the picture) is connected to the 
                                 positive wire of the battery. The ground wire of the power supply (black) and 
                                 oscilloscope (black) is connected to the same ground wire of the battery (near the 
@@ -168,7 +168,7 @@
                                 power that will be used later on during the lab. Each pin was tested independently of 
                                 each other. In the Arduino IDE code, one pin was set to have an output of 200, while 
                                 the other pins all had an output of 0. This was repeated for all four pins. The positive 
-                                output voltage to the motor was displayed on the osilloscope and indicated a constant 
+                                output voltage to the motor was displayed on the oscilloscope and indicated a constant 
                                 voltage output at each time. 
                             </p>
                             <p>Channel 3 of the power supply was used. 3.7V was used to test the motor driver circuit.</p>
@@ -194,8 +194,8 @@
                                 the motors. Pins 7, 9, 11, and 12 were tested at output values of  50 and 200. While 
                                 testing each side of the robot I observed the direction and speed that each wheel 
                                 turned. The wheels rotated faster for the higher output at 200 compared to the output 
-                                at 50. The wheels are began to reach the final set speed for the higher output value 
-                                of 200. When roating at 50 the wheels took longer start rotating.
+                                at 50. For the higher output value of 200, the wheels reached the final set speed faster 
+                                compared to the lower set speed. When rotating at 50 the wheels took longer start rotating.
                                 From the perspective of the videos pin 7 rotates counter clockwise and pin 9 
                                 rotates clockwise. Pin 7 and pin 9 move the wheels on the same side of the robot in 
                                 different directions. In addition, from the perspective of the videos pin 11 moves 
@@ -233,7 +233,7 @@
                                 The 850mAh battery to power the motors is on the other side of the robot. 
                             </p>
                             <img width="550" height="auto" src="Lab4/RobotDiagram.png"></img>
-                            <p>After connecting all componenets to the car I decided to test how the robot moves. The 
+                            <p>After connecting all components to the car I decided to test how the robot moves. The 
                                 video below shows my first test for having the robot drive on the ground. In the video, 
                                 the robot initially moves towards the left when the pins used for the motors have the 
                                 same output value. This trend was noticed in future steps of the lab when determining 
@@ -295,7 +295,7 @@
                                 calculated the output value of pin 7 to be 47. For these output values, the robot moved 
                                 in a straight line for more than 6 feet. When I set the output value for pin 11 to be 
                                 lower than 40 the wheels began to stall and hesitate before rotating compared to the other 
-                                side of the robot. I also incuded a video at the end of the section showing the wheels 
+                                side of the robot. I also included a video at the end of the section showing the wheels 
                                 spinning.
                             </p>
                             <p>To produce the robots motion the same Arduino IDE case and Jupyter Notebook command were 
