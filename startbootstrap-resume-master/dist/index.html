@@ -133,7 +133,9 @@
                             and the bridge between BIN2 and AIN2 is connected to pin 12. On the other dual motor driver 
                             (bottom dual motor driver in sketch below) the bridge between BIN1 and AIN1 is connected 
                             to pin 7, and the bridge between BIN2 and AIN2 is connected to pin 9. The pins used in this 
-                            lab were chosen from the remaining pins on the Artemis board. 
+                            lab were chosen from the remaining pins on the Artemis board (after the previous lab). The 
+                            parallel-couple of the two inputs and two outputs on each dual motor driver allows for 
+                            twice the average current to be delivered without overheating.
                         </p>
                     <img width="550" height="auto" src="Lab4/DualMotorDriverWiring.png"></img>
                     <h3 class="mb-0">Battery Discussion</h3> <!----------------------------------------------------->
@@ -170,7 +172,8 @@
                                 each other. In the Arduino IDE code, one pin was set to have an output of 200, while 
                                 the other pins all had an output of 0. This was repeated for all four pins. The positive 
                                 output voltage to the motor was displayed on the oscilloscope and indicated a constant 
-                                voltage output at each time. 
+                                voltage output at each time. The PWM values show that power can be regulated on the motor 
+                                driver output.
                             </p>
                             <p>Channel 3 of the power supply was used. 3.7V was used to test the motor driver circuit.</p>
                             <img width="550" height="auto" src="Lab4/PowerSupply.png"></img>
@@ -262,6 +265,15 @@
                                 PWM for pin 11 (right side) was found to be 59. The lower limit PWM for pin 7 (left
                                 side) was found to be 50. 
                             </p>
+                            <p>Note: During lab office hours I asked a TA (Larry Lu) about how the surface conditions 
+                                affect the PWM values. Specifically I asked if testing the robot on the floors in my 
+                                apartment (laminate wood flooring) would change the lower limit PWM value compared to 
+                                the tile floors in the lab and hallways. I tested the robot's lower limit PWM value at 
+                                my apartment and received the same PWM values. The PWM values may start to differ if 
+                                the robot is travelling over a surface with a lot of friction such as a carpet or 
+                                outside in the grass. This information is helpful to know as I can better understand 
+                                the operating conditions of the robot.
+                            </p>
                             <p>Pin 11 with an output of 59:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/j5dqoIw6FOU"></iframe>
                             <p>Pin 7 with an output of 50:</p>
@@ -308,7 +320,8 @@
                                 trendline for all data points, as well as the trendline for all of the data points except 
                                 for the last two that began to differ from the previous measurements. The slope and 
                                 y-intercept were also found for each trendline. The calculated slope is the calibration 
-                                factor. 
+                                factor. The slope excluding the last two data points, 1.165 is close to the 1.166666666666667
+                                value.
                             </p>
                             <img width="550" height="auto" src="Lab4/NewStraightLineGraph.png"></img>
                             <p>Video showing wheels hesitating when pin 11 (right) has an output of 35 and pin 7 (left)
