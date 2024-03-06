@@ -264,7 +264,7 @@
                                 were tested, while the wheels on the other side remained stationary. The lower limit 
                                 PWM for pin 11 (right side) was found to be 59. The lower limit PWM for pin 7 (left
                                 side) was found to be 50. 
-                            </p>
+                            </p>                       
                             <p>Note: During lab office hours I asked a TA (Larry Lu) about how the surface conditions 
                                 affect the PWM values. Specifically I asked if testing the robot on the floors in my 
                                 apartment (laminate wood flooring) would change the lower limit PWM value compared to 
@@ -274,10 +274,25 @@
                                 outside in the grass. This information is helpful to know as I can better understand 
                                 the operating conditions of the robot.
                             </p>
-                            <p>Pin 11 with an output of 59:</p>
+                            <p>Pin 11 (Right Wheels) with an output of 59:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/j5dqoIw6FOU"></iframe>
-                            <p>Pin 7 with an output of 50:</p>
+                            <p>Pin 7 (Left Wheels) with an output of 50:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/ZOekIthGxmg"></iframe>
+                            <p>I also found the PWM value for both wheels when they are being used together, starting 
+                                when the robot is stationary. The output value was found to be 35 for both wheel sides. 
+                                The video showing the robot moving when both wheels (pins 11 and 7) have an output 
+                                value of 35.
+                            </p>
+                            <iframe width="550" height="400" src="https://youtube.com/embed/bWIED69jH9o"></iframe>  
+                            <p>Note: During lab office hours I asked a TA (Larry Lu) about how the surface conditions 
+                                affect the PWM values. Specifically I asked if testing the robot on the floors in my 
+                                apartment (laminate wood flooring) would change the lower limit PWM value compared to 
+                                the tile floors in the lab and hallways. I tested the robot's lower limit PWM value at 
+                                my apartment and received the same PWM values. The PWM values may start to differ if 
+                                the robot is travelling over a surface with a lot of friction such as a carpet or 
+                                outside in the grass. This information is helpful to know as I can better understand 
+                                the operating conditions of the robot.
+                            </p>
                         <h4 class="mb-0">Calibration Demonstration</h4> <!------------------------------------------>
                             <p>The wheels of the robot do not spin at the same rate and a calibration factor needed 
                                 to be implemented. The below video shows the robot moving in a straight line, starting
@@ -328,6 +343,16 @@
                                 has an output of 41:
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/T0syacfa-Sk"></iframe>
+                            <p>I also tested the calibration factor when the robot is going in "reverse" (with the robot 
+                                moving in the direction away from the ToF sensor on one end). I initially tested the 
+                                previously found output values with the corresponding pins on each wheel side, with pin 12 
+                                having an output of 60 and pin 9 having an output of 70. I found that by doing this the 
+                                robot moved towards the left. I decided to switch the output values; pin 12 has an output 
+                                of 70 and pin 9 has an output of 60). The robot moves straight using these output values. 
+                                I find this interesting as it confirm my previous thoughts about one side of the wheels 
+                                being slightly misaligned. 
+                            </p>
+                            <iframe width="550" height="400" src="https://youtube.com/embed/KikE52expXI"></iframe>
                         <h4 class="mb-0">Open Loop Code And Video</h4> <!------------------------------------------->
                             <p>Below is a video showing open loop control of the robot. In the video the robot moves 
                                 forward, turn towards the right, moves backward, stops, spins counterclockwise, stops,
@@ -374,6 +399,18 @@
                             <iframe width="550" height="400" src="https://youtube.com/embed/GVot4WoKJfg"></iframe>
                             <p>Pin 7 with a lowest PWM value of 33:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/y8LbCTM5KOg"></iframe>
+                            <p>In addition, the lowest combined wheel PWM value was found when both wheels were being 
+                                used at the same time. The output value for both wheels (pin 11 and pin 7) is 25 when 
+                                the robot is already moving. The robot was initially run with an initial output of 60 
+                                for pin 11 and 70 for pin 7 for 1.5 seconds and then both wheels decreased to an output 
+                                of 25 for 5 seconds. Below are two videos. One video shows the final output at 25 (the 
+                                robot moves until the total set time of 5 seconds is over). The other video shows the 
+                                robot stop before the 5 seconds is over and the motors stall when set to an output of 
+                                24, confirming the lower limit PWM value of 25 to keep the robot moving.
+                            <p>Both Wheels: Lower Limit PWM of 25:</p>
+                            <iframe width="550" height="400" src="https://youtube.com/embed/Qsuw1Hp_cbg"></iframe>
+                            <p>Both Wheels: Tested value of 24:</p>
+                            <iframe width="550" height="400" src="https://youtube.com/embed/8UgnAjQbpKM"></iframe>
                             <p>The command line in Jupyter Notebook and the Arduino IDE case can be found below:</p>
                             <img width="650" height="auto" src="Lab4/PWMContinuousPython.png"></img>
                             <img width="550" height="auto" src="Lab4/PWMContinuousArduino1.png"></img>
