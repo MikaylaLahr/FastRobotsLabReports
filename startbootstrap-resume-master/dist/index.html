@@ -58,13 +58,15 @@
             <section class="resume-section" id="Lab 5">
                 <div class="resume-section-content">
                     <h2 class="mb-2.5">Lab 5: Linear PID Control and Linear Interpolation</h2>
-                    <p>The objective of the lab to to gain experience working with PID controllers.</p>
+                    <p>The objective of the lab to to gain experience working with PID controllers. I am a 5000 level 
+                        student and I choose to work on a PID controller. Labs 5-8 detail PID, sensor fusion, and stunts.
+                        This lab is focused on using a PID controller for position control of the robot.
+                    </p>
 <!-- Lab 5 Prelab -------------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Prelab</h2>
-                    <p>The lab materials include: 
+                    <p>The used lab materials include: 
                         <li><a href="https://www.sparkfun.com/products/15443">SparkFun RedBoard Artemis Nano</a></li>
                         <li><a href="https://www.amazon.com/SUMPK-Charging-Braided-Compatible-Samsung/dp/B09Z6J21LY/ref=sr_1_4?keywords=usb%2Bc%2Bto%2Bc&qid=1636380583&qsid=147-6677549-1776715&refinements=p_n_feature_ten_browse-bin%3A23555327011&rnid=23555276011&s=pc&sr=1-4&sres=B08D9SB161%2CB08R68T84N%2CB01CZVEUIE%2CB01FM51812%2CB07VCZV3R4%2CB075V68NVR%2CB075GMKZWW%2CB093BVBRJT%2CB09BBBJ33F%2CB09C2D9Z7T%2CB012V56D2A%2CB092CYFQMP%2CB081L4V3DN%2CB07Y6ZJT1D%2CB07Y2XKPX5%2CB07VPYJV8V%2CB07THJGZ9Z%2CB08W2TP2TT%2CB0744BKDRD%2CB07THFJ1J5&srpt=ELECTRONIC_CABLE&th=1">UCB-C to USB-C Cable</a></li>
-                        <li><a href="https://www.mouser.com/ProductDetail/SparkFun/SEN-15335?qs=uwxL4vQweFMcls1MYZT00A%3D%3D">IMU Sensor</a></li>
                         <li><a href="https://www.pololu.com/product/3415">Pololu TOF Distance Sensor</a> ; <a href="https://cdn.sparkfun.com/assets/e/1/8/4/e/VL53L1X_API.pdf">TOF Manual</a> ; <a href="https://cdn.sparkfun.com/assets/8/9/9/a/6/VL53L0X_DS.pdf">TOF Datasheet</a></li>
                         <li><a href="https://www.sparkfun.com/products/18012">QWIIC Breakout Board</a></li>
                         <li><a href="https://www.sparkfun.com/products/14426">QWIIC Connector</a></li>
@@ -73,14 +75,39 @@
                         <li><a href="https://www.amazon.com/URGENEX-Battery-Rechargeable-Quadcopter-Charger/dp/B08T9FB56F/ref=sr_1_3?keywords=lipo+battery+3.7V+850mah&qid=1639066404&sr=8-3">Li-Ion 3.7V 850mAh battery</a></li>
                         <li><a href="https://www.digikey.com/en/products/detail/pololu-corporation/2130/10450426">Dual Motor Drivers</a></li>
                     </p>
-                    <h3 class="mb-0">Implement PID Control</h3> <!-------------------------------------------------->
-                    <h4 class="mb-0">Send and Recieve Data Over Bluetooth</h4> <!----------------------------------->
+                    <h3 class="mb-0">PID Control Explaination</h3> <!----------------------------------------------->
+                        <p>For this lab a PID controller will be used for position control of the robot. The below 
+                            equation from the course Lecture 7 is used to compute the value for the PID controller:
+                        </p>
+                        <p>This equation uses the error (e(t), difference between the final desired value and the current
+                            value) in proportional, integral, and derivative control to calculate the new PID input value (u(t)).
+                            For this lab the error is the difference between the desired distance from the wall (1ft) 
+                            and the robots current distance from the wall. The calculated PID input value is the robots 
+                            speed. Proportional control multiplies a constant Kp by the error. Integral control multiplies 
+                            a constant Ki by by the integral of the error over time. Derivative control multiplies a 
+                            constant Kd by the rate of change of the error.
+                        </p>
+                    <h3 class="mb-0">Send and Recieve Data Over Bluetooth</h3> <!----------------------------------->
+                        <p>EXPLAIN HOW DATA IS TRANSFERRED </p>
 <!-- Lab 5 Lab Tasks ----------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Lab Tasks</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                         <h3 class="mb-0">Position Control</h3> <!--------------------------------------------------->
+                            <p>For the position control task the robot drives as fast as possible towards a wall and 
+                                stops when it is 1ft away from the wall. The ToF sensor on the front of the robot will 
+                                be used to determine the distance the robot is from the wall. The implemented PID control 
+                                is also shown to be robust to changing conditions including starting distance and floor 
+                                surface. 
+                            </p>
+                        <h4 class="mb-0">Proportional Control (Kp)</h4> <!------------------------------------------>
+                        <h4 class="mb-0">Integral Control (Ki)</h4> <!---------------------------------------------->
+                        <h4 class="mb-0">Derivative Control (Kd)</h4> <!-------------------------------------------->
                         <h3 class="mb-0">Extrapolation</h3> <!------------------------------------------------------>
+                        <h4 class="mb-0">Frequency of Returned ToF Data</h4> <!------------------------------------->
+                        <h4 class="mb-0">Calculate PID Control Every Loop</h4> <!----------------------------------->
+                        <h4 class="mb-0">Speed of PID Control Loop and ToF Sensor Rate/h4> <!----------------------->
+                        <h4 class="mb-0">Extapolate Robot Distance From Past Data Readings</h4> <!------------------>
                         <h3 class="mb-0">5000 Level Task: Wind-Up Protection</h3> <!-------------------------------->
                         </div>
                     </div>
