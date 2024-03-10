@@ -88,7 +88,23 @@
                             constant Kd by the rate of change of the error.
                         </p>
                     <h3 class="mb-0">Send and Recieve Data Over Bluetooth</h3> <!----------------------------------->
-                        <p>EXPLAIN HOW DATA IS TRANSFERRED </p>
+                        <p>During the Prelab I determined how to sens and recieve data over Bluetooth. Two Arduino IDE 
+                            cases were initallized. The case PID_CASE starts and stops the PID controller and the case
+                            SEND_PID_DATA sends the collected PID data to Jupyter Notebook. The PID controller starts 
+                            when a command from Jupyter Notebook is run. The command inputs include a start(1)/stop(0)
+                            value; the desired setDistance value to determine the desired end distance from the wall;
+                            and the Kp, Ki, and Kd constant values. In Jupyter Notebook a notification handler similar 
+                            to the notification handler from Lab 1 is used to create the data array. 
+                        </p>
+                        <p>I also determined what data I wanted to store and send to Jupyter Notebook. Initially, I stored
+                            time, two ToF distance values (one in millimeters and one in feet), the error value, the integral
+                            value, the derivative value, and the PID value. I decided that in order to save space on 
+                            the Artemis board to reduce the amount of data sent to only include time, a distance value 
+                            in millimeters, the error value, and the PID value.
+                        </p>
+                        <p>In addition, a hard stop was implemented on the Artemis to stop the robot if the Bluetooth
+                            connection fails. 
+                        </p>
 <!-- Lab 5 Lab Tasks ----------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Lab Tasks</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
