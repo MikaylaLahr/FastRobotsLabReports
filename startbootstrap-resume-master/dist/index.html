@@ -80,8 +80,8 @@
                             equation from the course Lecture 7 is used to compute the value for the PID controller:
                         </p>
                         <img width="300" height="auto" src="Lab5/PIDEquation.png"></img>
-                        <p>This equation uses the error (e(t), difference between the final desired value and the current
-                            value) in proportional, integral, and derivative control to calculate the new PID input value (u(t)).
+                        <p>This equation uses the error e(t) (difference between the final desired value and the current
+                            value) in proportional, integral, and derivative control to calculate the new PID input value u(t).
                             For this lab the error is the difference between the desired distance from the wall (1ft) 
                             and the robots current distance from the wall. The calculated PID input value is the robots 
                             speed. Proportional control multiplies a constant Kp by the error. Integral control multiplies 
@@ -115,7 +115,7 @@
                         <img width="450" height="auto" src="Lab5/PID_CASE.png"></img>
                         <p>Below is the Jupyter Notebook Command and corresponding Arduino case to send the collected data.
                             When data is sent the first time value is printed to the Arduino serial monitor to confirm that 
-                            data was sent to Jpuyter Notebook correctly. The time value is compared to the first time value 
+                            data was sent to Jupyter Notebook correctly. The time value is compared to the first time value 
                             in Jupyter Notebook.
                         </p>
                         <img width="550" height="auto" src="Lab5/PythonSendData.png"></img>
