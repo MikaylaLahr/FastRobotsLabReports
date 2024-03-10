@@ -94,7 +94,8 @@
                             when a command from Jupyter Notebook is run. The command inputs include a start(1)/stop(0)
                             value; the desired setDistance value to determine the desired end distance from the wall;
                             and the Kp, Ki, and Kd constant values. In Jupyter Notebook a notification handler similar 
-                            to the notification handler from Lab 1 is used to create the data array. 
+                            to the notification handler from Lab 1 is used to create the data array. The PID controller 
+                            stops when the first input value is set to zero.
                         </p>
                         <p>I also determined what data I wanted to store and send to Jupyter Notebook. Initially, I stored
                             time, two ToF distance values (one in millimeters and one in feet), the error value, the integral
@@ -102,9 +103,19 @@
                             the Artemis board to reduce the amount of data sent to only include time, a distance value 
                             in millimeters, the error value, and the PID value.
                         </p>
-                        <p>In addition, a hard stop was implemented on the Artemis to stop the robot if the Bluetooth
-                            connection fails. 
+                        <p>Below is the Jupyter Notebook Command and corresponding Arduino case to start/stop the PID 
+                            controller.
                         </p>
+                        <img width="300" height="auto" src="Lab5/PythonStart.png"></img>
+                        <img width="300" height="auto" src="Lab5/PID_CASE.png"></img>
+                        <p>Below is the Jupyter Notebook Command and corresponding Arduino case to send the collected data.</p>
+                        <img width="300" height="auto" src="Lab5/PythonSendData.png"></img>
+                        <img width="300" height="auto" src="Lab5/SEND_PID_DATA.png"></img>
+                        <p>In addition, a hard stop was implemented on the Artemis to stop the robot if the Bluetooth
+                            connection fails. The pin output values are all set to zero outside of the while (central.connected)
+                            loop. The code for this is inside the larger void loop() and is seen below:
+                        </p>
+                        <img width="300" height="auto" src="Lab5/ArduinoBluetoothStop.png"></img>
 <!-- Lab 5 Lab Tasks ----------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Lab Tasks</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
