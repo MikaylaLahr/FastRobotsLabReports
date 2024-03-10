@@ -79,7 +79,7 @@
                         <p>For this lab a PID controller will be used for position control of the robot. The below 
                             equation from the course Lecture 7 is used to compute the value for the PID controller:
                         </p>
-                        <img width="300" height="auto" src="Lab5/PIDEquation.png"></img>
+                        <img width="350" height="auto" src="Lab5/PIDEquation.png"></img>
                         <p>This equation uses the error e(t) (difference between the final desired value and the current
                             value) in proportional, integral, and derivative control to calculate the new PID input value u(t).
                             For this lab the error is the difference between the desired distance from the wall (1ft) 
@@ -112,7 +112,7 @@
                             printed in the Arduino serial monitor. 
                         </p>
                         <img width="550" height="auto" src="Lab5/PythonStart.png"></img>
-                        <img width="450" height="auto" src="Lab5/PID_CASE.png"></img>
+                        <img width="400" height="auto" src="Lab5/PID_CASE.png"></img>
                         <p>Below is the Jupyter Notebook Command and corresponding Arduino case to send the collected data.
                             When data is sent the first time value is printed to the Arduino serial monitor to confirm that 
                             data was sent to Jupyter Notebook correctly. The time value is compared to the first time value 
@@ -137,13 +137,25 @@
                                 surface. 
                             </p>
                         <h4 class="mb-0">Range and Sampling Time Discussion</h4> <!--------------------------------->
+                            <p>Consider the range and sampling time you choose for your TOF sensor; it may be worth lowering the accuracy for faster updates.</p>
+                            <p>Also note that the sensor has a programmable integration time. If this is set too high, you will see large jumps in your data as the robot drives and you can no longer assume that the measurements are independent. You can lower the integration time (trading off accuracy for speed)</p>
                         <h4 class="mb-0">Proportional Control (Kp)</h4> <!------------------------------------------>
+                            <p>Given the range of motor input values and the output from your TOF sensor, discuss what a reasonable range of the proportional controller gain will be.</p>
+                            <p>LOG DATA</p>
+                            <p>DOCUMENTATION</p>
+                            <p>FREQUENCY</p>
+                            <p>DEADBAND</p>
                         <h4 class="mb-0">Integral Control (Ki)</h4> <!---------------------------------------------->
                         <h4 class="mb-0">Derivative Control (Kd)</h4> <!-------------------------------------------->
+                            <p>DERIVATIVE LOW PASS FILTER</p>
+                            <p>DERIVATIVE KICK</p>
+                            <p>TIME VS TOF GRAPHS</p>
+                            <p>TIME VS MOTOR INPUT GRAPHS</p>
+                            <p>VIDEOS: TILE, FAKE WOOD, CARPET</p> 
                         <h3 class="mb-0">Extrapolation</h3> <!------------------------------------------------------>
                         <h4 class="mb-0">Frequency of Returned ToF Data</h4> <!------------------------------------->
                         <h4 class="mb-0">Calculate PID Control Every Loop</h4> <!----------------------------------->
-                        <h4 class="mb-0">Speed of PID Control Loop and ToF Sensor Rate/h4> <!----------------------->
+                        <h4 class="mb-0">Speed of PID Control Loop and ToF Sensor Rate</h4> <!---------------------->
                         <h4 class="mb-0">Extapolate Robot Distance From Past Data Readings</h4> <!------------------>
                         <h3 class="mb-0">5000 Level Task: Wind-Up Protection</h3> <!-------------------------------->
                         </div>
