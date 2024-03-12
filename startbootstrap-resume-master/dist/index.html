@@ -157,7 +157,6 @@
                                 distance measurement. 
                             </p>
                         <h4 class="mb-0">Proportional Control (Kp)</h4> <!------------------------------------------>
-                            <p>Given the range of motor input values and the output from your TOF sensor, discuss what a reasonable range of the proportional controller gain will be.</p>
                             <p>The first control input I worked on was the Kp input for proportional control. I estimated 
                                 the value to be around 0.06899 by using the equation to solve for the PWM values. I wanted 
                                 to minimize overshoot, so to find the value for the error I subtracted the final desired 
@@ -165,25 +164,36 @@
                                 be found below:
                             </p>
                             <img width="400" height="auto" src="Lab5/KpEquations.png"></img>
-                            <p>During the first physical testing of the system I tested a range of Kp values to determine 
+                            <p>The initial loop used to find the PID value is:</p>
+                            <img width="400" height="auto" src="Lab5/NewInitialPIDLoop.png"></img>
+                            <p>First the time differenc (dt) is found and then the error is calculated based on the current 
+                                distance and desired stopping distance. After the error is calculated the integral and 
+                                derivative terms are solved for (both are 0 in this step). 
+                                These PID equations were also used during the next step to find the Kd value for derivative
+                                control.
+                            </p>
+                            <p>I used the calculated Kp value (0.06899) as an estimate. During the first physical testing of the system 
+                                I tested a range of Kp values to determine 
                                 at what point the robot oscillated around 1ft. I determined that the Kp value should be set 
                                 to 0.03 to minimize the error and oscillation present.
-                                The graphs for Kp = 0.05 and Kp = 0.03 can be found below: 
+                                The graphs showing Time vs ToF Distance, Time vs P Control, and time vs Error 
+                                for Kp = 0.05 and Kp = 0.03 can be found below: 
                             </p>
                             <p>Plots for Kp = 0.05:</p>
                             <img width="400" height="auto" src="Lab5/0.05KpToF.png"></img>
                             <img width="400" height="auto" src="Lab5/0.05KpP.png"></img>
                             <img width="400" height="auto" src="Lab5/0.05KpError.png"></img>
                             <p>Video for Kp = 0.05:</p>
-                            <iframe width="550" height="400" src="https://youtube.com/embed/_73SAd107NA"></iframe>
+                            <iframe width="550" height="400" src="https://youtube.com/embed/pHbR0qdV2g8"></iframe>
                             <p>Plots for Kp = 0.03:</p>
                             <img width="400" height="auto" src="Lab5/0.03KpToF.png"></img>
                             <img width="400" height="auto" src="Lab5/0.03KpP.png"></img>
                             <img width="400" height="auto" src="Lab5/0.03KpError.png"></img>
                             <p>Video for Kp = 0.03:</p>
-                            <iframe width="550" height="400" src="https://youtube.com/embed/pHbR0qdV2g8"></iframe>
+                            <iframe width="550" height="400" src="https://youtube.com/embed/_73SAd107NA"></iframe>
                             <p>In the above videos it can be seen that for a value of Kp = 0.05 the robot moves faster 
-                                but overshoots and oscillates more compared to when Kp = 0.3. For this first task I 
+                                but overshoots and oscillates more, resulting in a greater error, compared to when Kp = 0.3. 
+                                For this first task I 
                                 wanted to reduce oscillation, rather than achieve a faster speed and moved to the next 
                                 step using Kp = 0.03. I focused on achieving a faster speed when tuning the integral 
                                 Ki value, and prevented overshoot when tuning the derivative Kd value.
@@ -191,8 +201,9 @@
                         <h4 class="mb-0">Derivative Control (Kd)</h4> <!-------------------------------------------->
                             <p>The next task I worked on was tuning the Kd value using proportional control and 
                                 derivative control at the same time. I wanted to prevent overshoot and any oscillation 
-                                of the robot. I increased the Kd value until the robot did not overshoot the 1ft desired 
-                                stopping distance from the wall. This Kd value was found to be Kd = 5. A video showing 
+                                of the robot. I increased the Kd value until the overshoot was reduced and the robot 
+                                stopped at the 1ft desired 
+                                distance from the wall. This Kd value was found to be Kd = 5. A video showing 
                                 the robot at Kp = 0.03 and Kd = 5 is below:
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/gKO5rApL9Fc"></iframe>
