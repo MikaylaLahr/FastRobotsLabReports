@@ -60,7 +60,8 @@
                     <h2 class="mb-2.5">Lab 5: Linear PID Control and Linear Interpolation</h2>
                     <p>The objective of the lab to to gain experience working with PID controllers. I am a 5000 level 
                         student and I choose to work on a PID controller. Labs 5-8 detail PID, sensor fusion, and stunts.
-                        This lab is focused on using a PID controller for position control of the robot.
+                        This lab is focused on using a PID controller for position control of the robot. Lectures 6, 7, 
+                        and 8 were consulted during the lab.
                     </p>
 <!-- Lab 5 Prelab -------------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Prelab</h2>
@@ -150,7 +151,7 @@
                                 (1/0.1s) = 10Hz for distance measurements. To find how fast the PID control loop is
                                 running I printed the value for dt that is calculated each time the PID loop runs:
                             </p>
-                            <img width="300" height="auto" src="Lab5/dtPID.png"></img>
+                            <img width="200" height="auto" src="Lab5/dtPID.png"></img>
                             <p>The PID loop runs at around 8ms. The PID loop is running faster than the ToF sensor 
                                 produces new distance readings. This will be explored later in the lab as the ToF
                                 sensor data will be extrapolated to use estimated data when there is no new ToF sensor
@@ -165,7 +166,7 @@
                             </p>
                             <img width="400" height="auto" src="Lab5/KpEquations.png"></img>
                             <p>The initial loop used to find the PID value is:</p>
-                            <img width="400" height="auto" src="Lab5/NewInitialPIDLoop.png"></img>
+                            <img width="400" height="auto" src="Lab5/NewPIDInitialLoop.png"></img>
                             <p>First the time differenc (dt) is found and then the error is calculated based on the current 
                                 distance and desired stopping distance. After the error is calculated the integral and 
                                 derivative terms are solved for (both are 0 in this step). 
@@ -176,7 +177,7 @@
                                 I tested a range of Kp values to determine 
                                 at what point the robot oscillated around 1ft. I determined that the Kp value should be set 
                                 to 0.03 to minimize the error and oscillation present.
-                                The graphs showing Time vs ToF Distance, Time vs P Control, and time vs Error 
+                                The graphs showing Time vs ToF Distance, Time vs P Control, and Time vs Error 
                                 for Kp = 0.05 and Kp = 0.03 can be found below: 
                             </p>
                             <p>Plots for Kp = 0.05:</p>
@@ -198,6 +199,28 @@
                                 step using Kp = 0.03. I focused on achieving a faster speed when tuning the integral 
                                 Ki value, and prevented overshoot when tuning the derivative Kd value.
                             </p>
+                            <p>The robot is set to stop when the calculated error is less than 5mm. All pins are set
+                                to zero. If the error is not within the stopping range than the function FORWARD is
+                                called if the PID value is greater than zero, or the function BACKWARD is called if 
+                                the PID value is less than zero. The if statements and functions can be found below.
+                            </p>
+                            <img width="500" height="auto" src="Lab5/StopOrContinue.png"></img>
+                            <img width="500" height="auto" src="Lab5/Forward.png"></img>
+                            <img width="500" height="auto" src="Lab5/Backward.png"></img>
+                            <p>For PID values greater than or equal to 40 and less than or equal to 255, the PID value is used as the input 
+                                PWM value for the motors. For values greater than 0.5 and less than 40 the input PWM value 
+                                is set to be 40, beacuse assigning values less than 40 would result in no motion of
+                                the robot. For values greater than 255, the PWM value is set to 255 as that is the maximum
+                                possible value for the motors.
+                            </p>
+                            <p>Prior to writing the FORWARD and BACKWARD functions for scaling, I tried using map() 
+                                to scale the PID values to PWM motor input values. The written code can be found 
+                                <a href="https://drive.google.com/file/d/1v-03PIDdVK9giT-E1sIs_6NjfWNxw-9e/preview">in this folder</a> 
+                                This approach was not used because when running the robot, I repeatedly entered into a Fault Handler. In a 
+                                first attempt to fix this problem I removed all code in the Arduino script that was 
+                                not being used for this lab, but that did not solve the Fault Handler issue. I then wrote the 
+                                previously discussed functions to move the robot. 
+                            </p>
                         <h4 class="mb-0">Derivative Control (Kd)</h4> <!-------------------------------------------->
                             <p>The next task I worked on was tuning the Kd value using proportional control and 
                                 derivative control at the same time. I wanted to prevent overshoot and any oscillation 
@@ -207,22 +230,103 @@
                                 the robot at Kp = 0.03 and Kd = 5 is below:
                             </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/gKO5rApL9Fc"></iframe>
-                            <p>DERIVATIVE LOW PASS FILTER</p>
-                            <p>DERIVATIVE KICK</p>
+                            <p>For this task the ending setpoint distance does not change, resulting in the error 
+                                derivative to be continuous. I did not need to implement anything to get rid of derivative 
+                                kick because there is no changing setpoint. I did consult the reference provided in the 
+                                lab instructions and read about derivative kick 
+                                <a href="http://brettbeauregard.com/blog/2011/04/improving-the-beginner’s-pid-derivative-kick/">on this website</a>, 
+                                for future reference.
+                            </p>
+                            <p>In addition a low pass filter for the derivative was not implemented as all of the calculated 
+                                derivative error values were small. 
+                            </p>
                         <h4 class="mb-0">5000 Level Task: Integral Control (Ki) and Wind Up Protection</h4> <!------>
+                            <p>For the next task I added the integral controller and inputed a Ki value. To start I set 
+                                Kd to zero and tested a value of Ki = 0.00001 and Kp = 0.03. This resulted in the robot 
+                                moving very fast into the wall. I then decided to decrease Ki until I found a value where 
+                                the robot would stop in front of the wall. For each value tested the robot ran into the wall.
+                                I then implemented wind up protection for the integral control to prevent the robot from 
+                                running into the wall. The Arduino code that was added can be found below:
+                            </p>
+                            <img width="400" height="auto" src="Lab5/WindUpPIDLoop.png"></img>
+                            <p>First a distance measurement is taken at the start of the robots motion to determine the 
+                                total distance the robot needs to move and an integralStop value is set to be half of 
+                                the total distance travelled. Each loop an if statement checks to see if the error is
+                                greater than the integralStop value. If the error is greater then integralStop a new 
+                                integral value will be calculated. If the value of the integral term multiplied by the 
+                                set Ki value is greater than 100 then there will be no further increase in the KiIntegral 
+                                term used to find the PID control. In additon, if the error is smaller then the integralStop value 
+                                then the new integral value will be set to zero. The integral term is the Ki value multiplied by 
+                                the time integrated error. Without wind up protection the integral term will continuouslly increase 
+                                causing the robot to not stop when the final distance is reached.
+                            </p>
+                            <p>
+                                After implementing wind up protection I found a Ki value that allows the robot to lightly run 
+                                into the wall before
+                                pulling back. I started with a Kp value of 0.00001 which resulted in the robot driving 
+                                too fast into the wall. I decreased this value until Ki = 0.000008 resulted in the 
+                                following performance when Kp = 0.03 and Kd = 0:
+                            </p>
+                            <iframe width="550" height="400" src="https://drive.google.com/file/d/1W-NLdBnwsm9ovzuZcmlFnZbAYHb3nCt_/preview"></iframe>
+                            <p>Without wind up protection the robot accelerates quickly and the following behavior 
+                                is observed:
+                            </p>
+                            <iframe width="550" height="400" src="https://youtube.com/embed/xd15OHNZmwM"></iframe>
+                            <p>I then added the Kd term found in the previous step. A value of Kd = 5 resulted in more 
+                                overshoot than I wanted the robot to have. I increased the Kd value until the overshoot 
+                                was again minimized. This resulted from a value of Kd = 8. For values above Kd = 8 there 
+                                was no longer a noticable difference in minimizing overshoot. The behavior for Kp = 0.03, 
+                                Ki = 0.000008, and Kd = 8 can be seen in the three trials below. The robot was started 
+                                from a distance of 6.5ft.
+                            </p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/sU7PBIPYIQU"></iframe>
                             <iframe width="550" height="400" src="https://youtube.com/embed/8Qq6W8jbQz4"></iframe>
                             <iframe width="550" height="400" src="https://youtube.com/embed/nLN_xBjYBLI"></iframe>
+                            <p>The data collected from the last trial can be found below. I included the printed array 
+                                of time, distance, PID values, and motor input to confirm that the data was collected properly.
+                            </p>
+                            <img width="400" height="auto" src="Lab5/DataPythonTrial1.png"></img>
+                            <p>The three below graphs show the data for Time vs ToF Distance, Time vs Motor Input, and
+                                Time vs Error.
+                            </p>
                             <img width="400" height="auto" src="Lab5/ToFTrial1.png"></img>
                             <img width="400" height="auto" src="Lab5/MotorInputTrial1.png"></img>
                             <img width="400" height="auto" src="Lab5/ErrorTrial1.png"></img>
-                            <img width="400" height="auto" src="Lab5/DataPythonTrial1.png"></img>
+                            <p>The above graphs for the distance and error reading show that there is minimal 
+                                over shoot and the robot stops at the desired distance of 1ft away from the wall.
+                                The graph for Time vs Motor Input shows that the initial motor input is 58 and 
+                                decreases until a motor input of 40 is reached. The deadband for the motors is 40.
+                                Any value between 0.5 and 40 (forward) or -0.5 and -40 (backward) will be set to 40
+                                in order to produce a PWM value that causes the motors to move. I choose a lower bound 
+                                of 0.5 and -0.5 to prevent the robot from overly moving after reaching the final distance.
+                                The functions used to produce forward and backward motion were discussed previously in the 
+                                section for Proportional Control. When the robot stops the motor input changes to zero. 
+                            </p>
+                            <p>The maximum linear speed of the robot can be found using the Time vs ToF Distance graph. Using 
+                                two points on the graph it can be found that (1506mm - 707mm)/(36105ms - 38258ms) = 0.37m/s
+                            </p>
+                        <h4 class="mb-0">Testing Different Distances and Surfaces</h4> <!---------------------------------------->
+                            <p>In addition, I tested the PID control using different distances. The videos for each 
+                                distance can be found below:
+                            </p>
+                            <p>6.5 ft: Kp = 0.03, Ki = 0.000008, and Kd = 8</p>
+                            <iframe width="550" height="400" src="https://drive.google.com/file/d/1cnjdNX4rb1GZpWqJ6Z32lHd7pB-AA8MW/preview"></iframe>
+                            <p>9.5 ft: Kp = 0.03, Ki = 0.000008, and Kd = 8</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/fYHeH6zBsfo"></iframe>
-                            <iframe width="550" height="400" src="https://youtube.com.embed/Pf3wnHGp8JQ"></iframe>
+                            <p>13 ft: Kp = 0.03, Ki = 0.000008, and Kd = 8</p>
+                            <iframe width="550" height="400" src="https://youtube.com/embed/Pf3wnHGp8JQ"></iframe>
                             <iframe width="550" height="400" src="https://youtube.com/embed/bY9moI0BHbA"></iframe>
-                            <iframe width="550" height="400" src="https://youtube.com/embed/xd15OHNZmwM"></iframe>
-                            <iframe width="55" height="400" src="https://drive.google.com/file/d/1cnjdNX4rb1GZpWqJ6Z32lHd7pB-AA8MW/preview"></iframe>
-                            <iframe width="550" height="400" src="https://drive.google.com/file/d/1W-NLdBnwsm9ovzuZcmlFnZbAYHb3nCt_/preview"></iframe>
+                            <p>In the above videos it can be seen that the robot stops 1ft infront of the door, however 
+                                for the largest tested distance of 13ft there were some runs where the robot did not 
+                                go straight and instead curved towards the wall. This behavior can be seen 
+                                in the second 13ft video. To correct this behavior orientation control can be 
+                                implemented to keep the robot moving straight. 
+                            </p>
+                            <p>As a note, the PID control for the robot was tested on two different types of flooring
+                                as can be seen throughout the lab videos. The behavior of the robot on both surfaces 
+                                was the same using the PID control. One surface was tile the other was laminate wood 
+                                flooring.
+                            </p>
                         <h3 class="mb-0">Extrapolation</h3> <!------------------------------------------------------>
                         <h4 class="mb-0">Frequency of Returned ToF Data</h4> <!------------------------------------->
                             <p>As stated previously in the lab in the Range and Sampling Time Discussion section, The 
