@@ -138,7 +138,24 @@
                             </p>
                         <h4 class="mb-0">Range and Sampling Time Discussion</h4> <!--------------------------------->
                             <p>Consider the range and sampling time you choose for your TOF sensor; it may be worth lowering the accuracy for faster updates.</p>
-                            <p>Also note that the sensor has a programmable integration time. If this is set too high, you will see large jumps in your data as the robot drives and you can no longer assume that the measurements are independent. You can lower the integration time (trading off accuracy for speed)</p>
+                            <p>For this task I choose to use the long distance mode for the ToF sensor as I was testing 
+                                the robot for longer distances ranging from 6ft to 10ft and the range for the ToF sensor 
+                                when using the long mode is 4m (13.12ft). The ToF sensor error can be at most 4000mm. 
+                                To determine the sampling time of the ToF sensor I found the time between each new 
+                                distance measurement by temporarily adding the lines below to the code that runs when 
+                                the case to start the robot is called: 
+                            </p>
+                            <img width="500" height="auto" src="Lab5/"></img>
+                            <p>The sampling period was found to be 100ms, resulting in a sampling frequency of 
+                                (1/0.1s) = 10Hz for distance measurements. To find how fast the PID control loop is
+                                running I printed the value for dt that is calculated each time the PID loop runs:
+                            </p>
+                            <img width="500" height="auto" src="Lab5/"></img>
+                            <p>The PID loop runs at around 8ms. The PID loop is running faster than the ToF sensor 
+                                produces new distance readings. This will be explored later in the lab as the ToF
+                                sensor data will be extrapolated to use estimated data when there is no new ToF sensor
+                                distance measurement. 
+                            </p>
                         <h4 class="mb-0">Proportional Control (Kp)</h4> <!------------------------------------------>
                             <p>Given the range of motor input values and the output from your TOF sensor, discuss what a reasonable range of the proportional controller gain will be.</p>
                             <p>LOG DATA</p>
@@ -151,14 +168,18 @@
                             <p>TIME VS TOF GRAPHS</p>
                             <p>TIME VS MOTOR INPUT GRAPHS</p>
                             <p>VIDEOS: TILE, FAKE WOOD, CARPET</p> 
-                        <h4 class="mb-0">Integral Control (Ki)</h4> <!---------------------------------------------->
+                        <h4 class="mb-0">5000 Level Task: Integral Control (Ki) and Wind Up Protection</h4> <!------>
                         <h3 class="mb-0">Extrapolation</h3> <!------------------------------------------------------>
                         <h4 class="mb-0">Frequency of Returned ToF Data</h4> <!------------------------------------->
+                            <p>As stated previously in the lab in the Range and Sampling Time Discussion section, </p>
                         <h4 class="mb-0">Calculate PID Control Every Loop</h4> <!----------------------------------->
                         <h4 class="mb-0">Speed of PID Control Loop and ToF Sensor Rate</h4> <!---------------------->
+                            <p>As stated previously in the lab in the Range and Sampling Time Discussion section, </p>
                         <h4 class="mb-0">Extapolate Robot Distance From Past Data Readings</h4> <!------------------>
                         <h3 class="mb-0">5000 Level Task: Wind-Up Protection</h3> <!-------------------------------->
-                            <p>See above: Completed in the Position Control - Integral Control (Ki) Section.</p>
+                            <p>See above: Completed in the 5000 Level Task: Integral Control (Ki) and Wind Up 
+                                Protection Section.
+                            </p>
                         </div>
                     </div>
 <!-- Lab 5 References ---------------------------------------------------------------------------------------------->
