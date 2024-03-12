@@ -137,7 +137,6 @@
                                 surface. 
                             </p>
                         <h4 class="mb-0">Range and Sampling Time Discussion</h4> <!--------------------------------->
-                            <p>Consider the range and sampling time you choose for your TOF sensor; it may be worth lowering the accuracy for faster updates.</p>
                             <p>For this task I choose to use the long distance mode for the ToF sensor as I was testing 
                                 the robot for longer distances ranging from 6ft to 10ft and the range for the ToF sensor 
                                 when using the long mode is 4m (13.12ft). The ToF sensor error can be at most 4000mm. 
@@ -145,12 +144,12 @@
                                 distance measurement by temporarily adding the lines below to the code that runs when 
                                 the case to start the robot is called: 
                             </p>
-                            <img width="500" height="auto" src="Lab5/"></img>
+                            <img width="300" height="auto" src="Lab5/dtToF.png"></img>
                             <p>The sampling period was found to be 100ms, resulting in a sampling frequency of 
                                 (1/0.1s) = 10Hz for distance measurements. To find how fast the PID control loop is
                                 running I printed the value for dt that is calculated each time the PID loop runs:
                             </p>
-                            <img width="500" height="auto" src="Lab5/"></img>
+                            <img width="300" height="auto" src="Lab5/dtPID.png"></img>
                             <p>The PID loop runs at around 8ms. The PID loop is running faster than the ToF sensor 
                                 produces new distance readings. This will be explored later in the lab as the ToF
                                 sensor data will be extrapolated to use estimated data when there is no new ToF sensor
@@ -158,10 +157,16 @@
                             </p>
                         <h4 class="mb-0">Proportional Control (Kp)</h4> <!------------------------------------------>
                             <p>Given the range of motor input values and the output from your TOF sensor, discuss what a reasonable range of the proportional controller gain will be.</p>
-                            <p>LOG DATA</p>
-                            <p>DOCUMENTATION</p>
-                            <p>FREQUENCY</p>
-                            <p>DEADBAND</p>
+                            <p>The first control input I worked on was the Kp input for proportional control. I estimated 
+                                the value to be around 0.06899 by using the equation to solve for the PWM values. I wanted 
+                                to minimize overshoot, so to find the value for the error I subtracted the final desired 
+                                distance from the maximum error based on the ToF sensor readings. The equations used can 
+                                be found below:
+                            </p>
+                            <img width="400" height="auto" src="Lab5/"></img>
+                            <p>During the first physical testing of the system I tested a range of Kp values to determine 
+                                at what point the robot oscillated around 1ft. The graphs can be found below: 
+                            </p>
                         <h4 class="mb-0">Derivative Control (Kd)</h4> <!-------------------------------------------->
                             <p>DERIVATIVE LOW PASS FILTER</p>
                             <p>DERIVATIVE KICK</p>
