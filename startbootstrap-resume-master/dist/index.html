@@ -271,11 +271,11 @@
                             <p>For the next task I added the integral controller and inputed a Ki value. To start I set 
                                 Kd to zero and tested a value of Ki = 0.00001 and Kp = 0.03. This resulted in the robot 
                                 moving very fast into the wall. I then decided to decrease Ki until I found a value where 
-                                the robot would stop in front of the wall. For each value tested the robot ran into the wall.
+                                the robot would stop in front of the wall, but for each value tested the robot ran into the wall.
                                 I then implemented wind up protection for the integral control to prevent the robot from 
-                                running into the wall. The Arduino code that was added can be found below:
+                                overshooting and running into the wall. The Arduino code that was added can be found below:
                             </p>
-                            <img width="400" height="auto" src="Lab5/WindUpPIDLoop.png"></img>
+                            <img width="550" height="auto" src="Lab5/WindUpPIDLoop.png"></img>
                             <p>First a distance measurement is taken at the start of the robots motion to determine the 
                                 total distance the robot needs to move and an integralStop value is set to be half of 
                                 the total distance travelled. Each loop an if statement checks to see if the error is
@@ -285,8 +285,11 @@
                                 term used to find the PID control. In additon, if the error is smaller then the integralStop value 
                                 then the new integral value will be set to zero. The integral term is the Ki value multiplied by 
                                 the time integrated error. Without wind up protection the integral term will continuouslly increase 
-                                causing the robot to not stop when the final distance is reached.
+                                causing the robot to not stop when the final distance is reached. Below is a video showing the 
+                                KiIntegral (I) terms continuously increase until stopping at 100. The error term is not changing 
+                                significantly, but the KiIntegral (I) term continuously increases.
                             </p>
+                            <iframe width="550" height="400" src="https://drive.google.com/file/d/10gYKj6ty1lz-S9KOhv3S6ftvAakM4APg/preview"></iframe>
                             <p>
                                 After implementing wind up protection I found a Ki value that allows the robot to lightly run 
                                 into the wall before
@@ -312,13 +315,14 @@
                             <p>The data collected from the last trial can be found below. I included the printed array 
                                 of time, distance, PID values, and motor input to confirm that the data was collected properly.
                             </p>
-                            <img width="400" height="auto" src="Lab5/DataPythonTrial1.png"></img>
+                            <img width="600" height="auto" src="Lab5/DataPythonTrial1.png"></img>
                             <p>The three below graphs show the data for Time vs ToF Distance, Time vs Motor Input, and
                                 Time vs Error.
                             </p>
                             <img width="400" height="auto" src="Lab5/ToFTrial1.png"></img>
                             <img width="400" height="auto" src="Lab5/MotorInputTrial1.png"></img>
                             <img width="400" height="auto" src="Lab5/ErrorTrial1.png"></img>
+                            <p>Graph Analysis and Deadband:</p>
                             <p>The above graphs for the distance and error reading show that there is minimal 
                                 over shoot and the robot stops at the desired distance of 1ft away from the wall.
                                 The graph for Time vs Motor Input shows that the initial motor input is 58 and 
@@ -329,6 +333,7 @@
                                 The functions used to produce forward and backward motion were discussed previously in the 
                                 section for Proportional Control. When the robot stops the motor input changes to zero. 
                             </p>
+                            <p>Maximum Linear Speed:</p>
                             <p>The maximum linear speed of the robot can be found using the Time vs ToF Distance graph. Using 
                                 two points on the graph it can be found that (1506mm - 707mm)/(36105ms - 38258ms) = 0.37m/s
                             </p>
