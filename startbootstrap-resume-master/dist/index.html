@@ -131,6 +131,12 @@
                     <h2 class="mb-2.5">Lab Tasks</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
+                        <h3 class="mb-0">Final Code For While Loop And Added Functions</h3> <!---------------------->
+                            <a href="https://drive.google.com/file/d/1yutieharWMii1eGlPbHo_Mj2dyzWmLrR/preview">Lab 5 Full Code</a>
+                            <p>The above link has the full final version of the code used during the lab to collect 
+                                distance measurements, extrapolate distance measurements, and move/stop the robot. 
+                                The below steps show how and why I wrote each piece of the code. 
+                            </p>
                         <h3 class="mb-0">Position Control</h3> <!--------------------------------------------------->
                             <p>For the position control task the robot drives as fast as possible towards a wall and 
                                 stops when it is 1ft away from the wall. The ToF sensor on the front of the robot will 
@@ -333,14 +339,13 @@
                                 sampling period was found to be 100ms, resulting in a sampling frequency of 
                                 (1/0.1s) = 10Hz for distance measurements. 
                             </p>
-                        <h4 class="mb-0">Calculate PID Control Every Loop</h4> <!----------------------------------->
                         <h4 class="mb-0">Speed of PID Control Loop and ToF Sensor Rate</h4> <!---------------------->
                             <p>As stated previously in the lab in the Range and Sampling Time Discussion section, The 
                                 PID loop runs at around 8ms, which is faster than the ToF sensor produces new distance 
                                 readings. Extrapolation will be used to estimate the distance when new data is not 
                                 available using past ToF distance readings. 
                             </p>
-                        <h4 class="mb-0">Extapolate Robot Distance From Past Data Readings</h4> <!------------------>
+                        <h4 class="mb-0">Calculate PID Control Every Loop and Extapolate Robot Distance From Past Data Readings</h4> <!------------------>
                         <h3 class="mb-0">5000 Level Task: Wind-Up Protection</h3> <!-------------------------------->
                             <p>See above: Completed in the 5000 Level Task: Integral Control (Ki) and Wind Up 
                                 Protection Section.
