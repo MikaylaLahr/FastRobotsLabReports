@@ -102,7 +102,7 @@
                         <p>I also determined what data I wanted to store and send to Jupyter Notebook. Initially, I stored
                             time, two ToF distance values (one in millimeters and one in feet), the error value, the integral
                             value, the derivative value, and the PID value. Later in the lab I added and removed append 
-                            statements as necessary to depending on the task I was working on. The SEND_PID_DATA case sends time, 
+                            statements as necessary depending on the task I was working on. The SEND_PID_DATA case sends time, 
                             distance in millimeters, the error value, P value, I value, D value, PID value, and the motor input
                             value.
                         </p>
@@ -135,6 +135,7 @@
                             <a href="https://drive.google.com/file/d/1yutieharWMii1eGlPbHo_Mj2dyzWmLrR/preview">Lab 5 Full Code</a>
                             <p>The above link has the full final version of the code used during the lab to collect 
                                 distance measurements, extrapolate distance measurements, and move/stop the robot. 
+                                I attached the link for my own reference in the future.
                                 The below steps show how and why I wrote each piece of the code. 
                             </p>
                         <h3 class="mb-0">Position Control</h3> <!--------------------------------------------------->
@@ -152,12 +153,12 @@
                                 distance measurement by temporarily adding the lines below to the code that runs when 
                                 the case to start the robot is called: 
                             </p>
-                            <img width="300" height="auto" src="Lab5/dtToF.png"></img>
+                            <img width="350" height="auto" src="Lab5/dtToF.png"></img>
                             <p>The sampling period was found to be 100ms, resulting in a sampling frequency of 
                                 (1/0.1s) = 10Hz for distance measurements. To find how fast the PID control loop is
                                 running I printed the value for dt that is calculated each time the PID loop runs:
                             </p>
-                            <img width="200" height="auto" src="Lab5/dtPID.png"></img>
+                            <img width="350" height="auto" src="Lab5/dtPID.png"></img>
                             <p>The PID loop runs at around 8ms. The PID loop is running faster than the ToF sensor 
                                 produces new distance readings. This will be explored later in the lab as the ToF
                                 sensor data will be extrapolated to use estimated data when there is no new ToF sensor
@@ -165,15 +166,15 @@
                             </p>
                         <h4 class="mb-0">Proportional Control (Kp)</h4> <!------------------------------------------>
                             <p>The first control input I worked on was the Kp input for proportional control. I estimated 
-                                the value to be around 0.06899 by using the equation to solve for the PWM values. I wanted 
+                                the value to be around 0.06899 by using the below equation to solve for the PWM values. I wanted 
                                 to minimize overshoot, so to find the value for the error I subtracted the final desired 
                                 distance from the maximum error based on the ToF sensor readings. The equations used can 
                                 be found below:
                             </p>
-                            <img width="400" height="auto" src="Lab5/KpEquations.png"></img>
+                            <img width="350" height="auto" src="Lab5/KpEquations.png"></img>
                             <p>The initial loop used to find the PID value is:</p>
                             <img width="400" height="auto" src="Lab5/NewPIDInitialLoop.png"></img>
-                            <p>First the time differenc (dt) is found and then the error is calculated based on the current 
+                            <p>First the time difference (dt) is found and then the error is calculated based on the current 
                                 distance and desired stopping distance. After the error is calculated the integral and 
                                 derivative terms are solved for (both are 0 in this step). 
                                 These PID equations were also used during the next step to find the Kd value for derivative
@@ -181,7 +182,8 @@
                             </p>
                             <p>I used the calculated Kp value (0.06899) as an estimate. During the first physical testing of the system 
                                 I tested a range of Kp values to determine 
-                                at what point the robot oscillated around 1ft. I determined that the Kp value should be set 
+                                at what point the robot oscillated around 1ft in front of the wall. Two of these Kp values are found graphed
+                                below. I determined that the Kp value should be set 
                                 to 0.03 to minimize the error and oscillation present.
                                 The graphs showing Time vs ToF Distance, Time vs P Control, and Time vs Error 
                                 for Kp = 0.05 and Kp = 0.03 can be found below: 
@@ -200,19 +202,23 @@
                             <iframe width="550" height="400" src="https://youtube.com/embed/_73SAd107NA"></iframe>
                             <p>In the above videos it can be seen that for a value of Kp = 0.05 the robot moves faster 
                                 but overshoots and oscillates more, resulting in a greater error, compared to when Kp = 0.3. 
+                                Larger Kp values resulted in the robot moving faster and having more error in the final 
+                                position. Kp = 0.03 was the smallest value for Kp that resulted in the robot completing 
+                                the full motion.
                                 For this first task I 
                                 wanted to reduce oscillation, rather than achieve a faster speed and moved to the next 
                                 step using Kp = 0.03. I focused on achieving a faster speed when tuning the integral 
                                 Ki value, and prevented overshoot when tuning the derivative Kd value.
                             </p>
-                            <p>The robot is set to stop when the calculated error is less than 5mm. All pins are set
+                            <p>Stopping the Robot or Continuing Motion:</p>
+                            <p>The robot is set to stop when the calculated error is less than 5mm. All pins are then set
                                 to zero. If the error is not within the stopping range than the function FORWARD is
                                 called if the PID value is greater than zero, or the function BACKWARD is called if 
                                 the PID value is less than zero. The if statements and functions can be found below.
                             </p>
-                            <img width="500" height="auto" src="Lab5/StopOrContinue.png"></img>
-                            <img width="500" height="auto" src="Lab5/Forward.png"></img>
-                            <img width="500" height="auto" src="Lab5/Backward.png"></img>
+                            <img width="250" height="auto" src="Lab5/StopOrContinue.png"></img>
+                            <img width="350" height="auto" src="Lab5/Forward.png"></img>
+                            <img width="350" height="auto" src="Lab5/Backward.png"></img>
                             <p>For PID values greater than or equal to 40 and less than or equal to 255, the PID value is used as the input 
                                 PWM value for the motors. For values greater than 0.5 and less than 40 the input PWM value 
                                 is set to be 40, beacuse assigning values less than 40 would result in no motion of
@@ -224,7 +230,8 @@
                                 <a href="https://drive.google.com/file/d/1v-03PIDdVK9giT-E1sIs_6NjfWNxw-9e/preview">in this folder</a> 
                                 This approach was not used because when running the robot, I repeatedly entered into a Fault Handler. In a 
                                 first attempt to fix this problem I removed all code in the Arduino script that was 
-                                not being used for this lab, but that did not solve the Fault Handler issue. I then wrote the 
+                                not being used for this lab to reduce the size of the code, but that did not solve the 
+                                Fault Handler issue. I then wrote the 
                                 previously discussed functions to move the robot. 
                             </p>
                         <h4 class="mb-0">Derivative Control (Kd)</h4> <!-------------------------------------------->
