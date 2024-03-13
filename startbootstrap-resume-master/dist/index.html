@@ -84,13 +84,13 @@
                         <p>This equation uses the error e(t) (difference between the final desired value and the current
                             value) in proportional, integral, and derivative control to calculate the new PID input value u(t).
                             For this lab the error is the difference between the desired distance from the wall (1ft) 
-                            and the robots current distance from the wall. The calculated PID input value is the robots 
+                            and the robots current distance from the wall. The calculated PID input value is related to the robots 
                             speed. Proportional control multiplies a constant Kp by the error. Integral control multiplies 
                             a constant Ki by by the integral of the error over time. Derivative control multiplies a 
                             constant Kd by the rate of change of the error.
                         </p>
-                    <h3 class="mb-0">Send and Recieve Data Over Bluetooth</h3> <!----------------------------------->
-                        <p>During the Prelab, I determined how to send and recieve data over Bluetooth. Two Arduino IDE 
+                    <h3 class="mb-0">Send and Receive Data Over Bluetooth</h3> <!----------------------------------->
+                        <p>During the Prelab, I determined how to send and receive data over Bluetooth. Two Arduino IDE 
                             cases were initallized. The case PID_CASE starts and stops the PID controller and the case
                             SEND_PID_DATA sends the collected PID data to Jupyter Notebook. The PID controller starts 
                             when a command from Jupyter Notebook is run. The command inputs include a start(1)/stop(0)
@@ -123,7 +123,7 @@
                         <img width="550" height="auto" src="Lab5/PythonSendData.png"></img>
                         <img width="500" height="auto" src="Lab5/NewSendData.png"></img>
                         <p>In addition, a hard stop was implemented on the Artemis to stop the robot if the Bluetooth
-                            connection fails. The pin output values are all set to zero outside of the while (central.connected)
+                            connection fails. The pin output values are all set to zero outside of the while (central.connected())
                             loop. The code for this is inside the larger void loop() and is seen below (lines 465-469):
                         </p>
                         <img width="500" height="auto" src="Lab5/NewDisconnect.png"></img>
@@ -147,7 +147,7 @@
                             </p>
                         <h4 class="mb-0">Range and Sampling Time Discussion</h4> <!--------------------------------->
                             <p>For this task I choose to use the long distance mode for the ToF sensor as I was testing 
-                                the robot for longer distances ranging from 6ft to 10ft and the range for the ToF sensor 
+                                the robot for longer distances ranging from 6ft to 13ft and the range for the ToF sensor 
                                 when using the long mode is 4m (13.12ft). The ToF sensor error can be at most 4000mm. 
                                 To determine the sampling time of the ToF sensor I found the time between each new 
                                 distance measurement by temporarily adding the lines below to the code that runs when 
@@ -201,7 +201,7 @@
                             <p>Video for Kp = 0.03:</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/_73SAd107NA"></iframe>
                             <p>In the above videos it can be seen that for a value of Kp = 0.05 the robot moves faster 
-                                but overshoots and oscillates more, resulting in a greater error, compared to when Kp = 0.3. 
+                                but overshoots and oscillates more, resulting in a greater error, compared to when Kp = 0.03. 
                                 Larger Kp values resulted in the robot moving faster and having more error in the final 
                                 position. Kp = 0.03 was the smallest value for Kp that resulted in the robot completing 
                                 the full motion.
@@ -224,7 +224,7 @@
                             <img width="400" height="auto" src="Lab5/Backward.png"></img>
                             <p>For PID values greater than or equal to 40 and less than or equal to 255, the PID value is used as the input 
                                 PWM value for the motors. For values greater than 0.5 and less than 40 the input PWM value 
-                                is set to be 40, beacuse assigning values less than 40 would result in no motion of
+                                is set to be 40, because assigning values less than 40 would result in no motion of
                                 the robot. For values greater than 255, the PWM value is set to 255 as that is the maximum
                                 possible value for the motors.
                             </p>
@@ -284,7 +284,7 @@
                                 set Ki value is greater than 100 then there will be no further increase in the KiIntegral 
                                 term used to find the PID control. In additon, if the error is smaller then the integralStop value 
                                 then the new integral value will be set to zero. The integral term is the Ki value multiplied by 
-                                the time integrated error. Without wind up protection the integral term will continuouslly increase 
+                                the time integrated error. Without wind up protection the integral term will continuously increase 
                                 causing the robot to not stop when the final distance is reached. Below is a video showing the 
                                 KiIntegral (I) terms continuously increase until stopping at 100. The error term is not changing 
                                 significantly, but the KiIntegral (I) term continuously increases.
@@ -339,7 +339,7 @@
                             </p>
                         <h3 class="mb-0">Extrapolation</h3> <!------------------------------------------------------>
                         <h4 class="mb-0">Frequency of Returned ToF Data</h4> <!------------------------------------->
-                            <p>As stated previously in the lab in the Range and Sampling Time Discussion section, The 
+                            <p>As stated previously in the lab in the Range and Sampling Time Discussion section, the 
                                 sampling period was found to be 100ms, resulting in a sampling frequency of 
                                 (1/0.1s) = 10Hz for distance measurements. 
                             </p>
@@ -354,7 +354,7 @@
                                 using past data points. Below is the extrapolation equation:
                             </p>
                             <img width="300" height="auto" src="Lab5/ExtrapolateEquation.png"></img>
-                            <p>This equation was implemented in the Arduino code. An if statement checks is the ToF distance sensor 
+                            <p>This equation was implemented in the Arduino code. An if statement checks if the ToF distance sensor 
                                 has a new distance reading. If the sensor has a new distance reading then that point is added to 
                                 the distance_data array and the current time and distance are stored in time1 and dis1 variables. 
                                 The previous time and distance from the last time there was a new distance measurement are stored 
@@ -364,7 +364,7 @@
                             <img width="700" height="auto" src="Lab5/Extrapolate.png"></img>
                             <p>I outputted the raw data and extrapolated data to the serial monitor shown in the video below (units are mm). 
                                 The first printed value is the raw data and the second printed value is the extrapolated data. The
-                                video shows that the extrapolated data readjusts whenever a new raw distance value is recieved. 
+                                video shows that the extrapolated data readjusts whenever a new raw distance value is received. 
                             </p>
                             <iframe width="550" height="400" src="https://drive.google.com/file/d/1CmtYit7SdR9MK5A0gmJVgACQ_h2TSEbt/preview"></iframe>
                             <p>Below is a graph for the raw and extrapolated distances. The graph is zoomed in to show that the 
@@ -383,7 +383,7 @@
                             <p>13 ft: Kp = 0.03, Ki = 0.000008, and Kd = 8</p>
                             <iframe width="550" height="400" src="https://youtube.com/embed/Pf3wnHGp8JQ"></iframe>
                             <iframe width="550" height="400" src="https://youtube.com/embed/bY9moI0BHbA"></iframe>
-                            <p>In the above videos it can be seen that the robot stops 1ft infront of the door, however 
+                            <p>In the above videos it can be seen that the robot stops 1ft in front of the door, however 
                                 for the largest tested distance of 13ft there were some runs where the robot did not 
                                 go straight and instead curved towards the wall. This behavior can be seen 
                                 in the second 13ft video. To correct this behavior orientation control can be 
