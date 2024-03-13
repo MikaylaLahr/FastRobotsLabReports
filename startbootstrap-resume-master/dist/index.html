@@ -353,6 +353,7 @@
                             <p>Due to the ToF sensor running slower than the PID loop, extrapolation is used to estimate the distance
                                 using past data points. Below is the extrapolation equation:
                             </p>
+                            <img width="300" height="auto" src="Lab5/ExtrapolateEquation.png"></img>
                             <p>This equation was implemented in the Arduino code. An if statement checks is the ToF distance sensor 
                                 has a new distance reading. If the sensor has a new distance reading then that point is added to 
                                 the distance_data array and the current time and distance are stored in time1 and dis1 variables. 
@@ -360,14 +361,17 @@
                                 in the time2 and dis2 variables. If there is no new distance reading the extrapolation equation is 
                                 used as can be seen in line 395. The Arduino code for extrapolation is below:
                             </p>
+                            <img width="400" height="auto" src="Lab5/Extrapolate.png"></img>
                             <p>I outputted the raw data and extrapolated data to the serial monitor shown in the video below (units are mm). 
                                 The first printed value is the raw data and the second printed value is the extrapolated data. The
                                 video shows that the extrapolated data readjusts whenever a new raw distance value is recieved. 
                             </p>
+                            <iframe width="550" height="400" src="https://drive.google.com/file/d/1CmtYit7SdR9MK5A0gmJVgACQ_h2TSEbt/preview"></iframe>
                             <p>Below is a graph for the raw and extrapolated distances. The graph is zoomed in to show that the 
                                 extrapolated data (orange) readjusts to the raw data reading (blue) every time there is a new distance 
                                 measurement. In the next section I ran tests using the extrapolated data. 
                             </p>
+                            <img width="500" height="auto" src="Lab5/ExtrapolatedGraph.png"></img>
                         <h5 class="mb-0">Testing Different Distances and Surfaces</h5> <!---------------------------------------->
                             <p>In addition, I tested the extrapolated distance PID control using different starting distances. 
                                 The videos for each distance can be found below:
