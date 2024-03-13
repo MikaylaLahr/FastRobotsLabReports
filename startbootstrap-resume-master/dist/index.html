@@ -158,7 +158,7 @@
                                 (1/0.1s) = 10Hz for distance measurements. To find how fast the PID control loop is
                                 running I printed the value for dt that is calculated each time the PID loop runs:
                             </p>
-                            <img width="350" height="auto" src="Lab5/dtPID.png"></img>
+                            <img width="250" height="auto" src="Lab5/dtPID.png"></img>
                             <p>The PID loop runs at around 8ms. The PID loop is running faster than the ToF sensor 
                                 produces new distance readings. This will be explored later in the lab as the ToF
                                 sensor data will be extrapolated to use estimated data when there is no new ToF sensor
@@ -241,7 +241,7 @@
                                 a "0" value for run_PID_CASE in Jupyter Notebook. Sending a "0" causes the following if 
                                 statement in the while loop to set all pins to zero. 
                             </p>
-                            <img width="300" height="auto" src="Lab5/TurnOffManual.png"></img>
+                            <img width="200" height="auto" src="Lab5/TurnOffManual.png"></img>
                             <p>The final way that the robot stops is if the maximum value for the collected arrays is 
                                 reached, causing all pins to be set to zero and stopping the robot. This is to ensure
                                 that each time the robot runs I know if the maximum array size is reached.
