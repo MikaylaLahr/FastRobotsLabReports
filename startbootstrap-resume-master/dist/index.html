@@ -216,9 +216,12 @@
                                 called if the PID value is greater than zero, or the function BACKWARD is called if 
                                 the PID value is less than zero. The if statements and functions can be found below.
                             </p>
+                            <p>Stop when 1ft is reached or continue motion:</p>
                             <img width="250" height="auto" src="Lab5/StopOrContinue.png"></img>
+                            <p>Forward motion:</p>
                             <img width="350" height="auto" src="Lab5/Forward.png"></img>
-                            <img width="350" height="auto" src="Lab5/Backward.png"></img>
+                            <p>Backward motion:</p>
+                            <img width="400" height="auto" src="Lab5/Backward.png"></img>
                             <p>For PID values greater than or equal to 40 and less than or equal to 255, the PID value is used as the input 
                                 PWM value for the motors. For values greater than 0.5 and less than 40 the input PWM value 
                                 is set to be 40, beacuse assigning values less than 40 would result in no motion of
@@ -234,6 +237,16 @@
                                 Fault Handler issue. I then wrote the 
                                 previously discussed functions to move the robot. 
                             </p>
+                            <p>Another way to stop the robot are either intentionally stopping the robot by sending 
+                                a "0" value for run_PID_CASE in Jupyter Notebook. Sending a "0" causes the following if 
+                                statement in the while loop to set all pins to zero. 
+                            </p>
+                            <img width="300" height="auto" src="Lab5/TurnOffManual.png"></img>
+                            <p>The final way that the robot stops is if the maximum value for the collected arrays is 
+                                reached, causing all pins to be set to zero and stopping the robot. This is to ensure
+                                that each time the robot runs I know if the maximum array size is reached.
+                            </p>
+                            <img width="300" height="auto" src="Lab5/MaxDataStop.png"></img>
                         <h4 class="mb-0">Derivative Control (Kd)</h4> <!-------------------------------------------->
                             <p>The next task I worked on was tuning the Kd value using proportional control and 
                                 derivative control at the same time. I wanted to prevent overshoot and any oscillation 
