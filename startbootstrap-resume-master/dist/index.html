@@ -59,9 +59,14 @@
             <section class="resume-section" id="Lab 3">
                 <div class="resume-section-content">
                     <h2 class="mb-2.5">Lab 6: Orientation PID Control</h2>
+                    <p>The objective of the lab to to gain experience working with PID controllers for orientation. 
+                        I am a 5000 level student and I choose to work on a PID controller. Labs 5-8 detail PID, sensor 
+                        fusion, and stunts. This lab is focused on using a PID controller for orientation control of the 
+                        robot. The IMU will be used to control the yaw of the robot.
+                    </p>
 <!-- Lab 6 Prelab --------------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Prelab</h2>
-                    <p>The prelab involved reading about ...... The lab materials include: 
+                    <p>The lab materials include: 
                         <li><a href="https://www.sparkfun.com/products/15443">SparkFun RedBoard Artemis Nano</a></li>
                         <li><a href="https://www.amazon.com/SUMPK-Charging-Braided-Compatible-Samsung/dp/B09Z6J21LY/ref=sr_1_4?keywords=usb%2Bc%2Bto%2Bc&qid=1636380583&qsid=147-6677549-1776715&refinements=p_n_feature_ten_browse-bin%3A23555327011&rnid=23555276011&s=pc&sr=1-4&sres=B08D9SB161%2CB08R68T84N%2CB01CZVEUIE%2CB01FM51812%2CB07VCZV3R4%2CB075V68NVR%2CB075GMKZWW%2CB093BVBRJT%2CB09BBBJ33F%2CB09C2D9Z7T%2CB012V56D2A%2CB092CYFQMP%2CB081L4V3DN%2CB07Y6ZJT1D%2CB07Y2XKPX5%2CB07VPYJV8V%2CB07THJGZ9Z%2CB08W2TP2TT%2CB0744BKDRD%2CB07THFJ1J5&srpt=ELECTRONIC_CABLE&th=1">UCB-C to USB-C Cable</a></li>
                         <li><a href="https://www.mouser.com/ProductDetail/SparkFun/SEN-15335?qs=uwxL4vQweFMcls1MYZT00A%3D%3D">IMU Sensor</a></li>
@@ -72,6 +77,55 @@
                         <li><a href="https://www.amazon.com/URGENEX-Battery-Rechargeable-Quadcopter-Charger/dp/B08T9FB56F/ref=sr_1_3?keywords=lipo+battery+3.7V+850mah&qid=1639066404&sr=8-3">Li-Ion 3.7V 850mAh battery</a></li>
                         <li><a href="https://www.digikey.com/en/products/detail/pololu-corporation/2130/10450426">Dual Motor Drivers</a></li>
                     </p>
+                    <h3 class="mb-0">PID Control Explaination</h3> <!----------------------------------------------->
+                        <p>For this lab a PID controller will be used for orientation control of the robot. The below 
+                            equation from the course Lecture 7 is used to compute the value for the PID controller:
+                        </p>
+                        <img width="350" height="auto" src="Lab5/PIDEquation.png"></img>
+                        <p>This equation uses the error e(t) (difference between the final desired value and the current
+                            value) in proportional, integral, and derivative control to calculate the new PID input value u(t).
+                            For this lab the error is the difference between the desired angle (yaw)
+                            and the robots current angle (yaw). The calculated PID input value is related to the robots 
+                            angular speed. Proportional control multiplies a constant Kp by the error. Integral control multiplies 
+                            a constant Ki by by the integral of the error over time. Derivative control multiplies a 
+                            constant Kd by the rate of change of the error.
+                        </p>
+                    <h3 class="mb-0">Send and Receive Data Over Bluetooth</h3> <!----------------------------------->
+                        <p>For Lab 6 data was sent over Bluetooth in the same manner as the previous Lab 5.</p>
+                        <p>Three Arduino IDE 
+                            cases were initallized. The case ORIENTATION_CASE starts and stops the PID controller and the case
+                            SEND_ORIENTATION_DATA sends the collected PID data to Jupyter Notebook. 
+                            The PID controller starts 
+                            when a command from Jupyter Notebook is run. The command inputs include a start(1)/stop(0)
+                            value; the desired setAngle value to determine the desired angle;
+                            and the Kp, Ki, and Kd constant values. In Jupyter Notebook a notification handler similar 
+                            to the notification handler from Lab 1 is used to create the data array. The PID controller 
+                            stops when the first input value is set to zero.
+                        </p>
+                        <p>I also determined what data I wanted to store and send to Jupyter Notebook. I stored the
+                            time, yaw, error, proportional value, integral value, derivative value, PID value, right motor input,
+                            left motor input, and the setAngle value. 
+                        </p>
+                        <p>Below is the Jupyter Notebook Command and corresponding Arduino case to start/stop the PID 
+                            controller. The run_ORIENTATION_CASE, setAngle, Kp, Ki, and Kd values sent from Jupyter Notebook are 
+                            printed in the Arduino serial monitor each time a command is sent. These values were initalized 
+                            as global variables and will be used in the PID controller that is written in the main void loop(). 
+                            If a command to stop the robot is sent from Jupyter Notebook "Stopped Robot: " will also be 
+                            printed in the Arduino serial monitor. 
+                        </p>
+                        <img width="550" height="auto" src="Lab5/PythonStart.png"></img>
+                        <img width="400" height="auto" src="Lab5/PID_CASE.png"></img>
+                        <p>Below is the Jupyter Notebook Command and corresponding Arduino case to send the collected data.
+                            When data is sent the first time value is printed to the Arduino serial monitor to confirm that 
+                            data was sent to Jupyter Notebook correctly. The time value is compared to the first time value 
+                            in Jupyter Notebook.
+                        </p>
+                        <img width="550" height="auto" src="Lab5/PythonSendData.png"></img>
+                        <img width="500" height="auto" src="Lab5/NewSendData.png"></img>
+                        <p>The same hard stop used in Lab 5 is used in Lab 6 as well to stop the robot if Bluetooth 
+                            connection is lost.
+                        </p>
+                        <img width="500" height="auto" src="Lab5/NewDisconnect.png"></img>
 <!-- Lab 6 Lab Tasks ----------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Lab Tasks</h2>
                     <h3 class="mb-0">PID Input Signal</h3> <!------------------------------------------------------->
@@ -79,11 +133,16 @@
                     <h4 class="mb-0">Potential Problems With Digital Integration</h4> <!---------------------------->
                     <h4 class="mb-0">IMU Sensor Bias</h4> <!-------------------------------------------------------->
                     <h4 class="mb-0">Sensor Limitations and Maximum Rotational Velocity</h4> <!--------------------->
-                    <h3 class="mb-0">Derivative Term</h3> <!-------------------------------------------------------->
+                    <h3 class="mb-0">Orientation Control</h3> <!---------------------------------------------------->
+                    <h3 class="mb-0">Range and Sampling Time Discussion</h3> <!------------------------------------->
+                    <h3 class="mb-0">Proportional Control (Kp)</h3> <!---------------------------------------------->
+                    <h4 class="mb-0">Rotational Lower Limit PWM</h4> <!--------------------------------------------->
+                    <h3 class="mb-0">5000 Level Task: Integral Control (Ki) and Wind Up Protection</h3> <!---------->
+                    <h3 class="mb-0">Derivative Control (Kd)</h3> <!------------------------------------------------>
                     <h4 class="mb-0">Derivative Calculation</h4> <!------------------------------------------------->
                     <h4 class="mb-0">Derivative Kick and Changing Setpoint</h4> <!---------------------------------->
                     <h4 class="mb-0">Lowpass Filter</h4> <!--------------------------------------------------------->
-                    <h3 class="mb-0">Programming Implementation</h3> <!--------------------------------------------->
+                    <h3 class="mb-0">Full PID Control and Programming Implementation</h3> <!------------------------>
                     <h4 class="mb-0">Sending Bluetooth Commands While Controller Is Running</h4> <!----------------->
                     <h4 class="mb-0">Updating The Setpoint In Real Time</h4> <!------------------------------------->
                     <h4 class="mb-0">Controlling Orientation While Driving Forward And Backward</h4> <!------------->
