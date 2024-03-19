@@ -92,7 +92,7 @@
                         </p>
                     <h3 class="mb-0">Send and Receive Data Over Bluetooth</h3> <!----------------------------------->
                         <p>For Lab 6 data was sent over Bluetooth in the same manner as the previous Lab 5.</p>
-                        <p>Three Arduino IDE 
+                        <p>Two Arduino IDE 
                             cases were initallized. The case ORIENTATION_CASE starts and stops the PID controller and the case
                             SEND_ORIENTATION_DATA sends the collected PID data to Jupyter Notebook. 
                             The PID controller starts 
@@ -114,6 +114,7 @@
                             printed in the Arduino serial monitor. 
                         </p>
                         <img width="550" height="auto" src="Lab6/Code/PythonOriCase.png"></img>
+                        <hr>
                         <img width="400" height="auto" src="Lab6/Code/ArduinoOriCase.png"></img>
                         <p>Below is the Jupyter Notebook Command and corresponding Arduino case to send the collected data.
                             When data is sent the first time value is printed to the Arduino serial monitor to confirm that 
@@ -121,14 +122,15 @@
                             in Jupyter Notebook.
                         </p>
                         <img width="550" height="auto" src="Lab6/Code/PythonSendOriData.png"></img>
-                        <img width="500" height="auto" src="Lab6/Code/Lab6HardStop.png"></img>
+                        <hr>
+                        <img width="500" height="auto" src="Lab6/Code/ArduinoSendOriData.png"></img>
                         <p>The same hard stop used in Lab 5 is used in Lab 6 as well to stop the robot if Bluetooth 
                             connection is lost.
                         </p>
-                        <img width="500" height="auto" src="Lab6/Code/NewDisconnect.png"></img>
+                        <img width="300" height="auto" src="Lab6/Code/Lab6HardStop.png"></img>
 <!-- Lab 6 Lab Tasks ----------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Lab Tasks</h2>
-                    <h3 class="mb-0">Final Code For While Loop and Adden Functions</h3> <!-------------------------->
+                    <h3 class="mb-0">Final Code For While Loop and Added Functions</h3> <!-------------------------->
                     <p>The above link has the full final version of the code used during the lab to collect distance 
                         measurements, extrapolate distance measurements, and move/stop the robot. I attached the link 
                         for my own reference in the future. The below steps show how and why I wrote each piece of 
@@ -136,7 +138,16 @@
                     </p>
                     <h3 class="mb-0">PID Input Signal</h3> <!------------------------------------------------------->
                     <h4 class="mb-0">Integrate Gyroscope To Estimate Orientation</h4> <!---------------------------->
+                    <p>The gyroscope reading was integrated using the following lines of code:</p>
+                    <img width="450" height="auto" src="Lab6/Code/GyroInt.png"></img>
+                    <p>These lines of code are within the larger while loop and each time the while loop runs the 
+                        gyroscope updates the sensor readings. Yaw is then found using the previous yaw reading, the 
+                        gyroscope reading, and the calculated difference in time.
+                    </p>
                     <h4 class="mb-0">Potential Problems With Digital Integration</h4> <!---------------------------->
+                    <p>A potential problem with digital integration includes not having available data to properly 
+                        integrate. The if statement to read IMU data only runs when data is ready. 
+                    </p>
                     <h4 class="mb-0">IMU Sensor Bias</h4> <!-------------------------------------------------------->
                     <h4 class="mb-0">Sensor Limitations and Maximum Rotational Velocity</h4> <!--------------------->
                     <h3 class="mb-0">Orientation Control</h3> <!---------------------------------------------------->
