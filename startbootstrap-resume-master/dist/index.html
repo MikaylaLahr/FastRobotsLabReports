@@ -66,6 +66,17 @@
                     </p>
 <!-- Lab 6 Prelab --------------------------------------------------------------------------------------------------->
                     <h2 class="mb-2.5">Prelab</h2>
+                    <p>I replaced one of my motor drivers that was overheating due to some sauter touching between pins 
+                        after I had to reconnect a loose wire. The new motor driver and connections solved the issue.
+                    </p>
+                    <p>I considered using tape around the wheels to reduce friction with the ground, but decided that I
+                        did not want to change the surface of the wheels. During the lab I found the lower limit PWM value
+                        for turning and implemented the found value as a lower limit for the motor control functions. The 
+                        surface of the wheels is consistent with all past labs as I have previously found lower limit PWM
+                        values for forwards/backwards motion using both wheels and one wheel, starting from stationary and 
+                        moving at a constant speed for lowering the PWM. All of my found lower limit PWM values are for the 
+                        same wheel surface.
+                    </p>
                     <p>The lab materials include: 
                         <li><a href="https://www.sparkfun.com/products/15443">SparkFun RedBoard Artemis Nano</a></li>
                         <li><a href="https://www.amazon.com/SUMPK-Charging-Braided-Compatible-Samsung/dp/B09Z6J21LY/ref=sr_1_4?keywords=usb%2Bc%2Bto%2Bc&qid=1636380583&qsid=147-6677549-1776715&refinements=p_n_feature_ten_browse-bin%3A23555327011&rnid=23555276011&s=pc&sr=1-4&sres=B08D9SB161%2CB08R68T84N%2CB01CZVEUIE%2CB01FM51812%2CB07VCZV3R4%2CB075V68NVR%2CB075GMKZWW%2CB093BVBRJT%2CB09BBBJ33F%2CB09C2D9Z7T%2CB012V56D2A%2CB092CYFQMP%2CB081L4V3DN%2CB07Y6ZJT1D%2CB07Y2XKPX5%2CB07VPYJV8V%2CB07THJGZ9Z%2CB08W2TP2TT%2CB0744BKDRD%2CB07THFJ1J5&srpt=ELECTRONIC_CABLE&th=1">UCB-C to USB-C Cable</a></li>
@@ -151,11 +162,63 @@
                     <h4 class="mb-0">IMU Sensor Bias</h4> <!-------------------------------------------------------->
                     <h4 class="mb-0">Sensor Limitations and Maximum Rotational Velocity</h4> <!--------------------->
                     <h3 class="mb-0">Orientation Control</h3> <!---------------------------------------------------->
+                    <p>For the orientation control task the robot uses a PID controller and the calculated yaw angle 
+                        from the gyroscope readings to move towards and maintain the set angle. The implemented PID 
+                        controller works for various angles and on different floor surfaces.
+                    </p>
                     <h3 class="mb-0">Range and Sampling Time Discussion</h3> <!------------------------------------->
-                    <h3 class="mb-0">Proportional Control (Kp)</h3> <!---------------------------------------------->
-                    <h4 class="mb-0">Rotational Lower Limit PWM</h4> <!--------------------------------------------->
+                    <p>The calculated yaw error from the gyroscope sensor can be at most 360 degrees. To determine 
+                        the sampling time of the gyroscope readings I found the time between each new IMU measurement 
+                        by temporarily adding a Serial.print(dt_G); line to the if statement inside of the while loop.
+                        The sampling period was found to be 0.01ms, resulting in a sampling frequency of (1/0.00001s) 
+                        = 100,000Hz for IMU measurements. 
+                    </p>
+                    <p>To find how fast the PID control loop is running I temporarily adding a Serial.print(dt_O); line 
+                        inside of the while loop for the PID controller. The PID loop runs at around 0.01ms (1/0.00001s 
+                        = 100,000Hz). The PID loop is running at around the same speed as the gyroscope sensor readings. 
+                    </p>
+                    <h3 class="mb-0">Rotational Lower Limit PWM</h3> <!--------------------------------------------->
+                    <p>While I was initially testing the PID controller the lower limit PWM value was the same as the 
+                        lower limit value of 40 from the previous lab. Using a lower limit of 40 resulted in the robot 
+                        getting stuck and not fully turning. I created a new Arduino case and Jupyter Notebook command 
+                        to find the lower limit PWM for turning. The code is below:
+                    </p>
                         <img width="400" height="auto" src="Lab6/Code/PythonLL.png"></img>
+                        <hr>
                         <img width="400" height="auto" src="Lab6/Code/ArduinoLL.png"></img>
+                    <p>After testing various PWM values, I found that a lower limit value of 120 resulted in the robot 
+                        turning. A video of the robot at a PWM value of 120 is below:
+                    </p>
+                        <iframe width="550" height="400" src="https://youtube.com/embed/fgN8lZe4rXo"></iframe>
+                    <h3 class="mb-0">Arduino Code For Motor Control and Stopping</h3> <!---------------------------->
+                        <p>The robot is set to stop when the calculated error is less than 1 degree. All pins are then set
+                            to zero. If the error is not within the stopping range than the functions RIGHT_MOTOR and 
+                            LEFT_MOTOR are called. The if statements and functions can be found below.
+                        </p>
+                        <p>Stop when error is 1 degree or less or continue motion:</p>
+                            <img width="250" height="auto" src="Lab6/Code/StopOrContinue.png"></img>
+                            <p>Right Motor:</p>
+                            <img width="350" height="auto" src="Lab6/Code/RightMotor.png"></img>
+                            <p>Left Motor:</p>
+                            <img width="400" height="auto" src="Lab6/Code/LeftMotor.png"></img>
+                            <p>For PID values greater than or equal to 120 and less than or equal to 255, the PID value is used as the input 
+                                PWM value for the motors. For values greater than 0 and less than 120 the input PWM value 
+                                is set to be 120, because PWM values less than 120 result in no motion of
+                                the robot. For values greater than 255, the PWM value is set to 255 as that is the maximum
+                                possible value for the motors.
+                            </p>
+                            <p>The two other ways to stop the robot are the same as in Lab 5. 
+                                The first way is intentionally stopping the robot by sending 
+                                a "0" value for run_ORIENTATION_CASE in Jupyter Notebook. Sending a "0" causes the following if 
+                                statement in the while loop to set all pins to zero. 
+                            </p>
+                            <img width="200" height="auto" src="Lab6/Code/TurnOffManual.png"></img>
+                            <p>The second way that the robot stops is if the maximum value for the collected arrays is 
+                                reached, causing all pins to be set to zero and stopping the robot. This is to ensure
+                                that each time the robot runs I know if the maximum array size is reached.
+                            </p>
+                            <img width="300" height="auto" src="Lab6/Code/MaxDataStop.png"></img>
+                    <h3 class="mb-0">Proportional Control (Kp)</h3> <!---------------------------------------------->
                     <h4 class="mb-0">Testing Proportional Control Constant Kp Values</h4> <!------------------------>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1Error.png"></img>
