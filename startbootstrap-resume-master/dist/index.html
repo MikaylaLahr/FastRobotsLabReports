@@ -198,12 +198,12 @@
                     <p>The calculated yaw error from the gyroscope sensor can be at most 360 degrees. To determine 
                         the sampling time of the gyroscope readings I found the time between each new IMU measurement 
                         by temporarily adding a Serial.print(dt_G); line to the if statement inside of the while loop.
-                        The sampling period was found to be 0.01ms, resulting in a sampling frequency of (1/0.00001s) 
-                        = 100,000Hz for IMU measurements. 
+                        The sampling period was found to be 0.01s, resulting in a sampling frequency of (1/0.01s) = 100Hz 
+                        for IMU measurements. 
                     </p>
                     <p>To find how fast the PID control loop is running I temporarily adding a Serial.print(dt_O); line 
-                        inside of the while loop for the PID controller. The PID loop runs at around 0.01ms (1/0.00001s 
-                        = 100,000Hz). The PID loop is running at around the same speed as the gyroscope sensor readings. 
+                        inside of the while loop for the PID controller. The PID loop runs at around 0.01s (1/0.01s 
+                        = 100Hz). The PID loop is running at around the same speed as the gyroscope sensor readings. 
                     </p>
                     <h3 class="mb-0">Rotational Lower Limit PWM</h3> <!--------------------------------------------->
                     <p>While I was initially testing the PID controller the lower limit PWM value was the same as the 
