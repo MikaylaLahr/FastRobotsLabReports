@@ -157,10 +157,38 @@
                     </p>
                     <h4 class="mb-0">Potential Problems With Digital Integration</h4> <!---------------------------->
                     <p>A potential problem with digital integration includes not having available data to properly 
-                        integrate. The if statement to read IMU data only runs when data is ready. 
+                        integrate. The if statement to read IMU data only runs when data is ready. If data is not ready
+                        then the PID controller will not be using the most current angle available. If there is no ready 
+                        gyroscope data over time this might cause an issue. I observed the angle readings throughout the 
+                        lab procedure and did not notice any significant gaps in data for the yaw calculations.
+                        Another potential problem is gyroscope drift. If the IMU is continuously used the gyroscope 
+                        readings will drift away from the actual angle of the robots location. To address this issue,
+                        I set the initial yaw reading to zero every time I started using the PID controller.
                     </p>
                     <h4 class="mb-0">IMU Sensor Bias</h4> <!-------------------------------------------------------->
+                    <p>Potential IMU sensor bias includes the placement of the IMU on the robot. If one of the IMU 
+                        axis is not aligned with the center of the robot or if the IMU is not centered on the middle 
+                        axis, then the calculated angle from the gyroscope sensor reading may not align with the 
+                        physical location of the robot.
+                    </p>
+                    <p>I also checked to see if there was any numerical initial bias in the yaw calculations from 
+                        the gyroscope by printing yaw readings to the Serial Monitor. I did not observe any bias when 
+                        starting the PID controller.
+                    </p>
                     <h4 class="mb-0">Sensor Limitations and Maximum Rotational Velocity</h4> <!--------------------->
+                    <p>The gyroscope sensor has four selections for rotational velocity. The selections are (+/-)250,
+                        (+/-)500, (+/-)1000, and (+/-)2000 degrees per second. This information is from 
+                        <a href="https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/306/PIM448_Web.pdf">this datasheet</a>.
+                        Of the four potential configurations the settings of (+/-)500, (+/-)1000, and (+/-)2000 degrees 
+                        per second will work for the purposes of this lab. The maximum angle that could potentially be 
+                        used for robot motion control is 360 degrees, while smaller angles of 180 degress or less are 
+                        preferred. The gyroscope configuration of (+/-)500 will be used to ensure that all potential 
+                        gyroscope sensor data is collected.
+                    </p>
+                    <p>Other limitations of the sensor include being compatible with 3.3V or 5V, having 9 
+                        degrees of freedom, and the accelerometer has four configurations including (+/-)2g, (+/-)4g,
+                        (+/-)8g, and (+/-)16g. The accelerometer will not be used for this lab.
+                    </p>
                     <h3 class="mb-0">Orientation Control</h3> <!---------------------------------------------------->
                     <p>For the orientation control task the robot uses a PID controller and the calculated yaw angle 
                         from the gyroscope readings to move towards and maintain the set angle. The implemented PID 
@@ -193,10 +221,18 @@
                     <h3 class="mb-0">PID Control: Arduino Code</h3> <!---------------------------------------------->
                     <h4 class="mb-0">PID Control</h4> <!------------------------------------------------------------>
                     <p>The Arduino code for PID control is below:</p>
+                    <p>-------------------- INSERT CODE PICTURE ------------------------</p>
                     <p>Within the while loop if run_ORIENTATION_CASE is equal to 1, then the PID controller will run.
                         First the time is recorded and then data for the gyroscope is collected and yaw is found. The
                         error is the desired angle minus the yaw angle. The proportional control component is the error
-                        multiplied by Kp (within line 660). The integral control component is the 
+                        multiplied by Kp (within line 660). The integral control component is the error integrated over 
+                        time multiplied by Ki (lines 649 and 650). Wind up protection is used in lines 651-656. If the 
+                        value of the integral term multiplied by the set Ki value is greater than 200 then there will 
+                        be no further increase in the KiIntegral term used to find the value for the integral controller. 
+                        Without wind up protection the integral term will continuously increase causing the robot to not 
+                        stop when the final yaw angle is reached. The derivative control componenet is the rate of change 
+                        of the error multiplied by Kd (lines 658 and 659). The derivative controller uses a low pass filter
+                        and the gyroscope reading (gyrZ) as an input to reduce derivative kick when changing the setpoint.
                     </p>
                     <h4 class="mb-0">Motor Control and Stopping</h4> <!--------------------------------------------->
                     <p>The robot is set to stop when the calculated error is less than 1 degree. All pins are then set
@@ -227,7 +263,7 @@
                      </p>
                             <img width="300" height="auto" src="Lab6/Code/MaxDataStop.png"></img>
                     <h3 class="mb-0">Proportional Control (Kp)</h3> <!---------------------------------------------->
-                    <p>I started with testing the proportional control</p>
+                    <p>I started with testing the proportional controller</p>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1Error.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1PID.png"></img>
