@@ -190,36 +190,44 @@
                         turning. A video of the robot at a PWM value of 120 is below:
                     </p>
                         <iframe width="550" height="400" src="https://youtube.com/embed/fgN8lZe4rXo"></iframe>
-                    <h3 class="mb-0">Arduino Code For Motor Control and Stopping</h3> <!---------------------------->
-                        <p>The robot is set to stop when the calculated error is less than 1 degree. All pins are then set
-                            to zero. If the error is not within the stopping range than the functions RIGHT_MOTOR and 
-                            LEFT_MOTOR are called. The if statements and functions can be found below.
-                        </p>
-                        <p>Stop when error is 1 degree or less or continue motion:</p>
+                    <h3 class="mb-0">PID Control: Arduino Code</h3> <!---------------------------------------------->
+                    <h4 class="mb-0">PID Control</h4> <!------------------------------------------------------------>
+                    <p>The Arduino code for PID control is below:</p>
+                    <p>Within the while loop if run_ORIENTATION_CASE is equal to 1, then the PID controller will run.
+                        First the time is recorded and then data for the gyroscope is collected and yaw is found. The
+                        error is the desired angle minus the yaw angle. The proportional control component is the error
+                        multiplied by Kp (within line 660). The integral control component is the 
+                    </p>
+                    <h4 class="mb-0">Motor Control and Stopping</h4> <!--------------------------------------------->
+                    <p>The robot is set to stop when the calculated error is less than 1 degree. All pins are then set
+                        to zero. If the error is not within the stopping range than the functions RIGHT_MOTOR and 
+                        LEFT_MOTOR are called. The if statements and functions can be found below.
+                    </p>
+                    <p>Stop when error is 1 degree or less or continue motion:</p>
                             <img width="250" height="auto" src="Lab6/Code/StopOrContinue.png"></img>
                             <p>Right Motor:</p>
                             <img width="350" height="auto" src="Lab6/Code/RightMotor.png"></img>
                             <p>Left Motor:</p>
                             <img width="400" height="auto" src="Lab6/Code/LeftMotor.png"></img>
-                            <p>For PID values greater than or equal to 120 and less than or equal to 255, the PID value is used as the input 
-                                PWM value for the motors. For values greater than 0 and less than 120 the input PWM value 
-                                is set to be 120, because PWM values less than 120 result in no motion of
-                                the robot. For values greater than 255, the PWM value is set to 255 as that is the maximum
-                                possible value for the motors.
-                            </p>
-                            <p>The two other ways to stop the robot are the same as in Lab 5. 
-                                The first way is intentionally stopping the robot by sending 
-                                a "0" value for run_ORIENTATION_CASE in Jupyter Notebook. Sending a "0" causes the following if 
-                                statement in the while loop to set all pins to zero. 
-                            </p>
+                     <p>For PID values greater than or equal to 120 and less than or equal to 255, the PID value is used as the input 
+                        PWM value for the motors. For values greater than 0 and less than 120 the input PWM value 
+                        is set to be 120, because PWM values less than 120 result in no motion of
+                        the robot. For values greater than 255, the PWM value is set to 255 as that is the maximum
+                        possible value for the motors.
+                    </p>
+                    <p>The two other ways to stop the robot are the same as in Lab 5. 
+                        The first way is intentionally stopping the robot by sending 
+                        a "0" value for run_ORIENTATION_CASE in Jupyter Notebook. Sending a "0" causes the following if 
+                        statement in the while loop to set all pins to zero. 
+                    </p>
                             <img width="200" height="auto" src="Lab6/Code/TurnOffManual.png"></img>
-                            <p>The second way that the robot stops is if the maximum value for the collected arrays is 
-                                reached, causing all pins to be set to zero and stopping the robot. This is to ensure
-                                that each time the robot runs I know if the maximum array size is reached.
-                            </p>
+                     <p>The second way that the robot stops is if the maximum value for the collected arrays is 
+                         reached, causing all pins to be set to zero and stopping the robot. This is to ensure
+                         that each time the robot runs I know if the maximum array size is reached.
+                     </p>
                             <img width="300" height="auto" src="Lab6/Code/MaxDataStop.png"></img>
                     <h3 class="mb-0">Proportional Control (Kp)</h3> <!---------------------------------------------->
-                    <h4 class="mb-0">Testing Proportional Control Constant Kp Values</h4> <!------------------------>
+                    <p>I started with testing the proportional control</p>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1Error.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1PID.png"></img>
