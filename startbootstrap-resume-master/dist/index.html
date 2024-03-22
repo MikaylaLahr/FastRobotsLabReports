@@ -423,20 +423,41 @@
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.08PID.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.08Motor.png"></img>
                     <hr>
-                    <p>I choose a final value of Kd = 0.05 </p>
+                    <p>I choose a final value of Kd = 0.05 as the robot did not overshoot the desired angle of 
+                        180 degrees.
+                    </p>
                     <p>--------------- INSERT VIDEO OF KP = 2 KI = 0.05 AND KD = 0.05 ---------------------</p>
-                    <p>-------------------- INSERT VIDEO OF WIND UP --------------------------</p>
                     <h3 class="mb-0">Full PID Control and Programming Implementation</h3> <!------------------------>
+                    <h4 class="mb-0">Sending Bluetooth Commands And Updating The Setpoint In Real Time</h4> <!------>
+                    <p>After tuning the PID controller I tested changing the setpoint (desired angle) while the 
+                        controller was running and recording data for multiple changed angles. During the first few attempts 
+                        the data was not entirely recorded correctly as can be seen in the below graphs. 
+                    </p>
                         <img width="400" height="auto" src="Lab6/ChangeAngle/FullsetAngle.png"></img>
                         <img width="400" height="auto" src="Lab6/ChangeAngle/FullYaw.png"></img>
                         <img width="400" height="auto" src="Lab6/ChangeAngle/FullError.png"></img>
                         <img width="400" height="auto" src="Lab6/ChangeAngle/FullPID.png"></img>
                         <img width="400" height="auto" src="Lab6/ChangeAngle/FullMotor.png"></img>
-                    <h4 class="mb-0">Sending Bluetooth Commands While Controller Is Running</h4> <!----------------->
-                    <h4 class="mb-0">Updating The Setpoint In Real Time</h4> <!------------------------------------->
+                    <p>I realized that
+                        whenever I changed the angle the array indices changed for recording yaw. To address this issue I 
+                        added another if statement in the Arduino case ORIENTATION_CASE that allowed me to control when to 
+                        set yaw to zero and when to set the initial indicies for the array's to one. The changed and added 
+                        code can be found below.
+                    </p>
+                     <img width="400" height="auto" src="Lab6/ChangeAngle/YawZero.png"></img>
+                    <p>The example below shows a change of 60 degrees to 90 degrees: </p>
+                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullsetAngle.png"></img>
+                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullYaw.png"></img>
+                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullError.png"></img>
+                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullPID.png"></img>
+                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullMotor.png"></img>
+                    <h4 class="mb-0">5000 Level Task: Wind Up Protection</h4> <!------------------------------------>
+                    <p>Using the full PID controller wind up protection, as described earlier, can be observed in the 
+                        videos below.
+                    </p>
                     <h4 class="mb-0">Controlling Orientation While Driving Forward And Backward</h4> <!------------->
                     <h3 class="mb-0">5000 Level Task: Wind Up Protection</h3> <!------------------------------------>
-                    <p>See above: Completed in the 5000 Level Task: Integral Control (Ki) and Wind Up Protection section.</p>
+                    <p>See above: Completed previously.</p>
 <!-- Lab 6 References ---------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab 6 References</h2>
                 <p>Thank you to all of the TAs that answered my questions. I referenced the past lab reports of 
