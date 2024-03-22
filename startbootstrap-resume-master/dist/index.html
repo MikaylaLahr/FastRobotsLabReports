@@ -459,6 +459,12 @@
                         <img width="400" height="auto" src="Lab6/ChangeAngle/FullCorrect_PID.png"></img>
                         <img width="400" height="auto" src="Lab6/ChangeAngle/FullCorrect_MotorInput.png"></img>
                     <p>I was able to record data for multiple angle changes.</p>
+                    <p>For future navigation and stunts, I might need to change the setpoint in real time depending on the 
+                        desired task. For this lab chnaging the setpoint was done through Jupyter Notebook, but changing
+                        the setpoint could also be done throught a series of if statements in Arduino IDE. Changing the
+                        setpoint may be beneficial during navigation along with using data from the ToF sensor readings to 
+                        navigate through the course. 
+                    </p>
                     <h4 class="mb-0">5000 Level Task: Wind Up Protection</h4> <!------------------------------------>
                     <p>Using the full PID controller with wind up protection, as described earlier, can be observed in the 
                         videos below.
@@ -474,6 +480,15 @@
                     </p>
                         <iframe width="550" height="400" src="https://drive.google.com/file/d/1JDlj8oD0mJJXp2D0nEhMRXEieSbcybDZ/preview"></iframe>
                     <h4 class="mb-0">Controlling Orientation While Driving Forward And Backward</h4> <!------------->
+                    <p>The robots orientation can be controlled while driving by altering the Arduino IDE code from the
+                        previous Lab 5 for the functions FORWARD and BACKWARD. As the robot drives either forward or
+                        backward the desired yaw angle will be set to zero. If the yaw angle changes from zero the PID
+                        controller will be used to increase the PWM of one wheel side and decrease the speed of the 
+                        other wheel side in order to keep the robot moving straight. For longer runs the gyroscope 
+                        drift may be needed to accounted for. In the below video the yaw drifts from 0.01 to -8.72 degrees
+                        over (27.299 - 04.300) = 22.999 seconds. Which is around -0.3796 degrees per second.
+                    </p>
+                        <iframe width="550" height="400" src="https://drive.google.com/file/d/1paUwO8N0_7Zn2XfJBxYX78Tvz3mmAaPN/preview"></iframe>
                     <h3 class="mb-0">5000 Level Task: Wind Up Protection</h3> <!------------------------------------>
                     <p>See above: Completed previously.</p>
 <!-- Lab 6 References ---------------------------------------------------------------------------------------------->
