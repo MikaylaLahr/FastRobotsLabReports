@@ -150,7 +150,7 @@
                     <h3 class="mb-0">PID Input Signal</h3> <!------------------------------------------------------->
                     <h4 class="mb-0">Integrate Gyroscope To Estimate Orientation</h4> <!---------------------------->
                     <p>The gyroscope reading was integrated using the following lines of code:</p>
-                    <img width="450" height="auto" src="Lab6/Code/GyroInt.png"></img>
+                    <img width="550" height="auto" src="Lab6/Code/GyroInt.png"></img>
                     <p>These lines of code are within the larger while loop and each time the while loop runs the 
                         gyroscope updates the sensor readings. Yaw is then found using the previous yaw reading, the 
                         gyroscope reading, and the calculated difference in time.
@@ -211,7 +211,7 @@
                         getting stuck and not fully turning. I created a new Arduino case and Jupyter Notebook command 
                         to find the lower limit PWM for turning. The code is below:
                     </p>
-                        <img width="400" height="auto" src="Lab6/Code/PythonLL.png"></img>
+                        <img width="450" height="auto" src="Lab6/Code/PythonLL.png"></img>
                         <hr>
                         <img width="400" height="auto" src="Lab6/Code/ArduinoLL.png"></img>
                     <p>After testing various PWM values, I found that a lower limit value of 120 resulted in the robot 
@@ -221,7 +221,7 @@
                     <h3 class="mb-0">PID Control: Arduino Code</h3> <!---------------------------------------------->
                     <h4 class="mb-0">PID Control</h4> <!------------------------------------------------------------>
                     <p>The Arduino code for PID control is below:</p>
-                    <img width="400" height="auto" src="Lab6/Code/PID_Control.png"></img>
+                    <img width="500" height="auto" src="Lab6/Code/PID_Control.png"></img>
                     <p>Within the while loop if run_ORIENTATION_CASE is equal to 1, then the PID controller will run.
                         First the time is recorded and then data for the gyroscope is collected and yaw is found. The
                         error is the desired angle minus the yaw angle. The proportional control component is the error
@@ -243,9 +243,9 @@
                         LEFT_MOTOR are called. The if statements and functions can be found below.
                     </p>
                     <p>Stop when error is 1 degree or less or continue motion:</p>
-                            <img width="250" height="auto" src="Lab6/Code/StopOrContinue.png"></img>
+                            <img width="300" height="auto" src="Lab6/Code/StopOrContinue.png"></img>
                             <p>Right Motor:</p>
-                            <img width="350" height="auto" src="Lab6/Code/RightMotor.png"></img>
+                            <img width="400" height="auto" src="Lab6/Code/RightMotor.png"></img>
                             <p>Left Motor:</p>
                             <img width="400" height="auto" src="Lab6/Code/LeftMotor.png"></img>
                      <p>For PID values greater than or equal to 120 and less than or equal to 255, the PID value is used as the input 
@@ -259,7 +259,7 @@
                         a "0" value for run_ORIENTATION_CASE in Jupyter Notebook. Sending a "0" causes the following if 
                         statement in the while loop to set all pins to zero. 
                     </p>
-                            <img width="200" height="auto" src="Lab6/Code/TurnOffManual.png"></img>
+                            <img width="300" height="auto" src="Lab6/Code/TurnOffManual.png"></img>
                      <p>The second way that the robot stops is if the maximum value for the collected arrays is 
                          reached, causing all pins to be set to zero and stopping the robot. This is to ensure
                          that each time the robot runs I know if the maximum array size is reached.
@@ -271,7 +271,7 @@
                         controller. I estimated the Kp constant to be 1.4167 when testing 180 degrees. The equations 
                         are found below:
                     </p>
-                    <img width="300" height="auto" src="Lab6/Code/MaxDataStop.png"></img>
+                    <img width="300" height="auto" src="Lab6/Code/KpEquation.png"></img>
                     <p>During physical testing I wanted the proportional control to slightly over shoot the desired 
                         angle. The over shoot will be addressed using derivative control and the speed will be 
                         addressed using integral control. A range of Kp values including 1, 1.5, 1.75, and 2
@@ -450,7 +450,7 @@
                         set yaw to zero and when to set the initial indicies for the array's to one. The changed and added 
                         code can be found below.
                     </p>
-                     <img width="400" height="auto" src="Lab6/ChangeAngle/YawZero.png"></img>
+                     <img width="400" height="auto" src="Lab6/Code/YawZero.png"></img>
                     <p>The example below shows a change of 60 degrees to 90 degrees: </p>
                         <img width="400" height="auto" src="Lab6/ChangeAngle/FullCorrect_setAngle.png"></img>
                         <img width="400" height="auto" src="Lab6/ChangeAngle/FullCorrect_Yaw.png"></img>
@@ -471,7 +471,7 @@
                         able to reach the desired angle. Below is a video showing the serial monitor outputs for the 
                         wind up protection.
                     </p>
-                        <iframe width="550" height="400" src="https://youtube.com/shorts/CtGGK-B6OGY"></iframe>
+                        <iframe width="550" height="400" src="https://youtube.com/embed/shorts/CtGGK-B6OGY"></iframe>
                     <h4 class="mb-0">Controlling Orientation While Driving Forward And Backward</h4> <!------------->
                     <h3 class="mb-0">5000 Level Task: Wind Up Protection</h3> <!------------------------------------>
                     <p>See above: Completed previously.</p>
