@@ -309,7 +309,7 @@
                         takes to reach the desired angle decreases, but there is also more overshoot observed. As the 
                         value of Kp increases the motor input spends less time at the lower limit value of 120. For 
                         example, it is noticeably observed that for Kp = 1 the motor quickly reach the input value of 120 
-                        and remain at that value until the desired angle is reached. For Kp = 2 the motors start at the 
+                        and remains at that value until the desired angle is reached. For Kp = 2 the motors start at the 
                         upper bound of 255 and then decrease to the lower limit of 120 before reaching 180 degrees. I 
                         choose a value of Kp = 2 to then move to testing the proportional and integral controllers 
                         together.
@@ -318,10 +318,10 @@
                     <p>The next step involved using the proportional controller (with Kp = 2) and the integral controller 
                         to increase the speed of rotation and to achieve a small amount of oscillation at the desired angle. 
                         The integral controller is the constant Ki multiplied by integrated error over time. As time increases
-                        the integrated error increases, resulting in a greater contribution of the intgral controller. To 
+                        the integrated error increases, resulting in a greater contribution of the integral controller. To 
                         prevent the integral controller component from increasing continuously, wind up protection was 
                         implemented. If the value of Ki mulitplied by the time integrated error is greater than 200 or less
-                        then -200, then the KiIntegral is set to be 200 or -200 and does not further increase. The code for 
+                        then -200, then the KiIntegral is set to be 200 or -200 and does not further increase/decrease. The code for 
                         the proportional and integral controller is below.
                         <script src="https://gist.github.com/MikaylaLahr/7ed7019acdbd640b36c86cd33689b522.js"></script>
                     </p>
@@ -378,7 +378,7 @@
                         changed how the derivative control component was calculated. I used the information on 
                         <a href="http://brettbeauregard.com/blog/2011/04/improving-the-beginner%E2%80%99s-pid-derivative-kick/">this website</a>.
                         Instead of calculating the derivative of a signal using the integral of another signal, I 
-                        calculated the derivative using the Z output of the gyroscope using the follwoing code:
+                        calculated the derivative using the Z output of the gyroscope using the following code:
                         <script src="https://gist.github.com/MikaylaLahr/dbbfdbec5d0681798f347a19877280f9.js"></script>
                         This resulted in the large spike being removed, but there was still some noise in the derivative 
                         controller as can be seen in the plotted graph for Kd = 0.08 below:
@@ -429,6 +429,7 @@
                     </p>
                     <p>Below is a video of the robot turning +180 degrees at Kp = 2, Ki = 0.05, and Kd = 0.05:</p>
                         <iframe width="550" height="400" src="https://youtube.com/embed/6YijdDLohiI"></iframe>
+                    <h4 class="mb-0">More Videos</h4> <!------------------------------------------------------------>
                     <p>Below is a video of the robot at 0 degrees:</p>
                         <iframe width="550" height="400" src="https://youtube.com/embed/i6WjCm1ocCw"></iframe>
                     <p>I also tested negative angles. Below is a video of the robot turning -90 degrees:</p>
@@ -459,13 +460,13 @@
                         <img width="400" height="auto" src="Lab6/ChangeAngle/FullCorrect_MotorInput.png"></img>
                     <p>I was able to record data for multiple angle changes.</p>
                     <p>For future navigation and stunts, I might need to change the setpoint in real time depending on the 
-                        desired task. For this lab chnaging the setpoint was done through Jupyter Notebook, but changing
-                        the setpoint could also be done throught a series of if statements in Arduino IDE. Changing the
+                        desired task. For this lab changing the setpoint was done through Jupyter Notebook, but changing
+                        the setpoint could also be done through a series of if statements in Arduino IDE. Changing the
                         setpoint may be beneficial during navigation along with using data from the ToF sensor readings to 
                         navigate through the course. 
                     </p>
                     <h4 class="mb-0">5000 Level Task: Wind Up Protection</h4> <!------------------------------------>
-                    <p>Using the full PID controller with wind up protection, as described earlier, can be observed in the 
+                    <p>The full PID controller with wind up protection, as described earlier, can be observed in the 
                         videos below.
                     </p>
                     <p>Robot turning +90 degrees on carpet:</p>
@@ -475,7 +476,8 @@
                     <p>The PID controller works on multiple surfaces when maintaining an angle. When turning towards 
                         an angle there is slightly more delay compared to on a flat surface, but the robot is still 
                         able to reach the desired angle. Below is a video showing the serial monitor outputs for the 
-                        wind up protection.
+                        wind up protection. In the video the KiIntegral term increases over time until reaching 200
+                        and then does not further increase.
                     </p>
                         <iframe width="550" height="400" src="https://drive.google.com/file/d/1JDlj8oD0mJJXp2D0nEhMRXEieSbcybDZ/preview"></iframe>
                     <h4 class="mb-0">Controlling Orientation While Driving Forward And Backward</h4> <!------------->
