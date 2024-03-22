@@ -206,7 +206,7 @@
                         = 100Hz). The PID loop is running at around the same speed as the gyroscope sensor readings. 
                     </p>
                     <h3 class="mb-0">Rotational Lower Limit PWM</h3> <!--------------------------------------------->
-                    <p>While I was initially testing the PID controller the lower limit PWM value was the same as the 
+                    <p>While I was initially testing the PID controller the lower limit PWM value was set to the same as the 
                         lower limit value of 40 from the previous lab. Using a lower limit of 40 resulted in the robot 
                         getting stuck and not fully turning. I created a new Arduino case and Jupyter Notebook command 
                         to find the lower limit PWM for turning. The code is below:
@@ -221,7 +221,7 @@
                     <h3 class="mb-0">PID Control: Arduino Code</h3> <!---------------------------------------------->
                     <h4 class="mb-0">PID Control</h4> <!------------------------------------------------------------>
                     <p>The Arduino code for PID control is below:</p>
-                    <p>-------------------- INSERT CODE PICTURE ------------------------</p>
+                    <img width="400" height="auto" src="Lab6/Code/PID_Control.png"></img>
                     <p>Within the while loop if run_ORIENTATION_CASE is equal to 1, then the PID controller will run.
                         First the time is recorded and then data for the gyroscope is collected and yaw is found. The
                         error is the desired angle minus the yaw angle. The proportional control component is the error
@@ -233,6 +233,9 @@
                         stop when the final yaw angle is reached. The derivative control componenet is the rate of change 
                         of the error multiplied by Kd (lines 658 and 659). The derivative controller uses a low pass filter
                         and the gyroscope reading (gyrZ) as an input to reduce derivative kick when changing the setpoint.
+                    </p>
+                    <p>The PID controller works for both positive and negative angles. Inputs of positive angles turn the  
+                        robot counter clockwise. Inputs of negative angles turn the robot clockwise.
                     </p>
                     <h4 class="mb-0">Motor Control and Stopping</h4> <!--------------------------------------------->
                     <p>The robot is set to stop when the calculated error is less than 1 degree. All pins are then set
@@ -263,52 +266,106 @@
                      </p>
                             <img width="300" height="auto" src="Lab6/Code/MaxDataStop.png"></img>
                     <h3 class="mb-0">Proportional Control (Kp)</h3> <!---------------------------------------------->
-                    <p>I started with testing the proportional controller</p>
+                    <p>I started with testing the proportional controller. I worked on finding a value for Kp, while 
+                        keeping Ki and Kd zero. I choose an angle of 180 degrees to start testing the proportional 
+                        controller. I estimated the Kp constant to be 1.4167 when testing 180 degrees. The equations 
+                        are found below:
+                    </p>
+                    <img width="300" height="auto" src="Lab6/Code/MaxDataStop.png"></img>
+                    <p>During physical testing I wanted the proportional control to slightly over shoot the desired 
+                        angle. The over shoot will be addressed using derivative control and the speed will be 
+                        addressed using integral control. A range of Kp values including 1, 1.5, 1.75, and 2
+                        were tested as can be seen in the below
+                        graphs showing yaw, error, PID components, and motor input. I determined that the Kp value 
+                        should be 2. 
+                    </p>
+                    <hr>
+                    <p>Graphs for Kp = 1:</p>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1Error.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1PID.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1Motor.png"></img>
                     <hr>
+                    <p>Graphs for Kp = 1.5:</p>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1.5Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1.5Error.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1.5PID.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1.5Motor.png"></img> 
                     <hr>
-                        <img width="400" height="auto" src="Lab6/Kp/Kp1Yaw.png"></img>
-                        <img width="400" height="auto" src="Lab6/Kp/Kp1Error.png"></img>
-                        <img width="400" height="auto" src="Lab6/Kp/Kp1PID.png"></img>
-                        <img width="400" height="auto" src="Lab6/Kp/Kp1Motor.png"></img>
-                    <hr>
+                    <p>Graphs for Kp = 1.75:</p>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1.75Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1.75Error.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1.75PID.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp1.75Motor.png"></img>
                     <hr>
+                    <p>Graphs for Kp = 2:</p>
                         <img width="400" height="auto" src="Lab6/Kp/Kp2Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp2Error.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp2PID.png"></img>
                         <img width="400" height="auto" src="Lab6/Kp/Kp2Motor.png"></img>
+                    <hr>
+                    <p>Trends that can be observed include, as the value for Kp increases the amount of time the robot 
+                        takes to reach the desired angle decreases, but there is also more overshoot observed. As the 
+                        value of Kp increases the motor input spends less time at the lower limit value of 120. For 
+                        example, it is noticable observed that for Kp = 1 the motor quickly reach the input value of 120 
+                        and remain at that value until the desired angle is reached. For Kp = 2 the motors start at the 
+                        upper bound of 255 and then decrease to the lower limit of 120 before reaching 180 degrees. I 
+                        choose a value of Kp = 2 to then move to testing the proportional and integral controllers 
+                        together.
+                    </p>
+                        <p>-------------------- INSERT VIDEO OF KP = 2 --------------------------</p>
                     <h3 class="mb-0">5000 Level Task: Integral Control (Ki) and Wind Up Protection</h3> <!---------->
+                    <p>The next step involved using the proportional controller (with Kp = 2) and the integral controller 
+                        to increase the speed of rotation and to achieve a small amount of oscillation at the desired angle. 
+                        The integral controller is the constant Ki multiplied by integrated error over time. As time increases
+                        the integrated error increases, resulting in a greater contribution of the intgral controller. To 
+                        prevent the integral controller component from increasing continuously, wind up protection was 
+                        implemented. If the value of Ki mulitplied by the time integrated error is greater than 200 or less
+                        then -200, then the KiIntegral is set to be 200 or -200 and does not further increase.
+                    </p>
+                    <p>Below are graphs for the tested values for Kp and Ki.</p>
+                    <hr>
+                    <p>Graphs for Kp = 2 and Ki = 0.01:</p>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.01Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.01Error.png"></img>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.01PID.png"></img>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.01Motor.png"></img>
                     <hr>
+                    <p>Graphs for Kp = 2 and Ki = 0.05:</p>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.05Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.05Error.png"></img>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.05PID.png"></img>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.05Motor.png"></img>
                     <hr>
+                    <p>Graphs for Kp = 2 and Ki = 0.1:</p>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.1Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.1Error.png"></img>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.1PID.png"></img>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.1Motor.png"></img>
                     <hr>
+                    <p>Graphs for Kp = 2 and Ki = 0.2:</p>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.2Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.2Error.png"></img>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.2PID.png"></img>
                         <img width="400" height="auto" src="Lab6/Ki/Ki0.2Motor.png"></img>
+                    <hr>
+                    <p>Trends that can be observed include, as the value for Ki increases the amount of oscillation 
+                        and overshoot of the robot at the desired angle increases. The motor input for all tested 
+                        values starts at the maximum of 255 before decreasing to a value of 120 before reaching the 
+                        desired angle. For a value of Ki = 0.01 there is minimal overshoot and oscillation and a value
+                        of Ki = 0.05 also results in minimal overshoot but slightly more oscillation. For Ki = 0.1
+                        there is more oscillation before reaching the desired angle and for Ki = 0.2 the oscillation 
+                        continues for a longer amount of time. I choose a value of Ki = 0.05 to move on to testing 
+                        the proportional, integral, and derivative controllers together.
+                    </p>
+                    <p>-------------------- INSERT VIDEO OF KP = 2 AND KI = 0.05 --------------------------</p>
                     <h3 class="mb-0">Derivative Control (Kd)</h3> <!------------------------------------------------>
+                    <p>The next step involved finding the value for the derivative constant Kd to remove overshoot at 
+                        180 degrees. I initially calculated the derivative using the following code (line 15):
+                        <script src="https://gist.github.com/MikaylaLahr/450552507b65d2188a40356e65c7a586.js"></script>
+                        This resulted in a large spike for the first derivative control calculation as well as some noise 
+                        as can be seen in the plotted graph for Kd = 0.05 below:
+                    </p>
                         <img width="400" height="auto" src="Lab6/Kd/BadKd0.05Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/BadKd0.05.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/BadKd0.05PID.png"></img>
@@ -316,31 +373,59 @@
                         <img width="400" height="auto" src="Lab6/Kd/BadKd0.05Motor.png"></img>
                     <hr>
                     <h4 class="mb-0">Derivative Kick and Changing Setpoint</h4> <!---------------------------------->
+                    <p>After observing the previous graphs and to prepare for changing the setpoint in real time, I 
+                        changed how the derivative control component was calculated. I used the information on 
+                        <a href="http://brettbeauregard.com/blog/2011/04/improving-the-beginner%E2%80%99s-pid-derivative-kick/">this website</a>.
+                        Instead of calculating the derivative of a signal using the integral of another signal, I 
+                        calculated the derivative using the Z output of the gyroscope using the follwoing code:
+                        <script src="https://gist.github.com/MikaylaLahr/dbbfdbec5d0681798f347a19877280f9.js"></script>
+                        This resulted in the large spike being removed, but there was still some noise in the derivative 
+                        controller as can be seen in the plotted graph for Kd = 0.08 below:
+                    </p>
                         <img width="400" height="auto" src="Lab6/Kd/BadKd0.08Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/BadKd0.08.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/BadKd0.08PID.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/BadKd0.08Motor.png"></img>
                     <hr>
                     <h4 class="mb-0">Derivative Calculation: Lowpass Filter</h4> <!----------------------------------->
+                    <p>The final derivative calculation used the previous gyroscope output combined with a low pass filter
+                        with an alpha of 0.3055 to remove some of the noise. The calculation for alpha is found below 
+                        along with the final code to find the derivative control.
+                    </p>
+                    <img width="400" height="auto" src="Lab6/Code/alpha.png"></img>
+                    <p><script src="https://gist.github.com/MikaylaLahr/22d0a2a30f7bb8a852ab962ca8843466.js"></script>
+                        I tested a serives of Kd values to find where the overshoot was reduced.
+                        The final derivative calculation resulted in the spike and the noise being removed as can be seen 
+                        in the below graphs. 
+                    </p>
+                    <hr>
+                    <p>Graphs for Kp = 2, Ki = 0.05, and Kd = 0.03:</p>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.03Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.03Error.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.03PID.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.03Motor.png"></img>
                     <hr>
+                    <p>Graphs for Kp = 2, Ki = 0.05, and Kd = 0.05:</p>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.05Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.05Error.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.05PID.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.05Motor.png"></img>
                     <hr>
+                    <p>Graphs for Kp = 2, Ki = 0.05, and Kd = 0.06:</p>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.06Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.06Error.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.06PID.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.06Motor.png"></img>
                     <hr>
+                    <p>Graphs for Kp = 2, Ki = 0.05, and Kd = 0.08:</p>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.08Yaw.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.08Error.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.08PID.png"></img>
                         <img width="400" height="auto" src="Lab6/Kd/Kd0.08Motor.png"></img>
+                    <hr>
+                    <p>I choose a final value of Kd = 0.05 </p>
+                    <p>--------------- INSERT VIDEO OF KP = 2 KI = 0.05 AND KD = 0.05 ---------------------</p>
+                    <p>-------------------- INSERT VIDEO OF WIND UP --------------------------</p>
                     <h3 class="mb-0">Full PID Control and Programming Implementation</h3> <!------------------------>
                         <img width="400" height="auto" src="Lab6/ChangeAngle/FullsetAngle.png"></img>
                         <img width="400" height="auto" src="Lab6/ChangeAngle/FullYaw.png"></img>
