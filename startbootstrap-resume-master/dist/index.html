@@ -277,7 +277,8 @@
                         addressed using integral control. A range of Kp values including 1, 1.5, 1.75, and 2
                         were tested as can be seen in the below
                         graphs showing yaw, error, PID components, and motor input. I determined that the Kp value 
-                        should be 2. 
+                        should be 2. The code for the proportional controller is below:
+                        <script src="https://gist.github.com/MikaylaLahr/4e09fa35c335168ddcc79a11e495780d.js"></script>
                     </p>
                     <hr>
                     <p>Graphs for Kp = 1:</p>
@@ -313,7 +314,6 @@
                         choose a value of Kp = 2 to then move to testing the proportional and integral controllers 
                         together.
                     </p>
-                        <p>-------------------- INSERT VIDEO OF KP = 2 --------------------------</p>
                     <h3 class="mb-0">5000 Level Task: Integral Control (Ki) and Wind Up Protection</h3> <!---------->
                     <p>The next step involved using the proportional controller (with Kp = 2) and the integral controller 
                         to increase the speed of rotation and to achieve a small amount of oscillation at the desired angle. 
@@ -321,7 +321,9 @@
                         the integrated error increases, resulting in a greater contribution of the intgral controller. To 
                         prevent the integral controller component from increasing continuously, wind up protection was 
                         implemented. If the value of Ki mulitplied by the time integrated error is greater than 200 or less
-                        then -200, then the KiIntegral is set to be 200 or -200 and does not further increase.
+                        then -200, then the KiIntegral is set to be 200 or -200 and does not further increase. The code for 
+                        the proportional and integral controller is below.
+                        <script src="https://gist.github.com/MikaylaLahr/7ed7019acdbd640b36c86cd33689b522.js"></script>
                     </p>
                     <p>Below are graphs for the tested values for Kp and Ki.</p>
                     <hr>
@@ -358,7 +360,6 @@
                         continues for a longer amount of time. I choose a value of Ki = 0.05 to move on to testing 
                         the proportional, integral, and derivative controllers together.
                     </p>
-                    <p>-------------------- INSERT VIDEO OF KP = 2 AND KI = 0.05 --------------------------</p>
                     <h3 class="mb-0">Derivative Control (Kd)</h3> <!------------------------------------------------>
                     <p>The next step involved finding the value for the derivative constant Kd to remove overshoot at 
                         180 degrees. I initially calculated the derivative using the following code (line 15):
@@ -426,7 +427,12 @@
                     <p>I choose a final value of Kd = 0.05 as the robot did not overshoot the desired angle of 
                         180 degrees.
                     </p>
-                    <p>--------------- INSERT VIDEO OF KP = 2 KI = 0.05 AND KD = 0.05 ---------------------</p>
+                    <p>Below is a video of the robot turning +180 degrees at Kp = 2, Ki = 0.05, and Kd = 0.05:</p>
+                        <iframe width="550" height="400" src="https://youtube.com/embed/6YijdDLohiI"></iframe>
+                    <p>Below is a video of the robot at 0 degrees:</p>
+                        <iframe width="550" height="400" src="https://youtube.com/embed/i6WjCm1ocCw"></iframe>
+                    <p>I also tested negative angles. Below is a video of the robot turning -90 degrees:</p>
+                        <iframe width="550" height="400" src="https://youtube.com/embed/lYRn-KsOYhc"></iframe>
                     <h3 class="mb-0">Full PID Control and Programming Implementation</h3> <!------------------------>
                     <h4 class="mb-0">Sending Bluetooth Commands And Updating The Setpoint In Real Time</h4> <!------>
                     <p>After tuning the PID controller I tested changing the setpoint (desired angle) while the 
@@ -446,14 +452,24 @@
                     </p>
                      <img width="400" height="auto" src="Lab6/ChangeAngle/YawZero.png"></img>
                     <p>The example below shows a change of 60 degrees to 90 degrees: </p>
-                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullsetAngle.png"></img>
-                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullYaw.png"></img>
-                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullError.png"></img>
-                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullPID.png"></img>
-                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullMotor.png"></img>
+                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullCorrect_setAngle.png"></img>
+                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullCorrect_Yaw.png"></img>
+                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullCorrect_Error.png"></img>
+                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullCorrect_PID.png"></img>
+                        <img width="400" height="auto" src="Lab6/ChangeAngle/FullCorrect_MotorInput.png"></img>
+                    <p>I was able to record data for multiple angle changes.</p>
                     <h4 class="mb-0">5000 Level Task: Wind Up Protection</h4> <!------------------------------------>
-                    <p>Using the full PID controller wind up protection, as described earlier, can be observed in the 
+                    <p>Using the full PID controller with wind up protection, as described earlier, can be observed in the 
                         videos below.
+                    </p>
+                    <p>Robot turning +90 degrees on carpet:</p>
+                        <iframe width="550" height="400" src="https://youtube.com/embed/cOvaFdRnURQ"></iframe>
+                    <p>Robot at 0 degrees on carpet:</p>
+                        <iframe width="550" height="400" src="https://youtube.com/embed/_K4sHY2JrUc"></iframe>
+                    <p>The PID controller works on multiple surfaces when maintaining an angle. When turning towards 
+                        an angle there is slightly more delay compared to on a flat surface, but the robot is still 
+                        able to reach the desired angle. Below is a video showing the serial monitor outputs for the 
+                        wind up protection.
                     </p>
                     <h4 class="mb-0">Controlling Orientation While Driving Forward And Backward</h4> <!------------->
                     <h3 class="mb-0">5000 Level Task: Wind Up Protection</h3> <!------------------------------------>
