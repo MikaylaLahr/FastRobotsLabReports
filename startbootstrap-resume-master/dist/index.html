@@ -60,10 +60,11 @@
             <section class="resume-section" id="Lab 7">
                 <div class="resume-section-content">
                     <h2 class="mb-2.5">Lab 7: Kalman Filter</h2>
-                    <p>The objective of the lab to to gain experience implementing Kalman Filters. 
-                        I am a 5000 level student and I choose to work on a PID controller. Labs 5-8 detail PID, sensor 
-                        fusion, and stunts. This lab is focused on using a Kalman Filter for predicting ToF sensor distance
-                        readings of the robot. 
+                    <p>The objective of the lab to to gain experience implementing Kalman Filters. Labs 5-8 detail PID, 
+                        sensor fusion, and stunts. This lab is focused on using a Kalman Filter to predict ToF sensor 
+                        distance readings of the robot. The code from Lab 5: Linear PID Control will be used to gather
+                        data, having the robot speed towards a wall and stop 1ft in front of the wall. A Kalman Filter
+                        will be implemented in Jupyter Notebook using the collected data.
                     </p>
 <!-- Lab 7 Prelab --------------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Prelab</h2>
@@ -79,12 +80,29 @@
                         <li><a href="https://www.digikey.com/en/products/detail/pololu-corporation/2130/10450426">Dual Motor Drivers</a></li>
                     </p>
                     <h3 class="mb-0">Kalman Filter Explanation</h3> <!---------------------------------------------->
+                    <p>A Kalman Filter uses a state space model to predict the location (distance from the wall) of 
+                        the robot. The location of the robot is predicted and then updated using the ToF sensor reading.
+                        The prediction and update steps from Lecture 13 are below:
+                    </p>
+                    <p>The state space model is used to find the A, B, and C matrices. The state space model for the 
+                        robot from Lecture 13 is below. The model uses drag (d) and momentum (m) to determine the 
+                        location of the robot and the robots velocity.
+                    </p>
+                    <p>The first part of the lab is estimating the drag and momentum of the robot using steady state
+                        velocity.
+                    </p>
 <!-- Lab 7 Lab Tasks ----------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab Tasks</h2>
                     <h3 class="mb-0">Estimate Drag and Momentum</h3> <!--------------------------------------------->
-                        <p>STEP RESPONCE --- STEADY STATE --- GRAPHS TOF SENSOR --- MEASURE STEADY STATE SPEED ---
-                            SAVE DATA TO PYTHON TO REUSE
-                        </p>
+                    <p>STEP RESPONCE --- STEADY STATE --- GRAPHS TOF SENSOR --- MEASURE STEADY STATE SPEED ---
+                        SAVE DATA TO PYTHON TO REUSE
+                    </p>
+                    <p>The drag and momentum for the A and B matrices are estimated using a step response. The robot 
+                        drives towards a wall at a constant input motor speed. The ToF sensor distance measurements 
+                        and motor input values are recorded. Velocity is calculated and plotted along with the 90% rise
+                        time. The data is used to determine the drag and momentum.
+                    </p>
+                    <p>The equations for drag and momentum are below.</p>
                     <h3 class="mb-0">Initialize Kalman Filter: Python</h3> <!--------------------------------------->
                     <h3 class="mb-0">Implement and Test Kalman Filter: Python</h3> <!------------------------------->
                     <h3 class="mb-0">5000 Level Task: Faster Frequency Kalman Filter</h3> <!------------------------>
