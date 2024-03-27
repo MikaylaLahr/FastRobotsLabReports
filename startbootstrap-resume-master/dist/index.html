@@ -146,9 +146,9 @@
                         time was 0.01 seconds. This dt is how fast the PID control loop is running. An example 
                         calculation of the discritized Ad and Bd matrices is below:
                     </p>
-                        <img width="300" height="auto" src="Lab7/.png"></img>
+                        <img width="300" height="auto" src="Lab7/AdBdCalculation.png"></img>
                     <p>The provided code in the lab report was used to implement the calculation in Python as seen below:</p>
-                        <img width="300" height="auto" src="Lab7/.png"></img>
+                        <img width="300" height="auto" src="Lab7/AB_AdBd_Python.png"></img>
                     <h4 class="mb-0">Identify the C Matrix and Initialize the State Vector</h4> <!------------------>
                     <p>The C matrix for the state space is C = [1 0]. C is an m x n matrix where m is the number of 
                         states measured (1, ToF sensor distance) and n is the dimensions of the state space (2, ToF 
@@ -162,7 +162,11 @@
                     <p>The process noise and the sensor noise covariance matrices need to be specified for the Kalman 
                         Filter to work well. 
                     </p>
+                        <img width="300" height="auto" src="Lab7/sigmasCalculation.png"></img>
+                        <img width="300" height="auto" src="Lab7/sigmas_Python.png"></img>
                     <h3 class="mb-0">Implement and Test Kalman Filter: Python</h3> <!------------------------------->
+                        <img width="300" height="auto" src="Lab7/KF_Function_Python.png"></img>
+                        <img width="300" height="auto" src="Lab7/KF_PythonLoop.png"></img>
                     <h3 class="mb-0">5000 Level Task: Faster Frequency Kalman Filter</h3> <!------------------------>
                     <h3 class="mb-0">Extra Credit: Implement Kalman Filter On Robot</h3> <!------------------------->
 <!-- Lab 7 References ---------------------------------------------------------------------------------------------->
