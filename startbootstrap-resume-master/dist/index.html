@@ -128,6 +128,11 @@
                     </p>
                          <img width="300" height="auto" src="Lab7/d_m_Calc.png"></img>
                     <p>Calculated: d = 0.0004921 and m = 0.0002821</p>
+                    <p>Drag is inversly proportional to the speed of the robot and affects how much the system reacts to 
+                        changes in u. Momentum relates to how much effort is needed to change the velocity. Higher 
+                        momentum signifies that more effort needs to be exerted to change the velocity, whereas lower
+                        momentum signifies that less effort needs to be exerted to change the velocity.
+                    </p>
                     <p>The collected data array's from all trials were stored in Jupyter Notebook in case the data 
                         needed to be used in the future. The code to find the steady state velocity can be found here:
                         <a href="https://drive.google.com/file/d/1RMI90XZbYXhiNoc-Q6CnFWPwt4ZWEpcg/preview">Max Speed Code</a>
@@ -150,9 +155,16 @@
                         for the PID loop in Lab 5. This dt is how fast the PID control loop is running. 
                     </p>
                         <img width="300" height="auto" src="Lab7/newAdBdCalculation.png"></img>
-                    <p>The provided code in the lab report was used to implement the calculation in Python as seen below:</p>
-                        <img width="300" height="auto" src="Lab7/newAB_AdBd_Python.png"></img>
-                    <p>The previously used code to find Ad and Bd can be found here: 
+                    <p>The provided code in the lab report as well as my method of finding Delta_T was used to implement the 
+                        calculation in Python as seen below:
+                    </p>
+                        <img width="300" height="auto" src="Lab7/AB_dt_AdBd_Calc.png"></img>
+                    <p>There are two different time array's. One method of finding Delta_T uses the time array of the PID 
+                        controller (array: time). This method was for the 5000 level task, resulting in a faster frequecy than 
+                        the frequency found for the ToF readings (array: timeF). In between ToF readings the prediction step 
+                        of the Kalman Filter estimates the state of the robot.
+                    </p>
+                    <p>The previously used code that does not calculate the average sampling time to find Ad and Bd can be found here: 
                         <a href="https://drive.google.com/file/d/1qQZAX09YhGPeyrxSfEZhoPeK9F1tjAGP/preview">Previous Ad Bd Code</a>
                     </p>
                     <h4 class="mb-0">Identify the C Matrix and Initialize the State Vector</h4> <!------------------>
@@ -168,17 +180,25 @@
                     <h4 class="mb-0">Specify Process Noise and Covariance Matrices</h4> <!-------------------------->
                     <p>The process noise and the sensor noise covariance matrices need to be specified for the Kalman 
                         Filter to work well. Sigma_3 was initialized as 20. This value was determined from slide 35 in 
-                        Lecture 13 as well as the ToF sensor datasheet. The ToF sensor has a ranging error of +/- 20mm
-                        in ambient and dark lighting.
+                        Lecture 13 as well as the ToF sensor datasheet. Sigma_Z represents the mistrust in the sensor readings.
+                        The ToF sensor has a ranging error of +/- 20mm in ambient and dark lighting.
                     </p>
-                        <img width="300" height="auto" src="Lab7/sigma3Calculation.png"></img>
+                        <img width="250" height="auto" src="Lab7/sigma3Calculation.png"></img>
                         <img width="300" height="auto" src="Lab7/sigma3Datasheet.png"></img>
+                    <p>Sigma_1 and sigma_2 were initialized using the calculation found on slide 35 of Lecture 13. 
+                        Sigma_U represents the mistrust in the Kalman Filter model. 
+                        Sigma_1 is the relationship between the ToF distance reading and the model predictions.
+                        Sigma_2 is the relationship between the velocity and the model predictions.
+                    </p>
                         <img width="300" height="auto" src="Lab7/sigmas1_2Calculation.png"></img>
-                    <h3 class="mb-0">5000 Level Task: Faster Frequency Kalman Filter</h3> <!------------------------>
-                        <img width="300" height="auto" src="Lab7/KF_Function_Python.png"></img>
-                        <img width="300" height="auto" src="Lab7/KF_PythonLoop.png"></img>
-                    <h3 class="mb-0">Implement and Test Kalman Filter: Python</h3> <!------------------------------->
-                    <h3 class="mb-0">Extra Credit: Implement Kalman Filter On Robot</h3> <!------------------------->
+                    <p>The sigma values were altered as needed for each data set.</p>
+                    <h3 class="mb-0">5000 Level Task: Faster Frequency Kalman Filter -- And -- 
+                        Implement and Test Kalman Filter: Python</h3> <!--------------------------------------------->
+                    <p>The </p>
+                        <img width="550" height="auto" src="Lab7/KF_Function_Python.png"></img>
+                        <img width="550" height="auto" src="Lab7/KF_PythonLoop.png"></img>
+                    <h4 class="mb-0">Extra Graphs From Prior Trials</h4> <!-------------------------->
+                    <h3 class="mb-0">Extra Credit: Implement Kalman Filter On Robot</h3> <!-------------------------->
                         <p>I will include implementing the Kalman Filter on the robot for extra credit in the next 
                             lab report for Lab 8: Stunts.
                         </p>
