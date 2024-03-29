@@ -60,7 +60,7 @@
             <section class="resume-section" id="Lab 7">
                 <div class="resume-section-content">
                     <h2 class="mb-2.5">Lab 7: Kalman Filter</h2>
-                    <p>The objective of the lab to to gain experience implementing Kalman Filters. Labs 5-8 detail PID, 
+                    <p>The objective of the lab is to gain experience implementing Kalman Filters. Labs 5-8 detail PID, 
                         sensor fusion, and stunts. This lab is focused on using a Kalman Filter to predict ToF sensor 
                         distance readings of the robot. The code from Lab 5: Linear PID Control will be used to gather
                         data, having the robot speed towards a wall and stop 1ft in front of the wall. A Kalman Filter
@@ -86,10 +86,10 @@
                     </p>
                         <img width="350" height="auto" src="Lab7/PredictAndUpdate.png"></img>
                     <p>The state space model is used to find the A, B, and C matrices. The state space model for the 
-                        robot from Lecture 13 is below. The model uses drag (d) and momentum (m) to determine the 
-                        location of the robot and the robots velocity.
+                        robot from Lecture 13 is below. The model uses drag (d) and momentum (m) to form the A and B 
+                        matrices. The two states are the location of the robot and the robots velocity.
                     </p>
-                        <img width="250" height="auto" src="Lab7/StateSpace.png"></img>
+                        <img width="200" height="auto" src="Lab7/StateSpace.png"></img>
                     <p>The first part of the lab is estimating the drag and momentum of the robot using steady state
                         velocity. One difference from the lecture slides is that for this lab the C matrix will be 
                         C = [1 0]
@@ -97,9 +97,6 @@
 <!-- Lab 7 Lab Tasks ----------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab Tasks</h2>
                     <h3 class="mb-0">Estimate Drag and Momentum</h3> <!--------------------------------------------->
-                    <p>STEP RESPONCE --- STEADY STATE --- GRAPHS TOF SENSOR --- MEASURE STEADY STATE SPEED ---
-                        SAVE DATA TO PYTHON TO REUSE
-                    </p>
                     <p>The drag and momentum for the A and B matrices are estimated using a step response. The robot 
                         drives towards a wall at a constant input motor speed. The ToF sensor distance measurements 
                         and motor input values are recorded. Velocity is calculated and plotted along with the 90% rise
@@ -110,7 +107,9 @@
                          <img width="300" height="auto" src="Lab7/d_m_Matrices.png"></img>
                     <p>The step response u(t) was chosen to be a PWM value of 165. The step response is 64.71% of the 
                         maximum u PWM value of 255. I choose a PWM value of 165 as it was the fastest the robot could
-                        move while still moving straight for a distance of around 6.5ft. To ensure that the step time 
+                        move while still moving straight for a distance of around 6.5ft. I collected time, ToF distance 
+                        readings, and used these readings to calculated the velocity.
+                        To ensure that the step time 
                         was long enough for the robot to reach steady state, I ran the test multiple times. The results 
                         from the first test are below: 
                     </p>
@@ -120,16 +119,18 @@
                         the test was run again and the following results were plotted:
                     </p>
                         <img width="500" height="auto" src="Lab7/DM_Trial2.png"></img>
-                    <p>From the above graph it can be seen that the steady state velocity is just over 2000mm/s, or 
-                        more specifically 2031.91mm/s. Using a 90% rise time a line on the above graph was plotted 
-                        showing 90% of the settling value. This value is (-2031.91mm/s * 0.9) = -1828.72mm/s. From 
-                        the graph the 90% rise time is 1.32s. The steady state velocity is used to find the drag. The 
-                        drag and rise time are used to find the momentum. The calculations are found below:
+                    <p>From the above graph it can be seen that the steady state velocity is just over -2000mm/s, or 
+                        more specifically -2031.91mm/s. Using a 90% rise time a line on the above graph was plotted 
+                        showing 90% of the settling value. This value is (-2031.91mm/s * 0.9) = -1828.72mm/s. 
+                        The 90% rise time can be determined from the graph as 1.32s. The steady state velocity is 
+                        used to find the drag. The drag and rise time are used to find the momentum. The calculations 
+                        to find drag (d) and momentum (m) are found below:
                     </p>
                          <img width="300" height="auto" src="Lab7/d_m_Calc.png"></img>
-                    <p>d = 0.0004921 and m = 0.0002821</p>
+                    <p>Calculated: d = 0.0004921 and m = 0.0002821</p>
                     <p>The collected data array's from all trials were stored in Jupyter Notebook in case the data 
-                        needed to be used in the future.
+                        needed to be used in the future. The code to find the steady state velocity can be found here:
+                        <a href="https://drive.google.com/file/d/1RMI90XZbYXhiNoc-Q6CnFWPwt4ZWEpcg/preview">Max Speed Code</a>
                     </p>
                     <h3 class="mb-0">Initialize Kalman Filter: Python</h3> <!--------------------------------------->
                     <h4 class="mb-0">Compute the A and B Matrices</h4> <!------------------------------------------->
@@ -141,14 +142,19 @@
                         <img width="300" height="auto" src="Lab7/ABCalculation.png"></img>
                     <p>The discritized A and B matrices are calculated using the following method from Lecture 13:</p>
                         <img width="300" height="auto" src="Lab7/LectureAdBd.png"></img>
-                    <p>The sampling time for the discritized Ad and Bd matrices was calculated by subtracting the first 
-                        time stamp from the second time stamp. For the first tested ToF distance dataset the sampling 
-                        time was 0.01 seconds. This dt is how fast the PID control loop is running. An example 
-                        calculation of the discritized Ad and Bd matrices is below:
+                    <p>Initially, the sampling time for the discritized Ad and Bd matrices was calculated by subtracting the first 
+                        time stamp from the second time stamp. After looking closely at the data, the time difference 
+                        between each time step was slightly different. I changed the calculation for Delta_T to be an average
+                        of all of the time differences. The Delta_T was recalculated for each new dataset that I graphed.
+                        Below is an example calculation of the discritized Ad and Bd matrices, using the found dt of 0.008s
+                        for the PID loop in Lab 5. This dt is how fast the PID control loop is running. 
                     </p>
-                        <img width="300" height="auto" src="Lab7/AdBdCalculation.png"></img>
+                        <img width="300" height="auto" src="Lab7/newAdBdCalculation.png"></img>
                     <p>The provided code in the lab report was used to implement the calculation in Python as seen below:</p>
-                        <img width="300" height="auto" src="Lab7/AB_AdBd_Python.png"></img>
+                        <img width="300" height="auto" src="Lab7/newAB_AdBd_Python.png"></img>
+                    <p>The previously used code to find Ad and Bd can be found here: 
+                        <a href="https://drive.google.com/file/d/1qQZAX09YhGPeyrxSfEZhoPeK9F1tjAGP/preview">Previous Ad Bd Code</a>
+                    </p>
                     <h4 class="mb-0">Identify the C Matrix and Initialize the State Vector</h4> <!------------------>
                     <p>The C matrix for the state space is C = [1 0]. C is an m x n matrix where m is the number of 
                         states measured (1, ToF sensor distance) and n is the dimensions of the state space (2, ToF 
