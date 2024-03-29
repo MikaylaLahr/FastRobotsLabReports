@@ -167,10 +167,13 @@
                         <img width="500" height="auto" src="Lab7/C_x_Python.png"></img>
                     <h4 class="mb-0">Specify Process Noise and Covariance Matrices</h4> <!-------------------------->
                     <p>The process noise and the sensor noise covariance matrices need to be specified for the Kalman 
-                        Filter to work well. 
+                        Filter to work well. Sigma_3 was initialized as 20. This value was determined from slide 35 in 
+                        Lecture 13 as well as the ToF sensor datasheet. The ToF sensor has a ranging error of +/- 20mm
+                        in ambient and dark lighting.
                     </p>
-                        <img width="300" height="auto" src="Lab7/newsigmasCalculation.png"></img>
-                        <img width="300" height="auto" src="Lab7/newsigmas_Python.png"></img>
+                        <img width="300" height="auto" src="Lab7/sigma3Calculation.png"></img>
+                        <img width="300" height="auto" src="Lab7/sigma3Datasheet.png"></img>
+                        <img width="300" height="auto" src="Lab7/sigmas1_2Calculation.png"></img>
                     <h3 class="mb-0">5000 Level Task: Faster Frequency Kalman Filter</h3> <!------------------------>
                         <img width="300" height="auto" src="Lab7/KF_Function_Python.png"></img>
                         <img width="300" height="auto" src="Lab7/KF_PythonLoop.png"></img>
