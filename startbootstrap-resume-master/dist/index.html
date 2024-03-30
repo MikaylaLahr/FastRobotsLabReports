@@ -226,33 +226,89 @@
                         of 255 minus the lower limit of 40). The lower limit PWM value is 40. In this model if the motor 
                         input value is 40 then the value for u is zero (-(40-40)/215). 
                     </p>
+                    <p>Below are two different runs of the robot using PID control.</p>
                     <h4 class="mb-0">Graph 1: Kp = 0.07, Ki = 0.000008, Kd = 8</h4> <!------------------------------->
                         <img width="500" height="auto" src="Lab7/Graph1/Graph1.png"></img>
                         <img width="500" height="auto" src="Lab7/Graph1/MotorGraph1.png"></img>
                         <img width="250" height="auto" src="Lab7/Graph1/newPID_Graph1.png"></img>
+                    <p>Initially running the Kalman Filter using the previously described code results in the above graphs. 
+                        The calculated Delta_T for the PID controller is 0.0066 seconds, a frequency of 151.52Hz. The Kalman 
+                        Filter is running at a faster frequency than the ToF sensors. 
+                        The deadband for the motor controller input is 40. This deadband is consistent to the deadband used 
+                        in Lab 5 for linear PID control. This was the fastest run of the robot with a maximum PWM value of 
+                        150. Sigma_1 and Sigma_2 are 122.86 and Sigma_3 is 20. Overall, the
+                        model works fairly well, but at around 2 seconds the predictions no longer extend to the next data 
+                        point compared to the earlier predictions. In the next step I modify the parameters to adjust the 
+                        prediction values. 
+                    </p>
                     <hr>
                         <img width="500" height="auto" src="Lab7/Graph1/FixedGraph1.png"></img>
                         <img width="500" height="auto" src="Lab7/Graph1/ZoomFG1.png"></img>
                         <img width="500" height="auto" src="Lab7/Graph1/Zoom2FG1.png"></img>
+                    <p>I adjusted the parameters for Sigma_1. Decreasing Sigma_1 (model uncertainty for location) indicates 
+                        that the model is more accurate than what was initially predicted from the calculation for Sigma_1. 
+                        Sigma_2 was set to 120, which is close to the initial calculated value found previously and Sigma_3 remains at 20. 
+                        All other parameters (d, m, and Delta_T) were kept the same as the previous step.
+                        As can be seen from the graphs the Kalman Filter more closely follows the trend of the distance measurements.
+                    </p>
                         <img width="500" height="auto" src="Lab7/Graph1/ChangedZoomFG1.png"></img>
+                    <p>In the above graph I kept all previously found parameters the same but changed the value of the increment "i"
+                        in the while loop. The line changed from "i = i + Delta_T" to "i = i + 2*Delta_T". This change results in 
+                        less Kalman Filter predictions to be plotted. I initially did this to better see the individually plotted 
+                        prediction points, but then realized that changing how often the while loop runs the prediction step of the
+                        Kalman Filter results in the predictions to be slightly off from the ToF distance measurements and the 
+                        previously plotted prediction values. 
+                    </p>
                     <hr>
                         <img width="500" height="auto" src="Lab7/Graph1/TOFGraph1.png"></img>
                         <img width="500" height="auto" src="Lab7/Graph1/ZoomTOFGraph1.png"></img>
                         <img width="250" height="auto" src="Lab7/Graph1/TOF_Graph1.png"></img>
+                    <p>The above graphs show the Kalman Filter plotted without the prediction steps, only the updated values. 
+                        The calculated Delta_T for the ToF sensor readings is 0.1082 seconds, a frequency of 9.24Hz. The Kalman 
+                        Filter is running at the same frequency as the ToF sensors. Sigma_1 and Sigma_2 are 30.41 and Sigma_3 is 20. 
+                        The Kalman Filter follows the general trend of the ToF readings, but is slightly off from the plotted line
+                        for the ToF distances. I tried modifying the parameters as I did in the previous step, but there was no 
+                        significant change in the Kalman Filter updates. 
+                    </p>
                     <h4 class="mb-0">Graph 2: Kp = 0.05, Ki = 0.000008, Kd = 8</h4> <!------------------------------->
                         <img width="500" height="auto" src="Lab7/Graph2/Graph2.png"></img>
                         <img width="500" height="auto" src="Lab7/Graph2/MotorGraph2.png"></img>
                         <img width="250" height="auto" src="Lab7/Graph2/PID_Graph2.png"></img>
+                    <p>Initially running the Kalman Filter results in the above graphs. 
+                        The calculated Delta_T for the PID controller is 0.0058 seconds, a frequency of 172.41Hz. The Kalman 
+                        Filter is running at a faster frequency than the ToF sensors. 
+                        The maximum PWM value is 115. Sigma_1 and Sigma_2 are 131.54 and Sigma_3 is 20. Overall, the
+                        model works well, but the predictions could be more inline with the ToF distances.
+                        In the next step I modify the parameters to adjust the prediction values. 
+                    </p>
                     <hr>
                         <img width="500" height="auto" src="Lab7/Graph2/FixedGraph2.png"></img>
                         <img width="500" height="auto" src="Lab7/Graph2/ZoomFG2.png"></img>
                         <img width="500" height="auto" src="Lab7/Graph2/Zoom2FG2.png"></img>
-                        <img width="500" height="auto" src="Lab7/Graph2/Zoom3FG3.png"></img>
+                        <img width="500" height="auto" src="Lab7/Graph2/Zoom3FG2.png"></img>
+                    <p>I adjusted the parameters for Sigma_1, Sigma_2, and Sigma_3. Decreasing Sigma_1 to 10 (model uncertainty for location) 
+                        and Sigma_2 to 120 (model uncertainty for velocity) indicates 
+                        that the model is more accurate than what was initially predicted.
+                        Sigma_3 (sensor uncertainty) was changed to 10 as the sensor readings were reliable. 
+                        All other parameters (d, m, and Delta_T) were kept the same as the previous step.
+                        As can be seen from the graphs the Kalman Filter more closely follows the trend of the distance measurements.
+                    </p>
                         <img width="500" height="auto" src="Lab7/Graph2/ChangedZoomFG2.png"></img>
+                    <p>In the above graph I kept all previously found parameters the same but changed the value of the increment "i"
+                        in the while loop in the same manner as I did for Graph 1. The line changed from "i = i + Delta_T" to "i = i + 2*Delta_T". 
+                        This change results in less Kalman Filter predictions to be plotted and the same offset behaviour as seen in Graph 1. 
+                    </p>
                     <hr>
                         <img width="500" height="auto" src="Lab7/Graph2/TOFGraph2.png"></img>
                         <img width="500" height="auto" src="Lab7/Graph2/ZoomTOFGraph2.png"></img>
-                        <img width="250" height="auto" src="Lab7/Graph2/newTOF_Graph2.png"></img>
+                        <img width="250" height="auto" src="Lab7/Graph2/TOF_Graph2_new.png"></img>
+                    <p>The above graphs show the Kalman Filter plotted without the prediction steps, only the updated values. 
+                        The calculated Delta_T for the ToF sensor readings is 0.1019 seconds, a frequency of 9.81Hz. The Kalman 
+                        Filter is running at the same frequency as the ToF sensors. Besides Delta_T, all other parameters were kept
+                        the same as in the previous step.
+                        The Kalman Filter follows the general trend of the ToF readings, but is slightly off from the plotted line
+                        for the ToF distances, although the plotted line is still closer to the ToF readings compared to Graph 1.
+                    </p>
                     <h4 class="mb-0">Extra Graphs From Prior Trials</h4> <!------------------------------------------>
                         <img width="500" height="auto" src="Lab7/Graph3/Graph3.png"></img>
                         <img width="500" height="auto" src="Lab7/Graph3/MotorGraph3.png"></img>
