@@ -211,7 +211,8 @@
                     <p>The first two lines finding mu_p and sigma_p are the prediction step of the Kalman Filter. If 
                         there is no new ToF sensor reading, then the returned mu and sigma will be equal to what is 
                         found during the prediction step. Within the if statement there is the update step of the Kalman
-                        Filter that runs every time there is a new ToF reading. 
+                        Filter that runs every time there is a new ToF reading. The current state is mu, the uncertainty
+                        is sigma, the motor input values are u, and the distance readings are y.
                     </p>
                     <p>To loop through each time step the below code was used.</p> 
                         <img width="600" height="auto" src="Lab7/KF_PythonLoop.png"></img>
