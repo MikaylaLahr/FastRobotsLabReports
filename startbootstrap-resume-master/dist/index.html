@@ -126,7 +126,7 @@
                         used to find the drag. The drag and rise time are used to find the momentum. The calculations 
                         to find drag (d) and momentum (m) are found below:
                     </p>
-                         <img width="300" height="auto" src="Lab7/d_m_Calc.png"></img>
+                         <img width="350" height="auto" src="Lab7/d_m_Calc.png"></img>
                     <p>Calculated: d = 0.0004921 and m = 0.0002821</p>
                     <p>Drag is inversly proportional to the speed of the robot and affects how much the system reacts to 
                         changes in u. Momentum relates to how much effort is needed to change the velocity. Higher 
@@ -154,11 +154,11 @@
                         Below is an example calculation of the discritized Ad and Bd matrices, using the found sampling time of 0.008s
                         for the PID loop in Lab 5. This dt is how fast the PID control loop is running. 
                     </p>
-                        <img width="300" height="auto" src="Lab7/newAdBdCalculation.png"></img>
+                        <img width="400" height="auto" src="Lab7/newAdBdCalculation.png"></img>
                     <p>The provided code in the lab report as well as my method of finding Delta_T was used to implement the 
                         calculation in Python as seen below:
                     </p>
-                        <img width="300" height="auto" src="Lab7/AB_dt_AdBd_Calc.png"></img>
+                        <img width="400" height="auto" src="Lab7/AB_dt_AdBd_Calc.png"></img>
                     <p>There are two different time array's. One method of finding Delta_T uses the time array of the PID 
                         controller (array: time). This method was for the 5000 level task, resulting in a faster frequecy than 
                         the frequency found for the ToF readings (array: timeF). In between ToF readings the prediction step 
@@ -176,35 +176,56 @@
                     <p>Below is the Python code to establish the C matrix and initialize the state vector for the ToF 
                         distance measurements.
                     </p>
-                        <img width="500" height="auto" src="Lab7/C_x_Python.png"></img>
+                        <img width="550" height="auto" src="Lab7/C_x_Python.png"></img>
                     <h4 class="mb-0">Specify Process Noise and Covariance Matrices</h4> <!-------------------------->
                     <p>The process noise and the sensor noise covariance matrices need to be specified for the Kalman 
                         Filter to work well. Sigma_3 was initialized as 20. This value was determined from slide 35 in 
                         Lecture 13 as well as the ToF sensor datasheet. Sigma_Z represents the mistrust in the sensor readings.
                         The ToF sensor has a ranging error of +/- 20mm in ambient and dark lighting.
                     </p>
-                        <img width="250" height="auto" src="Lab7/sigma3Calculation.png"></img>
-                        <img width="300" height="auto" src="Lab7/sigma3Datasheet.png"></img>
+                        <img width="200" height="auto" src="Lab7/sigma3Calculation.png"></img>
+                        <img width="350" height="auto" src="Lab7/sigma3Datasheet.png"></img>
                     <p>Sigma_1 and sigma_2 were initialized using the calculation found on slide 35 of Lecture 13. 
                         Sigma_U represents the mistrust in the Kalman Filter model. 
                         Sigma_1 is the relationship between the ToF distance reading and the model predictions.
                         Sigma_2 is the relationship between the velocity and the model predictions.
                     </p>
-                        <img width="300" height="auto" src="Lab7/sigmas1_2Calculation.png"></img>
+                        <img width="350" height="auto" src="Lab7/sigmas1_2Calculation.png"></img>
                     <p>In Jupyter Notebook, I calculated the sigma values for each dataset as shown in the below code.</p>
-                        <img width="300" height="auto" src="Lab7/sigmasPython.png"></img>
+                        <img width="400" height="auto" src="Lab7/sigmasPython.png"></img>
                     <p>The sigma values were altered as needed for each dataset.</p>
                     <h3 class="mb-0">5000 Level Task: Faster Frequency Kalman Filter -- And -- 
                         Implement and Test Kalman Filter: Python</h3> <!--------------------------------------------->
                     <p>The below section includes the 5000 level task to use a faster frequency and use the Kalman Filter
                         prediction step to estimate the state of the car, as well as the same data graphed without the
-                        prediction step for comparison. 
+                        prediction step for comparison. To write the below code I went to office hours to ask questions 
+                        and looked at all of the lab reports for the TAs. 
                     </p>
-                    <p>The below code for the Kalman Filter was provided in the lab instructions and implemented in 
+                    <p>The below code for the Kalman Filter function was provided in the lab instructions and implemented in 
                         Jupyter Notebook.
                     </p>
-                        <img width="550" height="auto" src="Lab7/KF_Function_Python.png"></img>
-                        <img width="550" height="auto" src="Lab7/KF_PythonLoop.png"></img>
+                        <img width="600" height="auto" src="Lab7/KF_Function_Python.png"></img>
+                    <p>The first two lines finding mu_p and sigma_p are the prediction step of the Kalman Filter. If 
+                        there is no new ToF sensor reading, then the returned mu and sigma will be equal to what is 
+                        found during the prediction step. Within the if statement there is the update step of the Kalman
+                        Filter that runs every time there is a new ToF reading. 
+                    </p>
+                    <p>To loop through each time step the below code was used.</p> 
+                        <img width="600" height="auto" src="Lab7/KF_PythonLoop.png"></img>
+                    <p>The while loop determines how many 
+                        times the Kalman Filter runs. How many times the while loop runs depends on the the second to 
+                        last time step for a ToF sensor reading and the value of Delta_T. If the value of the ToF time 
+                        array is less than or equal to the value of the index, i, then the value of newTOF will be set 
+                        to 1 and the update step of the Kalman Filter will run. If the value of the ToF time array is 
+                        not less than or equal to the value of the index, i, then the value of newTOF will be set to 
+                        0 and only the prediction step of the Kalman Filter will run. The index i is updated by adding 
+                        Delta_T each time the while loop runs and the value of i is appended to the array KF_time to plot 
+                        the Kalman Filter. After i is updated, the Kalman Filter function is called and then the output
+                        distance (x) is appended to the KF_distance array to later be plotted. The u input was the negative 
+                        value of 40 subtracted from the motor array storing PWM values, divided by 215 (the upper bound 
+                        of 255 minus the lower limit of 40). The lower limit PWM value is 40. In this model if the motor 
+                        input value is 40 then the value for u is zero (-(40-40)/215). 
+                    </p>
                     <h4 class="mb-0">Changing Parameters</h4> <!----------------------------------------------------->
                     <h4 class="mb-0">Extra Graphs From Prior Trials</h4> <!------------------------------------------>
                     <h3 class="mb-0">Extra Credit: Implement Kalman Filter On Robot</h3> <!-------------------------->
