@@ -191,7 +191,10 @@
                         Sigma_2 is the relationship between the velocity and the model predictions.
                     </p>
                         <img width="350" height="auto" src="Lab7/sigmas1_2Calculation.png"></img>
-                    <p>In Jupyter Notebook, I calculated the sigma values for each dataset as shown in the below code.</p>
+                    <p>In Jupyter Notebook, I calculated the sigma values for each dataset as shown in the below code. 
+                        The initiallized sigma had a value of 20 for sigma_1 and 5 for sigma_2 as the robot is not moving 
+                        initially.
+                    </p>
                         <img width="400" height="auto" src="Lab7/sigmasPython.png"></img>
                     <p>The sigma values were altered as needed for each dataset.</p>
                     <h3 class="mb-0">5000 Level Task: Faster Frequency Kalman Filter -- And -- 
@@ -225,6 +228,17 @@
                         value of 40 subtracted from the motor array storing PWM values, divided by 215 (the upper bound 
                         of 255 minus the lower limit of 40). The lower limit PWM value is 40. In this model if the motor 
                         input value is 40 then the value for u is zero (-(40-40)/215). 
+                    </p>
+                    <h5 class="mb-0">Filter Parameters</h5> <!------------------------------------------------------->
+                    <p>Throughout the lab report I discuss the parameters used to modify the Kalman Filter and below I
+                        discuss how the parameters are modified to better fit the Kalman Filter to the ToF distance data.
+                        To summarize, the parameters include the sampling time (Delta_T), drag (d), momentum (m), and sigma values
+                        including Sigma_1, Sigma_2, and Sigma_3. The sigma values are used to find the covariance matrices: 
+                        Sigma_U and Sigma_Z. Sigma_U represents the confidence in the model (distance and velocity) and Sigma_Z
+                        represents the confidence in the sensor measurement. Drag is inversely proportional to speed and momentum 
+                        is related to how much effort is needed to change the speed of the robot.
+                        In extension, the values for drag and momentum affect the 
+                        A and B matrices. Delta_T and the A and B matrices affect the values of the Ad and Bd matrices. 
                     </p>
                     <p>Below are two different runs of the robot using PID control.</p>
                     <h4 class="mb-0">Graph 1: Kp = 0.07, Ki = 0.000008, Kd = 8</h4> <!------------------------------->
@@ -310,14 +324,29 @@
                         for the ToF distances, although the plotted line is still closer to the ToF readings compared to Graph 1.
                     </p>
                     <h4 class="mb-0">Extra Graphs From Prior Trials</h4> <!------------------------------------------>
+                    <p>Prior to collecting the data to create the previous graphs, I tested the robot multiple times and 
+                        collected distance readings. The distance readings were not as smooth as I would have expected 
+                        and the robot moved slowly. I realized that my distance sensor was set to short mode, rather than 
+                        long mode. The below data was collected before changing the sensor mode. I decided to run this 
+                        data through the Kalman Filter for fun, to see how well the model would respond to non-ideal data. 
+                    </p>
                         <img width="500" height="auto" src="Lab7/Graph3/Graph3.png"></img>
                         <img width="500" height="auto" src="Lab7/Graph3/MotorGraph3.png"></img>
                         <img width="250" height="auto" src="Lab7/Graph3/PID_Graph3.png"></img>
+                    <p>Initially, the Kalman Filter follows the ToF distance measurements, but later the predictions become 
+                        more horizontal rather than continuing along the same slope as the distance sensor readings. I tried 
+                        to address this issue in the next step.
+                    </p>
                     <hr>
                         <img width="500" height="auto" src="Lab7/Graph3/FixedGraph3.png"></img>
+                    <p>I adjusted the parameters and determined that decreasing the drag (d) constant resulted in a more 
+                        downward trend of the calculated predictions. This trend was most significant towards the beginning 
+                        of the graph.
+                    </p>
                     <hr>
                         <img width="500" height="auto" src="Lab7/Graph3/TOFGraph3.png"></img>
                         <img width="250" height="auto" src="Lab7/Graph3/TOF_Graph3.png"></img>
+                    <p>Above is the Kalman Filter plotted without the prediction steps.</p>
                     <h3 class="mb-0">Extra Credit: Implement Kalman Filter On Robot</h3> <!-------------------------->
                         <p>I will include implementing the Kalman Filter on the robot for extra credit in the next 
                             lab report for Lab 8: Stunts.
