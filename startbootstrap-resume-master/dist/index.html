@@ -81,13 +81,29 @@
                         <li><a href="https://www.digikey.com/en/products/detail/pololu-corporation/2130/10450426">Dual Motor Drivers</a></li>
                     </p>
 <!-- Lab 8 Lab Tasks ----------------------------------------------------------------------------------------------->
-                <h2 class="mb-2.5">Lab Tasks</h2>
-                    <h3 class="mb-0">Orientation Control</h3> <!---------------------------------------------------->
-                        <p>Explain how </p>
-                    <h3 class="mb-0">Extra Credit: Implement Kalman Filter On Robot</h3> <!------------------------->
-                        <p>Explain code</p>
-                        <p>Without Predictions Graphs: going forward, going backward</p> 
-                        <p>With Predictions Graphs: going forward, going backward</p>
+                <h2 class="mb-2.5">Lab Task B: Orientation Control</h2>
+                    <h3 class="mb-0">Driving Straight</h3> <!-------------------------------------------->
+                    <h3 class="mb-0">Turning</h3> <!-------------------------------------------->
+                    <h3 class="mb-0">Initial Approach</h3> <!-------------------------------------------->
+<!-- Lab 8 Extra Credit -------------------------------------------------------------------------------------------->
+                    <h2 class="mb-0">Extra Credit: Implement Kalman Filter On Robot</h2> <!------------------------->
+                        <p>I implemented the Kalman Filter on the robot for extra credit. To implement the Kalman 
+                            Filter I first created two new cases in Arduino IDE: KF_DATA and SEND_KF_DATA. These cases 
+                            are similar to the cases used to start/stop the PID controller and send PID controller data,
+                            but I added array's for Kalman Filter time (KF_Time) and the Kalman filter distance 
+                            (mu_Store). The Arduino cases and Jupyter Notebook commands can be found below:
+                        </p>
+                        <p>After creating the cases for the Kalman Filter, I then started working on implementing 
+                            the update step of the Kalman Filter. 
+                        </p>
+                    <h3 class="mb-0">Step 1: Kalman Filter Update Step On Robot</h3> <!----------------------------->
+                        <p>The update step was completed before implementing the prediction step. To perform this task,
+                            I referenced the Jupyter Notebook code I wrote for Lab 7 and modified the code for the 
+                            Arduino IDE syntax. 
+                        </p>
+                        <p>CODE; 3 GRAPHS DIFFERENT DISTANCES; VIDEO OF COMPUTER SCREEN OUTPUT; VIDEO OF ROBOT MOVING ON GROUND</p>
+                    <h3 class="mb-0">Step 2: Kalman Filter Update and Prediction Steps On Robot</h3> <!------------->
+                        <p>CODE; 3 GRAPHS DIFFERENT DISTANCES; VIDEO OF COMPUTER SCREEN OUTPUT; VIDEO OF ROBOT MOVING ON GROUND</p>
 <!-- Lab 8 References ---------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab 8 References</h2>
                 <p>Thank you to all of the TAs that answered my questions. I referenced the past lab reports of 
