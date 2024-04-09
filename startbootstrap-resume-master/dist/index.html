@@ -27,6 +27,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#home">Home: Mikayla Lahr mrl242</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Lab 8">Lab 8: Stunts</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Extra Credit">Extra Credit: Kalman Filter</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Lab 7">Lab 7: Kalman Filter</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Lab 6">Lab 6: Orientation PID Control</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Lab 5">Lab 5: Linear PID Control and Linear Interpolation</a></li>
@@ -85,29 +86,96 @@
                     <h3 class="mb-0">Driving Straight</h3> <!-------------------------------------------->
                     <h3 class="mb-0">Turning</h3> <!-------------------------------------------->
                     <h3 class="mb-0">Initial Approach</h3> <!-------------------------------------------->
-<!-- Lab 8 Extra Credit -------------------------------------------------------------------------------------------->
-                    <h2 class="mb-0">Extra Credit: Implement Kalman Filter On Robot</h2> <!------------------------->
+<!-- Lab 8 References ---------------------------------------------------------------------------------------------->
+                <h2 class="mb-2.5">Lab 8 References</h2>
+                <p>Thank you to all of the TAs that answered my questions. I referenced the past lab reports of 
+                    Liam Kain, Rafael Gottlieb, Larry Lu, Julian Prieto, and Ignacio Romo.
+                </p>
+            </div>
+        </section>
+<!___________________________________________________________________________________________________________________>
+<!___________________________________________________________________________________________________________________>
+<!___________________________________________________________________________________________________________________>
+<!___________________________________________________________________________________________________________________>      
+<!__ Extra Credit ___________________________________________________________________________________________________>
+                <section class="resume-section" id="Extra Credit">
+                <div class="resume-section-content">
+                    <h2 class="mb-0">Extra Credit: Implement Kalman Filter On Robot</h2> <!-------------------------->
                         <p>I implemented the Kalman Filter on the robot for extra credit. To implement the Kalman 
                             Filter I first created two new cases in Arduino IDE: KF_DATA and SEND_KF_DATA. These cases 
                             are similar to the cases used to start/stop the PID controller and send PID controller data,
                             but I added array's for Kalman Filter time (KF_Time) and the Kalman filter distance 
                             (mu_Store). The Arduino cases and Jupyter Notebook commands can be found below:
                         </p>
-                        <p>After creating the cases for the Kalman Filter, I then started working on implementing 
-                            the update step of the Kalman Filter. 
+                    <p>INSERT IMAGES OF CASES-------------------------------------</p>
+                        <p>After creating the cases for the Kalman Filter, I then started working on writing a Kalman 
+                            Filter function in Arduino IDE. 
                         </p>
-                    <h3 class="mb-0">Step 1: Kalman Filter Update Step On Robot</h3> <!----------------------------->
+                    <h3 class="mb-0">Step 1: Kalman Filter Function</h3> <!------------------------------------------>
+                        <p>The first function that I wrote for the lab was the function Kalman_Filter() that is called 
+                            from inside the larger while loop. To perform this task, I referenced the Jupyter Notebook 
+                            code I wrote for Lab 7 and modified the code for the Arduino IDE syntax. The function can 
+                            be seen below:
+                        </p>
+                    <p>INSERT IMAGE---------------------------------</p>
+                        <p>The Ad (discritized A) and Bd (discritized B) matrices are updated each time the Kalman Filter
+                            is called to use the most recent dt value. I printed the dt (time difference) values to the 
+                            Serial Monitor and observed that the dt values slightly varied each time the while loop ran. 
+                            The variable dt is how fast the while loop runs and ranged from around 10ms to 25ms. After
+                            finding Ad and Bd, mu_p and sigma_p are calculated. The if statement of the filter is the 
+                            update step and runs when there is a new TOF sensor reading (newTOF == 1). The else statement
+                            is the prediction step and assigns the mu_p value to mu and the sigma_p value to sigma. 
+                            During both steps the first value for mu is stored in the array mu_Store. 
+                        </p>
+                    <h3 class="mb-0">Step 2: Kalman Filter Update Step On Robot</h3> <!----------------------------->
                     <h4 class="mb-0">Using ToF Readings For PID Loop</h4> <!---------------------------------------->
-                        <p>The update step was completed before implementing the prediction step. To perform this task,
-                            I referenced the Jupyter Notebook code I wrote for Lab 7 and modified the code for the 
-                            Arduino IDE syntax. 
+                        <p>I started working on the calling the Kalman Filter from inside the while loop by modifying 
+                            the script for my PID controller. After finding the ToF sensor readings and running the PID 
+                            controller within the larger while loop, I added an if statement inside the loop to call the
+                            Kalman Filter to find the update values. The if statement runs if dStart == 1 and 
+                            if the currect distance value is not equal to the previous distance value. The variable dStart
+                            is set to 1 if the new ToF sensor distance is not the same value as the previous sensor distance.
+                            If the current distance reading is the same as the previous distance reading dStart is set to 0. 
+                            The if statement to call the update of the Kalman Filter is below:
+                        </p>
+                        <p>The PID controller was run using values of Kp = 0.05, Ki = 0.0000008, and Kd = 5. A test run 
+                            showing the plotted ToF data and the Kalman Filter updates is shown below. It can be seen that
+                            the Kalman Filter updates align with each new reading of the ToF sensor. 
+                        </p>
+                        <p>The video below shows the Serial Monitor outputs for the ToF distance readings and the update 
+                            values:
+                        </p>
+                        <p>The full while loop code for this section is below:</p>
+                        <p>The FORWARD() Function that was used previously for PID control is below:</p>
+                        <p>The BACKWARDS() Function that was used previously for PID control is below:</p>
+                        <p>After successfully implemeting the update step of the Kalman Filter, I started working on 
+                            the prediction step. 
                         </p>
                         <p>CODE; 3 GRAPHS DIFFERENT DISTANCES; VIDEO OF COMPUTER SCREEN OUTPUT; VIDEO OF ROBOT MOVING ON GROUND</p>
-                    <h3 class="mb-0">Step 2: Kalman Filter Update and Prediction Steps On Robot</h3> <!------------->
+                    <h3 class="mb-0">Step 3: Kalman Filter Update and Prediction Steps On Robot</h3> <!------------->
                     <h4 class="mb-0">Using ToF Readings and Predicted Distances For PID Loop</h4> <!---------------->
+                        <p>I started the next step by removing the PID control from the larger while loop and creating 
+                            a separate function called PID_Function(). A separate function for PID control allowed for 
+                            me to more easily switch the order to performing the Kalman Filter before the PID controller.
+                            Previously the PID controller used the ToF sensor measurements every time the loop ran. In 
+                            the new iteration of the code, if the update step of the filter runs, the distance measurement 
+                            used will be the ToF sensor reading. If the prediction step runs the most current value of mu
+                            will be used in the PID controller. The if and else statements for the update and prediction steps
+                            are shown below:
+                        </p>
+                        <p>The PID_Function is below:</p>
+                        <p>The PID controller was run using the same Kp, Ki, and Kd values as the previous section. A test run 
+                            showing the plotted ToF data and the Kalman Filter updates is shown below. 
+                            The Kalman Filter updates align with each new reading of the ToF sensor and the prediction values 
+                            follow the trend of the data. 
+                        </p>
+                        <p>The video below shows the Serial Monitor outputs for the ToF distance readings and the update 
+                            values:
+                        </p>
+                        <p>The full while loop code for this section is below:</p>
                         <p>CODE; 3 GRAPHS DIFFERENT DISTANCES; VIDEO OF COMPUTER SCREEN OUTPUT; VIDEO OF ROBOT MOVING ON GROUND</p>
-<!-- Lab 8 References ---------------------------------------------------------------------------------------------->
-                <h2 class="mb-2.5">Lab 8 References</h2>
+<!-- Extra Credit References --------------------------------------------------------------------------------------->
+                <h2 class="mb-2.5">Extra Credit References</h2>
                 <p>Thank you to all of the TAs that answered my questions. I referenced the past lab reports of 
                     Liam Kain, Rafael Gottlieb, Larry Lu, Julian Prieto, and Ignacio Romo.
                 </p>
