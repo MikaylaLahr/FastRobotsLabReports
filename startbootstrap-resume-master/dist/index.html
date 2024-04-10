@@ -107,7 +107,10 @@
                             Filter I first created two new cases in Arduino IDE: KF_DATA and SEND_KF_DATA. These cases 
                             are similar to the cases used to start/stop the PID controller and send PID controller data,
                             but I added array's for Kalman Filter time (KF_Time) and the Kalman filter distance 
-                            (mu_Store). The Arduino cases and Jupyter Notebook commands can be found below:
+                            (mu_Store). I added a delay in KF_CASE before running the while loop. When I was testing the
+                            filter I was repeatedlly starting with distances of 0mm. The delay after the ToF distance 
+                            sensor starts ranging reduces the amount of 0mm distance readings when starting the filter. 
+                            The Arduino cases and Jupyter Notebook commands can be found below:
                         </p>
                         <img width="500" height="auto" src="Lab8EC/PyKF_CASE.png"></img>
                     <hr>
@@ -117,8 +120,9 @@
                     <hr>
                         <img width="500" height="auto" src="Lab8EC/SEND_KF_DATA.png"></img>
                         <p>After creating the cases for the Kalman Filter, I then started working on writing a Kalman 
-                            Filter function in Arduino IDE. 
+                            Filter function in Arduino IDE. The final initialization of the matrices is below:
                         </p>
+                         <img width="500" height="auto" src="Lab8EC/SEND_KF_DATA.png"></img>
                     <h3 class="mb-0">Step 1: Kalman Filter Function</h3> <!------------------------------------------>
                         <p>The first function that I wrote for the lab was the function Kalman_Filter() that is called 
                             from inside the larger while loop. To perform this task, I referenced the Jupyter Notebook 
@@ -193,8 +197,8 @@
                         <img width="500" height="auto" src="Lab8EC/K2/K2P1.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K2/K2P2.png"></img>
                     <hr>
-                        <p>To address the above issue, I multiplied the B matrix by 3 again tested the robot. The graphs below show 
-                            that multiplying by 3 did not significantly change the predicted values. 
+                        <p>To address the above issue, I multiplied the B matrix by 3 and again tested the robot. The graphs below show 
+                            that multiplying matrix B by 3 did not significantly change the predicted values. 
                         </p>
                         <img width="500" height="auto" src="Lab8EC/K4/K4Full.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K4/K4Motor.png"></img>
@@ -211,7 +215,9 @@
                     <hr>
                     <p>Throughout more testing, I determined that a good value to multuiply the B matrix with is 8. The Kalman Filter 
                         updates align with each new reading of the ToF sensor and the prediction values follow the trend of the data. 
-                        Below are two sets of graphs showing data that was recorded after the B matrix was multiplied by 8. 
+                        Below are two sets of graphs showing data that was recorded after the B matrix was multiplied by 8. Needing to 
+                        multiply the B matrix by 8 indicates that the value found for m during the Jupyter Lab simulation does not work 
+                        as well when implementing the Kalman Filter on the robot. 
                     </p>
                     <p>Test 1:</p>
                         <img width="500" height="auto" src="Lab8EC/K6/K6Full.png"></img>
@@ -225,8 +231,8 @@
                         <img width="500" height="auto" src="Lab8EC/K7/K7P1.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K7/K7P2.png"></img>
                     <hr>
-                    <p>In addition during testing, I accdentally set the robot to a higher speed then necessary and the robot 
-                        ran into multiple walls and did not always travel in a straight line. I decided to run the collected data
+                    <p>In addition during testing, I accidentally set the robot to a higher speed than necessary and the robot 
+                        ran into multiple walls and did not always travel in a straight line for the below run. I decided to run the collected data
                         throught the Kalman Filter to see the outcome. The graphs below show that the update values and some of 
                         the predicted values align with the recorded ToF data. The Kalman Filter is able to update to the correct
                         ToF value, even during somewhat random running conditions. 
@@ -243,6 +249,14 @@
                         <iframe width="550" height="400" src="https://youtube.com/embed/4BA5eVdi1n8"></iframe>
                         <p>The full while loop code for this section is below:</p>
                             <script src="https://gist.github.com/MikaylaLahr/f5b4c83fa975e1a934abff50aed396e8.js"></script>
+                     <h4 class="mb-0">Issues and Mistakes During Implementation</h4> <!----------------------------->
+                        <p>While I was implementing the Kalman Filter onto the robot I was able to work through most
+                            of the debugging in an efficient manner. One mistake that I made early during implementation 
+                            was not converting dt to seconds which caused my predicted values to drastically increase or 
+                            decrease. Initially I thought that there was a problem with my sigma values and spent time 
+                            changing the sigma values to see if there was any change. This did not work and I discovered 
+                            the issue with dt during office hours. 
+                        </p>
 <!-- Extra Credit References --------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Extra Credit References</h2>
                 <p>Thank you to all of the TAs that answered my questions. I referenced the past lab reports of 
