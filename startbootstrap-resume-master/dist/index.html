@@ -169,23 +169,25 @@
                             the new iteration of the code, if the update step of the filter runs, the distance measurement 
                             used will be the ToF sensor reading. If the prediction step runs the most current value of mu
                             will be used in the PID controller. The if and else statements for the update and prediction steps
-                            are shown below:
-                        </p>
-                        <p>The PID_Function is below:</p>
-                        <p>The if and else statements for the update and prediction steps are below. the variable dis is the 
+                            are shown below. The variable dis is the 
                             distance measurement used in the PID controller. The u value for the Kalman Filter was calculated 
                             the same as in Jupyter Notebook using the PID control values. 
                         </p>
+                        <img width="500" height="auto" src="Lab8EC/P2UpdateAndPredict.png"></img>
+                        <p>The PID_Function is below:</p>
+                        <img width="500" height="auto" src="Lab8EC/PID_Function.png"></img>
                         <p>The PID controller was run using the same Kp, Ki, and Kd values as the previous section. A test run 
                             showing the plotted ToF data and the Kalman Filter updates is shown below. 
                             The Kalman Filter updates align with each new reading of the ToF sensor and the prediction values 
                             follow the trend of the data. 
                         </p>
+                    <p>INSERT GRAPHS------------------------------------------</p>
                         <p>The video below shows the Serial Monitor outputs for the ToF distance readings and the update 
                             values:
                         </p>
+                    <p>INSERT VIDEOS------------------------------------------</p>
                         <p>The full while loop code for this section is below:</p>
-                        <p>CODE; 3 GRAPHS DIFFERENT DISTANCES; VIDEO OF COMPUTER SCREEN OUTPUT; VIDEO OF ROBOT MOVING ON GROUND</p>
+                            <script src="https://gist.github.com/MikaylaLahr/f5b4c83fa975e1a934abff50aed396e8.js"></script>
 <!-- Extra Credit References --------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Extra Credit References</h2>
                 <p>Thank you to all of the TAs that answered my questions. I referenced the past lab reports of 
