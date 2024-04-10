@@ -102,13 +102,13 @@
                 <div class="resume-section-content">
                     <h2 class="mb-0">Extra Credit: Implement Kalman Filter On Robot</h2> <!-------------------------->
                         <p>I implemented the Kalman Filter on the robot for extra credit. To complete this task I needed 
-                            to install the Basic Linear Algebra Library on Arduino IDe.
+                            to install the Basic Linear Algebra Library on Arduino IDE.
                             To implement the Kalman 
                             Filter I first created two new cases in Arduino IDE: KF_DATA and SEND_KF_DATA. These cases 
                             are similar to the cases used to start/stop the PID controller and send PID controller data,
                             but I added array's for Kalman Filter time (KF_Time) and the Kalman filter distance 
                             (mu_Store). I added a delay in KF_CASE before running the while loop. When I was testing the
-                            filter I was repeatedlly starting with distances of 0mm. The delay after the ToF distance 
+                            filter I was repeatedly starting with distances of 0mm. The delay after the ToF distance 
                             sensor starts ranging reduces the amount of 0mm distance readings when starting the filter. 
                             The Arduino cases and Jupyter Notebook commands can be found below:
                         </p>
@@ -151,7 +151,7 @@
                             The if statement to call the update of the Kalman Filter is below:
                         </p>
                         <img width="500" height="auto" src="Lab8EC/P1Update.png"></img>
-                        <p>The PID controller was run using values of Kp = 0.05, Ki = 0.0000008, and Kd = 5. A test run 
+                        <p>The PID controller was run using values of Kp = 0.05, Ki = 0.0000008, and Kd = 0.5. A test run 
                             showing the plotted ToF data and the Kalman Filter updates is shown below. It can be seen that
                             the Kalman Filter updates align with each new reading of the ToF sensor. 
                         </p>
@@ -233,7 +233,7 @@
                     <hr>
                     <p>In addition during testing, I accidentally set the robot to a higher speed than necessary and the robot 
                         ran into multiple walls and did not always travel in a straight line for the below run. I decided to run the collected data
-                        throught the Kalman Filter to see the outcome. The graphs below show that the update values and some of 
+                        through the Kalman Filter to see the outcome. The graphs below show that the update values and some of 
                         the predicted values align with the recorded ToF data. The Kalman Filter is able to update to the correct
                         ToF value, even during somewhat random running conditions. 
                     </p>
