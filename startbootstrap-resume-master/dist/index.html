@@ -101,7 +101,9 @@
                 <section class="resume-section" id="Extra Credit">
                 <div class="resume-section-content">
                     <h2 class="mb-0">Extra Credit: Implement Kalman Filter On Robot</h2> <!-------------------------->
-                        <p>I implemented the Kalman Filter on the robot for extra credit. To implement the Kalman 
+                        <p>I implemented the Kalman Filter on the robot for extra credit. To complete this task I needed 
+                            to install the Basic Linear Algebra Library on Arduino IDe.
+                            To implement the Kalman 
                             Filter I first created two new cases in Arduino IDE: KF_DATA and SEND_KF_DATA. These cases 
                             are similar to the cases used to start/stop the PID controller and send PID controller data,
                             but I added array's for Kalman Filter time (KF_Time) and the Kalman filter distance 
@@ -179,36 +181,54 @@
                         <img width="500" height="auto" src="Lab8EC/P2UpdateAndPredict.png"></img>
                         <p>The PID_Function is below:</p>
                         <img width="500" height="auto" src="Lab8EC/PID_Function.png"></img>
-                        <p>The PID controller was run using the same Kp, Ki, and Kd values as the previous section. A test run 
-                            showing the plotted ToF data and the Kalman Filter updates is shown below. 
-                            The Kalman Filter updates align with each new reading of the ToF sensor and the prediction values 
-                            follow the trend of the data. 
+                        <p>The PID controller was run using the same Kp, Ki, and Kd values as the previous section. An initial test run 
+                            showing the plotted ToF data and the Kalman Filter updates is shown below. The graphs show that the filter is
+                            predicting distances between ToF readings, but the predicted values do not follow the trend of the data 
+                            towards the next update value. 
                         </p>
                         <img width="500" height="auto" src="Lab8EC/K2/K2Full.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K2/K2Motor.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K2/K2P1.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K2/K2P2.png"></img>
                     <hr>
+                        <p>To address the above issue, I multiplied the B matrix by 3 again tested the robot. The graphs below show 
+                            that multiplying by 3 did not significantly change the predicted values. 
+                        </p>
                         <img width="500" height="auto" src="Lab8EC/K4/K4Full.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K4/K4Motor.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K4/K4P1.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K4/K4P2.png"></img>
                     <hr>
+                        <p>I then multiplied the B matrix by 6 and achieved the below results. The predicted values trend downwards, but 
+                            still do not reach the update values.
+                        </p>
                         <img width="500" height="auto" src="Lab8EC/K5/K5Full.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K5/K5Motor.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K5/K5P1.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K5/K5P2.png"></img>
                     <hr>
+                    <p>Throughout more testing, I determined that a good value to multuiply the B matrix with is 8. The Kalman Filter 
+                        updates align with each new reading of the ToF sensor and the prediction values follow the trend of the data. 
+                        Below are two sets of graphs showing data that was recorded after the B matrix was multiplied by 8. 
+                    </p>
+                    <p>Test 1:</p>
                         <img width="500" height="auto" src="Lab8EC/K6/K6Full.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K6/K6Motor.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K6/K6P1.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K6/K6P2.png"></img>
                     <hr>
+                    <p>Test 2:</p>
                         <img width="500" height="auto" src="Lab8EC/K7/K7Full.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K7/K7Motor.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K7/K7P1.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K7/K7P2.png"></img>
                     <hr>
+                    <p>In addition during testing, I accdentally set the robot to a higher speed then necessary and the robot 
+                        ran into multiple walls and did not always travel in a straight line. I decided to run the collected data
+                        throught the Kalman Filter to see the outcome. The graphs below show that the update values and some of 
+                        the predicted values align with the recorded ToF data. The Kalman Filter is able to update to the correct
+                        ToF value, even during somewhat random running conditions. 
+                    </p>
                         <img width="500" height="auto" src="Lab8EC/K8/K8Full.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K8/K8Motor.png"></img>
                         <img width="500" height="auto" src="Lab8EC/K8/K8P1.png"></img>
