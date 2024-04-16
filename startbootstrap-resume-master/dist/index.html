@@ -109,25 +109,53 @@
 <!-- Lab 8 Lab Tasks ----------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab Task B: Orientation Control</h2>
                     <h3 class="mb-0">Initial Approach Before Changing Designs</h3> <!------------------------------->
-                        <p>My inital approach to the orienatation control stunt was to break down the stunt into three 
+                        <p>My inital approach to the orientation control stunt was to break down the stunt into three 
                             separate parts: driving towards the wall, turning, driving away from the wall. When driving 
                             straight towards the wall the robot uses PID control on the speed before slowing down and 
                             turning. The speed PID control function can be found below:
                         </p>
                         <script src="https://gist.github.com/MikaylaLahr/cd02de330d6d252c54f4ca65fb994a79.js"></script>
                         <p>After the robot is within 3ft of the wall, PID control on orientation is used to turn the robot 
-                            180 degrees. The orientation PID control function can be found below:
+                            180 degrees. The PID control value is determined by the yaw angle reading from the IMU sensor. 
+                            If the PID control value is positive the wheels on the right side of the robot will move forwards
+                            and the wheels on the left side of the robot will move backwards.
+                            If the PID control value is negative the wheels on the right side of the robot will move backwards
+                            and the wheels on the left side of the robot will move forwards.
+                            The orientation PID control function can be found below:
                         </p>
                         <script src="https://gist.github.com/MikaylaLahr/3a82ec2548d2294b90f259d1163cae18.js"></script>
-                        
-                        <h4 class="mb-0">Driving Straight</h4> <!--------------------------------------------------->
-                        I first started 
+                        <p>The above two functions were called inside of the while loop. If the distance error is greater
+                            than zero, the speed PID control function is called. If the distance error is less than zero 
+                            the orientation PID control function is called to turn the robot. The while loop can be found 
+                            below:
+                        </p>
+                        <script src="https://gist.github.com/MikaylaLahr/a5f60f368a530ce0ff772b9adc939ccd.js"></script>
+                        <p>Before implementing the final part of the task (driving away from the wall), I ran the above 
+                            Arduino script. The inputs included a start/stop integer (1/0); a setDistance for the robot 
+                            to start turning; and the Kp, Ki, and Kd PID values. While running the Arduino IDE code 
+                            multiple times with different setDistance values (914mm-1300mm) and PID values, the robot 
+                            did not perform in the expected manner. The robot would often either hit the wall or turn too 
+                            late even when inputting larger setDistance values. In addition, the robot turned too slow 
+                            whe inputting smaller Kp values (such as 0.5), or would spin multiple times when inputting 
+                            larger Kp values (such as 1.5).
+                            Videos showing the behaviour of the robot are below:
+                        </p>
+                        <iframe width="550" height="400" src=""></iframe>
+                        <iframe width="550" height="400" src=""></iframe>
+                        <iframe width="550" height="400" src=""></iframe>
+                        <p>After continuously testing the robot, I decided to write a new Arduino IDE script that only 
+                            used orientation control. The robot runs towards the wall at a constant speed, and within 
+                            the desired setDistance turns 180 degrees and moves away from the wall.  
+                        </p>
+                    <h3 class="mb-0">Second Approach</h3> <!--------------------------------------------------------->
+                         <h4 class="mb-0">Driving Straight</h4> <!--------------------------------------------------->
+                        <p>I first started 
                             working on implementing orientation control while the robot is driving forwards. Orientation 
                             control when the robot is driving forwards keeps the robot moving in a straight line. The robot 
                             is set to run at a base speed and PID control using the readings from the IMU correct the 
                             orientation of the robot to keep the robot at the starting yaw angle. 
-                        
-                    <h3 class="mb-0">Turning</h3> <!-------------------------------------------->
+                        </p>
+                        <h3 class="mb-0">Turning</h3> <!------------------------------------------------------------>
 <!-- Lab 8 References ---------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab 8 References</h2>
                 <p>Thank you to all of the TAs that answered my questions. I referenced the past lab reports of 
