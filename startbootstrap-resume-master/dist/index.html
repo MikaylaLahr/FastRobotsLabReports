@@ -92,30 +92,42 @@
             <section class="resume-section" id="Lab 8">
                 <div class="resume-section-content">
                     <h2 class="mb-2.5">Lab 8: Stunts</h2>
-                    <p>The objective of the lab is to gain experience implementing Kalman Filters. Labs 5-8 detail PID, 
-                        sensor fusion, and stunts. This lab is focused on using a Kalman Filter to predict ToF sensor 
-                        distance readings of the robot. The code from Lab 5: Linear PID Control will be used to gather
-                        data, having the robot speed towards a wall and stop 1ft in front of the wall. A Kalman Filter
-                        will be implemented in Jupyter Notebook using the collected data.
+                    <p>The objective of the lab is to implement a stunt on the robot using the knowledge gained from 
+                        previous labs. Labs 5-8 detail PID, 
+                        sensor fusion, and stunts. This lab is focused on using the ToF sensor and IMU sensor to drive 
+                        the robot forward and then turn 180 degrees when the robot is within 3ft (914mm) of the wall. 
+                        Task B: Orientation Control will be implemented on the robot. 
                     </p>
 <!-- Lab 8 Prelab --------------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Prelab</h2>
-                    <p>The lab materials include: 
-                        <li><a href="https://www.sparkfun.com/products/15443">SparkFun RedBoard Artemis Nano</a></li>
-                        <li><a href="https://www.amazon.com/SUMPK-Charging-Braided-Compatible-Samsung/dp/B09Z6J21LY/ref=sr_1_4?keywords=usb%2Bc%2Bto%2Bc&qid=1636380583&qsid=147-6677549-1776715&refinements=p_n_feature_ten_browse-bin%3A23555327011&rnid=23555276011&s=pc&sr=1-4&sres=B08D9SB161%2CB08R68T84N%2CB01CZVEUIE%2CB01FM51812%2CB07VCZV3R4%2CB075V68NVR%2CB075GMKZWW%2CB093BVBRJT%2CB09BBBJ33F%2CB09C2D9Z7T%2CB012V56D2A%2CB092CYFQMP%2CB081L4V3DN%2CB07Y6ZJT1D%2CB07Y2XKPX5%2CB07VPYJV8V%2CB07THJGZ9Z%2CB08W2TP2TT%2CB0744BKDRD%2CB07THFJ1J5&srpt=ELECTRONIC_CABLE&th=1">UCB-C to USB-C Cable</a></li>
-                        <li><a href="https://www.mouser.com/ProductDetail/SparkFun/SEN-15335?qs=uwxL4vQweFMcls1MYZT00A%3D%3D">IMU Sensor</a></li>
-                        <li><a href="https://www.sparkfun.com/products/18012">QWIIC Breakout Board</a></li>
-                        <li><a href="https://www.sparkfun.com/products/14426">QWIIC Connector</a></li>
-                        <li><a href="https://www.amazon.com/dp/B07V56N33J?smid=A2ZDGCOOU4F0SF&ref_=chk_typ_imgToDp&th=1">JST2 Connector + Cable</a></li>
-                        <li><a href="https://force1rc.com/products/cyclone-remote-control-car-for-kids-adults">Force1 RC Car</li>
-                        <li><a href="https://www.amazon.com/URGENEX-Battery-Rechargeable-Quadcopter-Charger/dp/B08T9FB56F/ref=sr_1_3?keywords=lipo+battery+3.7V+850mah&qid=1639066404&sr=8-3">Li-Ion 3.7V 850mAh battery</a></li>
-                        <li><a href="https://www.digikey.com/en/products/detail/pololu-corporation/2130/10450426">Dual Motor Drivers</a></li>
+                    <p>The lab materials include a fully assembled 
+                        <a href="https://force1rc.com/products/cyclone-remote-control-car-for-kids-adults">robot</a>
+                        with <a href="https://www.sparkfun.com/products/15443">SparkFun RedBoard Artemis Nano</a>,
+                        <a href="https://www.pololu.com/product/3415">Pololu TOF Distance Sensors</a>, and a
+                        <a href="https://www.mouser.com/ProductDetail/SparkFun/SEN-15335?qs=uwxL4vQweFMcls1MYZT00A%3D%3D">IMU Sensor</a>.
                     </p>
 <!-- Lab 8 Lab Tasks ----------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab Task B: Orientation Control</h2>
-                    <h3 class="mb-0">Driving Straight</h3> <!-------------------------------------------->
+                    <h3 class="mb-0">Initial Approach Before Changing Designs</h3> <!------------------------------->
+                        <p>My inital approach to the orienatation control stunt was to break down the stunt into three 
+                            separate parts: driving towards the wall, turning, driving away from the wall. When driving 
+                            straight towards the wall the robot uses PID control on the speed before slowing down and 
+                            turning. The speed PID control function can be found below:
+                        </p>
+                        <script src="https://gist.github.com/MikaylaLahr/cd02de330d6d252c54f4ca65fb994a79.js"></script>
+                        <p>After the robot is within 3ft of the wall, PID control on orientation is used to turn the robot 
+                            180 degrees. The orientation PID control function can be found below:
+                        </p>
+                        <script src="https://gist.github.com/MikaylaLahr/3a82ec2548d2294b90f259d1163cae18.js"></script>
+                        
+                        <h4 class="mb-0">Driving Straight</h4> <!--------------------------------------------------->
+                        I first started 
+                            working on implementing orientation control while the robot is driving forwards. Orientation 
+                            control when the robot is driving forwards keeps the robot moving in a straight line. The robot 
+                            is set to run at a base speed and PID control using the readings from the IMU correct the 
+                            orientation of the robot to keep the robot at the starting yaw angle. 
+                        
                     <h3 class="mb-0">Turning</h3> <!-------------------------------------------->
-                    <h3 class="mb-0">Initial Approach</h3> <!-------------------------------------------->
 <!-- Lab 8 References ---------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab 8 References</h2>
                 <p>Thank you to all of the TAs that answered my questions. I referenced the past lab reports of 
