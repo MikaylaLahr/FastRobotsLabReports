@@ -80,7 +80,106 @@
 <!-- Lab 9 Lab Tasks ----------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab Task </h2>
                     <h3 class="mb-0">Orientation Control</h3> <!---------------------------------------------------->
+                        <p>Option 2: Orientation Control was chosen as the PID controller for the lab. The PID controller 
+                            results in the robot performing on-axis turns in 10 degree increments. The ToF sensor used
+                            to collect distance readings is located on the front of the robot between the left and right 
+                            motor sides. 
+                        </p>
+                    <h4 class="mb-0">Code For Orientation Control</h4> <!------------------------------------------->
+                        <p>The Arduino code for the created ORIENTATION_CASE in the while loop is found below. </p>
+                        <img width="500" height="auto" src="Lab9/Case1.png"></img>
+                        <img width="500" height="auto" src="Lab9/Case2.png"></img>
+                        <p>First 
+                            the distance is found using the readings from the ToF sensors, then the yaw angle is found 
+                            using the IMU sensor. The PID controller value is used in the RIGHT_MOTOR and LEFT_MOTOR 
+                            functions to determine the motor input value. If the error between the current yaw angle 
+                            and the setAngle (10 degrees) is less than -0.5 degrees or greater than 0.5 degrees then 
+                            the RIGHT_MOTOR and LEFT_MOTOR functions will run. The "stop" variable is set to be 360 
+                            divided by the "setAngle" variable, which is equal to 10. The results in stop = 36 
+                            increments. If variable "end" is less than "stop" the robot will stop for one second. 
+                            I stopped the robot for one second to ensure that the ToF sensor is pointed towards a 
+                            fixed point in space. 
+                            The total yaw angle is recorded by adding the current total to the current yaw value (yaw_arr). 
+                            The yaw value is then set to zero for the next iteration of the while loop. Resetting the 
+                            yaw value for the IMU sensor reduces gyroscope drift.
+                            If the "end" 
+                            value is greater than or equal to the "stop" value the robot will stop and no new data will 
+                            be recorded into the yaw_arr array. 
+                        </p>
+                    <hr>
+                        <p>The RIGHT_MOTOR and LEFT_MOTOR functions called from the code above are found below.</p>
+                        <img width="500" height="auto" src="Lab9/RIGHT_MOTOR.png"></img>
+                        <img width="500" height="auto" src="Lab9/LEFT_MOTOR.png"></img>
+                    <hr>
+                        <p>The Jupyter Notebook command and Arduino case to start the PID orientation controller are 
+                            below. From testing I found that using a Kp value of 1, Ki value of 0 and Kd value of 0 
+                            worked to move the robot in 10 degree increments. Each time the PID orientation controller
+                            starts, yaw[0], yaw_arr[0], and the total are set to zero. In addition the stop variable 
+                            is found. Graphs showing the changing yaw angles to confirm the PID controller works are 
+                            found in the next section.
+                        </p>
+                        <img width="500" height="auto" src="Lab9/PythonCase.png"></img>
+                        <img width="500" height="auto" src="Lab9/ORIENTATION_CASE.png"></img>
+                    <hr>
+                        <p>The Jupyter Notebook command and Arduino case to send the collected data are below.</p>
+                        <img width="500" height="auto" src="Lab9/PythonData.png"></img>
+                        <img width="500" height="auto" src="Lab9/SEND_ORIENTATION_DATA.png"></img>
+                    <h4 class="mb-0">Video and PID Control Graphs</h4> <!------------------------------------------->
+                        <p>Two videos of the robot turning are below. The robot roughly turns on axis. In the second 
+                            video, the robot overshoots at some increments but is able to correct itself to the correct 
+                            angle. The robot stays inside of one floor tile for the duration of the turn.
+                        </p>
+                        <p>Turn 1:</p>
+                        <iframe width="550" height="400" src="https://youtube.com/embed/yQFxBwK8bnc"></iframe>
+                        <p>Turn 2:</p>
+                        <iframe width="550" height="400" src="https://youtube.com/embed/bgJ58W0-rNg"></iframe>
+                        <p>I plotted the values of yaw for each 10 degree increment. As can be seen in the below graph
+                            the PID controller works as expected. After yaw increases to 10 degrees, the value of yaw 
+                            is reset to zero and then again increases to 10 degrees for the next increment. The slight 
+                            variation is due to the -0.5 to 0.5 degree tolerance. 
+                        </p>
+                        <img width="500" height="auto" src="Lab9/BR_Yaw_Test.png"></img>
+                        <p>The total angle values were found by adding each final yaw value (between 9.5 and 10.5 
+                            degrees) with a summation of all previous yaw values. The values and graph for an example 
+                            turn are found below. 
+                        </p>
+                        <img width="500" height="auto" src="Lab9/BR_Yaw_0_360.png"></img>
+                        <img width="500" height="auto" src="Lab9/BR_Yaw_Angles.png"></img>
+                        <p>In the above graph as the turn progresses the angles remain accurate as the summation 
+                            calculation is correct to the yaw reading of the robot, but the angles slightly vary from 
+                            the ideal 360 degree turn values. To address this I also preformed half turns from 0 to 180
+                            degrees, and 180 to 360 degrees. The angle values and corresponding graphs can be found 
+                            below:
+                        </p>
+                        <img width="500" height="auto" src="Lab9/BR_Yaw_0_180.png"></img>
+                        <img width="500" height="auto" src="Lab9/BR_Yaw180.png"></img>
+                        <img width="500" height="auto" src="Lab9/BR_Yaw_180_360.png"></img>
+                        <img width="500" height="auto" src="Lab9/BR_Yaw360.png"></img>
+                        <p>The half turns in the above graphs are more in line with the ideal angles. When testing the 
+                            robot in the lab, I collected angle data for full turns and half turns.
+                        </p>
+                    <h4 class="mb-0">Average And Maximum Error</h4> <!---------------------------------------------->
+                        <p>NEED TO COMPLETE</p>
                     <h3 class="mb-0">Read Out Distances</h3> <!----------------------------------------------------->
+                    <h4 class="mb-0">Execute Turn At Each Marked Position</h4> <!----------------------------------->
+                        <p>The robot was placed at each of the following points: (-3,-2), (0,0), (0,3), (5,3), and (5,-3).
+                            The image below shows each of the points in the lab. 
+                        </p>
+                        <img width="500" height="auto" src="Lab9/.png"></img>
+                        <p>The distance was measured using the front ToF sensor between the left and right motor sides. 
+                            The data collected was sent over Bluetooth to Jupyter Notebook to be plotted. The robot 
+                            was started in the same orietation, facing the right side wall of the lab, for each full 
+                            turn and each half turn starting at zero degrees. For half turns starting at 180 degrees, 
+                            the robot started facing the left side wall.
+                            RELIABLE BEHAVIOUR??????
+                        </p>
+                    <h4 class="mb-0">Polar And Global Frame Plots</h4> <!------------------------------------------->
+                        <p>The data collected for each point in the lab is plotted in the below graphs:</p>
+                        <h5 class="mb-0">Point (-3,-2):</h5> <!----------------------------------------------------->
+                        <h5 class="mb-0">Point (0,0):</h5> <!------------------------------------------------------->
+                        <h5 class="mb-0">Point (0,3):</h5> <!------------------------------------------------------->
+                        <h5 class="mb-0">Point (5,3):</h5> <!------------------------------------------------------->
+                        <h5 class="mb-0">Point (5,-3):</h5> <!------------------------------------------------------>
                     <h3 class="mb-0">Merge And Plot Readings</h3> <!------------------------------------------------>
                     <h3 class="mb-0">Convert To Line Based Map</h3> <!---------------------------------------------->
 <!-- Lab 9 References ---------------------------------------------------------------------------------------------->
