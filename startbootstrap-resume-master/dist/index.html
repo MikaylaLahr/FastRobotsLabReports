@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#home">Home: Mikayla Lahr mrl242</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Lab 10">Lab 10: Localization</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Lab 10">Lab 10: Localization (Simulation)</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Lab 9">Lab 9: Mapping</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Lab 8">Lab 8: Stunts</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Extra Credit">Extra Credit: Kalman Filter</a></li>
@@ -60,18 +60,39 @@
                 </div>
             </section>
             <hr class="m-0" />
-<!__ Lab 10: Grid Localization Using Bayes Filter ___________________________________________________________________>
+<!__ Lab 10: Grid Localization Using Bayes Filter (Simulation) ______________________________________________________>
             <section class="resume-section" id="Lab 10">
                 <div class="resume-section-content">
                     <h2 class="mb-2.5">Lab 10: Grid Localization Using Bayes Filter</h2> 
-                    <p>The objective of the lab is 
+                    <p>The objective of the lab is to use the Bayes filter to implement grid localization. 
                     </p>
 <!-- Lab 9 Prelab --------------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Prelab</h2>
-                    <p></p>
+                    <p>Before starting the lab, I familiarized myself with how the Bayes filter worked and how to 
+                        implement the Bayes filter for the robot in simulation. Localization and of the robot determines 
+                        where the robot is in the enviroment. There is a predition and update step 
+                        of the Bayes filter. The prediction step uses the control input and accounts for the noise 
+                        from the actuator to predict the new location of the robot. After the prediction step, the 
+                        robot rotates 360 degrees gathering distance measurement data. The update step uses the gathered 
+                        distance measurements to determine the real location of the robot. The Bayes Filter is below: 
+                    </p>
+                    <img width="500" height="auto" src="Lab10/BayesFilterEq.png"></img>
+                    <p>The dimensions of each grid cell in the x, y, and theta axes are 0.3048 meters, 0.3048 meters, 
+                        and 20 degrees. The grid is (12,9,18) in three dimensions, totalling 1944 cells. The discritized 
+                        grid map is:
+                        <li>(-1.6764,+1.9812) meters or (-5.5,6.5) feet in the x-axis</li>
+                        <li>(-1.3716,+1.3716) meters or (-4.5,4.5) feet in the y-axis</li>
+                        <li>(-180,+180) degrees in the theta-axis</li>
+                    </p>
 <!-- Lab 10 Lab Tasks ----------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab Tasks</h2>
-                    <h3 class="mb-0">Orientation Control</h3> <!----------------------------------------------------->
+                    <h3 class="mb-0">Implementation</h3> <!---------------------------------------------------------->
+                    <h4 class="mb-0">Compute Control</h4> <!--------------------------------------------------------->
+                    <h4 class="mb-0">Odometry Motion Model</h4> <!--------------------------------------------------->
+                    <h4 class="mb-0">Prediction Step</h4> <!--------------------------------------------------------->
+                    <h4 class="mb-0">Sensor Model</h4> <!------------------------------------------------------------>
+                    <h4 class="mb-0">Update Step</h4> <!------------------------------------------------------------->
+                    <h3 class="mb-0">Simulation Results</h3> <!------------------------------------------------------>
 <!-- Lab 10 References ---------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab 10 References</h2>
                 <p>Thank you to all of the TAs that answered my questions. I referenced the past lab reports of 
@@ -79,10 +100,10 @@
                 </p>
             </div>
         </section>
-<!___________________________________________________________________________________________________________________>
-<!___________________________________________________________________________________________________________________>
-<!___________________________________________________________________________________________________________________>
-<!___________________________________________________________________________________________________________________>   
+<!____________________________________________________________________________________________________________________>
+<!____________________________________________________________________________________________________________________>
+<!____________________________________________________________________________________________________________________>
+<!____________________________________________________________________________________________________________________>   
 <!__ Lab 9: Mapping __________________________________________________________________________________________________>
             <section class="resume-section" id="Lab 9">
                 <div class="resume-section-content">
