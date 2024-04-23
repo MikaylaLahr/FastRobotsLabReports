@@ -274,17 +274,33 @@
                             The data collected was sent over Bluetooth to Jupyter Notebook to be plotted. The robot 
                             was started in the same orietation, facing the right side wall of the lab, for each full 
                             turn and each half turn starting at zero degrees. For half turns starting at 180 degrees, 
-                            the robot started facing the left side wall.
-                            RELIABLE BEHAVIOUR??????
+                            the robot started facing the left side wall. The range of potential angle values for each 
+                            ideal 10 degree rotation is 9.5 degrees to 10.5 degrees. There is a -/+ 0.5 degree range 
+                            for the robot to stop and collect a distance measurement. Due to the range of degree values,
+                            it can not be assumed that the robot will stop at exactly 10 degrees every time it rotates.
+                            This behaviour was desribed in the "Code for Orientation Control" section at the beginning 
+                            of the lab report. The distance measurements can not be assumed to be spaced equally in 
+                            angular space. To address this issue, I did not assume that the robot stopped at exactly 
+                            10 degrees for every rotation and instead recorded a "total" variable value that added the 
+                            angle that the robot stopped at to the previously recorded stopping angle. This allowed me 
+                            to plot the distance measurements with the correct recorded angles.
                         </p>
-                    <h4 class="mb-0">Polar And Global Frame Plots</h4> <!------------------------------------------->
+                    <h3 class="mb-0">Polar And Global Frame Plots: Part 1</h3> <!----------------------------------->
                         <p>The data collected for each point in the lab is plotted in the below graphs:</p>
-                        <h5 class="mb-0">Point (-3,-2):</h5> <!----------------------------------------------------->
-                        <h5 class="mb-0">Point (0,0):</h5> <!------------------------------------------------------->
-                        <h5 class="mb-0">Point (0,3):</h5> <!------------------------------------------------------->
-                        <h5 class="mb-0">Point (5,3):</h5> <!------------------------------------------------------->
-                        <h5 class="mb-0">Point (5,-3):</h5> <!------------------------------------------------------>
-                    <h3 class="mb-0">Merge And Plot Readings</h3> <!------------------------------------------------>
+                        <h5 class="mb-0">Bottom Left: Point (-3,-2):</h5> <!---------------------------------------->
+                        <h5 class="mb-0">Middle: Point (0,0):</h5> <!----------------------------------------------->
+                        <h5 class="mb-0">Top Middle: Point (0,3):</h5> <!------------------------------------------->
+                        <h5 class="mb-0">Top Right: Point (5,3):</h5> <!-------------------------------------------->
+                        <h5 class="mb-0">Bottom Right: Point (5,-3):</h5> <!---------------------------------------->
+                    <h4 class="mb-0">Merge And Plot Readings: Part 1</h4> <!---------------------------------------->
+                    <h3 class="mb-0">Polar And Global Frame Plots: Part 2</h3> <!----------------------------------->
+                        <p>The data collected for each point in the lab is plotted in the below graphs:</p>
+                        <h5 class="mb-0">Bottom Left: Point (-3,-2):</h5> <!---------------------------------------->
+                        <h5 class="mb-0">Middle: Point (0,0):</h5> <!----------------------------------------------->
+                        <h5 class="mb-0">Top Middle: Point (0,3):</h5> <!------------------------------------------->
+                        <h5 class="mb-0">Top Right: Point (5,3):</h5> <!-------------------------------------------->
+                        <h5 class="mb-0">Bottom Right: Point (5,-3):</h5> <!---------------------------------------->
+                    <h4 class="mb-0">Merge And Plot Readings: Part 2</h4> <!---------------------------------------->
                     <h3 class="mb-0">Convert To Line Based Map</h3> <!---------------------------------------------->
 <!-- Lab 9 References ---------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab 9 References</h2>
