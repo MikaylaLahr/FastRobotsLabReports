@@ -101,7 +101,7 @@
                         differences in the y and x positions are found (y_comp and x_comp). Then the normalized rotations 
                         are calculated as well as the translation. 
                     </p>
-                    <img width="600" height="auto" src="Lab10/compute_control.png"></img>
+                    <img width="700" height="auto" src="Lab10/compute_control.png"></img>
                     <h4 class="mb-0">Odometry Motion Model</h4> <!--------------------------------------------------->
                     <p>The odometry motion model finds the probability that the robot performed the motion that was 
                         calculated in the previous step. The inputs include the current position (cur_pose), previous
@@ -112,7 +112,7 @@
                         each event is then multiplied together to find the probability of the entire motion. The Jupyter 
                         Notebook code is found below.
                     </p>
-                    <img width="600" height="auto" src="Lab10/odom_motion_model.png"></img>
+                    <img width="700" height="auto" src="Lab10/odom_motion_model.png"></img>
                     <h4 class="mb-0">Prediction Step</h4> <!--------------------------------------------------------->
                     <p>The prediction step of the Bayes Filter as implemented in Jupyter Notebook uses six for loops 
                         to calculate the probability that the robot moved to the next grid cell. The inputs include the
@@ -123,7 +123,7 @@
                         the belief is greater than or equal to 0.0001 the probability will be calculated. The code for 
                         calculating the probability is below.
                     </p>
-                    <img width="600" height="auto" src="Lab10/prediction_step.png"></img>
+                    <img width="700" height="auto" src="Lab10/prediction_step.png"></img>
                     <h4 class="mb-0">Sensor Model</h4> <!------------------------------------------------------------>
                     <p>The sensor model function finds the probability of the sensor measurements, modelled as a 
                         Gaussian distribution. The length of the array is 18 as the robot measures 18 different distance 
@@ -131,13 +131,13 @@
                         function returns a 1D array of the same length including the likelihood of each event (prob_array).
                         The Jupyter Notebook code is below.
                     </p>
-                    <img width="600" height="auto" src="Lab10/sensor_model.png"></img>
+                    <img width="700" height="auto" src="Lab10/sensor_model.png"></img>
                     <h4 class="mb-0">Update Step</h4> <!------------------------------------------------------------->
                     <p>The update step calculates the belief of the robot for each grid cell. The probability ( p(z|x) )
                         is multiplied by the predicted belief (loc.bel_bar) to find the belief (loc.bel). The belief is 
                         then normalized. The code can be found below.
                     </p>
-                    <img width="600" height="auto" src="Lab10/update_step.png"></img>
+                    <img width="700" height="auto" src="Lab10/update_step.png"></img>
                     <h3 class="mb-0">Simulation Results</h3> <!------------------------------------------------------>
                     <p>Two runs of the Bayes Filter simulation are found below. The green line is the ground truth, 
                         the blue line is the belief, and the red line is the odometry measurements. The lighter grid 
