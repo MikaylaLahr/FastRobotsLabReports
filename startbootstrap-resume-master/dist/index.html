@@ -168,7 +168,7 @@
                 <div class="resume-section-content">
                     <h2 class="mb-2.5">Lab 9: Mapping</h2> 
                     <p>The objective of the lab is to use yaw angle measurements from the IMU sensor and distance 
-                        readings from the ToF sensor to map a room. The map will be used durin localization and navigation 
+                        readings from the ToF sensor to map a room. The map will be used during localization and navigation 
                         tasks. Map quality depends on how many readings are obtained and the separation between each 
                         reading during each rotation. 
                     </p>
@@ -240,7 +240,7 @@
                         <p>I plotted the values of yaw for each 10 degree increment. As can be seen in the below graph
                             the PID controller works as expected. After yaw increases to 10 degrees, the value of yaw 
                             is reset to zero and then again increases to 10 degrees for the next increment. The slight 
-                            variation is due to the -0.5 to 0.5 degree tolerance. 
+                            variation in the final yaw value is due to the -0.5 to 0.5 degree tolerance. 
                         </p>
                         <img width="500" height="auto" src="Lab9/BR_Yaw_Test.png"></img>
                         <p>The total angle values were found by adding each final yaw value (between 9.5 and 10.5 
@@ -251,7 +251,7 @@
                         <img width="500" height="auto" src="Lab9/BR_Yaw_Angles.png"></img>
                         <p>In the above graph as the turn progresses the angles remain accurate as the summation 
                             calculation is correct to the yaw reading of the robot, but the angles slightly vary from 
-                            the ideal 360 degree turn values. To address this I also preformed half turns from 0 to 180
+                            the ideal 360 degree turn values. To address this I also performed half turns from 0 to 180
                             degrees, and 180 to 360 degrees. The angle values and corresponding graphs can be found 
                             below:
                         </p>
@@ -306,7 +306,7 @@
                     <h3 class="mb-0">Polar And Global Frame Plots: Part 1</h3> <!----------------------------------->
                         <p>This section details the first attempt at collecting data at each point. The data collected 
                             for each point in the lab is plotted in the below graphs. For each point I plotted a polar 
-                            graph and a global frame graph for each point. The first two graphs show all of the data I 
+                            graph and a global frame graph. The first two graphs show all of the data I 
                             collected for each point. The next two graphs show the data that I choose to keep when 
                             combining all of the global plots. In this section I noticed that the ToF sensor was pointed 
                             too downwards, resulting in a lot of noise in the middle of the plots. The noise resulted in
@@ -418,7 +418,7 @@
                         <img width="500" height="auto" src="Lab9/Test2/AllGlobal2.png"></img>
                         <img width="200" height="auto" src="Lab9/Test2/Legend2.png"></img>
                     <h3 class="mb-0">Convert To Line Based Map</h3> <!---------------------------------------------->
-                    <p>After plotting the above graph I plotted lines reprenting the walls of the map. The plot showing 
+                    <p>After plotting the above graph I plotted lines representing the walls of the map. The plot showing 
                         the line based map is below as well as the code used to plot each line. 
                     </p>
                         <img width="500" height="auto" src="Lab9/Test2/AllGlobal2Lines.png"></img>
