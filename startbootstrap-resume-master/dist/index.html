@@ -90,7 +90,37 @@
                         of y is 9, and the dimension of theta is 18. 
                     </p>
                     <h3 class="mb-0">Arduino IDE Code</h3> <!-------------------------------------------------------->
+                    <p>To perform localization on the robot the Arduino IDE code from Lab 9: Mapping was used to rotate 
+                        the robot 360 degrees. The setAngle was changed from 10 degrees, used in Lab 9, to 20 degrees 
+                        for Lab 11. I removed some of the append statements in case SEND_ORIENTATION_DATA to only send 
+                        time, angle in 20 degree increments, and the distance readings at each angle increment. In the 
+                        main while loop I changed how I stored the distance data and yaw readings. I initially stored 
+                        the readings as variables before assigning them to an array at each 20 degree increment. The 
+                        code is below.
+                    </p>
+                    <p>ORIENTATION_CASE:</p>
+                    <script src="https://gist.github.com/MikaylaLahr/c4c9a964a183e65bd3d6242d9ebe144c.js"></script>
+                    <p>SEND_ORIENTATION_DATA:</p>
+                    <script src="https://gist.github.com/MikaylaLahr/ad3ef6f465d6edb4b9049e093b82c19e.js"></script>
+                    <p>While Loop:</p>
+                    <script src="https://gist.github.com/MikaylaLahr/17797f37041e1a1a32076ee78be6abea.js"></script>
+                    <p>The RIGHT_MOTOR() and LEFT_MOTOR() functions used did not change from Lab 9.</p>
                     <h3 class="mb-0">Implement Perform_Observation_Loop</h3> <!-------------------------------------->
+                    <p>The code lab11_real.ipynb was downloaded and opened in Jupyter Notebook. 
+                        The function perform_observation_loop was 
+                        written to sort through the collected data from one rotation. First arrays are established and
+                        then the command to send orientation data is run. The asynicio function was used to run the 
+                        while loop until 18 data readings are sent over Bluetooth. The for loop assigns the angle readings 
+                        to the sensor_bearings array and the distance readings, converted from millimeters to meters, to
+                        the sensor_ranges array. Initially, I put the command to run the ORIENTATION_CASE inside 
+                        of the perform_observation_loop function, but I decided to run the rotation first before calling 
+                        the function. By removing the command to run ORIENTATION_CASE from inside of the function allowed 
+                        me to more easily turn on/off the rotation.  
+                    </p>
+                    <p>The function perform_observation_loop is below:</p>
+                    <img width="500" height="auto" src="Lab11/FunctionPython.png"></img>
+                    <p>The command to run ORIENTAION_CASE is below:</p>
+                    <img width="500" height="auto" src="Lab11/CasePython.png"></img>
                     <h3 class="mb-0">Run Robot Localization</h3> <!-------------------------------------------------->
                     <h3 class="mb-0">Comparison of Localization Results</h3> <!-------------------------------------->
 <!-- Lab 11 References ---------------------------------------------------------------------------------------------->
