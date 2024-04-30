@@ -133,7 +133,33 @@
                     </p>
                     <h4 class="mb-0">Bottom Left Point (-3ft, -2ft, 0deg):</h4> <!----------------------------------->
                         <h5 class="mb-0">Run 1</h5> <!--------------------------------------------------------------->
+                        <p>Graphs for the Belief (blue) and the Ground Truth (green):</p>
+                        <img width="500" height="auto" src="Lab11/BL1_Belief.png"></img>
+                        <img width="500" height="auto" src="Lab11/BL1_GroundTruth.png"></img>
+                        <p>For run 1 of the bottom left point, the Belief was at the same point as the Ground Truth. 
+                            As can be seen in the below polar plot, the robot sensed the surrounding walls very well. 
+                        </p>
+                    <hr>
+                        <p>Belief Data:</p>
+                        <img width="600" height="auto" src="Lab11/BL1_Data.png"></img>
+                    <hr>
+                        <p>Polar Plot and recorded data below:</p>
+                        <img width="400" height="auto" src="Lab11/BL1_PolarPlot.png"></img>
+                        <script src="https://gist.github.com/MikaylaLahr/5d1f0c5ea18d45adee5102a74273559e.js"></script>
                         <h5 class="mb-0">Run 2</h5> <!--------------------------------------------------------------->
+                        <p>Graph for the Belief (blue) and the Ground Truth (green):</p>
+                        <img width="500" height="auto" src="Lab11/BL2_Graph.png"></img>
+                        <p>For run 2 of the bottom left point, the Belief was 0.3050 meters above the Ground Truth. 
+                            As can be seen in the below polar plot, the walls were not as defined as in the previous run, 
+                            resulting in the error in localization. 
+                        </p>
+                    <hr>
+                        <p>Belief Data:</p>
+                        <img width="600" height="auto" src="Lab11/BL2_Data.png"></img>
+                    <hr>
+                        <p>Polar Plot and recorded data below:</p>
+                        <img width="400" height="auto" src="Lab11/BL2_PolarPlot.png"></img>
+                        <script src="https://gist.github.com/MikaylaLahr/c689c21c79f07317ea60fe8bb38f3c9b.js"></script>
                     <h4 class="mb-0">Top Middle Point (0ft, 3ft, 0deg):</h4> <!-------------------------------------->
                         <h5 class="mb-0">Run 1</h5> <!--------------------------------------------------------------->
                         <p>Graphs for the Belief (blue) and the Ground Truth (green):</p>
@@ -173,13 +199,7 @@
                         <img width="500" height="auto" src="Lab11/BR1_GroundTruth.png"></img>
                         <p>For run 1 of the bottom right point, the Belief was at the same point as the Ground Truth. 
                             As can be seen in the below polar plot, the robot was able to sense the surrounding walls 
-                            and obstacles. Some runs 
-                        </p>
-                        <p>Some runs of the robot for the bottom right point resulted in a Belief that was plotted around 
-                            (-0.8m, 0.2m) as the corner outside of the map resembled the lower right corner inside of the 
-                            map. I found it surprising that the Belief would be plotted outside of the map and discussed 
-                            the results with a TA. To address this issue the probability that the robot is located outside
-                            of the map can be set to zero in the Bayes Filter. 
+                            and obstacles. 
                         </p>
                     <hr>
                         <p>Belief Data:</p>
@@ -189,6 +209,26 @@
                         <img width="400" height="auto" src="Lab11/BR1_PolarPlot.png"></img>
                         <script src="https://gist.github.com/MikaylaLahr/4c6e659ab228d568f74421e9c481aa85.js"></script>
                         <h5 class="mb-0">Run 2</h5> <!--------------------------------------------------------------->
+                        <p>Graph for the Belief (blue) and the Ground Truth (green):</p>
+                        <img width="500" height="auto" src="Lab11/BR2_Graph.png"></img>
+                        <p>For run 2 of the bottom right point, the Belief was located 0.3050 meters to the right and 
+                            0.3046 meters below the Ground Truth.
+                            As can be seen in the below polar plot, for this run the plotted edges of the walls are not as 
+                            straight as in the previous run.
+                        </p>
+                        <p>Some runs of the robot for the bottom right point resulted in a Belief that was plotted around 
+                            (-0.8m, 0.2m) as the corner outside of the map resembled the lower right corner inside of the 
+                            map. I found it surprising that the Belief would be plotted outside of the map and discussed 
+                            the results with a TA. To address this issue the probability that the robot is located outside
+                            of the map can be set to zero in the Bayes Filter. 
+                        </p>
+                    <hr>
+                        <p>Belief Data:</p>
+                        <img width="600" height="auto" src="Lab11/BR2_Data.png"></img>
+                    <hr>
+                        <p>Polar Plot and recorded data below:</p>
+                        <img width="400" height="auto" src="Lab11/BR2_PolarPlot.png"></img>
+                        <script src="https://gist.github.com/MikaylaLahr/9b229544b973a528e2556a73e0192596.js"></script>
                     <h4 class="mb-0">Top Right Point (5ft, 3ft, 0deg):</h4> <!--------------------------------------->
                         <h5 class="mb-0">Run 1</h5> <!--------------------------------------------------------------->
                         <p>Graph for the Belief (blue) and the Ground Truth (green):</p>
