@@ -136,6 +136,11 @@
                         <p>Graphs for the Belief (blue) and the Ground Truth (green):</p>
                         <img width="500" height="auto" src="Lab11/TM1_Belief.png"></img>
                         <img width="500" height="auto" src="Lab11/TM1_GroundTruth.png"></img>
+                        <p>For run 1 of the top middle point, the Belief was at the same point as the Ground Truth. 
+                            I was surprised to achieve this result as there are not a lot of nearby walls to use for 
+                            localization and I suspected that this would be the hardest point to localize. As can be 
+                            seen in the below polar plot, the robot was able to sense the surrounding walls and obstacles. 
+                        </p>
                     <hr>
                         <p>Belief Data:</p>
                         <img width="600" height="auto" src="Lab11/TM1_Data.png"></img>
@@ -146,6 +151,11 @@
                         <h5 class="mb-0">Run 2</h5> <!--------------------------------------------------------------->
                         <p>Graph for the Belief (blue) and the Ground Truth (green):</p>
                         <img width="500" height="auto" src="Lab11/TM2_Graph.png"></img>
+                        <p>For run 2 of the top middle point, the Belief was 0.3050 meters to the right of the Ground Truth. 
+                            The robot did not turn as well as in the previous run and the left side wall was not as accurately 
+                            sensed. The results are shown in the below polar plot. The location of the robot was still fairly 
+                            close to the Ground Truth value. 
+                        </p>
                     <hr>
                         <p>Belief Data:</p>
                         <img width="600" height="auto" src="Lab11/TM2_Data.png"></img>
@@ -158,6 +168,16 @@
                         <p>Graphs for the Belief (blue) and the Ground Truth (green):</p>
                         <img width="500" height="auto" src="Lab11/BR1_Belief.png"></img>
                         <img width="500" height="auto" src="Lab11/BR1_GroundTruth.png"></img>
+                        <p>For run 1 of the bottom right point, the Belief was at the same point as the Ground Truth. 
+                            As can be seen in the below polar plot, the robot was able to sense the surrounding walls 
+                            and obstacles. Some runs 
+                        </p>
+                        <p>Some runs of the robot for the bottom right point resulted in a Belief that was plotted around 
+                            (-0.8m, 0.2m) as the corner outside of the map resembled the lower right corner inside of the 
+                            map. I found it surprising that the Belief would be plotted outside of the map and discussed 
+                            the results with a TA. To address this issue the probability that the robot is located outside
+                            of the map can be set to zero in the Bayes Filter. 
+                        </p>
                     <hr>
                         <p>Belief Data:</p>
                         <img width="600" height="auto" src="Lab11/BR1_Data.png"></img>
@@ -170,6 +190,11 @@
                         <h5 class="mb-0">Run 1</h5> <!--------------------------------------------------------------->
                         <p>Graph for the Belief (blue) and the Ground Truth (green):</p>
                         <img width="500" height="auto" src="Lab11/TR1_Graph.png"></img>
+                        <p>For run 1 of the top right point, the Belief was located 0.3050 meters to the right and 
+                            0.3044 meters below the Ground Truth. As can be seen in the below polar plot the robot had 
+                            difficulty achieving the correct distance measurements for the right side wall, which may 
+                            have impacted the localization Belief. 
+                        </p>
                     <hr>
                         <p>Belief Data:</p>
                         <img width="600" height="auto" src="Lab11/TR1_Data.png"></img>
@@ -180,6 +205,10 @@
                         <h5 class="mb-0">Run 2</h5> <!--------------------------------------------------------------->
                         <p>Graph for the Belief (blue) and the Ground Truth (green):</p>
                         <img width="500" height="auto" src="Lab11/TR2_Graph.png"></img>
+                        <p>For run 2 of the top right point, the Belief was located 0.3044 meters below the Ground Truth. 
+                            As can be seen in the below polar plot the robot again had difficulty achieving the correct 
+                            distance measurements for the right side wall, which may have impacted the localization Belief. 
+                        </p>
                     <hr>
                         <p>Belief Data:</p>
                         <img width="600" height="auto" src="Lab11/TR2_Data.png"></img>
