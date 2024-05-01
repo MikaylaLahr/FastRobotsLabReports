@@ -117,7 +117,7 @@
                         to the sensor_bearings array and the distance readings, converted from millimeters to meters, to
                         the sensor_ranges array. Initially, I put the command to run the ORIENTATION_CASE inside 
                         of the perform_observation_loop function, but I decided to run the rotation first before calling 
-                        the function. By removing the command to run ORIENTATION_CASE from inside of the function allowed 
+                        the function. Removing the command to run ORIENTATION_CASE from inside of the function allowed 
                         me to more easily turn on/off the rotation.  
                     </p>
                     <p>The function perform_observation_loop is below:</p>
@@ -129,8 +129,12 @@
                         include: (-3ft, -2ft, 0deg), (0ft, 3ft, 0deg), (5ft, -3ft, 0deg), and (5ft, 3ft, 0deg). The robot 
                         was run around 4-5 times at each point. Two runs for each point are shown below. The ground truth 
                         is plotted as the green dot and is the location where the robot rotated. The belief of the robots 
-                        position is plotted as the blue dot. 
+                        position is plotted as the blue dot. The ToF sensor used to collect distance readings was located 
+                        on the front of the robot, between the left and right sides of the robot. When the robot was at 
+                        zero degrees the ToF sensor was pointed towards the rightside wall. The robot turned counterclockwise
+                        in the same manner as in Lab 9. The Jupyter Notebook code to plot each Ground Truth value is below:
                     </p>
+                     <img width="400" height="auto" src="Lab11/Points.png"></img>
                     <h4 class="mb-0">Bottom Left Point (-3ft, -2ft, 0deg):</h4> <!----------------------------------->
                         <h5 class="mb-0">Run 1</h5> <!--------------------------------------------------------------->
                         <p>Graphs for the Belief (blue) and the Ground Truth (green):</p>
@@ -138,6 +142,10 @@
                         <img width="500" height="auto" src="Lab11/BL1_GroundTruth.png"></img>
                         <p>For run 1 of the bottom left point, the Belief was at the same point as the Ground Truth. 
                             As can be seen in the below polar plot, the robot sensed the surrounding walls very well. 
+                            I reran the rotation several (5) times and this point had the most rotations result in the
+                            Belief being the same as the Ground Truth. This is a result of the several walls surrounding 
+                            the robot when rotating. The next run shows one of the runs where the Belief was different 
+                            then the Ground Truth.
                         </p>
                     <hr>
                         <p>Belief Data:</p>
@@ -182,8 +190,8 @@
                         <img width="500" height="auto" src="Lab11/TM2_Graph.png"></img>
                         <p>For run 2 of the top middle point, the Belief was 0.3050 meters to the right of the Ground Truth. 
                             The robot did not turn as well as in the previous run and the left side wall was not as accurately 
-                            sensed. The results are shown in the below polar plot. The location of the robot was still fairly 
-                            close to the Ground Truth value. 
+                            sensed. The results are shown in the below polar plot. Despite the non-ideal rotation of the 
+                            robot, the location of the robot was still fairly close to the Ground Truth value. 
                         </p>
                     <hr>
                         <p>Belief Data:</p>
@@ -198,8 +206,8 @@
                         <img width="500" height="auto" src="Lab11/BR1_Belief.png"></img>
                         <img width="500" height="auto" src="Lab11/BR1_GroundTruth.png"></img>
                         <p>For run 1 of the bottom right point, the Belief was at the same point as the Ground Truth. 
-                            As can be seen in the below polar plot, the robot was able to sense the surrounding walls 
-                            and obstacles. 
+                            As can be seen in the below polar plot, the robot rotated well and was able to sense the 
+                            surrounding walls and obstacles. 
                         </p>
                     <hr>
                         <p>Belief Data:</p>
@@ -260,6 +268,16 @@
                         <img width="400" height="auto" src="Lab11/TR2_PolarPlot.png"></img>
                         <script src="https://gist.github.com/MikaylaLahr/787c575ae5895c4044f2c23dda1353a5.js"></script>
                     <h3 class="mb-0">Comparison of Localization Results</h3> <!-------------------------------------->
+                    <p>Overall, the localization implemented on the robot was able to achieve Belief results that 
+                        aligned with the Ground Truth values for 3 out of the 4 tested points (bottom left, top middle, 
+                        bottom right). I also included non-ideal runs in the lab report to show that even for non-ideal 
+                        rotations the robot would still localize fairly well. The bottom left point had the most number 
+                        of rotations (4/5) that resulted in the Belief being in the same location as the Ground Truth. 
+                        This is compared to the Top Middle having 1/4, Top Right having 0/4, and the Bottom Right 
+                        having 2/4. I suspect that the Top Right did not achieve any Belief values that were the same 
+                        as the Ground Truth values because the rotations at that point did not adequately pick up on the 
+                        straight edges of the wall. 
+                    </p>
 <!-- Lab 11 References ---------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab 11 References</h2>
                 <p>Thank you to all of the TAs that answered my questions. I referenced the past lab reports of 
