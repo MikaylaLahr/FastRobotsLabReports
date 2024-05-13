@@ -66,21 +66,56 @@
             <section class="resume-section" id="Lab 12">
                 <div class="resume-section-content">
                     <h2 class="mb-2.5">Lab 12: Path Planning and Execution</h2> 
-                    <p>The objective of the lab is </p>
                     <p>The lab materials include a fully assembled 
                         <a href="https://force1rc.com/products/cyclone-remote-control-car-for-kids-adults">robot</a>
                         with <a href="https://www.sparkfun.com/products/15443">SparkFun RedBoard Artemis Nano</a>,
                         <a href="https://www.pololu.com/product/3415">Pololu TOF Distance Sensors</a>, and a
                         <a href="https://www.mouser.com/ProductDetail/SparkFun/SEN-15335?qs=uwxL4vQweFMcls1MYZT00A%3D%3D">IMU Sensor</a>.
                     </p>
+                    <p>The objective of the lab is to have the robot navigate through the map and reach nine different 
+                        points. An image of the map and the location of the nine points (feet) are below.
+                    </p>
+                    <img width="500" height="auto" src="Lab12/Map.png"></img>
+                    <img width="500" height="auto" src="Lab12/Points.png"></img>
 <!-- Lab 12 Lab Tasks ----------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab Tasks</h2>
                     <h3 class="mb-0">Part 1: Open Loop Control</h3> <!----------------------------------------------->
+                    <p>I initially started working on an open loop control design, before working on localization. My
+                        goal for this section was to determine how far I could get in the map before the robot no longer 
+                        reached the goal points. While working on this section I became even more familiar with how the 
+                        robot operated. I needed to regularly change the battery as the robot behaved differently depending 
+                        on how charged the battery was. This was important for determining how fast the robot would 
+                        approach and stop before the wall and turn. In addition the right side motor of the robot has a 
+                        slight delay in reaching the final set speed compared to the left side. This results in the robot 
+                        initially moving straight but moving towards the left for longer distances. I needed to account for 
+                        this factor when determining where to stop and turn the robot. This behaviour can be seen in the 
+                        lab report videos. The details for the planning and implementation of the open loop design is below. 
+                    </p>
                     <h4 class="mb-0">Planning An Initial Design</h4> <!---------------------------------------------->
+                    <img width="500" height="auto" src="Lab12/DesignMap1.png"></img>
+                    <p>The above image shows the first design, marking the predicted distances that the robot needed to 
+                        travel for each section of the map. While thinking through the first design I was planning on 
+                        measuring the initial distance from the robot to the back wall at an angle and then recording 
+                        how much the distance changed to stop the robot after around 862mm. I was also going to use the 
+                        same approach for travelling from point 3 to point 4. All other distances were going to be measured 
+                        from the wall. I decided to change this approach to simplify the design and minimize the room for 
+                        errors. Measuring the distance to the wall at an angle could result in the robot stopping to soon 
+                        or moving to far if the robot is not oriented to the correct angle when starting or turning. I 
+                        decided to change the design to model the diagram below.
+                    </p>
+                    <img width="500" height="auto" src="Lab12/DesignMap2.png"></img>
+                    <p>In this design the robot is able to get distances readings from a closer wall that the robot is 
+                        directly facing. The robot also is expected to turn 90 degrees every time a rotation needs to be 
+                        made, simplifying the code compared to needing to turn at around 45 degrees for two turns and then 
+                        turning 90 degrees for the remaining turns. However, while physically testing the robot I did still 
+                        need to adjust the angles the robot turned as not all turns worked well using 90 degrees. The 
+                        details about the design implementation are below.
+                    </p>
                     <h4 class="mb-0">Implement The Design</h4> <!---------------------------------------------------->
                     <a href="https://drive.google.com/drive/folders/14EqiS_azm7d-Pabpr7tT0rgovmmCRE_l?usp=sharing">Link to Folder</a>
                     <iframe width="550" height="400" src="https://youtube.com/embed/-_Xvu1KNp1E"></iframe>
                     <iframe width="550" height="400" src="https://youtube.com/embed/Yg3Sh3VCLQE"></iframe>
+                    <!----------------------------------------------------------------------------------------------->
                     <h3 class="mb-0">Part 2: Localization and Finding The Next Point</h3> <!------------------------->
                     <h4 class="mb-0">Planning An Initial Design</h4> <!---------------------------------------------->
                     <h4 class="mb-0">Changing The Angle</h3> <!------------------------------------------------------>
@@ -110,6 +145,7 @@
                     <h3 class="mb-0">Additional Ideas That Were Considered</h3> <!----------------------------------->
 <!-- Lab 12 References ---------------------------------------------------------------------------------------------->
                 <h2 class="mb-2.5">Lab 12 References</h2>
+                <p>I did not collaborate with any students on the lab.</p>
                 <p>Thank you for a great semester! I really enjoyed working on the labs in this course and I appreciate 
                     the large number of office hours available for students. Have a nice summer.</p>
                 <p>Thank you to all of the TAs that answered my questions. I referenced the past lab reports of 
