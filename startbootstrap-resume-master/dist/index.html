@@ -285,17 +285,17 @@
                         and Kd. The robot navigates to point 4 before stopping. NEW_ANGLE_CASE is called with inputs for 
                         run_NEW_ANGLE_CASE and setAngle. The robot rotates to face the right side wall. 
                     </p>
-                    <img width="500" height="auto" src="Lab12/Python4.png"></img>
+                    <img width="600" height="auto" src="Lab12/Python4.png"></img>
                     <p>Below is the function perform_observation_loop in Jupyter Notebook that calls the LOCALIZATION_CASE
                         to rotate the robot and collect ToF data to use in the Bayes Filter.
                     </p>
-                    <img width="500" height="auto" src="Lab12/Python5.png"></img>
+                    <img width="600" height="auto" src="Lab12/Python5.png"></img>
                     <p>Step 2: During this step the plotter is reset and then points 1, 2, and 3 are plotted on the graph 
                         assuming that the robot has passed all of those points using open loop control. The while loop is 
                         entered and the robot starts localizing. After localizing, LOCALIZE_CASE is turned off and the belief 
                         of where the robot is on the map is compared to the desired point. 
                     </p>
-                    <img width="500" height="auto" src="Lab12/Python1.png"></img>
+                    <img width="600" height="auto" src="Lab12/Python1.png"></img>
                     <p>Step 3: An if statement is made to check to see if the belief is within 1 foot of the desired point. 
                         If the belief id within 1 foot, the ground truth value for the desired point is plotted and the 
                         values for the index i and the success are increased. The x and y cooredinates for the current 
@@ -307,12 +307,12 @@
                         to new angle" step as an input to the NEW_ANGLE_CASE to rotate towards the right side wall and then 
                         the case is turned off when the robot stops. 
                     </p>
-                    <img width="500" height="auto" src="Lab12/Python2.png"></img>
+                    <img width="600" height="auto" src="Lab12/Python2.png"></img>
                     <p>Step 4: The else statement runs if the belief is not within 1 foot of the desired point. All of
                         the previously run cases are used in the same manner, except the index and success variables are
                         not increased. The robot is still trying to reach the desired waypoint. 
                     </p>
-                    <img width="500" height="auto" src="Lab12/Python3.png"></img>
+                    <img width="600" height="auto" src="Lab12/Python3.png"></img>
                     <h3 class="mb-0">Testing The Robot In The Map</h3> <!-------------------------------------------->
                     <p>Below are videos and graphs of various tests. </p>
                     <p>Localization Starting At Point 4:</p>
