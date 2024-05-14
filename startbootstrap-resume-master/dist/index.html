@@ -114,9 +114,20 @@
                     </p>
                     <h4 class="mb-0">Implement The Design</h4> <!---------------------------------------------------->
                     <p>When I started working on the design for the robot's path I wrote the code in sections and tested 
-                        the run in parts before writing the next segment. 
+                        the run in parts before writing the next segment. Below is the Jupyter Notebook command and the
+                        Arduino case, while loop, and functions. Each distance and angle are set separately to allow for 
+                        any changes to be easily made during testing. PID control is used when the robot rotates. The 
+                        FORWARD function does not use PID control for distance readings as the robot was set to move at 
+                        a slower speed of 80 PWM and would not overshooot the desired stopping distance.
                     </p>
-                    <p>--------------------------------- INSERT CODE no pid control reasoning --------------------------- </p>
+                    <p>Jupyter Notebook Command and Arduino Case:</p>
+                    <img width="500" height="auto" src="Lab12/OpenPython.png"></img>
+                    <img width="500" height="auto" src="Lab12/OPEN_CASE.png"></img>
+                    <p>While Loop:</p>
+                    <img width="500" height="auto" src="Lab12/OpenWhile.png"></img>
+                    <p>OPEN_ANGLE and FORWARD Functions:</p>
+                    <img width="500" height="auto" src="Lab12/OPEN_ANGLE.png"></img>
+                    <img width="500" height="auto" src="Lab12/FORWARD.png"></img>
                     <p>As I progressed through the map it was harder to reach each point. The most common failure was 
                         missing the second to last point or overshooting the turn at point 5, resulting in the robot 
                         hitting the side of the box. 
