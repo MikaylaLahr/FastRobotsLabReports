@@ -149,7 +149,44 @@
                     <iframe width="550" height="400" src="https://youtube.com/embed/Yg3Sh3VCLQE"></iframe>
                     <!----------------------------------------------------------------------------------------------->
                     <h3 class="mb-0">Part 2: Localization and Finding The Next Point</h3> <!------------------------->
+                    <p>In addition to doing open loop control, I decided to implement localization on the robot the 
+                        details about planning and implementation are found below. 
+                    </p>
                     <h4 class="mb-0">Planning An Initial Design</h4> <!---------------------------------------------->
+                    <p>From my observations while implementing open loop control, I decided to make some changes to the 
+                        path of the robot. My plan was to perform localization starting at point 4 and continue to localize 
+                        at each point (except point 6 as it occurs right next to point 5 and will be passed on the robots
+                        path to point 7) until the robot completes the map. The robot will initally move using open loop 
+                        control until reaching point 4. Instead of rotating clockwise and having the ToF sensor pointed 
+                        towards the right side wall, I decided to rotate the robot counter clockwise and have the ToF 
+                        sensor pointed towards the left side wall. The robot then moves backwards a specified distance 
+                        away from the left wall. I decided to change the open loop control as in the previous section there
+                        were several runs where the ToF sensor read a distance from the large square box and not the right
+                        side wall. Having the ToF sensor read distances from the left wall removes the possible error that
+                        the robot will sense the box and stop early. Below is a diagram of the robots path.
+                    </p>
+                    <img width="500" height="auto" src="Lab12/DesignMap3.png"></img>
+                    <p>----------------------- INSERT DIAGRAM ---------------------------------------</p>
+                    <p>For localizing and moving to the next point I broke down the robots movements into five actions:
+                        <li>Localization on the robot</li> 
+                        <li>Compare the localization results with the desired point</li>
+                        <li>Rotate the robot to face the desired point</li>
+                        <li>Drive the robot for a specified distance towards the desired point</li>
+                        <li>Rotate the robot back to face the right side wall for the next localization</li>
+                        The Arduino open loop script and the functions I wrote to control the robot are found below:
+                    </p>
+                    <h4 class="mb-0">Open Loop Control</h3> <!------------------------------------------------------->
+                    <img width="500" height="auto" src="Lab12/StartCase.png"></img>
+                    <img width="500" height="auto" src="Lab12/ArduinoOpenLoopForLocalization.png"></img>
+                    <img width="500" height="auto" src="Lab12/ArduinoOrientation.png"></img>
+                    <img width="500" height="auto" src="Lab12/ArduinoDistance1.png"></img>
+                    <img width="500" height="auto" src="Lab12/ArduinoDistance2.png"></img>
+                    <img width="500" height="auto" src="Lab12/NewAngleCase.png"></img>
+                    <img width="500" height="auto" src="Lab12/NewAngleArduino.png"></img>
+                    <h4 class="mb-0">Localization On Robot</h3> <!--------------------------------------------------->
+                    <img width="500" height="auto" src="Lab12/LocalizeCase.png"></img>
+                    <img width="500" height="auto" src="Lab12/LocalizeArduino2.png"></img>
+                    <img width="500" height="auto" src="Lab12/LocalizeArduino1.png"></img>
                     <h4 class="mb-0">Changing The Angle</h3> <!------------------------------------------------------>
                     <a href="https://drive.google.com/drive/folders/1m7jKYJfIaAx6G6V-dl5vNpQNiq97DcGi">Link to Folder</a>
                     <iframe width="550" height="400" src="https://drive.google.com/file/d/1ysX5l1-Pn4kCubyXhkXJJELhzecST5BA/preview"></iframe>
@@ -158,6 +195,7 @@
                     <h4 class="mb-0">Driving To The Next Point</h4> <!----------------------------------------------->
                     <iframe width="550" height="400" src="https://youtube.com/embed/cJcB4OiJhdM"></iframe>
                     <iframe width="550" height="400" src="https://youtube.com/embed/Bc6aKa7h_lg"></iframe>
+                    <h4 class="mb-0">Rotating The Robot For The Next Localization</h3> <!---------------------------->
                     <h3 class="mb-0">Writing A Python Script</h3> <!------------------------------------------------->
                     <img width="500" height="auto" src="Lab12/Python4.png"></img>
                     <img width="500" height="auto" src="Lab12/Python5.png"></img>
