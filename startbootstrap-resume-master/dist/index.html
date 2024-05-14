@@ -108,12 +108,44 @@
                         directly facing. The robot also is expected to turn 90 degrees every time a rotation needs to be 
                         made, simplifying the code compared to needing to turn at around 45 degrees for two turns and then 
                         turning 90 degrees for the remaining turns. However, while physically testing the robot I did still 
-                        need to adjust the angles the robot turned as not all turns worked well using 90 degrees. The 
-                        details about the design implementation are below.
+                        need to adjust the angles the robot turned as not all turns worked well using 90 degrees. In the 
+                        above diagram are the final used angles and distances for the robot path. The details about the 
+                        design implementation are below.
                     </p>
                     <h4 class="mb-0">Implement The Design</h4> <!---------------------------------------------------->
-                    <a href="https://drive.google.com/drive/folders/14EqiS_azm7d-Pabpr7tT0rgovmmCRE_l?usp=sharing">Link to Folder</a>
+                    <p>When I started working on the design for the robot's path I wrote the code in sections and tested 
+                        the run in parts before writing the next segment. 
+                    </p>
+                    <p>--------------------------------- INSERT CODE --------------------------- </p>
+                    <p>As I progressed through the map it was harder to reach each point. The most common failure was 
+                        missing the second to last point or overshooting the turn at point 5, resulting in the robot 
+                        hitting the side of the box. 
+                        <a href="https://drive.google.com/drive/folders/14EqiS_azm7d-Pabpr7tT0rgovmmCRE_l?usp=sharing">This folder</a> 
+                        has two videos showing errors in the initial design. One video shows the robot not reaching 
+                        point 3 because the ToF sensor measured the distance to the box and not the wall. The robot stopped
+                        before passing point 3. This was a frequent error and during testing I adjusted the first stopping 
+                        distance and had the first angle be a rotation to -100 degrees. This allowed for more runs to be 
+                        successful until the third point, as the ToF sensor did not detect the box and distance was allowed 
+                        for the right side motor to slightly move the robot to the left. Unfortunately, this correction 
+                        also resulted in another potential error of the robot missing point 3. When the robot had a fully 
+                        charged battery, it tended to reach the first three points more frequently than if the battery was
+                        not fully charged due to the right side motor reaching full speed faster when using a fully charged 
+                        battery. For this reason during this lab I repeatedly recharged the batteries I was using more often 
+                        than in any previous lab. In addition, The turn at point 5 was set to 80 degrees to account for the 
+                        right side motor and preventing the robot from hitting the side of the box. The second video in the 
+                        folder shows a failed run where the robot misses the second to last point.
+                    </p>
+                    <p>Below are two videos of the most successfull runs. Due to using open loop control and having an error 
+                        tolerance for the angle turns and variations in speed depending on the battery charge, each run was 
+                        slightly different. In the first run the robot passes the third point but does not go through the 
+                        center. In both runs the robot passes the last point but does not stop until after passing the point 
+                        as the robot was not perfectly in line with reading the distance to stop from the smaller box. I was 
+                        happy with the results as I had spent a long time working through the nuances of the robot and the
+                        robot is able to make its way through the map.
+                    </p>
+                    <p>Run 1:</p>
                     <iframe width="550" height="400" src="https://youtube.com/embed/-_Xvu1KNp1E"></iframe>
+                    <p>Run 2:</p>
                     <iframe width="550" height="400" src="https://youtube.com/embed/Yg3Sh3VCLQE"></iframe>
                     <!----------------------------------------------------------------------------------------------->
                     <h3 class="mb-0">Part 2: Localization and Finding The Next Point</h3> <!------------------------->
