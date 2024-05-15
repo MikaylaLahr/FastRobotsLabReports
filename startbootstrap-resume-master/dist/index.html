@@ -84,7 +84,8 @@
                         goal for this section was to determine how far I could get in the map before the robot no longer 
                         reached the goal points. While working on this section I became even more familiar with how the 
                         robot operated. I needed to regularly change the battery as the robot behaved differently depending 
-                        on how charged the battery was. This was important for determining how fast the robot would 
+                        on how charged the battery was (moving and turning slower when the battery was not fully charged). 
+                        This was important for determining how fast the robot would 
                         approach and stop before the wall and turn. In addition the right side motor of the robot has a 
                         slight delay in reaching the final set speed compared to the left side. This results in the robot 
                         initially moving straight but moving towards the left for longer distances. I needed to account for 
@@ -122,10 +123,12 @@
                     </p>
                     <p>Jupyter Notebook Command and Arduino Case:</p>
                     <img width="500" height="auto" src="Lab12/OpenPython.png"></img>
-                    <hr>
+                    <p>   </p>
                     <img width="400" height="auto" src="Lab12/OPEN_CASE.png"></img>
+                    <hr>
                     <p>While Loop:</p>
                     <img width="400" height="auto" src="Lab12/OpenWhile.png"></img>
+                    <hr>
                     <p>OPEN_ANGLE and FORWARD Functions:</p>
                     <img width="500" height="auto" src="Lab12/OPEN_ANGLE.png"></img>
                     <img width="400" height="auto" src="Lab12/FORWARD.png"></img>
@@ -144,10 +147,10 @@
                         not fully charged due to the right side motor reaching full speed faster when using a fully charged 
                         battery. For this reason during this lab I repeatedly recharged the batteries I was using more often 
                         than in any previous lab. In addition, The turn at point 5 was set to 80 degrees to account for the 
-                        right side motor and preventing the robot from hitting the side of the box. The second video in the 
+                        right side motor and prevent the robot from hitting the side of the box. The second video in the 
                         folder shows a failed run where the robot misses the second to last point.
                     </p>
-                    <p>Below are two videos of the most successfull runs. Due to using open loop control and having an error 
+                    <p>Below are two videos of the most successful runs. Due to using open loop control and having an error 
                         tolerance for the angle turns and variations in speed depending on the battery charge, each run was 
                         slightly different. In the first run the robot passes the third point but does not go through the 
                         center. In both runs the robot passes the last point but does not stop until after passing the point 
@@ -297,8 +300,8 @@
                     </p>
                     <img width="600" height="auto" src="Lab12/Python1.png"></img>
                     <p>Step 3: An if statement is made to check to see if the belief is within 1 foot of the desired point. 
-                        If the belief id within 1 foot, the ground truth value for the desired point is plotted and the 
-                        values for the index i and the success are increased. The x and y cooredinates for the current 
+                        If the belief is within 1 foot, the ground truth value for the desired point is plotted and the 
+                        values for the index i and the success are increased. The x and y coordinates for the current 
                         belief and desired point are assigned to variables (curX,curY) and (endX,endY). A string using 
                         the found point values is created and ANGLE_CASE is called to rotate the robot to face the next 
                         desired point. After the robot rotates the case is turned off. Then the DISTANCE_CASE is called 
