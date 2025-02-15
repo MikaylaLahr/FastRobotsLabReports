@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#home">Home: Mikayla Lahr mrl242</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Lab 12">Lab 12: Path Planning and Execution</a></li>
+                    <!--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Lab 12">Lab 12: Path Planning and Execution</a></li>-->
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Lab 11">Lab 11: Localization (Real)</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Lab 10">Lab 10: Localization (Simulation)</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Lab 9">Lab 9: Mapping</a></li>
@@ -63,7 +63,7 @@
             </section>
             <hr class="m-0" />
 <!__ Lab 12: Path Planning and Execution ____________________________________________________________________________>
-            <section class="resume-section" id="Lab 12">
+        <!--    <section class="resume-section" id="Lab 12">
                 <div class="resume-section-content">
                     <h2 class="mb-2.5">Lab 12: Path Planning and Execution</h2> 
                     <p>The lab materials include a fully assembled 
@@ -76,11 +76,11 @@
                         points. An image of the map and the location of the nine points (feet) are below.
                     </p>
                     <img width="500" height="auto" src="Lab12/Map.png"></img>
-                    <img width="300" height="auto" src="Lab12/Points.png"></img>
+                    <img width="300" height="auto" src="Lab12/Points.png"></img> -->
 <!-- Lab 12 Lab Tasks ----------------------------------------------------------------------------------------------->
-                <h2 class="mb-2.5">Lab Tasks</h2>
-                    <h3 class="mb-0">Part 1: Open Loop Control</h3> <!----------------------------------------------->
-                    <p>I initially started working on an open loop control design, before working on localization. My
+            <!--    <h2 class="mb-2.5">Lab Tasks</h2>
+                    <h3 class="mb-0">Part 1: Open Loop Control</h3> <!-----------------------------------------------> -->
+                 <!--   <p>I initially started working on an open loop control design, before working on localization. My
                         goal for this section was to determine how far I could get in the map before the robot no longer 
                         reached the goal points. While working on this section I became even more familiar with how the 
                         robot operated. I needed to regularly change the battery as the robot behaved differently depending 
@@ -92,9 +92,9 @@
                         fully charged battery. I needed to account for 
                         this factor when determining where to stop and turn the robot. This behaviour can be seen in the 
                         some of the lab report videos. The details for the planning and implementation of the open loop design is below. 
-                    </p>
-                    <h4 class="mb-0">Planning An Initial Design</h4> <!---------------------------------------------->
-                    <img width="500" height="auto" src="Lab12/DesignMap1.png"></img>
+                    </p> -->
+       <!--             <h4 class="mb-0">Planning An Initial Design</h4> <!----------------------------------------------> -->
+           <!--         <img width="500" height="auto" src="Lab12/DesignMap1.png"></img>
                     <p>The above image shows the first design, marking the predicted distances that the robot needed to 
                         travel for each section of the map. While thinking through the first design I was planning on 
                         measuring the initial distance from the robot to the back wall at an angle and then recording 
@@ -113,9 +113,9 @@
                         need to adjust the angles the robot turned as not all turns worked well using 90 degrees. In the 
                         above diagram are the final used angles and distances for the robot path. The details about the 
                         design implementation are below.
-                    </p>
-                    <h4 class="mb-0">Implement The Design</h4> <!---------------------------------------------------->
-                    <p>When I started working on the design for the robot's path I wrote the code in sections and tested 
+                    </p> -->
+          <!--          <h4 class="mb-0">Implement The Design</h4> <!----------------------------------------------------> -->
+            <!--        <p>When I started working on the design for the robot's path I wrote the code in sections and tested 
                         the run in parts before writing the next segment. Below is the Jupyter Notebook command and the
                         Arduino case, while loop, and functions. Each distance and angle are set separately to allow for 
                         any changes to be easily made during testing. PID control is used when the robot rotates. The 
@@ -162,14 +162,14 @@
                     <p>Run 1:</p>
                     <iframe width="550" height="400" src="https://youtube.com/embed/-_Xvu1KNp1E"></iframe>
                     <p>Run 2:</p>
-                    <iframe width="550" height="400" src="https://youtube.com/embed/Yg3Sh3VCLQE"></iframe>
+                    <iframe width="550" height="400" src="https://youtube.com/embed/Yg3Sh3VCLQE"></iframe> -->
                     <!----------------------------------------------------------------------------------------------->
-                    <h3 class="mb-0">Part 2: Localization</h3> <!---------------------------------------------------->
-                    <p>In addition to doing open loop control, I decided to implement localization on the robot the 
+           <!--         <h3 class="mb-0">Part 2: Localization</h3> <!----------------------------------------------------> -->
+           <!--         <p>In addition to doing open loop control, I decided to implement localization on the robot the 
                         details about planning and implementation are found below. 
-                    </p>
-                    <h4 class="mb-0">Planning An Initial Design</h4> <!---------------------------------------------->
-                    <p>From my observations while implementing open loop control, I decided to make some changes to the 
+                    </p> -->
+            <!--        <h4 class="mb-0">Planning An Initial Design</h4> <!----------------------------------------------> -->
+             <!--       <p>From my observations while implementing open loop control, I decided to make some changes to the 
                         path of the robot. My plan was to perform localization starting at point 4 and continue to localize 
                         at each point (except point 6 as it occurs right next to point 5 and will be passed on the robots
                         path to point 7) until the robot completes the map. The robot will initally move using open loop 
@@ -189,9 +189,9 @@
                         <li>Drive the robot for a specified distance towards the desired point</li>
                         <li>Rotate the robot back to face the right side wall for the next localization</li>
                         The Arduino open loop script and the functions I wrote to control the robot are found below:
-                    </p>
-                    <h4 class="mb-0">Open Loop Control</h3> <!------------------------------------------------------->
-                    <p>Below is the Arduino case for open loop control and the code within the while loop. When run_START_CASE 
+                    </p> -->
+             <!--       <h4 class="mb-0">Open Loop Control</h3> <!-------------------------------------------------------> -->
+             <!--       <p>Below is the Arduino case for open loop control and the code within the while loop. When run_START_CASE 
                         is set to 1 the first function entered is DISTANCE_1 and the robot starts moving forward until 
                         stopping 600mm in front of the wall. The robot turns 90 degrees counterclockwise using the 
                         ORIENTATION function and then drives backwards away from the left wall by entering the DISTANCE_2
@@ -216,9 +216,9 @@
                         a yaw reading of 0 degrees.
                     </p>
                     <img width="450" height="auto" src="Lab12/NewAngleCase.png"></img>
-                    <img width="450" height="auto" src="Lab12/NewAngleArduino.png"></img>
-                    <h4 class="mb-0">Localization On Robot</h3> <!--------------------------------------------------->
-                    <p>Below is the LOCALIZE_CASE in Arduino that calls the function LOCALIZE. The case sets the yaw 
+                    <img width="450" height="auto" src="Lab12/NewAngleArduino.png"></img> -->
+           <!--         <h4 class="mb-0">Localization On Robot</h3> <!--------------------------------------------------->  -->
+           <!--         <p>Below is the LOCALIZE_CASE in Arduino that calls the function LOCALIZE. The case sets the yaw 
                         reading to zero and records the previous time stamp to be used when finding the next yaw value. 
                     </p>
                     <img width="450" height="auto" src="Lab12/LocalizeCase.png"></img>
@@ -232,9 +232,9 @@
                         the desired point in the map as in the function ANGLE described in the next section. 
                     </p>
                     <img width="500" height="auto" src="Lab12/LocalizeArduino2.png"></img>
-                    <img width="500" height="auto" src="Lab12/LocalizeArduino1.png"></img>
-                    <h4 class="mb-0">Changing The Angle</h3> <!------------------------------------------------------>
-                    <p>The below case and function rotates the robot by the calculated angle. The ANGLE function uses
+                    <img width="500" height="auto" src="Lab12/LocalizeArduino1.png"></img> -->
+           <!--         <h4 class="mb-0">Changing The Angle</h3> <!------------------------------------------------------>  -->
+             <!--       <p>The below case and function rotates the robot by the calculated angle. The ANGLE function uses 
                         atan2 to find the rotation angle using the inputs for the current position (curX,curY) and the
                         desired position (endX,endY). This calculated goalAngle is then compared to the current yaw 
                         reading of the robot until the error is within 1 degree of the desired angle.
@@ -258,9 +258,9 @@
                     <iframe width="550" height="400" src="https://drive.google.com/file/d/1_JdQH-BgbudPlP8YjGQiBTmgPC5Qm42a/preview"></iframe>
                     <hr>
                     <p>180 Degrees:</p>
-                    <iframe width="550" height="400" src="https://drive.google.com/file/d/1T63QVrAtE76ALX6fGf1A97-8HSP0NGMP/preview"></iframe>
-                    <h4 class="mb-0">Driving To The Next Point</h4> <!----------------------------------------------->
-                    <p>The next section of code I wrote has the robot move from the current point (curX,curY) to the 
+                    <iframe width="550" height="400" src="https://drive.google.com/file/d/1T63QVrAtE76ALX6fGf1A97-8HSP0NGMP/preview"></iframe> -->
+      <!--              <h4 class="mb-0">Driving To The Next Point</h4> <!-----------------------------------------------> -->
+       <!--             <p>The next section of code I wrote has the robot move from the current point (curX,curY) to the 
                         desired point (endX,endY). The case and function are below. I also subtracted 150mm from the
                         calculated value because when I was testing the robot in the map, there was consistently some 
                         overshoot when reaching the desired point due to the belief and desired points being modeled at 
@@ -278,15 +278,15 @@
                         were taken before subtracting 150mm from the calculated distance.
                     </p>
                     <iframe width="550" height="400" src="https://youtube.com/embed/cJcB4OiJhdM"></iframe>
-                    <iframe width="550" height="400" src="https://youtube.com/embed/Bc6aKa7h_lg"></iframe>
-                    <h4 class="mb-0">Rotating The Robot For The Next Localization</h3> <!---------------------------->
-                    <p>The last step before the next localization attempt is to rotate the robot again towards the right
+                    <iframe width="550" height="400" src="https://youtube.com/embed/Bc6aKa7h_lg"></iframe> -->
+       <!--             <h4 class="mb-0">Rotating The Robot For The Next Localization</h3> <!----------------------------> -->
+         <!--           <p>The last step before the next localization attempt is to rotate the robot again towards the right
                         side wall. During this step the function NEW_ANGLE is called, using the negative of the same 
                         angle calculated during the "Changing the Angle" step. The function NEW_ANGLE was described 
                         previously in the lab.
-                    </p>
-                    <h3 class="mb-0">Writing A Python Script</h3> <!------------------------------------------------->
-                    <p>Below is the python script used during the open loop control and localization of the robot.</p>
+                    </p> -->
+         <!--           <h3 class="mb-0">Writing A Python Script</h3> <!-------------------------------------------------> -->
+         <!--           <p>Below is the python script used during the open loop control and localization of the robot.</p>
                     <p>Step 1: START_CASE is called with inputs for run_START_CASE, setAngle, dis1, dis2, dis3, Kp, Ki, 
                         and Kd. The robot navigates to point 4 before stopping. NEW_ANGLE_CASE is called with inputs for 
                         run_NEW_ANGLE_CASE and setAngle. The robot rotates to face the right side wall. 
@@ -320,9 +320,9 @@
                         the previously run cases are used in the same manner, except the index and success variables are
                         not increased. The robot is still trying to reach the desired waypoint. 
                     </p>
-                    <img width="600" height="auto" src="Lab12/Python3.png"></img>
-                    <h3 class="mb-0">Testing The Robot In The Map</h3> <!-------------------------------------------->
-                    <p>Below are videos and graphs of various tests. </p>
+                    <img width="600" height="auto" src="Lab12/Python3.png"></img> -->
+          <!--          <h3 class="mb-0">Testing The Robot In The Map</h3> <!--------------------------------------------> -->
+           <!--         <p>Below are videos and graphs of various tests. </p>
                     <hr>
                     <p>Localization Starting At Point 4:</p>
                     <p>The best localization attempt occurred during testing 
@@ -387,9 +387,9 @@
                     </p>
                     <script src="https://gist.github.com/MikaylaLahr/b6834192e387567b39eb0dc9178c5b7c.js"></script>
                     <p>I also wrote a function BACKWARD to move the robot backwards but did not use it.</p>
-                    <script src="https://gist.github.com/MikaylaLahr/7bab29aafc11a40318bbebdeef416617.js"></script>
+                    <script src="https://gist.github.com/MikaylaLahr/7bab29aafc11a40318bbebdeef416617.js"></script> -->
 <!-- Lab 12 References ---------------------------------------------------------------------------------------------->
-                <h2 class="mb-2.5">Lab 12 References</h2>
+        <!--        <h2 class="mb-2.5">Lab 12 References</h2>
                 <p>I did not collaborate with any students on the lab.</p>
                 <p>Thank you for a great semester! I really enjoyed working on the labs in this course and I appreciate 
                     the large number of office hours available for students. Have a nice summer.</p>
@@ -397,7 +397,7 @@
                     Liam Kain, Rafael Gottlieb, Larry Lu, Julian Prieto, and Ignacio Romo.
                 </p>
             </div>
-        </section>
+        </section> -->
 <!____________________________________________________________________________________________________________________>
 <!____________________________________________________________________________________________________________________>
 <!____________________________________________________________________________________________________________________>
